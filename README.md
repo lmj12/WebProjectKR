@@ -19,5 +19,5 @@ github window 에서 수정한 사항입니다
 
 09/17 : 17:28 준호 수정사항 보냅니다
 
-
+09/18 : master 와 branch owner 간의 연동 
 
