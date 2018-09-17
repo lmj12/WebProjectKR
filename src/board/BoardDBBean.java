@@ -12,7 +12,7 @@ public class BoardDBBean {
 	
 	public int boardWrt(BoardDataBean boardDto) { // 임시매개변수. 필요시 변경할것.
 		int rst=0;
-		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것. // 끼룩
 	}
 	
 	public int boardMod(BoardDataBean boardDto) {// 임시매개변수. 필요시 변경할것.
