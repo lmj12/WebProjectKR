@@ -14,8 +14,15 @@
 				</th>
 			</tr>
 			<tr>
-				<th> 아이디 </th>
-				<td> <input class="input" type="text" name="jbskId" maxlength="15">
+				<th rowspan="3"> 아이디 </th>
+			</tr>
+			<tr>
+				<td> <input class="input" type="text" name="jbskId" maxlength="15" placeholder="아이디를 입력하세요">
+			</tr>
+			<tr>
+				<td>
+					Ajax 처리공간입니다.
+				</td>
 			</tr>
 			<tr>
 				<th> 패스워드 </th>
@@ -24,9 +31,16 @@
 				</td>
 			</tr>
 			<tr>
-				<th> 비번확인 </th>
+				<th rowspan="3"> 비번확인 </th>
+			</tr>
+			<tr>
 				<td>
 					<input class="input" type="password" name="jbskRePasswd" maxlength="15">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Ajax 처리공간입니다.
 				</td>
 			</tr>
 			<tr>
@@ -82,12 +96,12 @@
 			<tr>
 				<th rowspan="2"> 전화번호 </th>
 				<td>
-					<input class="input" type="text" name="jbskTel" maxlength="15">
+					<input class="input" type="text" name="jbskTel" maxlength="25"  placeholder="- 없이 전화번호를 입력하세요">
 					<input type="button" value="인증">
 				</td>
 			<tr>
 				<td>
-					'- 제외하고 입력하세요'
+					Ajax 처리공간입니다.
 				</td>
 			<tr>
 			</tr>
@@ -98,12 +112,11 @@
 				</td>
 			</tr>
 			<tr>
-				<th> 포지션 </th>
+				<th> 정보수신유형 </th>
 				<td>
-					<input type="checkbox" name="jbskInfoType" value="1">업무1
-					<input type="checkbox" name="jbskInfoType" value="2">업무2
-					<input type="checkbox" name="jbskInfoType" value="3">업무3
-					<input type="checkbox" name="jbskInfoType" value="4">업무4
+					<input type="radio" name="jbskInfoType" value="1">전화SMS만 수신
+					<input type="radio" name="jbskInfoType" value="2">이메일로만 수신
+					<input type="radio" name="jbskInfoType" value="3">둘 다 수신
 				</td>
 			</tr>
 			<tr>	
