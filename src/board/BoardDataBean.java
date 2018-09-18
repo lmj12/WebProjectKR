@@ -1,23 +1,26 @@
 package board;
 
+import java.sql.Timestamp;
+
 public class BoardDataBean {
-	private String boardId;
-	private int board_num;
+	private int boardId;
+	private Timestamp boardregdate;
 	private String boardContent;
 	private int boardStatus;
-	private String boardParentId;
+	private int boardParentId;
 	private String userId;
-	public String getBoardId() {
+	
+	public int getBoardId() {
 		return boardId;
 	}
-	public void setBoardId(String boardId) {
+	public void setBoardId(int boardId) {
 		this.boardId = boardId;
 	}
-	public int getBoard_num() {
-		return board_num;
+	public Timestamp getBoardregdate() {
+		return boardregdate;
 	}
-	public void setBoard_num(int board_num) {
-		this.board_num = board_num;
+	public void setBoardregdate(Timestamp boardregdate) {
+		this.boardregdate = boardregdate;
 	}
 	public String getBoardContent() {
 		return boardContent;
@@ -31,10 +34,11 @@ public class BoardDataBean {
 	public void setBoardStatus(int boardStatus) {
 		this.boardStatus = boardStatus;
 	}
-	public String getBoardParentId() {
+	
+	public int getBoardParentId() {
 		return boardParentId;
 	}
-	public void setBoardParentId(String boardParentId) {
+	public void setBoardParentId(int boardParentId) {
 		this.boardParentId = boardParentId;
 	}
 	public String getUserId() {
