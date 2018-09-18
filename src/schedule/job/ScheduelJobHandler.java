@@ -1,4 +1,4 @@
-package schdule.job;
+package schedule.job;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

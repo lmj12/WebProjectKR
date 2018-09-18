@@ -1,4 +1,4 @@
-package schdule.job;
+package schedule.job;
 
 import org.apache.ibatis.session.SqlSession;
 

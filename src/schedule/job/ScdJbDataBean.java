@@ -1,4 +1,4 @@
-package schdule.job;
+package schedule.job;
 
 public class ScdJbDataBean {
 	private int schjbId;
