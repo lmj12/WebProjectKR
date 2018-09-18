@@ -1,0 +1,208 @@
+create table KRadmin(
+	adminid varchar2(15), 
+	adminpasswd varchar2(45) NOT NULL,
+	adminLevel number(1) NOT NULL,
+	adminregdate date NOT NULL,
+	CONSTRAINT PK_KRadmin PRIMARY KEY(adminid)
+	);
+
+create table KRjobprov(
+	jobpid varchar2(15),
+	jobppasswd varchar2(45) NOT NULL,
+	jobpregdate date NOT NULL,
+	jobpBno varchar2(10) NOT NULL,
+	jobpCn varchar2(60) NOT NULL,
+	CONSTRAINT PK_KRjobprov PRIMARY KEY(jobpid)
+	);
+
+create table KRjobseeker(
+	jbskid varchar2(15),
+	jbskpasswd varchar2(45) NOT NULL,
+	jbskregdate date NOT NULL,
+	jbskname varchar2(30) NOT NULL,
+	jbskgender number(1) NOT NULL,
+	jbskBd date NOT NULL,
+	jbskAdd1 varchar2(21) NOT NULL,
+	jbskAdd2 varchar2(15) NOT NULL,
+	jbskAdd3 varchar2(15) NOT NULL,
+	jbskEmail varchar2(50),
+	jbskTel varchar2(12) NOT NULL,
+	jbskPic varchar2(70),
+	jbskinfotype number(1) NOT NULL,
+	CONSTRAINT PK_KRjobseeker PRIMARY KEY(jbskid)
+	);
+
+
+
+
+create table KRboard(
+	boardid varchar2(10),
+	boardContent varchar2(2100),
+	boardstatus number(1) NOT NULL,
+	boardparentid number,
+	boarduserid varchar2(15) NOT NULL,
+	boardregdate date NOT NULL,
+	CONSTRAINT PK_KRboard PRIMARY KEY(boardid)
+	);
+
+
+create table KRschedule(
+	schid number,
+	schstarttime date NOT NULL,
+	schendtime date NOT NULL,
+	schcontent varchar2(600),
+	jobpid varchar2(15) NOT NULL,
+	CONSTRAINT PK_KRschedule PRIMARY KEY(schid),
+	CONSTRAINT FK_KRschedule FOREIGN KEY (jobpid) REFERENCES KRjobprov(jobpid)
+	);
+
+create sequence KRschedule_seq
+	start with 1
+	increment by 1
+	MAXVALUE 9999999
+	MINVALUE 1;
+
+create table KRteam(
+	teamid number,
+	jobpid varchar2(15) NOT NULL,
+	CONSTRAINT PK_KRteam PRIMARY KEY(teamid),
+	CONSTRAINT FK_KRteam FOREIGN KEY (jobpid) REFERENCES KRjobprov(jobpid)
+	);
+
+create sequence KRteam_seq
+	start with 1
+	increment by 1
+	MAXVALUE 9999999
+	MINVALUE 1;
+
+create table KRiptcareer(
+	iptid number,
+	iptcompany varchar2(45) NOT NULL,
+	iptwh varchar2(45) NOT NULL,
+	iptstart date NOT NULL,
+	iptend date NOT NULL,
+	iptpos varchar2(45) NOT NULL,
+	jbskid varchar2(15) NOT NULL,
+	iptperiod number,
+	CONSTRAINT PK_KRiptcareer PRIMARY KEY(iptid),
+	CONSTRAINT FK_KRiptcareer FOREIGN KEY (jbskid) REFERENCES KRjobseeker(jbskid)
+	);
+
+create sequence KRiptcareer_seq
+	start with 1
+	increment by 1
+	MAXVALUE 9999999
+	MINVALUE 1;
+
+create table KRresume(
+	rsmid number,
+	rsmtext varchar2(2100),
+	jbskid varchar2(15) NOT NULL,
+	CONSTRAINT PK_KRresume PRIMARY KEY(rsmid),
+	CONSTRAINT FK_KRresume FOREIGN KEY (jbskid) REFERENCES KRjobseeker(jbskid)
+	);
+
+create sequence KRresume_seq
+	start with 1
+	increment by 1
+	MAXVALUE 9999999
+	MINVALUE 1;
+	
+create table KRrecruit(
+	recid number,
+	recstart date NOT NULL,
+	recend date NOT NULL,
+	reccontent varchar2(4000) NOT NULL,
+	recsite varchar2(90) NOT NULL,
+	recreadcnt number NOT NULL,
+	recstatus number(1) NOT NULL,
+	jobpid varchar2(15) NOT NULL,
+	CONSTRAINT PK_KRrecruit PRIMARY KEY(recid),
+	CONSTRAINT FK_KRrecruit FOREIGN KEY (jobpid) REFERENCES KRjobprov(jobpid)
+	);
+
+create sequence KRrecruit_seq
+	start with 1
+	increment by 1
+	MAXVALUE 9999999
+	MINVALUE 1;
+
+create table KRposition(
+	posid number,
+	poscontent varchar2(30) NOT NULL,
+	CONSTRAINT PK_KRposition PRIMARY KEY(posid)
+	);
+create sequence KRposition_seq
+	start with 1
+	increment by 1
+	MAXVALUE 9999999
+	MINVALUE 1;
+
+insert into krposition values(KRposition_seq.nextval , '팀장');
+insert into krposition values(KRposition_seq.nextval , '스캔');
+insert into krposition values(KRposition_seq.nextval , '예도');
+insert into krposition values(KRposition_seq.nextval , '안내');
+insert into krposition values(KRposition_seq.nextval , '경호');
+insert into krposition values(KRposition_seq.nextval , '기타');
+
+create table KRrecposition(
+	recid number NOT NULL,
+	posid number NOT NULL,
+	CONSTRAINT FK_KRrecposition1 FOREIGN KEY (recid) REFERENCES KRrecruit(recid),
+	CONSTRAINT FK_KRrecposition2 FOREIGN KEY (posid) REFERENCES KRposition(posid)
+	);
+
+create table KRreccareer(
+	reccrrid number,
+	recid number NOT NULL,
+	posid number NOT NULL,
+	reccrrsta number NOT NULL,
+	rsmid number NOT NULL,
+	CONSTRAINT FK_KRreccareer1 FOREIGN KEY (recid) REFERENCES KRrecruit(recid),
+	CONSTRAINT FK_KRreccareer2 FOREIGN KEY (posid) REFERENCES KRposition(posid),
+	CONSTRAINT FK_KRreccareer3 FOREIGN KEY (rsmid) REFERENCES KRresume(rsmid)
+	);
+
+create sequence KRreccareer_seq
+	start with 1
+	increment by 1
+	MAXVALUE 9999999
+	MINVALUE 1;
+
+create table KRschjob(
+	schjbid number,
+	schid number NOT NULL,
+	posid number NOT NULL,
+	schjbsalary number NOT NULL,
+	jbskid varchar2(15),
+	CONSTRAINT FK_KRschjob1 FOREIGN KEY (schid) REFERENCES KRschedule(schid),
+	CONSTRAINT FK_KRschjob2 FOREIGN KEY (posid) REFERENCES KRposition(posid),
+	CONSTRAINT FK_KRschjob3 FOREIGN KEY (jbskid) REFERENCES KRjobseeker(jbskid)
+	);
+
+create sequence KRschjob_seq
+	start with 1
+	increment by 1
+	MAXVALUE 9999999
+	MINVALUE 1;
+
+create table KRteammember(
+	teamid number NOT NULL,
+	jbskid varchar2(15) NOT NULL,
+	tmstatus number(1) NOT NULL,
+	CONSTRAINT FK_KRteammember1 FOREIGN KEY (teamid) REFERENCES KRteam(teamid),
+	CONSTRAINT FK_KRteammember2 FOREIGN KEY (jbskid) REFERENCES KRjobseeker(jbskid)
+	);
+
+create table KRresumeopen(
+	jobpid varchar2(15) NOT NULL,
+	rsmid number NOT NULL,
+	rsmopen date NOT NULL,
+	rsmsta number(1) NOT NULL,
+	CONSTRAINT FK_KRresumeopen1 FOREIGN KEY (jobpid) REFERENCES KRjobprov(jobpid),
+	CONSTRAINT FK_KRresumeopen2 FOREIGN KEY (rsmid) REFERENCES KRresume(rsmid)
+	);
+
+
+	
+	
