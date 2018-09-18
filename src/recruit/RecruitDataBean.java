@@ -6,6 +6,7 @@ public class RecruitDataBean {
 	private int recId;
 	private Timestamp recStart;
 	private Timestamp recEnd;
+	private String reccontent;
 	private String recSite;
 	private int recReadCnt;
 	private int recStatus;
@@ -15,40 +16,47 @@ public class RecruitDataBean {
 	private String posPos;	//직무 포지션
 	private int crrCnt;	//지원자 숫자
 	
-	public int getrecId() {
+	
+	public int getRecId() {
 		return recId;
 	}
-	public void setrecId(int recId) {
+	public void setRecId(int recId) {
 		this.recId = recId;
 	}
-	public Timestamp getrecStart() {
+	public Timestamp getRecStart() {
 		return recStart;
 	}
-	public void setrecStart(Timestamp recStart) {
+	public void setRecStart(Timestamp recStart) {
 		this.recStart = recStart;
 	}
-	public Timestamp getrecEnd() {
+	public Timestamp getRecEnd() {
 		return recEnd;
 	}
-	public void setrecEnd(Timestamp recEnd) {
+	public void setRecEnd(Timestamp recEnd) {
 		this.recEnd = recEnd;
 	}
-	public String getrecsite() {
+	public String getReccontent() {
+		return reccontent;
+	}
+	public void setReccontent(String reccontent) {
+		this.reccontent = reccontent;
+	}
+	public String getRecSite() {
 		return recSite;
 	}
-	public void setrecsite(String recSite) {
+	public void setRecSite(String recSite) {
 		this.recSite = recSite;
 	}
-	public int getrecReadCnt() {
+	public int getRecReadCnt() {
 		return recReadCnt;
 	}
-	public void setrecReadCnt(int recReadCnt) {
+	public void setRecReadCnt(int recReadCnt) {
 		this.recReadCnt = recReadCnt;
 	}
-	public int getrecStatus() {
+	public int getRecStatus() {
 		return recStatus;
 	}
-	public void setrecStatus(int recStatus) {
+	public void setRecStatus(int recStatus) {
 		this.recStatus = recStatus;
 	}
 	public String getJbpId() {
@@ -81,6 +89,9 @@ public class RecruitDataBean {
 	public void setCrrCnt(int crrCnt) {
 		this.crrCnt = crrCnt;
 	}
+	
+	
+	
 	
 	
 }

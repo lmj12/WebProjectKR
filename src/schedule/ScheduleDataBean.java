@@ -3,51 +3,48 @@ package schedule;
 import java.sql.Timestamp;
 
 public class ScheduleDataBean {
-	private int scdId;
-	private Timestamp startTime;
-	private Timestamp endTime;
+	private int schId;
+	private Timestamp schstartTime;
+	private Timestamp schendTime;
 	private String jobpId;
 	private String jobpName;
-	private String scdContent;
+	private String schContent;
 	
-	public int getScdId() {
-		return scdId;
+	public int getSchId() {
+		return schId;
 	}
-	public void setScdId(int scdId) {
-		this.scdId = scdId;
+	public void setSchId(int schId) {
+		this.schId = schId;
 	}
-	public Timestamp getStartTime() {
-		return startTime;
+	public Timestamp getSchstartTime() {
+		return schstartTime;
 	}
-	public void setStartTime(Timestamp startTime) {
-		this.startTime = startTime;
+	public void setSchstartTime(Timestamp schstartTime) {
+		this.schstartTime = schstartTime;
 	}
-	public Timestamp getEndTime() {
-		return endTime;
+	public Timestamp getSchendTime() {
+		return schendTime;
 	}
-	public void setEndTime(Timestamp endTime) {
-		this.endTime = endTime;
+	public void setSchendTime(Timestamp schendTime) {
+		this.schendTime = schendTime;
 	}
-	public String getJbpId() {
+	public String getJobpId() {
 		return jobpId;
 	}
-	public void setJbpId(String jobpId) {
+	public void setJobpId(String jobpId) {
 		this.jobpId = jobpId;
 	}
-	public String getJbpName() {
+	public String getJobpName() {
 		return jobpName;
 	}
-	public void setJbpName(String jobpName) {
+	public void setJobpName(String jobpName) {
 		this.jobpName = jobpName;
 	}
-	public String getScdContent() {
-		return scdContent;
+	public String getSchContent() {
+		return schContent;
 	}
-	public void setScdContent(String scdContent) {
-		this.scdContent = scdContent;
+	public void setSchContent(String schContent) {
+		this.schContent = schContent;
 	}
-	
-	
-	
 	
 }
