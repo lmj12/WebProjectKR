@@ -7,8 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 @Controller
-public class JbpLgnHd implements JobProvHandler {
-
+public class JbpLgnHd implements JobProvHandler { 
 	@Override
 	@RequestMapping("/jbpLgn")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
@@ -24,7 +23,7 @@ public class JbpLgnHd implements JobProvHandler {
 		
 		
 		// TODO Auto-generated method stub
-		return new ModelAndView("/Jbp/jbpLgnPro");
+		return new ModelAndView("/Jbp/jbpLgn");
 	}
 
 }

@@ -3,7 +3,7 @@
 
 <%
 	int result = (Integer) request.getAttribute( "result" );
-	String id = (String) request.getAttribute( "id" );
+	String jobpId = (String) request.getAttribute( "jobpId" );
 %>
 
 <%
@@ -27,7 +27,7 @@
 		<%		
 	} else {
 		// 아이디 있다 / 비밀번호다 같다
-		session.setAttribute( "memid", id );
+		session.setAttribute( "memid", jobpId );
 		response.sendRedirect( "jbpView.do" );
 	}
 %>

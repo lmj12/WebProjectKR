@@ -5,7 +5,7 @@
 
 
 <body onload="inputfocus()">
-<form name="inputform" method="post" action="jbpRegPro.jsp" onsubmit="return inputcheck()">
+<form name="inputform" method="post" action="jbpReg.do" onsubmit="return inputcheck()">
 <table border="1">
 	<tr>
 		<th rowspan="2">아이디</th>
@@ -36,7 +36,7 @@
 	<tr>
 		<th colspan="2">
 			<input type="submit" value="가입">
-			<input type="reset" value="취소" onclick="location='jbpLgn.jsp'">			
+			<input type="reset" value="취소" onclick="location='jbpLgn.do'">			
 		</th>
 	</tr>
 	

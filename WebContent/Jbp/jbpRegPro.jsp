@@ -16,6 +16,6 @@
 		<%		
 	} else {
 		// 가입성공
-		response.sendRedirect( "jbpLgn.do" );
+		response.sendRedirect( "registerJbp.do" );
 	}
 %>

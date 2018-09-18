@@ -6,7 +6,7 @@ public class JobProvDataBean {
 	private String jobpId;
 	private String jobpPasswd;
 	private Timestamp jobpRegdate;
-	private String jobpBno;
+	private String jobpBno; 
 	private String jobpCn;
 	
 	public String getJobpId() {

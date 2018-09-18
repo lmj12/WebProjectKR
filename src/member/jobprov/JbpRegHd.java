@@ -20,7 +20,7 @@ public class JbpRegHd implements JobProvHandler {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		JobProvDataBean jbpDto = new JobProvDataBean();
+		JobProvDataBean jbpDto = new JobProvDataBean(); 
 		jbpDto.setJobpId(request.getParameter("jobpId"));
 		jbpDto.setJobpPasswd(request.getParameter("jobpPasswd"));
 		
@@ -37,7 +37,6 @@ public class JbpRegHd implements JobProvHandler {
 		
 
 		int result = jbpDao.jobpReg(jbpDto);
-		
 		request.setAttribute( "result", result );
 		
 		
