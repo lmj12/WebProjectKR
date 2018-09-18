@@ -20,15 +20,17 @@
     <mappers>
         <mapper resource="board/board.xml"/>
         <mapper resource="iptcareer/iptcareer.xml"/>
-        <mapper resource="member.admin/admin.xml"/>
-        <mapper resource="member.jobprov/jobprov.xml"/>
-        <mapper resource="member.jobseeker/jobseeker.xml"/>
+        <mapper resource="member/admin/admin.xml"/>
+        <mapper resource="member/jobprov/jobprov.xml"/>
+        <mapper resource="member/jobseeker/jobseeker.xml"/>
         <mapper resource="reccareer/reccareer.xml"/>
-        <mapper resource="reccareer.estimate/estimate.xml"/>
+        <mapper resource="reccareer/estimate/estimate.xml"/>
         <mapper resource="recruit/recruit.xml"/>
         <mapper resource="resume/resume.xml"/>
-        <mapper resource="schedule.job/job.xml"/>
+        <mapper resource="schedule/job/job.xml"/>
         <mapper resource="schedule/schedule.xml"/>
         <mapper resource="team/team.xml"/>
+        	<!-- TODO : 테스트용 빈 mapping -->
+        <mapper resource="tester/tester.xml"/>
     </mappers>
 </configuration>

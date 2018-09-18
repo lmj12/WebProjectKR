@@ -17,8 +17,8 @@ import reccareer.RecCrrDBBean;
 import reccareer.estimate.EstimateDBBean;
 import recruit.RecruitDBBean;
 import resume.ResumeDBBean;
-import schdule.job.ScheduleJobDBBean;
 import schedule.ScheduleDBBean;
+import schedule.job.ScheduleJobDBBean;
 import team.TeamDBBean;
 
 @Configuration
