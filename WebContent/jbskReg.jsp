@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+<script type="text/javascript" src="./jbsk.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <h2> 구직자 회원가입 </h2>
 
-<body onload="loginfocus()">
+<body>
 	<form method="post" action="jbskReg.do" name="jbskReg">
 		<table border="1">
 			<tr>
@@ -36,6 +37,7 @@
 			<tr>
 				<td>
 					<input class="input" type="password" name="jbskRePasswd" maxlength="15">
+													<!-- 없는 변수이다. 나중에 수정할 부분임 -->
 				</td>
 			</tr>
 			<tr>
@@ -61,29 +63,29 @@
 				<th rowspan="5">주소</th>
 			<tr>
 				<td>
-					<input type="button" value="주소찾기">
+					<input type="button" value="주소찾기" onclick="searchPostcode()">
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input class="input" type="text" name="jbskAdd1" maxlength="15">
+					<input type="text" id="rdAddress" placeholder="도로명주소" maxlength="15" readonly>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input class="input" type="text" name="jbskAdd2" maxlength="15">
+					<input type="text" id="jbAddress" placeholder="지번주소" maxlength="15" readonly>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input class="input" type="text" name="jbskAdd3" maxlength="15">
+					<input class="input" type="text" id="jbskAdd3" maxlength="15">
 				</td>
 			</tr>
 			
 			<tr>
 				<th> 이메일 </th>
 				<td>
-					 <input type="input" name="jbskEmail1" maxlength="50">@
+					 <input type="text" name="jbskEmail1" maxlength="50">@
                        	 <select name="jbskEmail2">
                         	    <option>naver.com</option>
                         	    <option>daum.net</option>
