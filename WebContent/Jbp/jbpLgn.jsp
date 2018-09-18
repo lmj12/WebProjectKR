@@ -2,37 +2,8 @@
     pageEncoding="UTF-8"%>
 
 <h2>구인자 로그인 화면</h2>
-<%
-	int result = (Integer) request.getAttribute( "result" );
-	String id = (String) request.getAttribute( "id" );
-%>
-
-<%
-	if( result == 0 ) {
-		// 아이디가 없다
-		%>
-		<script type="text/javascript">
-			<!--
-			erroralert( loginiderror );
-			//-->
-		</script>
-		<%		
-	} else if( result == -1 ){
-		// 비밀번호가 다르다
-		%>
-		<script type="text/javascript">
-			<!--
-			erroralert( loginpasswderror );
-			//-->
-		</script>
-		<%		
-	} else {
-		// 아이디 있다 / 비밀번호다 같다
-		session.setAttribute( "memid", id );
-		response.sendRedirect( "jbpView.do" );
-	}
-%>
-
+<body onload="loginfocus()">
+	<form method="post" action="jbpLgnPro.jsp" name="loginform" onsubmit="return logincheck()">
 <table border="1">
 	<tr>
 		<th>아이디</th>
@@ -51,3 +22,5 @@
 		</th>
 	</tr>	
 </table>
+</form>
+</body>

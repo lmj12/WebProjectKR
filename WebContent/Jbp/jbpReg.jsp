@@ -4,7 +4,8 @@
 <h2>구인자 회원가입 페이지</h2>
 
 
-
+<body onload="inputfocus()">
+<form name="inputform" method="post" action="jbpRegPro.jsp" onsubmit="return inputcheck()">
 <table border="1">
 	<tr>
 		<th rowspan="2">아이디</th>
@@ -40,3 +41,5 @@
 	</tr>
 	
 </table>
+</form>
+</body>

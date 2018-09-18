@@ -14,7 +14,17 @@ public class JobSeekerDataBean {
 	private String jbskEmail;
 	private String jbskTel;
 	private String jbskPic;
+	private Timestamp jbskregdate;
+	
+	public Timestamp getJbskregdate() {
+		return jbskregdate;
+	}
+	public void setJbskregdate(Timestamp jbskregdate) {
+		this.jbskregdate = jbskregdate;
+	}
 	private int jbskInfoType;
+	
+	
 	public String getJbskId() {
 		return jbskId;
 	}

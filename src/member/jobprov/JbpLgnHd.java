@@ -24,7 +24,7 @@ public class JbpLgnHd implements JobProvHandler {
 		
 		
 		// TODO Auto-generated method stub
-		return new ModelAndView("/Jbp/jbpLgn");
+		return new ModelAndView("/Jbp/jbpLgnPro");
 	}
 
 }
