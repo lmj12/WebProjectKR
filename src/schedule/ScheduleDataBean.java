@@ -6,8 +6,8 @@ public class ScheduleDataBean {
 	private int scdId;
 	private Timestamp startTime;
 	private Timestamp endTime;
-	private String jbpId;
-	private String jbpName;
+	private String jobpId;
+	private String jobpName;
 	private String scdContent;
 	
 	public int getScdId() {
@@ -29,16 +29,16 @@ public class ScheduleDataBean {
 		this.endTime = endTime;
 	}
 	public String getJbpId() {
-		return jbpId;
+		return jobpId;
 	}
-	public void setJbpId(String jbpId) {
-		this.jbpId = jbpId;
+	public void setJbpId(String jobpId) {
+		this.jobpId = jobpId;
 	}
 	public String getJbpName() {
-		return jbpName;
+		return jobpName;
 	}
-	public void setJbpName(String jbpName) {
-		this.jbpName = jbpName;
+	public void setJbpName(String jobpName) {
+		this.jobpName = jobpName;
 	}
 	public String getScdContent() {
 		return scdContent;
