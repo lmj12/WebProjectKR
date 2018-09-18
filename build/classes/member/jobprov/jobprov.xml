@@ -4,5 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="Jbp">
-   
+  	<insert id="jobpReg" parameterType="member.jobprov.JobProvDataBean">
+		insert into KRjobprov values( #{jobpId}, #{jobpPasswd}, #{jobpRegdate}, #{jobpBno}, #{jobpCn} )
+	</insert>
+	<select id="checkId" parameterType="String" resultType="int">
+		select count(*) from KRjobprov where jobpid=#{jobpId}
+	</select>
+	<select id="jobpGet" parameterType="String" resultType="member.jobprov.JobProvDataBean">
+		select * from KRjobprov where jobpid=#{jobpId}
+	</select>
+	<delete id="jobpDel" parameterType="String">
+		delete from KRjobprov where jobpid=#{jobpId}
+	</delete>
+	<update id="jobpMod" parameterType="member.jobprov.JobProvDataBean">
+		update KRjobprov set jobppasswd=#{jobpPasswd}, jobpregdate=#{jobpRegdate}, jobpBno=#{jobpBno},
+		 jobpCn=#{jobpCn} where jobpid=#{jobpId}
+		
+	</update>
   </mapper>

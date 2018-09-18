@@ -12,8 +12,19 @@ public class JbpLgnHd implements JobProvHandler {
 	@Override
 	@RequestMapping("/jbpLgn")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
+		String jobpId = request.getParameter( "jobpId" );
+		String jobpPasswd = request.getParameter( "jobpPasswd" );
+
+		JobProvDBBean jbpDao = new JobProvDBBean();
+		int result = jbpDao.jobpLgn( jobpId, jobpPasswd );
+
+		request.setAttribute( "result", result );
+		request.setAttribute( "jobpId", jobpId);
+		
+		
+		
 		// TODO Auto-generated method stub
-		return null;
+		return new ModelAndView("/Jbp/jbpLgnPro");
 	}
 
 }
