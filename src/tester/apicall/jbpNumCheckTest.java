@@ -2,7 +2,7 @@ package tester.apicall;
 
 import java.util.Scanner;
 
-public class jbpApiCallTest {
+public class jbpNumCheckTest {
 
 	public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

@@ -1,3 +1,4 @@
+
 package tester.apicall;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,12 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 import member.jobprov.JbpException;
 import member.jobprov.JobProvHandler;
 
-@Controller
 public class JbpNumCheck implements JobProvHandler {
 	// 사업자등록번호 유효성검사
 
 	@Override
-	@RequestMapping()
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
 		// TODO : 사업자등록번호 유효성검사 -> 사업자등록번호 파싱해서 검색 후 선택 
 		String bizID = request.getParameter("jbpNumber");
@@ -59,3 +58,4 @@ public class JbpNumCheck implements JobProvHandler {
 	}
 
 }
+
