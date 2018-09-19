@@ -54,7 +54,7 @@ public class JbpNumCheck implements JobProvHandler {
             // 5. 이숫자가 사업자등록번호 마지막 자리의 숫자와 일치하면 대한민국 사업자이다. 
             System.out.println( bizID + "는 " + 
                                ((sum==bizID.charAt(9)-'0') ? "맞는" : "틀린") + "사업자 번호입니다.");
-        }
+        
 		return new ModelAndView();
 	}
 

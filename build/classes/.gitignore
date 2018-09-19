@@ -1,6 +1,5 @@
 
 # Created by https://www.gitignore.io/api/java,windows,eclipse
-
 ### Eclipse ###
 
 .metadata
@@ -123,15 +122,3 @@ $RECYCLE.BIN/
 
 
 # End of https://www.gitignore.io/api/java,windows,eclipse
-
-/board/
-/iptcareer/
-/member/
-/move/
-/mybatis/
-/reccareer/
-/recruit/
-/resume/
-/schedule/
-/team/
-/tester/
