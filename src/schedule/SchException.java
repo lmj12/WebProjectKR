@@ -1,5 +1,5 @@
 package schedule;
 
-public class SchException extends Exception{
+public class SchException extends Exception{ 
 
 }

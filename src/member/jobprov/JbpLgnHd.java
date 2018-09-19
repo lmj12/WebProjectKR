@@ -15,7 +15,7 @@ public class JbpLgnHd implements JobProvHandler {
 		String jobpId = request.getParameter( "jobpId" );
 		String jobpPasswd = request.getParameter( "jobpPasswd" );
 
-		JobProvDBBean jbpDao = new JobProvDBBean();
+		JobProvDBBean jbpDao = new JobProvDBBean(); 
 		int result = jbpDao.jobpLgn( jobpId, jobpPasswd );
 
 		request.setAttribute( "result", result );
