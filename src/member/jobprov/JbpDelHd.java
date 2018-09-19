@@ -12,6 +12,14 @@ public class JbpDelHd implements JobProvHandler {
 	@Override
 	@RequestMapping("/jbpDel")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
+		String id = (String) request.getSession().getAttribute( "memid" );
+	
+		JobProvDBBean jbpDao = new JobProvDBBean();
+		int result = jbpDao.jobpDel( id );
+		request.setAttribute( "result", result );
+	
+		
+		
 		// TODO Auto-generated method stub
 		return null;
 	}

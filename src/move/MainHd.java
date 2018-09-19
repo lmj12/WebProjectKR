@@ -13,7 +13,7 @@ public class MainHd implements MoveHandler {
 	@RequestMapping("/main")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws MoveException {
 		// TODO Auto-generated method stub
-		return null;
+		return new ModelAndView("main");
 	}
 
 }
