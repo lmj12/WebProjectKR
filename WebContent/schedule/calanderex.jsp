@@ -1,22 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<script src="/JQueryEx/jquery-3.3.1.js"></script>
+<script src="/KR_WebProject/jquery-3.3.1.js"></script>
 
 <script type="text/javascript">
 	//<!--
-	var nMonth;
+	var year;
+	var month; // 스케줄 땡겨오기위해서 변수 저장.
 	$(document).ready(
 		function(){
 			calendar();
-			
+			getSchedule();
 		}		
 	)
 	
 	function calendar(tYear,tMonth){ //달력 함수  
 	    var nowDate = new Date();               //오늘 날짜 객체 선언  
 	    var nYear = nowDate.getFullYear();      //오늘의 년도  
-	    nMonth = nowDate.getMonth() ;       //오늘의 월 ※ 0월부터 시작  
+	    var nMonth = nowDate.getMonth() ;       //오늘의 월 ※ 0월부터 시작  
 	    var nDate = nowDate.getDate();           //오늘의 날  
 	    var nNumday = nowDate.getDay();         //오늘의 요일 0=일요일...6=토요일  
 	    var endDay=new Array(31,28,31,30,31,30,31,31,30,31,30,31);      //각달의 마지막 날짜  
@@ -30,7 +31,9 @@
 	    }
         eDate= new Date();       // 변경된 날짜 객체 선언  
         eDate.setFullYear(tYear);// 변경된 년도 세팅  
+        year = eDate.getFullYear();
         eDate.setMonth(tMonth);  // 변경된 월 세팅  
+        month = eDate.getMonth()+1;
         eDate.setDate(1);        // 날짜는 1일로 설정해서  
         var fNumday=eDate.getDay();    // 첫번째 날짜 1일의 숫자 요일  
         var lastDay=endDay[eDate.getMonth()]; //변경된 월의 마지막 날짜  
@@ -39,15 +42,15 @@
             {lastDay=29;} // 0월 부터 시작하므로 1는 2월임. 윤달 계산 4년마다 29일 , 100년는 28일, 400년 째는 29일  
   
         calendarStr  = "<TABLE>"  
-        calendarStr +="<TR align=center><TD valign=middle>"  
+        calendarStr +="<TR align=center><TH valign=middle>"  
         calendarStr +="<a href=javascript:calendar("+tYear+","+(tMonth-1)+") class=preNext>◀</a>" //월을 넘길때 빼기 -1을 해서 넘긴다(년도는 자동 계산됨)  
-        calendarStr +="</TD><TD colspan=5 >"  
+        calendarStr +="</TH><TH colspan=5 >"  
         calendarStr +="<font size=3 color=black>  <b>"+eDate.getFullYear()+"년 "+(eDate.getMonth()+1)+"월</b></font> "// 해당하는 년도와 월 표시  
-        calendarStr +="</TD><TD valign=middle>"  
+        calendarStr +="</TH><TH valign=middle>"  
         calendarStr +="<a href=javascript:calendar("+tYear+","+(tMonth+1)+") class=preNext>▶</a>" //월을 넘길때 더하기 +1을 해서 넘긴다(년도는 자동 계산됨)  
-        calendarStr +="</TD></TR><TR>"  
+        calendarStr +="</TH></TR><TR>"  
         for (i=0;i<dayName.length;i++){            
-            calendarStr +="<TD class=week>"+dayName[i] + "</TD>" // 숫자 요일을 날짜 요일로 입력  
+            calendarStr +="<TH class=week>"+dayName[i] + "</TH>" // 숫자 요일을 날짜 요일로 입력  
         }  
   
         calendarStr +="</TR><TR align=center>"  
@@ -59,15 +62,15 @@
   
         for ( i=1; i<=lastDay; i++){       // 해당 월의 달력   
             if(eDate.getFullYear()==nYear&&eDate.getMonth()==nMonth&&i==nDate){//오늘이면 today 스타일로 표시  
-                calendarStr +="<TD class=today onmouseover=onMouse(this) onmouseout=outMouse(this,'today') onClick=datePicker("+tYear+","+tMonth+","+i+",'"+dayName[col]+"')>"+i+"</TD>"   
+                calendarStr +="<TD class=today id='"+i+ "' onmouseover=onMouse(this) onmouseout=outMouse(this,'today') onClick=datePicker("+tYear+","+tMonth+","+i+",'"+dayName[col]+"')>"+i+"</TD>"   // onclick부분 스케줄 핸들러로 넘기게 수정행
             }else{  
   
                 if(col==0){              //일요일이면  
-                    calendarStr +="<TD class=sunday onmouseover=onMouse(this) onmouseout=outMouse(this,'notToday') onClick=datePicker("+tYear+","+tMonth+","+i+",'"+dayName[col]+"')>"+i+"</TD>"  
+                    calendarStr +="<TD class=sunday id='"+i+ "' onmouseover=onMouse(this) onmouseout=outMouse(this,'notToday') onClick=datePicker("+tYear+","+tMonth+","+i+",'"+dayName[col]+"')>"+i+"</TD>"  
                 }else if(1<=col&&col<=5){//그외 평범한 날이면  
-                    calendarStr +="<TD class=workday onmouseover=onMouse(this) onmouseout=outMouse(this,'notToday') onClick=datePicker("+tYear+","+tMonth+","+i+",'"+dayName[col]+"')>"+i+"</TD>"   
+                    calendarStr +="<TD class=workday id='"+i+ "' onmouseover=onMouse(this) onmouseout=outMouse(this,'notToday') onClick=datePicker("+tYear+","+tMonth+","+i+",'"+dayName[col]+"')>"+i+"</TD>"   
                 }else if(col==6){        //토요일이면  
-                    calendarStr +="<TD class=satday onmouseover=onMouse(this) onmouseout=outMouse(this,'notToday') onClick=datePicker("+tYear+","+tMonth+","+i+",'"+dayName[col]+"')>"+i+"</TD>"   
+                    calendarStr +="<TD class=satday id='"+i+ "' onmouseover=onMouse(this) onmouseout=outMouse(this,'notToday') onClick=datePicker("+tYear+","+tMonth+","+i+",'"+dayName[col]+"')>"+i+"</TD>"   
                 }  
   
             }             
@@ -84,7 +87,7 @@
         }  
   
   
-        calendarStr +="</TR><TR align=center><TD colspan=7 ><input name=selDate class=selDate type=text readonly></TD></TR></TABLE>"  
+        calendarStr +="</TR></TABLE>"  
         document.getElementById('calcal').innerHTML = calendarStr  
 	}  
 	
@@ -104,6 +107,23 @@
             td.style.fontWeight="normal";  
         }  
     }  
+    
+    function getSchedule(){
+    	$.ajax({
+    		method : "POST",
+    		url : "schCalander.do",
+    		data : {
+    			year : year,
+    			month : month
+    		},
+    		datatype : "json",
+    		success : function(data){
+    			$("#rst").text($(data).getAttribute("schs"));
+    		}, error:function(request,status,error){
+    		    $("#rst").text("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		}
+    	})
+    }
   
 	//-->
 </script>
@@ -123,3 +143,4 @@
 		</tr>
 	</table>
 </div>
+<div id="rst"></div>

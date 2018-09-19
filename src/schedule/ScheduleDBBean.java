@@ -3,14 +3,18 @@ package schedule;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 
 
 import mybatis.SqlMapClient;
 
-public class ScheduleDBBean {
+public class ScheduleDBBean { 
 	private SqlSession session = SqlMapClient.getSession();
+	
 	
 	public int schWrt(ScheduleDataBean schDto) { // 임시매개변수. 필요시 변경할것.
 		int rst=0;
@@ -46,9 +50,8 @@ public class ScheduleDBBean {
 	}
 	
 	
-	public List<ScheduleDataBean> schCal(Timestamp date) { // 임시매개변수. 필요시 변경할것.
-		List<ScheduleDataBean> schs = new ArrayList<ScheduleDataBean>();
-		return schs; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	public List<ScheduleDataBean> schCal(Map<String, String> map) { 
+		return session.selectList("Sch.cal", map); 
 	}
 	
 	

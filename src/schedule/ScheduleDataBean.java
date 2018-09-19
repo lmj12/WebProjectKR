@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class ScheduleDataBean {
 	private int schId;
-	private Timestamp schstartTime;
+	private Timestamp schstartTime; 
 	private Timestamp schendTime;
 	private String jobpId;
 	private String jobpName;

@@ -1,3 +1,29 @@
+DROP TABLE KRadmin CASCADE CONSTRAINTS;
+DROP TABLE KRjobprov CASCADE CONSTRAINTS;
+DROP TABLE KRjobseeker CASCADE CONSTRAINTS;
+DROP TABLE KRboard CASCADE CONSTRAINTS;
+DROP TABLE KRschedule CASCADE CONSTRAINTS;
+DROP TABLE KRteam CASCADE CONSTRAINTS;
+DROP TABLE KRiptcareer CASCADE CONSTRAINTS;
+DROP TABLE KRresume CASCADE CONSTRAINTS;
+DROP TABLE KRrecruit CASCADE CONSTRAINTS;
+DROP TABLE KRposition CASCADE CONSTRAINTS;
+DROP TABLE KRrecposition CASCADE CONSTRAINTS;
+DROP TABLE KRreccareer CASCADE CONSTRAINTS;
+DROP TABLE KRschjob CASCADE CONSTRAINTS;
+DROP TABLE KRresumeopen CASCADE CONSTRAINTS;
+DROP TABLE KRteammember CASCADE CONSTRAINTS;
+
+drop sequence KRschedule_seq;
+drop sequence KRteam_seq;
+drop sequence KRiptcareer_seq;
+drop sequence KRresume_seq;
+drop sequence KRrecruit_seq;
+drop sequence KRposition_seq;
+drop sequence KRreccareer_seq;
+drop sequence KRschjob_seq;
+
+
 create table KRadmin(
 	adminid varchar2(15), 
 	adminpasswd varchar2(45) NOT NULL,
@@ -12,6 +38,7 @@ create table KRjobprov(
 	jobpregdate date NOT NULL,
 	jobpBno varchar2(10) NOT NULL,
 	jobpCn varchar2(60) NOT NULL,
+	jobpTel varchar2(15) NOT NULL,
 	CONSTRAINT PK_KRjobprov PRIMARY KEY(jobpid)
 	);
 
