@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class SchModHd implements ScheduleHandler {
 
 	@Override
-	@RequestMapping("/schMod")
+	@RequestMapping("/schMod") 
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws SchException {
 		// TODO Auto-generated method stub
 		return null;

@@ -19,7 +19,7 @@ private SqlSession session = SqlMapClient.getSession();
 	}
 	
 	public int check( String jobpId ) {
-		return session.selectOne("Jbp.checkId", jobpId);	
+		return session.selectOne("Jbp.checkId", jobpId); 	
 	}
 	
 	public int jobpLgn(String jobpId, String jobpPasswd) { // 임시매개변수. 필요시 변경할것.
