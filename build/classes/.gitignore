@@ -133,3 +133,4 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/java,windows,eclipse
 >>>>>>> 82d3feec21605d307ff0d7f5174e0556338a06c1
+/mybatis/
