@@ -5,20 +5,19 @@
 
   <mapper namespace="Jbp">
   	<insert id="jobpReg" parameterType="member.jobprov.JobProvDataBean">
-		insert into KRjobprov values( #{jobpId}, #{jobpPasswd}, #{jobpRegdate}, #{jobpBno}, #{jobpCn} )
+		insert into KRjobprov values( #{jobpId, jdbcType=VARCHAR}, #{jobpPasswd}, #{jobpRegdate}, #{jobpBno}, #{jobpCn}, #{jobpTel} )
 	</insert>
 	<select id="checkId" parameterType="String" resultType="int">
-		select count(*) from KRjobprov where jobpid=#{jobpId}
+		select count(*) from KRjobprov where jobpId=#{jobpId, jdbcType=VARCHAR}
 	</select>
 	<select id="jobpGet" parameterType="String" resultType="member.jobprov.JobProvDataBean">
-		select * from KRjobprov where jobpid=#{jobpId}
+		select * from KRjobprov where jobpId=#{jobpId, jdbcType=VARCHAR}
 	</select>
 	<delete id="jobpDel" parameterType="String">
-		delete from KRjobprov where jobpid=#{jobpId}
+		delete from KRjobprov where jobpId=#{jobpId, jdbcType=VARCHAR}
 	</delete>
 	<update id="jobpMod" parameterType="member.jobprov.JobProvDataBean">
-		update KRjobprov set jobppasswd=#{jobpPasswd}, jobpregdate=#{jobpRegdate}, jobpBno=#{jobpBno},
-		 jobpCn=#{jobpCn} where jobpid=#{jobpId}
+		update KRjobprov set jobpPasswd=#{jobpPasswd}, jobpTel=#{jobpTel} where jobpId=#{jobpId, jdbcType=VARCHAR}
 		
 	</update>
   </mapper>

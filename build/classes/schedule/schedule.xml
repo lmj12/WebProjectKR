@@ -5,8 +5,6 @@
 
   <mapper namespace="Sch">
    <select id="cal" resultType="schedule.ScheduleDataBean" parameterType="java.util.Map">
-    	select * from KrSchedule 
-		where SCHSTARTTIME &gt; TO_DATE(${y}${m}01,'YYYYMMDD') AND
-		SCHENDTIME &lt; TO_DATE(${y}${m}01,'YYYYMMDD');
+    	select * from KrSchedule where SCHSTARTTIME &gt; TO_DATE(${y}${m}01,'YYYYMMDD') AND SCHENDTIME &lt; TO_DATE(${y}${m}01,'YYYYMMDD')
     </select>
   </mapper>

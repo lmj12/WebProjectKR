@@ -1,4 +1,3 @@
-
 package tester.apicall;
 
 import javax.servlet.http.HttpServletRequest;
@@ -57,5 +56,4 @@ public class JbpNumCheck implements JobProvHandler {
 		return new ModelAndView();
 	}
 
-}
-
+}

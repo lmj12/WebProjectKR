@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<h2>구인자 로그인 화면</h2>
-<body onload="loginfocus()">
-	<form method="post" action="jbpLgnPro.jsp" name="loginform" onsubmit="return logincheck()">
+<h2>구인자 로그인 처리화면</h2>
+
+<form method="post" action="jbpView.do" name="loginform">
 <table border="1">
 	<tr>
 		<th>아이디</th>
@@ -17,10 +17,12 @@
 	<tr>
 		<th colspan="2">
 			<input type="submit" value="로그인">
-			<input type="reset" value="취소">
-			<input type="button" value="가입" onclick="location='jbpReg.jsp'">
+			<input type="reset" value="취소" onclick="location='main.do'">			
 		</th>
 	</tr>	
 </table>
-</form>
-</body>
+</form>  
+
+
+
+  

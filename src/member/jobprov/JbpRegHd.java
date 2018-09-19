@@ -1,5 +1,7 @@
 package member.jobprov;
 
+
+
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 
@@ -20,29 +22,33 @@ public class JbpRegHd implements JobProvHandler {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+		
 		JobProvDataBean jbpDto = new JobProvDataBean();
 		jbpDto.setJobpId(request.getParameter("jobpId"));
 		jbpDto.setJobpPasswd(request.getParameter("jobpPasswd"));
 		
-		//reg_date
+		// reg_date 
 		jbpDto.setJobpRegdate( new Timestamp( System.currentTimeMillis() ) );
-		
+				
 		jbpDto.setJobpBno(request.getParameter("jobpBno"));
 		jbpDto.setJobpCn(request.getParameter("jobpCn"));
 		
 		
+		// tel		
+		jbpDto.setJobpTel(request.getParameter("jobpTel"));
+
 		
-			
+		
+		
 		JobProvDBBean jbpDao = new JobProvDBBean();
 		
-
-		int result = jbpDao.jobpReg(jbpDto);
+		int result = jbpDao.jobpReg( jbpDto );
 		
 		request.setAttribute( "result", result );
 		
 		
 		// TODO Auto-generated method stub
-		return new ModelAndView("/Jbp/jbpRegPro");
+		return new ModelAndView("/Jbp/jbpReg");
 	}
 
 }

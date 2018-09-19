@@ -32,10 +32,8 @@
         eDate= new Date();       // 변경된 날짜 객체 선언  
         eDate.setFullYear(tYear);// 변경된 년도 세팅  
         year = eDate.getFullYear();
-        alert(year);
         eDate.setMonth(tMonth);  // 변경된 월 세팅  
         month = eDate.getMonth()+1;
-        alert(month);
         eDate.setDate(1);        // 날짜는 1일로 설정해서  
         var fNumday=eDate.getDay();    // 첫번째 날짜 1일의 숫자 요일  
         var lastDay=endDay[eDate.getMonth()]; //변경된 월의 마지막 날짜  
@@ -120,11 +118,10 @@
     		},
     		datatype : "json",
     		success : function(data){
-    			$("#rst").text(data);
-    		}, error : function(e){
-    			$("#rst").text(e);
+    			$("#rst").text($(data).getAttribute("schs"));
+    		}, error:function(request,status,error){
+    		    $("#rst").text("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
     		}
-    		
     	})
     }
   

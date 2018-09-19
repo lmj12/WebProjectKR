@@ -12,8 +12,18 @@ public class JbpModHd implements JobProvHandler {
 	@Override
 	@RequestMapping("/jbpMod")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
+		String jobpId = (String) request.getSession().getAttribute( "memid" );
+		
+		
+		JobProvDataBean jbpDto = (JobProvDataBean) request.getAttribute( "jbpDto" );
+		JobProvDBBean jbpDao = new JobProvDBBean();
+		
+		int result = jbpDao.jobpMod( jbpDto );
+		request.setAttribute( "result", result );
+		request.setAttribute( "jbpDto", jbpDto );
+		
 		// TODO Auto-generated method stub
-		return null;
+		return new ModelAndView("/Jbp/jbpMod");
 	}
 
 }
