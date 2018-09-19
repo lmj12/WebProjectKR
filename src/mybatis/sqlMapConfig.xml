@@ -32,5 +32,6 @@
         <mapper resource="team/team.xml"/>
         	<!-- TODO : 테스트용 빈 mapping -->
         <mapper resource="tester/tester.xml"/>
+        <mapper resource="tester/apicall/apicalltester.xml"/>
     </mappers>
 </configuration>

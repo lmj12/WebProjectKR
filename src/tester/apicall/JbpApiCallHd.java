@@ -1,9 +1,8 @@
-package tester;
+package tester.apicall;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -34,6 +33,8 @@ public class JbpApiCallHd implements JobProvHandler {
 		
 		result = call.jobpOpenApi(jbpName, jbpNumber);
 		
+		
+		
 		request.setAttribute("result", result);
 		request.setAttribute("jbpName", jbpName);
 		request.setAttribute("jbpNumber", jbpNumber);
@@ -42,18 +43,14 @@ public class JbpApiCallHd implements JobProvHandler {
 
 	public String jobpOpenApi(String jbpName, String jbpNumber){
 		BufferedReader br = null;
-		String apiResult = "";
+		String apiResult = null;
 		String line = null;
-		
 		String urlstr = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch?"
 				+ "serviceKey=zHRNYJ97QejMrVzKWNS6Hmc8j9Gd8oJ7p4LKd3MfUsTbmSI%2F2v3inaBqZm%2FTDmxvJPYg7gQ1QOEfbnPWE%2FRQvg%3D%3D"
-				+ "&bzowr_rgst_no="+jbpNumber
 				+ "&wkpl_nm="+jbpName
-				+ "&pageNo=10"
-				+ "&startPage=10"
-				+ "&numOfRows=1"
+				+ "&bzowr_rgst_no="+jbpNumber
 				+ "&pageSize=1";
-		System.out.println(urlstr);
+		
 		try {
 			URL url = new URL(urlstr);
 			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
@@ -61,7 +58,11 @@ public class JbpApiCallHd implements JobProvHandler {
 			urlconnection.setRequestMethod("GET");
 			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
 			while( (line = br.readLine()) != null ){
-				apiResult = apiResult + line + "\n";
+				if(apiResult == null || apiResult.equals("")){
+					apiResult = line + "\n";
+				} else {
+					apiResult = apiResult + line + "\n";
+				}
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
