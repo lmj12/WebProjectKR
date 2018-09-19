@@ -3,6 +3,7 @@ package tester;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -41,17 +42,18 @@ public class JbpApiCallHd implements JobProvHandler {
 
 	public String jobpOpenApi(String jbpName, String jbpNumber){
 		BufferedReader br = null;
-		String apiResult = null;
+		String apiResult = "";
 		String line = null;
+		
 		String urlstr = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch?"
 				+ "serviceKey=zHRNYJ97QejMrVzKWNS6Hmc8j9Gd8oJ7p4LKd3MfUsTbmSI%2F2v3inaBqZm%2FTDmxvJPYg7gQ1QOEfbnPWE%2FRQvg%3D%3D"
-		//		+ "&wkpl_nm="+jbpName
 				+ "&bzowr_rgst_no="+jbpNumber
+				+ "&wkpl_nm="+jbpName
 				+ "&pageNo=10"
 				+ "&startPage=10"
 				+ "&numOfRows=1"
 				+ "&pageSize=1";
-		
+		System.out.println(urlstr);
 		try {
 			URL url = new URL(urlstr);
 			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
