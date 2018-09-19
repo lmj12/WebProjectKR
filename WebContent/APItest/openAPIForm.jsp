@@ -9,7 +9,7 @@
 	//<!--
 	$(document).ready(
 		function (){
-			$('input:button[name=checkBizID]').on(
+			$('input[name=checkBizID]').on(
 				function checkBizID() {
 					alert(3);
 					var bizID = $('input:text[name=jbpNumber]').val();
