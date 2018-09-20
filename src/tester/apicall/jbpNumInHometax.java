@@ -17,11 +17,9 @@ import member.jobprov.JbpException;
 import member.jobprov.JobProvHandler;
 
 public class jbpNumInHometax  implements JobProvHandler {
-	// TODO : NEW 오픈 api 콜 용 핸들러
 		@Override
 		@RequestMapping("/openAPIViewHometax")
 		public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
-			// TODO 오픈 API 콜을 위한 핸들러 생성
 			JbpApiCallHd call = new JbpApiCallHd();
 			String jbpName = request.getParameter("jbpName");
 			String jbpNumber = request.getParameter("jbpNumber");
