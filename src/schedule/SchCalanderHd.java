@@ -44,7 +44,6 @@ public class SchCalanderHd implements ScheduleHandler {
 	@RequestMapping(value = "schedule/schCalander", produces="application/json") //요거 나중에 정리필요  TODO
 	@ResponseBody
 	public String ajaxprocess(HttpServletRequest request, HttpServletResponse response) throws SchException {
-		
 		String month = "";
 		String tmonth = "";
 		int mon = Integer.parseInt(request.getParameter("month"));
@@ -74,14 +73,14 @@ public class SchCalanderHd implements ScheduleHandler {
 		List<ScheduleDataBean> rst = schDao.schCal(map);
 		
 		ObjectMapper mapper = new ObjectMapper(); 
+		
 		String schs=""; 
 		try { 
 			schs = mapper.writeValueAsString(rst);
+			
 		} catch (IOException e) { 
 			e.printStackTrace(); 
 		}
-
-		
 		
 		return schs;
 	}
