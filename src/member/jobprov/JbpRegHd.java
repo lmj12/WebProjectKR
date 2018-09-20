@@ -24,6 +24,7 @@ public class JbpRegHd implements JobProvHandler {
 		}
 		
 		JobProvDataBean jbpDto = new JobProvDataBean();
+		
 		jbpDto.setJobpId(request.getParameter("jobpId"));
 		jbpDto.setJobpPasswd(request.getParameter("jobpPasswd"));
 		
@@ -42,13 +43,16 @@ public class JbpRegHd implements JobProvHandler {
 		
 		JobProvDBBean jbpDao = new JobProvDBBean();
 		
+		
 		int result = jbpDao.jobpReg( jbpDto );
 		
+		int rst = jbpDao.check("jobpId");
 		request.setAttribute( "result", result );
+		request.setAttribute("rst",	rst);
 		
 		
 		// TODO Auto-generated method stub
-		return new ModelAndView("/Jbp/jbpReg");
+		return new ModelAndView("register");
 	}
 
 }
