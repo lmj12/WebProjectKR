@@ -3,7 +3,7 @@
 
 <h2>구인자 로그인 처리화면</h2>
 
-<form method="post" action="jbpView.do" name="loginform">
+<form method="post" action="jbpLgn.do" name="loginform">
 <table border="1">
 	<tr>
 		<th>아이디</th>
