@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <%@ include file="../setting/setting.jsp"%>
-
+	<!-- 구인자 사업자등록번호 유효성검사 -->
+	<script src="${js}jbpBizCheck.js"></script>
 
 <form method="get" action="openAPIView.do">
 	<table>

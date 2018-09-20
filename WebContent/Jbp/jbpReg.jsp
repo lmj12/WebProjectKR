@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../setting/setting.jsp"%>
+	<!-- 구직자 Daum Api 주소 불러오기 -->
+	<script src="${js}jbskRegJS.js"></script>
 
-<script src="./jquery-3.3.1.js"></script>
 <h2>구인자 회원가입 페이지</h2>
+<<<<<<< HEAD
 <script type="text/javascript">
 	//<!--  
 	$(document).ready(
@@ -90,6 +93,9 @@
 	);
 	//-->
 </script>
+=======
+
+>>>>>>> master
 
 
 <form name="inputform" action="jbpReg.do" method="post">
