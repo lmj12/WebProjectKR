@@ -20,11 +20,10 @@ import member.jobprov.JobProvHandler;
 @Controller
 public class JbpApiCallHd implements JobProvHandler {
 
-	// TODO : NEW 오픈 api 콜 용 핸들러
+	// FIXME : (임시)NEW 오픈 api 콜 용 핸들러
 	@Override
 	@RequestMapping("/openAPIView")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
-		// TODO 오픈 API 콜을 위한 핸들러 생성
 		JbpApiCallHd call = new JbpApiCallHd();
 		String jbpName = request.getParameter("jbpName");
 		String jbpNumber = request.getParameter("jbpNumber");
