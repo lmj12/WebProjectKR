@@ -93,6 +93,12 @@
             <td><input type="text" name="iptPos"/></td>
             <td><button class="delBtn">삭제</button></td>
         </tr>
+        <tr>
+        <th colspan="6">
+        	<input type="submit" value="확인"/>
+        	<input type="reset" value="취소"/>
+		</th>
+        </tr>
 </table>
 </body>
 </html>  
