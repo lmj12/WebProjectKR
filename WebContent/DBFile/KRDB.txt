@@ -185,6 +185,7 @@ create table KRreccareer(
 	posid number NOT NULL,
 	reccrrsta number NOT NULL,
 	rsmid number NOT NULL,
+	CONSTRAINT PK_KRreccareer PRIMARY KEY(reccrrid),
 	CONSTRAINT FK_KRreccareer1 FOREIGN KEY (recid) REFERENCES KRrecruit(recid),
 	CONSTRAINT FK_KRreccareer2 FOREIGN KEY (posid) REFERENCES KRposition(posid),
 	CONSTRAINT FK_KRreccareer3 FOREIGN KEY (rsmid) REFERENCES KRresume(rsmid)
@@ -228,6 +229,28 @@ create table KRresumeopen(
 	rsmsta number(1) NOT NULL,
 	CONSTRAINT FK_KRresumeopen1 FOREIGN KEY (jobpid) REFERENCES KRjobprov(jobpid),
 	CONSTRAINT FK_KRresumeopen2 FOREIGN KEY (rsmid) REFERENCES KRresume(rsmid)
+	);
+
+
+create table KRestimate(
+	estid number,
+	performance number NOT NULL,
+	onTime number NOT NULL,
+	attitude number NOT NULL,
+	CONSTRAINT PK_KRestimate PRIMARY KEY(estid)
+	);
+
+create sequence KRestimate_seq
+	start with 1
+	increment by 1
+	MAXVALUE 9999999
+	MINVALUE 1;
+
+create table KRappest(
+	reccrrid number NOT NULL,
+	estid number NOT NULL
+	CONSTRAINT FK_KRappest1 FOREIGN KEY (reccrrid) REFERENCES KRreccareer(reccrrid),
+	CONSTRAINT FK_KRappest2 FOREIGN KEY (estid) REFERENCES KRestimate(estid)
 	);
 
 
