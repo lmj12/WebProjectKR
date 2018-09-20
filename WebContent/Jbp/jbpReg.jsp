@@ -120,7 +120,7 @@
 	<tr>
 		<th>사업자번호</th>
 		<td><input type="text" name="jobpBno"></td>
-		<td><input type="button" value="확인"></td>
+		<td><input type="button" name="checkBizID" value="확인"></td>
 	</tr>
 	<tr>
 		<th>업체명</th>

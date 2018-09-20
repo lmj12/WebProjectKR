@@ -12,7 +12,7 @@ public class SchJbCnclHd implements ScheduelJobHandler {
 	@Override
 	@RequestMapping("/schJbCncl")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
-		// TODO Auto-generated method stub
+		// TODO : 스케쥴 지원 취소 핸들러
 		return null;
 	}
 

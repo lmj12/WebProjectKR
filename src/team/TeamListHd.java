@@ -12,7 +12,7 @@ public class TeamListHd implements TeamHandler {
 	@Override
 	@RequestMapping("/teamList")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws TeamException {
-		// TODO Auto-generated method stub
+		// TODO : 팀 리스트 핸들러
 		return null;
 	}
 

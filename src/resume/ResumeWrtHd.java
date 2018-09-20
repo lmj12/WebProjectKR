@@ -12,7 +12,7 @@ public class ResumeWrtHd implements ResumeHandler {
 	@Override
 	@RequestMapping("/resumeWrt")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws ResumeException {
-		// TODO Auto-generated method stub
+		// TODO : 이력서 만들기 핸들러
 		return null;
 	}
 
