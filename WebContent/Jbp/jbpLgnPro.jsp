@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <h2>로그인pro</h2>
-
+ 
 <%@ include file="../setting/setting.jsp" %>
 
 <%	// 아이디가 없다 	%>
