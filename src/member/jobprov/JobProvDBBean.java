@@ -19,12 +19,15 @@ private SqlSession session = SqlMapClient.getSession();
 	
 	public int jobpLgn(String jobpId, String jobpPasswd) { // 임시매개변수. 필요시 변경할것.
 		int result = 0;
-		if( check(jobpId) >0 ) {
+		
+		if(check(jobpId)>0) {
 			// 아이디가 있다
 			JobProvDataBean jbtDto = jobpGet(jobpId);
 			if( jobpPasswd.equals( jbtDto.getJobpPasswd() ) ) {
+				//비밀번호 같다
 				result = 1;
 			} else {
+				//비밀번호 다르다
 				result = -1;
 			}				
 		} else {

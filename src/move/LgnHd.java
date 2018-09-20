@@ -7,11 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 @Controller
-public class MypageHd implements MoveHandler{
+public class LgnHd implements MoveHandler {
+
 	@Override
-	@RequestMapping("/mypage")
+	@RequestMapping("/Lgn")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws MoveException {
 		// TODO Auto-generated method stub
-		return new ModelAndView("mypage");
+		return new ModelAndView("/Jbp/jbpLgn");
 	}
+
 }

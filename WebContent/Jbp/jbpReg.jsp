@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<script src="/JQueryEx/jquery-3.3.1.js"></script>
+<script src="./jquery-3.3.1.js"></script>
 <h2>구인자 회원가입 페이지</h2>
 <script type="text/javascript">
 	//<!--  
@@ -18,7 +18,7 @@
 							data : {
 								jobpId : jobpId 
 							},
-							url : 'idcheck.jsp',
+							url : 'Jbp/idcheck.jsp',
 							dataType : 'xml',
 							success : function(data){								
 								$('.idresult').text($(data).find('message').text());
@@ -69,8 +69,8 @@
 	//-->
 </script>
 
-<body onload="inputfocus()">
-<form name="inputform" method="post">
+
+<form name="inputform" action="jbpReg.do" method="post">
 <table border="1">
 	<tr>
 		<th>아이디</th>
@@ -114,23 +114,4 @@
 	
 </table>
 </form>
-</body>
 
-<%
-	int result = (Integer) request.getAttribute( "result" );
-%>
-<%
-	if( result == 0 ) {
-		// 가입실패
-		%>
-		<script type="text/javascript">
-			<!--
-			erroralert( inputerror );
-			//-->
-		</script>		
-		<%		
-	} else {
-		// 가입성공
-		response.sendRedirect( "jbpLgnForm.jsp" );
-	}
-%>

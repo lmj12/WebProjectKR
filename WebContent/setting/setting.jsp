@@ -13,4 +13,5 @@
 	<script src="${js}jquery-3.3.1.js"></script>
 	<!-- 구직자 Daum Api 주소 불러오기 -->
 	<script src="${js}jbskRegJS.js"></script>
-	
+	<!-- 구인자 사업자등록번호 유효성검사 -->
+	<script src="${js}jbpBizCheck.js"></script>

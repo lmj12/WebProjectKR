@@ -23,6 +23,6 @@ public class RegisterHd implements MoveHandler{
 		
 		
 		// TODO Auto-generated method stub
-		return new ModelAndView("/register");
+		return new ModelAndView("/Jbp/jbpReg");
 	}
 }
