@@ -8,7 +8,7 @@
 	<a href="mypage.do">마이페이지</a>
 </c:if>
 <c:if test="${sessionScope.memid eq null }">
-<a href="register.do">회원가입</a>
+<a href="registerJbp.do">회원가입</a>
 <a href="Lgn.do">로그인</a>
 </c:if>
 
