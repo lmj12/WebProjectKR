@@ -21,7 +21,7 @@ public class JbpDelHd implements JobProvHandler {
 		
 		
 		// TODO Auto-generated method stub
-		return new ModelAndView("/jbpDel");
+		return null;
 	}
 
 }
