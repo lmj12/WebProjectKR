@@ -38,6 +38,7 @@ public class JbpApiCallHd implements JobProvHandler {
 		request.setAttribute("result", result);
 		request.setAttribute("jbpName", jbpName);
 		request.setAttribute("jbpNumber", jbpNumber);
+		// FIXME : Dispatch 경로 바꿔야함
 		return new ModelAndView("APItest/openAPIView");
 	}
 
