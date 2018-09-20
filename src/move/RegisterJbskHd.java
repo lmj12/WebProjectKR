@@ -11,8 +11,7 @@ public class RegisterJbskHd implements MoveHandler{
 	@Override
 	@RequestMapping("/registerJbsk")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws MoveException {
-		// TODO Auto-generated method stub
-		return null;
+		return new ModelAndView( "Jbs/reg/jbskReg" );
 	}
 
 }

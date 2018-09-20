@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.jobseeker.JobSeekerException;
 import member.jobseeker.JobSeekerDBBean;
-import member.jobseeker.Override;
-import member.jobseeker.String;
+
+
 @Controller
 public class JbskLgnHd implements JobSeekerHandler {
 
