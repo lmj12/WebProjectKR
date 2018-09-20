@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../setting/setting.jsp" %>
 
-<h2>회원가입 페이지</h2>
+<c:if test="${result eq 0}">
 
-<a href="./Jbp/jbpRegForm.jsp">구인자회원가입</a>
-<a href="jbskReg.jsp">구직자회원가입</a>
-
-<input type="button" value="취소" onclick="location='main.do'">
+		<script type="text/javascript">
+			<!--
+			alert( inputerror );
+			//-->
+		</script>		
+	</c:if>
+<c:if test="${result eq 1}">
+		<c:redirect url ="Lgn.do"/>
+</c:if>
