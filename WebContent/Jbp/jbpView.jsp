@@ -17,6 +17,6 @@
 		<meta http-equiv="refresh" content="0; url=main.do">
 		<%
 	} else {
-		response.sendRedirect( "main.do" );
+		response.sendRedirect( "mypage.do" );
 	}
 %>

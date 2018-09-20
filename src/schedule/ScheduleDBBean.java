@@ -51,6 +51,8 @@ public class ScheduleDBBean {
 	
 	
 	public List<ScheduleDataBean> schCal(Map<String, String> map) { 
+		session.flushStatements();
+		session.clearCache();
 		return session.selectList("Sch.cal", map); 
 	}
 	
