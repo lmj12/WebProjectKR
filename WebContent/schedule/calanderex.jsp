@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<script src="/KR_WebProject/jquery-3.3.1.js"></script>
-
+<%@ include file="../setting/setting.jsp" %>
 <script type="text/javascript">
 	//<!--
 	var year;
@@ -11,7 +10,8 @@
 	$(document).ready(
 		function(){
 			calendar();
-			setInterval("getSchedule()",5000);
+			getSchedule();
+			setInterval("getSchedule()",3000);
 		}		
 	)
 	
@@ -109,6 +109,7 @@
     }  
     
     function getSchedule(){
+    	$.ajaxSetup({cache:false}); 
     	$.ajax({
     		method : "POST",
     		url : "schCalander.do",
@@ -117,16 +118,12 @@
     		data : {
     			year : year,
     			month : month,
-    			
     		},
     		datatype : "json",
     		success : function(data){
     			var list = $.parseJSON(data);
-    			
     			for (var i=1; i<=30; i++){
-    				
     				$("#"+i).text(i);
-    				
     			}
     			
     			for (var i=0; i<list.length; i++){
