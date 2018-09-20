@@ -7,10 +7,11 @@
 	//<!--
 	var year;
 	var month; // 스케줄 땡겨오기위해서 변수 저장.
+	var lastday;
 	$(document).ready(
 		function(){
 			calendar();
-			getSchedule();
+			setInterval("getSchedule()",5000);
 		}		
 	)
 	
@@ -36,7 +37,7 @@
         month = eDate.getMonth()+1;
         eDate.setDate(1);        // 날짜는 1일로 설정해서  
         var fNumday=eDate.getDay();    // 첫번째 날짜 1일의 숫자 요일  
-        var lastDay=endDay[eDate.getMonth()]; //변경된 월의 마지막 날짜  
+        lastDay=endDay[eDate.getMonth()]; //변경된 월의 마지막 날짜  
   
         if ((eDate.getMonth()==1)&&(((eDate.getYear()%4==0)&&(eDate.getYear() %100 !=0))||eDate.getYear() % 400 ==0 ))  
             {lastDay=29;} // 0월 부터 시작하므로 1는 2월임. 윤달 계산 4년마다 29일 , 100년는 28일, 400년 째는 29일  
@@ -57,8 +58,7 @@
   
         for (i=0;i<fNumday;i++){          // 첫번째 날짜의 숫자 요일을 구해서 그전까지는 빈칸 처리  
             calendarStr +="<TD>&nbsp;</TD>"   
-            col++;                       
-        }  
+            col++;                               }  
   
         for ( i=1; i<=lastDay; i++){       // 해당 월의 달력   
             if(eDate.getFullYear()==nYear&&eDate.getMonth()==nMonth&&i==nDate){//오늘이면 today 스타일로 표시  
@@ -112,17 +112,33 @@
     	$.ajax({
     		method : "POST",
     		url : "schCalander.do",
+    		cache : false,
+    		async : false,
     		data : {
     			year : year,
-    			month : month
+    			month : month,
+    			
     		},
     		datatype : "json",
     		success : function(data){
-    			$("#rst").text($(data).getAttribute("schs"));
+    			var list = $.parseJSON(data);
+    			
+    			for (var i=1; i<=30; i++){
+    				
+    				$("#"+i).text(i);
+    				
+    			}
+    			
+    			for (var i=0; i<list.length; i++){
+    				var date = new Date(list[i].schstartTime)
+    				var day = date.getDate()
+    				$("#"+day).text("스케줄있음");
+    			}
     		}, error:function(request,status,error){
     		    $("#rst").text("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
     		}
     	})
+    	
     }
   
 	//-->
