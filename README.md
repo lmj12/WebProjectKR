@@ -8,3 +8,9 @@
 09/18 1307 민재 boardDatabean 오류수정.
 
 09/18 1455 민재 scheduleDatabean 수정.
+
+
+기타 이슈 : 
+
+09/19 0855 준호 perspective 를 Java EE가 아니라 Git으로 놓고
+			거기서 작업해서 올려보는 테스트

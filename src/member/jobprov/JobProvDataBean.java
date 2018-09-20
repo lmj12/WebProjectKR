@@ -7,7 +7,12 @@ public class JobProvDataBean {
 	private String jobpPasswd;
 	private Timestamp jobpRegdate;
 	private String jobpBno;
+<<<<<<< HEAD
 	private String jobpCn;
+	private String jobpTel;
+=======
+	private String jobpCn; 
+>>>>>>> master
 	
 	public String getJobpId() {
 		return jobpId;
@@ -38,6 +43,12 @@ public class JobProvDataBean {
 	}
 	public void setJobpCn(String jobpCn) {
 		this.jobpCn = jobpCn;
+	}
+	public String getJobpTel() {
+		return jobpTel;
+	}
+	public void setJobpTel(String jobpTel) {
+		this.jobpTel = jobpTel;
 	}
 	
 	

@@ -13,7 +13,7 @@ public class SchNextHd implements ScheduleHandler {
 	@RequestMapping("/schNext")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws SchException {
 		// TODO Auto-generated method stub
-		return null;
+		return null; 
 	}
 
 }

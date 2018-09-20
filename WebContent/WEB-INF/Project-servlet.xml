@@ -28,5 +28,7 @@
 	<context:component-scan base-package="schedule.job"/>
 	<context:component-scan base-package="schedule"/>
 	<context:component-scan base-package="team"/>
+	<context:component-scan base-package="tester"/>
+	<context:component-scan base-package="tester/apicall"/>
 	
 </beans>

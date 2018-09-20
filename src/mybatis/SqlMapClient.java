@@ -22,5 +22,5 @@ public class SqlMapClient {
 		}
 	public static SqlSession getSession() {
 		return session;
-	}
+	} 
 }
