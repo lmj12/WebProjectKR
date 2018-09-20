@@ -54,43 +54,43 @@
 <body>
 <table id="example" border="1px">
         <tr>
-            <th>옵션명</th>
-            <th>항목명</th>
-            <th>필수항목</th>
-            <th>가격</th>
-            <th>재고</th>
-            <th>옵션추가</th>
+            <th>업체 이름</th>
+            <th>웨딩홀 이름</th>
+            <th>시작 월</th>
+            <th>종료 월</th>
+            <th>일했던 포지션</th>
+            <th>웨딩홀 추가</th>
         </tr>
         <tr class="item1">
-            <td><input type="text" /><button class="addBtn">항목추가</button></td>
-            <td><input type="text" /></td>
-            <td><input type="checkbox" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
+            <td><input type="text" name="iptCompany" /><button class="addBtn">항목추가</button></td>
+            <td><input type="text" name="iptWh" readonly/></td>
+            <td><input type="month" name="iptStart"/></td>
+            <td><input type="month" name="iptEnd"/></td>
+            <td><input type="text" name="iptPos"/></td>
             <td><button class="delBtn">삭제</button></td>
         </tr>
         <tr class="item2">
-            <td><input type="text" /><button class="addBtn">항목추가</button></td>
-            <td><input type="text" /></td>
-            <td><input type="checkbox" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
+            <td><input type="text" name="iptCompany" /><button class="addBtn">항목추가</button></td>
+            <td><input type="text" name="iptWh" readonly/></td>
+            <td><input type="month" name="iptStart"/></td>
+            <td><input type="month" name="iptEnd"/></td>
+            <td><input type="text" name="iptPos"/></td>
             <td><button class="delBtn">삭제</button></td>
         </tr>
-        <tr class="item3">
-            <td><input type="text" /><button class="addBtn">항목추가</button></td>
-            <td><input type="text" /></td>
-            <td><input type="checkbox" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
+         <tr class="item3">
+            <td><input type="text" name="iptCompany" /><button class="addBtn">항목추가</button></td>
+            <td><input type="text" name="iptWh" readonly/></td>
+            <td><input type="month" name="iptStart"/></td>
+            <td><input type="month" name="iptEnd"/></td>
+            <td><input type="text" name="iptPos"/></td>
             <td><button class="delBtn">삭제</button></td>
         </tr>
-        <tr class="item4">
-            <td><input type="text" /><button class="addBtn">항목추가</button></td>
-            <td><input type="text" /></td>
-            <td><input type="checkbox" /></td>
-            <td><input type="text" /></td>
-            <td><input type="text" /></td>
+         <tr class="item4">
+            <td><input type="text" name="iptCompany" /><button class="addBtn">항목추가</button></td>
+            <td><input type="text" name="iptWh" readonly/></td>
+            <td><input type="month" name="iptStart"/></td>
+            <td><input type="month" name="iptEnd"/></td>
+            <td><input type="text" name="iptPos"/></td>
             <td><button class="delBtn">삭제</button></td>
         </tr>
 </table>
