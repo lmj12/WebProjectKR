@@ -63,6 +63,28 @@
 			$('input[name=rejobpPasswd]').val()
 					}
 					);
+			
+			//전화번호 - 없이 입력하도록
+			$('input[name=jobpTel]').on(
+					'keyup',
+					function(event){
+						var tel = $('input[name=jobpTel]').val();
+						if(tel){
+							if($('input[name=jobpTel]').val().indexOf('-')!=-1){
+								$('.telresult').text("사용할 수 없다");
+							}else{
+								$('.telresult').text("사용할 수 있다");
+							}
+						}
+						$('input[name=jobpTel]').val()
+					}
+			);
+			
+			
+			
+			
+			
+			
 					
 		}		
 	);
@@ -101,7 +123,7 @@
 	<tr>
 		<th>전화번호</th>
 		<td> <input type="text" name="jobpTel"></td>
-		<td><input type="button" value="인증"></td>
+		<td class="telresult"><input type="button" value="인증"></td>
 	</tr>
 	
 	<tr>
