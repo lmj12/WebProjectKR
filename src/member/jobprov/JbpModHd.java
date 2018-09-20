@@ -12,18 +12,27 @@ public class JbpModHd implements JobProvHandler {
 	@Override
 	@RequestMapping("/jbpMod")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
-		String jobpId = (String) request.getSession().getAttribute( "memid" );
+				
 		
+		JobProvDataBean jbtDto = new JobProvDataBean();
+		jbtDto.setJobpPasswd(( request.getParameter( "jobpPasswd" ) ));
+		
+		
+		// 전화번호
+		jbtDto.setJobpTel(request.getParameter("jobpTel"));
 		
 		JobProvDataBean jbpDto = (JobProvDataBean) request.getAttribute( "jbpDto" );
 		JobProvDBBean jbpDao = new JobProvDBBean();
 		
 		int result = jbpDao.jobpMod( jbpDto );
-		request.setAttribute( "result", result );
-		request.setAttribute( "jbpDto", jbpDto );
 		
-		// TODO Auto-generated method stub
-		return new ModelAndView("/Jbp/jbpMod");
+	
+		request.setAttribute( "result", result );
+		
+		jbtDto.setJobpId((String) request.getSession().getAttribute( "memid" ));
+		
+		request.setAttribute( "jbpDto", jbpDto );
+		return new ModelAndView("/Jbp/jbpView");
 	}
 
 }
