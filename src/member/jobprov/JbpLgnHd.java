@@ -20,15 +20,13 @@ public class JbpLgnHd implements JobProvHandler {
 
 		JobProvDBBean jbpDao = new JobProvDBBean(); 
 		int result = jbpDao.jobpLgn( jobpId, jobpPasswd );
-
+		
 		request.setAttribute( "result", result );
 		request.setAttribute( "jobpId", jobpId);
-		
-		
-		
-	
+
 		// TODO Auto-generated method stub
-		return new ModelAndView("/Jbp/jbpLgn");
+		return new ModelAndView("/Jbp/jbpLgnPro");
+	
 	}
 
 }

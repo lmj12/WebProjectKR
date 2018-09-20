@@ -25,10 +25,3 @@
 </form>
 
 
-<%
-	
-		// 아이디 있다 / 비밀번호다 같다
-		session.setAttribute( "memid", jobpId );
-		response.sendRedirect( "jbpView.do" );
-	
-%>
