@@ -120,7 +120,7 @@
 			<tr>	
 				<th colspan="2">
 					<input class="inputbutton" type="submit" value="가입">
-					<input class="inputbutton" type="reset" value="취소">
+					<input class="inputbutton" type="reset" value="취소" onclick="location='main.do'">
 				</th>
 			</tr>
 		</table>	
