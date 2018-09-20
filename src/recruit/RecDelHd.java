@@ -12,7 +12,7 @@ public class RecDelHd implements RecruitHandler {
 	@Override
 	@RequestMapping("/recDel")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws RecruitException {
-		// TODO Auto-generated method stub
+		// TODO : 공고 삭제 핸들러
 		return null;
 	}
 

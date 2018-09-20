@@ -22,7 +22,7 @@ public class RegisterHd implements MoveHandler{
 		
 		
 		
-		// TODO Auto-generated method stub
+		// TODO : 회원가입 구인자/구직자 선택 핸들러
 		return new ModelAndView("/Jbp/jbpReg");
 	}
 }
