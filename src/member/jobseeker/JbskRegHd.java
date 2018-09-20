@@ -30,6 +30,16 @@ public class JbskRegHd implements JobSeekerHandler {
 		jbpDto.setJbskregdate( new Timestamp( System.currentTimeMillis() ) );
 		jbpDto.setJbskBd( new Timestamp( System.currentTimeMillis() ) );
 		
+		int result = jbskDao.jbskReg( jbskDto );
+		
+		int rst = jbskDao.check("jbskId");
+		request.setAttribute( "result", result );
+		request.setAttribute("rst",	rst);
+		
+		
+		// TODO Auto-generated method stub
+		return new ModelAndView("register");
+		
 	}
 
 }
