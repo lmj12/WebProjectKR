@@ -1,7 +1,7 @@
 <%@page import="member.jobprov.JobProvDataBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="./jquery-3.3.1.js"></script>
+<%@ include file="../setting/setting.jsp" %>
 <h2>구인자 정보수정페이지</h2>
 
 
@@ -47,13 +47,16 @@
 	//-->
 </script>
 
-
+<%
+		JobProvDataBean jbpDto = ( JobProvDataBean) request.getAttribute( "jbpDto" );
+		%>
 
 <form name="inputform" method="post" action="jbpMod.do">
 <table border="1">
 	<tr>
 		<th>아이디</th>
 		<td> ${jbpDto.getJobpId()} </td>
+	
 	</tr>
 	
 	<tr>
@@ -83,7 +86,7 @@
 	<tr>
 		<th colspan="2">
 			<input type="submit" value="가입">
-			<input type="reset" value="취소" onclick="location='jbpView.do'">			
+			<input type="reset" value="취소" onclick="location='mypage.do'">			
 		</th>
 	</tr>
 	
