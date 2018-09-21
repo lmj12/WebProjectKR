@@ -15,9 +15,10 @@ $(document).ready(
                         $(this).val(inputVal.replace(/[^a-z]/gi,'')); 
 				} else if(jobpId=="") {
 					$('.idresult').text("아이디를 입력하지 않았습니다.");
-				} else if($('input[name=jobpId]').val().length<4|| $('input[name=jobpId]').val().length>15) {
+				
+					if($('input[name=jobpId]').val().length<4|| $('input[name=jobpId]').val().length>15) {
 						$('.idresult').text("아이디를 4~15자까지 입력해주세요.");
-				} else if( jobpId ){
+					} else if( jobpId ){
 						$.ajax(
 							{
 								type : "POST",
@@ -36,7 +37,7 @@ $(document).ready(
 							}
 						);
 					}
-				
+				}
 			}
 		);
 		//전화번호 - 없이 입력하도록
@@ -128,7 +129,7 @@ $(document).ready(
 				    		var serviceKey = 'zHRNYJ97QejMrVzKWNS6Hmc8j9Gd8oJ7p4LKd3MfUsTbmSI%2F2v3inaBqZm%2FTDmxvJPYg7gQ1QOEfbnPWE%2FRQvg%3D%3D';
 							var jbpName = $('input:text[name=jobpCn]').val();
 							var jbpNumber = parseBizID;
-							var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch";
+							var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch?serviceKey";
 							
 							$.ajax(
 									{
@@ -136,10 +137,10 @@ $(document).ready(
 										url : url,
 										data : {
 											serviceKey : serviceKey,
-											wkpl_nm : jbpName,
+										//	wkpl_nm : jbpName,
 											bzowr_rgst_no : jbpNumber,
 										},
-										dataType : 'text',
+										dataType : 'json',
 										success : function(data){
 											alert('성공');
 											var xmlDoc = data.responseXML;
