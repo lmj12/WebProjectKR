@@ -25,7 +25,7 @@ public class RegisterHd implements MoveHandler{
 
 		// TODO : 회원가입 구인자/구직자 선택 핸들러
 
-		return null;
+		return new ModelAndView("register");
 
 	}
 }

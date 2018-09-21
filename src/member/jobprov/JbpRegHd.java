@@ -51,7 +51,7 @@ public class JbpRegHd implements JobProvHandler {
 		request.setAttribute("rst",	rst);
 		
 		
-		return new ModelAndView("register");
+		return new ModelAndView("/Jbp/registerJbp");
 	}
 
 }
