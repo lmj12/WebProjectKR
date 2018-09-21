@@ -26,7 +26,9 @@
 	<tr>
 		<th>비밀번호확인</th>
 		<td><input type="password" name="rejobpPasswd"></td>
-		<td class="repasswdresult">같은 비밀번호를 입력하세요</td>	
+		<td>
+			<input class="repasswdresult" type="text" placeholder="같은 비밀번호를 입력하세요" readonly>
+		</td>	
 	</tr>
 	
 	<tr>
