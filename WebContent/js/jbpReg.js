@@ -1,5 +1,9 @@
 $(document).ready(
 	function() {
+		// FIXME : 개발용 사업자번호 자동입력
+		$('input:text[name=jobpBno]').val('107-86-14075');
+		
+		
 		$('input[name=jobpId]').on(
 			'keyup',
 			function(event){
@@ -91,6 +95,7 @@ $(document).ready(
 		$('input:button[name=checkBizID]').on(
 			'click',
 			function checkBizID() {
+				
 				if( !$('input:text[name=jobpBno]').val() ){
 					alert("사업자번호를 입력해주세요");
 					return false;
@@ -117,7 +122,38 @@ $(document).ready(
 				    	// 폼 만들어서 선택하게끔
 				    	var bizName = $('input:text[name=jobpCn]').val();
 				    	var parseBizID = bizID.substring(0, 6);
-				    	alert(parseBizID)
+				    	
+				    	bizListCheck();
+				    	
+				    	function bizListCheck() {
+				    		var serviceKey = 'zHRNYJ97QejMrVzKWNS6Hmc8j9Gd8oJ7p4LKd3MfUsTbmSI%2F2v3inaBqZm%2FTDmxvJPYg7gQ1QOEfbnPWE%2FRQvg%3D%3D';
+							var jbpName = $('input:text[name=jobpCn]').val();
+							var jbpNumber = parseBizID;
+							var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch";
+							
+							$.ajax(
+									{
+										type : 'GET',
+										url : url,
+										data : {
+											serviceKey : serviceKey,
+											wkpl_nm : jbpName,
+											bzowr_rgst_no : jbpNumber,
+										},
+										dataType : 'text',
+										success : function(data){
+											alert('성공');
+											var xmlDoc = data.responseXML;
+											document.open();
+											document.write(xmlDoc);
+										},
+										error : function(e){
+											alert('error : ' + e);
+										}
+									}	
+							);
+				    	}
+				    	
 				    	result = true ; // OK!
 				    } else {
 				    	alert('사업자등록번호 형식에 맞지 않습니다');
