@@ -11,10 +11,7 @@ public class RegisterJbpHd implements MoveHandler{
 	@Override
 	@RequestMapping("/registerJbp")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws MoveException {
-
-		// TODO : Move / 회원가입 - 구인자 선택 시 이동 핸들러
-
+		// TODO Auto-generated method stub
 		return new ModelAndView("/Jbp/jbpReg");
-
 	}
 }

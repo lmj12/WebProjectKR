@@ -12,7 +12,7 @@ public class LgnHd implements MoveHandler {
 	@Override
 	@RequestMapping("/Lgn")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws MoveException {
-		// TODO : Move / 로그인 이동 핸들러
+		// TODO Auto-generated method stub
 		return new ModelAndView("/Jbp/jbpLgn");
 	}
 

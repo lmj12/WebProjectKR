@@ -12,7 +12,7 @@ public class SchJbWrtHd implements ScheduelJobHandler {
 	@Override
 	@RequestMapping("/schJbWrt")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
-		// TODO : 스케쥴 내부 생성 핸들러
+		// TODO Auto-generated method stub
 		return null;
 	}
 

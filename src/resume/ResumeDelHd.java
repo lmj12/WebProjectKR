@@ -12,7 +12,7 @@ public class ResumeDelHd implements ResumeHandler {
 	@Override
 	@RequestMapping("/resumeDel")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws ResumeException {
-		// TODO : 이력서 삭제 핸들러
+		// TODO Auto-generated method stub
 		return null;
 	}
 

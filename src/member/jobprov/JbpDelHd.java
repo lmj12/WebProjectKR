@@ -20,7 +20,7 @@ public class JbpDelHd implements JobProvHandler {
 	
 		
 		
-		// TODO : 구인자탈퇴 핸들러
+		// TODO Auto-generated method stub
 		return new ModelAndView("Jbp/jbpDel");
 	}
 

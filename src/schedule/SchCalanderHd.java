@@ -23,7 +23,7 @@ public class SchCalanderHd implements ScheduleHandler {
 	@Resource
 	private ScheduleDBBean schDao;
 	@Override
-	@RequestMapping("schedule/schCalander") // TODO : 얘는 schWrt나 schView로 보내주는 핸들러. 나중에 주소정리필요.
+	@RequestMapping("schCalander") // TODO : 얘는 schWrt나 schView로 보내주는 핸들러. 나중에 주소정리필요.
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws SchException {
 		request.setAttribute("year", request.getParameter("year"));
 		request.setAttribute("month", request.getParameter("month"));
@@ -37,7 +37,7 @@ public class SchCalanderHd implements ScheduleHandler {
 		}
 	}
 	
-	@RequestMapping(value = "schedule/ajaxCalander", produces="application/json") // TODO : 요거 나중에 정리필요  
+	@RequestMapping(value = "ajaxCalander", produces="application/json") // TODO : 요거 나중에 정리필요  
 	@ResponseBody
 	public String ajaxprocess(HttpServletRequest request, HttpServletResponse response) throws SchException {
 		String month = "";

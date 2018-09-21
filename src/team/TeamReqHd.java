@@ -12,7 +12,7 @@ public class TeamReqHd implements TeamHandler {
 	@Override
 	@RequestMapping("/teamReq")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws TeamException {
-		// TODO : 팀 제안 핸들러
+		// TODO Auto-generated method stub
 		return null;
 	}
 
