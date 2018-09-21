@@ -4,5 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="Board">
-   
+   <insert id="Board.boardWrt" parameterType="board.BoardDataBean">
+   		insert into KRboard (boardid, boardContent, boardstatus,	boardparentid,boarduserid,
+	boardregdate) values(${boardid}, ${boardContent, jdbcType=VARCHAR}, ${boardstatus}, ${boardparentid},
+	 ${boarduserid}, ${boardregdate})
+   </insert>
+   <delete id="Board.boardDel" parameterType="int">
+   		delete from KRboard where boardId=${boardId}
+   </delete>
+   <update>
+   		
+   </update>
+   <select id="Board.boardGet" parameterType="int" resultType="board.BoardDataBean">
+   		select * from KRboard where boardId=${boardId}
+   </select>
+   <select id="Board.boardList">
+   		select * from KRboard;
+   </select>
   </mapper>
