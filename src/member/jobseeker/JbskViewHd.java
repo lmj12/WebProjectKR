@@ -18,7 +18,7 @@ public class JbskViewHd implements JobSeekerHandler {
 	private JobSeekerDBBean jbskDao; 
 	@Override
 	@RequestMapping("/jbskView") 
-	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbskException {
+	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
 		
 			String jbskId = (String) request.getSession().getAttribute( "memid" );
 			JobSeekerDataBean jbpDto = jbskDao.jbskGet(jbskId);
