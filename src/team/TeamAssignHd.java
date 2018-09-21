@@ -12,7 +12,7 @@ public class TeamAssignHd implements TeamHandler {
 	@Override
 	@RequestMapping("/teamAssign")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws TeamException {
-		// TODO : 팀 제안 승인 핸들러
+		// TODO Auto-generated method stub
 		return null;
 	}
 

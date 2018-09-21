@@ -11,7 +11,7 @@ public class MypageHd implements MoveHandler{
 	@Override
 	@RequestMapping("/mypage")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws MoveException {
-		// TODO : Move / Mypage 가는 핸들러
+		// TODO Auto-generated method stub
 		return new ModelAndView("mypage");
 	}
 }

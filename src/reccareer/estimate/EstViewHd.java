@@ -12,7 +12,7 @@ public class EstViewHd implements EstimateHandler {
 	@Override
 	@RequestMapping("/estView")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws EstException {
-		// TODO : 사후평가 View 핸들러
+		// TODO Auto-generated method stub
 		return null;
 	}
 

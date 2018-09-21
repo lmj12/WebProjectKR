@@ -13,7 +13,7 @@ public class AdminLgnHd implements AdminHandler {
 	@Override
 	@RequestMapping("/adminLgn")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws AdminException {
-		// TODO : 관리자 로그인 핸들러
+		// TODO Auto-generated method stub
 		return null;
 	}
 

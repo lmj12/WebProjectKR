@@ -31,9 +31,8 @@ public class JbpLgnHd implements JobProvHandler {
 		request.setAttribute( "jobpId", jobpId);
 		request.setAttribute("jobpCn", jobpcn);
 		request.setAttribute("memtype", 2);  // 구직자 : 1, 구인자 : 2 , 관리자 :3 
-		// TODO : 구인자 로그인 핸들러
+
 		return new ModelAndView("/Jbp/jbpLgnPro");
-	
 	}
 
 }

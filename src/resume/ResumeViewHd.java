@@ -12,7 +12,7 @@ public class ResumeViewHd implements ResumeHandler {
 	@Override
 	@RequestMapping("/resumeView")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws ResumeException {
-		// TODO : 이력서 View 핸들러
+		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -12,7 +12,7 @@ public class IptCrrListHd implements InputCareerHandler {
 	@Override
 	@RequestMapping("/iptCrrList")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws IptCrrException {
-		// TODO : 입력경력리스트 핸들러
+		// TODO Auto-generated method stub
 		return null;
 	}
 
