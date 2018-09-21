@@ -11,7 +11,9 @@
 	<tr>
 		<th>아이디</th>
 		<td><input type="text" name="jobpId" autofocus></td>
-		<td width="300" class="idresult">아이디를 입력하세요</td>	
+		<td width="300">
+			<input class="idresult" type="text" placeholder="아이디를 입력하세요" readonly>
+		</td>
 	</tr>
 	
 	<tr>
