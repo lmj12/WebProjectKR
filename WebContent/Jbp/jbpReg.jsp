@@ -43,7 +43,7 @@
 	<tr>
 		<th>전화번호</th>
 		<td> <input type="text" name="jobpTel"></td>
-		<td class="telresult"><input type="button" value="인증"></td>
+		<td><input class="telresult" type="button" value="인증"></td>
 	</tr>
 	
 	<tr>
