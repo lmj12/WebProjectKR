@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../setting/setting.jsp"%>
-	<!-- 구직자 Daum Api 주소 불러오기 -->
-	<script src="${js}jbskRegJS.js"></script>
+<!DOCTYPE html>
+	<script src="${js}jbpReg.js"></script>
 
 <h2>구인자 회원가입 페이지</h2>
 
@@ -11,18 +11,24 @@
 	<tr>
 		<th>아이디</th>
 		<td><input type="text" name="jobpId" autofocus></td>
-		<td width="300" class="idresult">아이디를 입력하세요</td>	
+		<td width="300">
+			<input class="idresult" type="text" placeholder="아이디를 입력하세요" readonly>
+		</td>
 	</tr>
 	
 	<tr>
 		<th>비밀번호</th>
 		<td><input type="password" name="jobpPasswd"></td>
-		<td width="100" class="passwdresult">비밀번호를 입력하세요</td>	
+		<td width="100">
+			<input class="passwdresult" type="text" placeholder="비밀번호를 입력하세요" readonly>
+		</td>	
 	</tr>
 	<tr>
 		<th>비밀번호확인</th>
 		<td><input type="password" name="rejobpPasswd"></td>
-		<td class="repasswdresult">같은 비밀번호를 입력하세요</td>	
+		<td>
+			<input class="repasswdresult" type="text" placeholder="같은 비밀번호를 입력하세요" readonly>
+		</td>	
 	</tr>
 	
 	<tr>
@@ -37,7 +43,7 @@
 	<tr>
 		<th>전화번호</th>
 		<td> <input type="text" name="jobpTel"></td>
-		<td class="telresult"><input type="button" value="인증"></td>
+		<td><input class="telresult" type="button" value="인증"></td>
 	</tr>
 	
 	<tr>
