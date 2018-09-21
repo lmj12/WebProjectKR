@@ -12,6 +12,6 @@
 </c:if>
 <c:if test="${sessionScope.memid eq null }">
 <a href="register.do">회원가입</a>
-<a href="Lgn.do">로그인</a>
+<a href="Lgn.do">로그인</a>   
 </c:if>
 
