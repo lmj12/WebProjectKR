@@ -12,7 +12,7 @@ public class SchPrevHd implements ScheduleHandler {
 	@Override
 	@RequestMapping("/schPrev")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws SchException {
-		// TODO Auto-generated method stub
+		// TODO : 스케쥴 이전 핸들러
 		return null; 
 	}
 

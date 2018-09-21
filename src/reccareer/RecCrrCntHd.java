@@ -12,7 +12,7 @@ public class RecCrrCntHd implements RecruitCareerHandler {
 	@Override
 	@RequestMapping("/recCrrCnt")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws RecCrrException {
-		// TODO Auto-generated method stub
+		// TODO : 공고 지원자숫자 반환 핸들러
 		return null;
 	}
 

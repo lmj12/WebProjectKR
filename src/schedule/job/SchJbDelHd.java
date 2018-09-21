@@ -12,7 +12,7 @@ public class SchJbDelHd implements ScheduelJobHandler {
 	@Override
 	@RequestMapping("/schJbDel")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
-		// TODO Auto-generated method stub
+		// TODO : 스케쥴 ...엄(민재야 뭐라고 달아야 할지 잘 모르겠다)
 		return null;
 	}
 

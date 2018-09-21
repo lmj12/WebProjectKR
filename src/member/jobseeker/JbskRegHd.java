@@ -12,7 +12,7 @@ public class JbskRegHd implements JobSeekerHandler {
 	@Override
 	@RequestMapping("/jbskReg")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
-		// TODO Auto-generated method stub
+		// TODO : 구인자 가입 핸들러
 		return null;
 	}
 

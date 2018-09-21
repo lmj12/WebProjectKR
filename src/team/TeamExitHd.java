@@ -12,7 +12,7 @@ public class TeamExitHd implements TeamHandler {
 	@Override
 	@RequestMapping("/teamExit")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws TeamException {
-		// TODO Auto-generated method stub
+		// TODO : 팀 탈퇴/추방 핸들러
 		return null;
 	}
 

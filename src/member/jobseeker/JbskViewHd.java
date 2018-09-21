@@ -12,7 +12,7 @@ public class JbskViewHd implements JobSeekerHandler {
 	@Override
 	@RequestMapping("/jbskView")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
-		// TODO Auto-generated method stub
+		// TODO : 구인자 View 핸들러
 		return null;
 	}
 

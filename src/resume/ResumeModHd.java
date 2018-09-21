@@ -11,7 +11,7 @@ public class ResumeModHd implements ResumeHandler{
 	@Override
 	@RequestMapping("/resumeMod")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws ResumeException {
-		// TODO Auto-generated method stub
+		// TODO : 이력서 수정 핸들러
 		return null;
 	}
 }

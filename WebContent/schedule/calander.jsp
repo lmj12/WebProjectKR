@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="../setting/setting.jsp" %>
-<script src="${js}sch.js"></script>
+<script src="${js}schCal.js"></script>
 <script type="text/javascript">
 	//<!--
 	var year;

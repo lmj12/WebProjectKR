@@ -12,7 +12,7 @@ public class JbskLgnHd implements JobSeekerHandler {
 	@Override
 	@RequestMapping("/jbskLgn")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
-		// TODO Auto-generated method stub
+		// TODO : 구인자 로그인 핸들러
 		return null;
 	}
 

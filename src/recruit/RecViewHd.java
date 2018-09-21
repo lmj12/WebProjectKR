@@ -12,7 +12,7 @@ public class RecViewHd implements RecruitHandler {
 	@Override
 	@RequestMapping("/recView")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws RecruitException {
-		// TODO Auto-generated method stub
+		// TODO : 공고 View 핸들러
 		return null;
 	}
 
