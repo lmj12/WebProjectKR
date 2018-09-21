@@ -1,5 +1,6 @@
 package member.jobseeker;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,11 +15,14 @@ import member.jobseeker.JobSeekerDataBean;
 @Controller
 public class JbskModHd implements JobSeekerHandler {
 
+	@Resource
+	public JobSeekerDBBean jbskDao;
+	
 	@Override
 	@RequestMapping("/jbskMod")
-	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbskException {
+	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
 				
-		JobSeekerDataBean jbpDto = new JobSeekerDataBean();
+		JobSeekerDataBean jbskDto = new JobSeekerDataBean();
 		jbskDto.setJbskPasswd( request.getParameter( "jbskPasswd" ) );
 		
 		// 전화번호

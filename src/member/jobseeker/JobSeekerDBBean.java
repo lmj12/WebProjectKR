@@ -11,6 +11,9 @@ public class JobSeekerDBBean {
 		int rst=0;
 		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
+	public int check( String jbskId ) {
+		return session.selectOne("Jbsk.checkId", jbskId); 	
+	}
 	
 	public int jbskLgn(String jbskId, String jbskPasswd) { // 임시매개변수. 필요시 변경할것.
 		int result = 0;
