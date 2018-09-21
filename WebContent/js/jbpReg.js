@@ -1,6 +1,5 @@
 $(document).ready(
 	function(){
-		// TODO : 주석 좀 많이 달아주세요 
 		$('input[name=jobpId]').on(
 			'keyup',
 			function(event){
