@@ -1,5 +1,9 @@
 $(document).ready(
 	function() {
+		// FIXME : 개발용 사업자번호 자동입력
+		$('input:text[name=jobpBno]').val('107-86-14075');
+		
+		
 		$('input[name=jobpId]').on(
 			'keyup',
 			function(event){
