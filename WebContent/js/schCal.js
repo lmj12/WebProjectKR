@@ -97,7 +97,7 @@
     	$.ajaxSetup({cache:false}); 
     	$.ajax({
     		method : "POST",
-    		url : "schCalander.do",
+    		url : "ajaxCalander.do",
     		cache : false,
     		async : false,
     		data : {
@@ -120,5 +120,13 @@
     		    $("#rst").text("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
     		}
     	})
-    	
+ 
     }
+
+
+    function datePicker(year, month, date, day){
+    	var len = $("#"+date).eq(0).text().length
+    	alert(len);
+    	location.href="schCalander.do?year="+year+"&month="+month+"&date="+date+"&day="+day+"&len="+len
+    }
+    

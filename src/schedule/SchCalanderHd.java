@@ -23,25 +23,21 @@ public class SchCalanderHd implements ScheduleHandler {
 	@Resource
 	private ScheduleDBBean schDao;
 	@Override
-	@RequestMapping("schCalander") // TODO : 요거 나중에 정리필요 
+	@RequestMapping("schedule/schCalander") // TODO : 얘는 schWrt나 schView로 보내주는 핸들러. 나중에 주소정리필요.
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws SchException {
-
-		String month = "";
-		if(Integer.parseInt(request.getParameter("month"))<10) {
-			month = "0" + request.getParameter("month");
+		request.setAttribute("year", request.getParameter("year"));
+		request.setAttribute("month", request.getParameter("month"));
+		request.setAttribute("date", request.getParameter("date"));
+		request.setAttribute("day", request.getParameter("day"));
+		int len = Integer.parseInt(request.getParameter("len"));
+		if (len < 3) {
+			return new ModelAndView("schedule/schWrt"); // 길이가 2이하, 즉 스케줄이 없으면 스케줄 만드는 페이지로 이동
 		} else {
-			month = request.getParameter("month");
+			return new ModelAndView("schedule/schView"); // 길이가 2초과, 즉 스케줄이 존재하면 스케줄 보는 페이지로 이동.
 		}
-		String year = request.getParameter("year");
-		Map<String, String> map = new HashMap<String , String>();
-		map.put("m", month);
-		map.put("y", year);
-		List<ScheduleDataBean> schs = schDao.schCal(map);
-		request.setAttribute("schs", schs);
-		return new ModelAndView("schedule/calanderex");
 	}
 	
-	@RequestMapping(value = "schedule/schCalander", produces="application/json") // TODO : 요거 나중에 정리필요  
+	@RequestMapping(value = "schedule/ajaxCalander", produces="application/json") // TODO : 요거 나중에 정리필요  
 	@ResponseBody
 	public String ajaxprocess(HttpServletRequest request, HttpServletResponse response) throws SchException {
 		String month = "";
