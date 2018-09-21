@@ -12,8 +12,34 @@ public class JbskRegHd implements JobSeekerHandler {
 	@Override
 	@RequestMapping("/jbskReg")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
-		// TODO : 구인자 가입 핸들러
-		return null;
+		try {
+			request.setCharacterEncoding( "utf-8" );
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
+		JobSeekerDataBean jbskDto =  new JobSeekerDataBean();
+		
+		jbskDto.setJbskId(request.getParameter("jbskId"));
+		jbskDto.setJbskName(request.getParameter("jbskName"));
+		jbskDto.setJbskPasswd(request.getParameter("jbskPasswd"));
+		jbskDto.setJbskGender(request.getParameter("jbskGender"));
+		jbskDto.setJbskEmail(request.getParameter("jbskEmail"));
+		jbskDto.setJbskPic(request.getParameter("jbskPic"));
+		jbskDto.setJbskTel(request.getParameter("jbskTel"));
+		jbpDto.setJbskregdate( new Timestamp( System.currentTimeMillis() ) );
+		jbpDto.setJbskBd( new Timestamp( System.currentTimeMillis() ) );
+		
+		int result = jbskDao.jbskReg( jbskDto );
+		
+		int rst = jbskDao.check("jbskId");
+		request.setAttribute( "result", result );
+		request.setAttribute("rst",	rst);
+		
+		
+		// TODO Auto-generated method stub
+		return new ModelAndView("register");
+		
 	}
 
 }

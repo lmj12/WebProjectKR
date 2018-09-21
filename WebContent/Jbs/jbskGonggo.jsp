@@ -3,10 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title> 구직자 공고 </title>
+
+	
 </head>
 <body>
+	
+	<h2> 구직자 공고 </h2>
 
-</body>
+	
+
+	</body>
 </html>

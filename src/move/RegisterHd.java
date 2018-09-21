@@ -21,11 +21,10 @@ public class RegisterHd implements MoveHandler{
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws MoveException {
 		
 		
-		
+	
 
 		// TODO : 회원가입 구인자/구직자 선택 핸들러
 
 		return new ModelAndView("register");
-
 	}
 }

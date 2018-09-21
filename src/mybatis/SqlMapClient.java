@@ -16,6 +16,7 @@ public class SqlMapClient {
 				SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader);
 				session = factory.openSession(true);				// true 면 오토커밋
 			} catch (IOException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

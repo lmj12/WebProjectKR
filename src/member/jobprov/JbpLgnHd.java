@@ -24,7 +24,7 @@ public class JbpLgnHd implements JobProvHandler {
 		request.setAttribute( "result", result );
 		request.setAttribute( "jobpId", jobpId);
 
-		// TODO : 구인자 로그인 핸들러
+		// TODO Auto-generated method stub
 		return new ModelAndView("/Jbp/jbpLgnPro");
 	
 	}

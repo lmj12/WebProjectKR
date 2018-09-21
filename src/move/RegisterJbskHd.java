@@ -11,8 +11,7 @@ public class RegisterJbskHd implements MoveHandler{
 	@Override
 	@RequestMapping("/registerJbsk")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws MoveException {
-		// TODO : Move / 회원가입 - 구직자 선택 시 이동 핸들러
-		return null;
+		return new ModelAndView( "Jbs/reg/jbskReg" );
 	}
 
 }
