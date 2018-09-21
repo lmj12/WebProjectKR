@@ -117,7 +117,12 @@ $(document).ready(
 				    	// 폼 만들어서 선택하게끔
 				    	var bizName = $('input:text[name=jobpCn]').val();
 				    	var parseBizID = bizID.substring(0, 6);
+				    	
+				    	// FIXME : 디버깅용
 				    	alert(parseBizID)
+				    	
+				    	
+				    	
 				    	result = true ; // OK!
 				    } else {
 				    	alert('사업자등록번호 형식에 맞지 않습니다');
