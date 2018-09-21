@@ -1,11 +1,8 @@
 package schedule;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -17,8 +14,9 @@ public class ScheduleDBBean {
 	
 	
 	public int schWrt(ScheduleDataBean schDto) { // 임시매개변수. 필요시 변경할것.
-		int rst=0;
-		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		session.flushStatements();
+		session.clearCache();
+		return session.insert("Sch.wrt", schDto);  // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
 	public int schMod(ScheduleDataBean schDto) { // 임시매개변수. 필요시 변경할것.

@@ -7,4 +7,7 @@
    <select id="cal" resultType="schedule.ScheduleDataBean" parameterType="java.util.Map">
     	select * from KrSchedule where SCHSTARTTIME &gt; TO_DATE(${y}${m}01,'YYYYMMDD') AND SCHENDTIME &lt; TO_DATE(${ty}${tm}01,'YYYYMMDD')
     </select>
+    <insert id="wrt" parameterType="schedule.ScheduleDataBean">
+    	insert into KrSchedule values(KRschedule_seq.nextVal,#{schstartTime},#{schendTime},#{jobpId},#{jobpName},#{schContent})
+    </insert>
   </mapper>
