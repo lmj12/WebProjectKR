@@ -1,3 +1,4 @@
+
 $(document).ready(
 	function() {
 		// FIXME : 개발용 사업자번호 자동입력
@@ -165,3 +166,4 @@ $(document).ready(
 		);	// 사업자번호 유효성 검사
 	}
 );
+
