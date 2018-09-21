@@ -10,6 +10,7 @@
 		<td> <input type="button" name="change" value="정보수정" onclick="location='jbpView.do'"> </td>
 		<td> <input type="button" value="팀" onclick="location=''"></td>
 		<td> <input type="button" value="스케줄" onclick="location=''"> </td>
+		<td> <input type="button" value="로그아웃" onclick="location='logout.do'"></td>
 	</tr>	
 </table>
 </form>

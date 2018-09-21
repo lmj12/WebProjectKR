@@ -51,8 +51,8 @@ public class JbpRegHd implements JobProvHandler {
 		request.setAttribute("rst",	rst);
 		
 		
-		// TODO Auto-generated method stub
-		return new ModelAndView("register");
+
+		return new ModelAndView("/Jbp/registerJbp");
 	}
 
 }

@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<title> 구직자 회원가입 </title>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script src="../../js/jbskRegJS.js"></script>
+	<script src="../../js/jbskReg.js"></script>
 	
 </head>
 <body>
