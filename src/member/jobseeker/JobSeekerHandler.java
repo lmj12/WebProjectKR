@@ -8,5 +8,5 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface JobSeekerHandler {
 	public ModelAndView process( HttpServletRequest request, HttpServletResponse response )	
-			throws JobSeekerException; 
+			throws JobSeekerException;  
 }

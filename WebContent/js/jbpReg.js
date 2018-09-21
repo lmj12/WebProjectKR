@@ -15,10 +15,9 @@ $(document).ready(
                         $(this).val(inputVal.replace(/[^a-z]/gi,'')); 
 				} else if(jobpId=="") {
 					$('.idresult').text("아이디를 입력하지 않았습니다.");
-				
-					if($('input[name=jobpId]').val().length<4|| $('input[name=jobpId]').val().length>15) {
+				} else if($('input[name=jobpId]').val().length<4|| $('input[name=jobpId]').val().length>15) {
 						$('.idresult').text("아이디를 4~15자까지 입력해주세요.");
-					} else if( jobpId ){
+				} else if( jobpId ){
 						$.ajax(
 							{
 								type : "POST",
@@ -37,7 +36,7 @@ $(document).ready(
 							}
 						);
 					}
-				}
+				
 			}
 		);
 		//전화번호 - 없이 입력하도록

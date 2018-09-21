@@ -1,5 +1,6 @@
 package member.jobseeker;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,14 +14,16 @@ import member.jobseeker.JobSeekerDBBean;
 
 @Controller
 public class JbskLgnHd implements JobSeekerHandler {
-
+	@Resource
+	public JobSeekerDBBean jbskDao;
+	
 	@Override
 	@RequestMapping("/jbskLgn")
-	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
+	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException{
 		String jbskId = request.getParameter( "jbskId" );
 		String jbskPasswd = request.getParameter( "jbskPasswd" );
 
-		JobSeekerDBBean jbskDao = new JobSeekerDBBean(); 
+		
 		int result = jbskDao.jbskLgn( jbskId, jbskPasswd );
 		
 		request.setAttribute( "result", result );

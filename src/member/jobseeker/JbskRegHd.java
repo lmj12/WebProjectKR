@@ -1,5 +1,9 @@
 package member.jobseeker;
 
+import java.io.UnsupportedEncodingException;
+import java.sql.Timestamp;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class JbskRegHd implements JobSeekerHandler {
-
+	@Resource
+	public JobSeekerDBBean jbskDao;
+	
 	@Override
 	@RequestMapping("/jbskReg")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
@@ -23,12 +29,12 @@ public class JbskRegHd implements JobSeekerHandler {
 		jbskDto.setJbskId(request.getParameter("jbskId"));
 		jbskDto.setJbskName(request.getParameter("jbskName"));
 		jbskDto.setJbskPasswd(request.getParameter("jbskPasswd"));
-		jbskDto.setJbskGender(request.getParameter("jbskGender"));
+		jbskDto.setJbskGender(Integer.parseInt(request.getParameter("jbskGender")));
 		jbskDto.setJbskEmail(request.getParameter("jbskEmail"));
 		jbskDto.setJbskPic(request.getParameter("jbskPic"));
 		jbskDto.setJbskTel(request.getParameter("jbskTel"));
-		jbpDto.setJbskregdate( new Timestamp( System.currentTimeMillis() ) );
-		jbpDto.setJbskBd( new Timestamp( System.currentTimeMillis() ) );
+		jbskDto.setJbskregdate( new Timestamp( System.currentTimeMillis() ) );
+		jbskDto.setJbskBd( new Timestamp( System.currentTimeMillis() ) );
 		
 		int result = jbskDao.jbskReg( jbskDto );
 		
