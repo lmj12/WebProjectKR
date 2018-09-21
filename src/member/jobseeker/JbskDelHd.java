@@ -1,5 +1,6 @@
 package member.jobseeker;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,17 +10,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.jobseeker.JobSeekerException;
 import member.jobseeker.JobSeekerDBBean;
-import member.jobseeker.Override;
-import member.jobseeker.String;
+
 @Controller
 public class JbskDelHd implements JobSeekerHandler {
-
+	@Resource
+	public JobSeekerDBBean jbskDao;
 	@Override
 	@RequestMapping("/jbskDel")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
 		String id = (String) request.getSession().getAttribute( "memid" );
 	
-		JobSeekerDBBean jbpDao = new JobSeekerDBBean();
+		
 		int result = jbskDao.jbskDel( id );
 		request.setAttribute( "result", result );
 	
