@@ -19,7 +19,9 @@
 	<tr>
 		<th>비밀번호</th>
 		<td><input type="password" name="jobpPasswd"></td>
-		<td width="100" class="passwdresult">비밀번호를 입력하세요</td>	
+		<td width="100">
+			<input class="passwdresult" type="text" placeholder="비밀번호를 입력하세요" readonly>
+		</td>	
 	</tr>
 	<tr>
 		<th>비밀번호확인</th>
