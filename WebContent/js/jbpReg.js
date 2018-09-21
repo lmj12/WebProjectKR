@@ -129,7 +129,7 @@ $(document).ready(
 				    		var serviceKey = 'zHRNYJ97QejMrVzKWNS6Hmc8j9Gd8oJ7p4LKd3MfUsTbmSI%2F2v3inaBqZm%2FTDmxvJPYg7gQ1QOEfbnPWE%2FRQvg%3D%3D';
 							var jbpName = $('input:text[name=jobpCn]').val();
 							var jbpNumber = parseBizID;
-							var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch";
+							var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch?serviceKey";
 							
 							$.ajax(
 									{
@@ -137,10 +137,10 @@ $(document).ready(
 										url : url,
 										data : {
 											serviceKey : serviceKey,
-											wkpl_nm : jbpName,
+										//	wkpl_nm : jbpName,
 											bzowr_rgst_no : jbpNumber,
 										},
-										dataType : 'text',
+										dataType : 'json',
 										success : function(data){
 											alert('성공');
 											var xmlDoc = data.responseXML;
