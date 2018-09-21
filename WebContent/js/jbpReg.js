@@ -1,43 +1,74 @@
 $(document).ready(
-	function(){
+	function() {
 		$('input[name=jobpId]').on(
 			'keyup',
 			function(event){
 				var jobpId = $('input[name=jobpId]').val();
+				var keyVal = $(this).val();
 				
-				if( jobpId){
-					$.ajax({
-						type : "POST",
-						data : {
-							jobpId : jobpId 
-						},
-						url : 'Jbp/idcheck.jsp',
-						dataType : 'xml',
-						success : function(data){								
-							$('.idresult').text($(data).find('message').text());
-						},
-						error : function(e){
-							$('.idresult').text(e.message);
-						}
-					});
-				}
-			}
-		);
-		
-		$('input[name=jobpPasswd]').on(
-			'keyup',
-			function(event){
-				var jobpPasswd = $('input[name=jobpPasswd]').val();
-				if(jobpPasswd){
-					if(isNaN(jobpPasswd)){
-						$('.passwdresult').text('사용할 수 있습니다');
-					}else{
-						$('.passwdresult').text('사용할 수 없습니다.');
+				if (!(event.keyCode >=37 && event.keyCode<=40)) {
+                        var inputVal = $(this).val();
+                        $(this).val(inputVal.replace(/[^a-z]/gi,'')); 
+				} else if(jobpId=="") {
+					$('.idresult').text("아이디를 입력하지 않았습니다.");
+				
+					if($('input[name=jobpId]').val().length<4|| $('input[name=jobpId]').val().length>15) {
+						$('.idresult').text("아이디를 4~15자까지 입력해주세요.");
+					} else if( jobpId ){
+						$.ajax(
+							{
+								type : "POST",
+								data : 
+									{
+										jobpId : jobpId 
+									},
+								url : 'Jbp/idcheck.jsp',
+								dataType : 'xml',
+								success : function(data){							
+									$('.idresult').text($(data).find('message').text());
+								},
+								error : function(e){
+									$('.idresult').text(e.message);
+								}
+							}
+						);
 					}
 				}
-				$('input[name=jobpPasswd]').val()
 			}
 		);
+		//전화번호 - 없이 입력하도록
+			$('input[name=jobpTel]').on(
+					'keyup',
+					function(event){
+						var tel = $('input[name=jobpTel]').val();
+						if(tel){
+							if($('input[name=jobpTel]').val().indexOf('-')!=-1){
+								$('.telresult').text("사용할 수 없다");
+							}else{
+								$('.telresult').text("사용할 수 있다");
+							}
+						}
+						$('input[name=jobpTel]').val()
+					}
+			);	
+		$('input[name=jobpId]').on(
+				'keyup',
+				function(event){
+					var jobpId = $('input[name=jobpId]').val();
+					
+				}
+			);
+		$('input[name=jobpPasswd]').on(
+				'keyup',
+				function(event){
+					if($('input[name=jobpPasswd]').val()==""){
+						$('.passwdresult').text("비밀번호를 입력하지 않았습니다.");
+					}
+					if($('input[name=jobpPasswd]').val().length<6|| $('input[name=jobpPasswd]').val().length>15){
+						$('.passwdresult').text("비밀번호를 6~15자까지 입력해주세요.");
+					}
+				}
+			);
 		
 		//비밀번호가 같으면 사용할 수 있다
 		//다르면 사용할 수 없다
@@ -96,5 +127,5 @@ $(document).ready(
 				}
 			}
 		);	// 사업자번호 유효성 검사
-	}		
+	}
 );
