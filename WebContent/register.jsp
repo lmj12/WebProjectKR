@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../setting/setting.jsp" %>
 
-<c:if test="${result eq 0}">
-
-		<script type="text/javascript">
-			<!--
-			alert( inputerror );
-			//-->
-		</script>		
-	</c:if>
-<c:if test="${result eq 1}">
-		<c:redirect url ="Lgn.do"/>
-</c:if>
+<h2>회원가입페이지</h2>
+<a href="registerJbp.do">구인자회원가입</a>
+<a href="registerJbsk.do">구직자회원가입</a>
