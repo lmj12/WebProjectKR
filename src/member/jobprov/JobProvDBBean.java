@@ -17,24 +17,17 @@ private SqlSession session = SqlMapClient.getSession();
 		return session.selectOne("Jbp.checkId", jobpId); 	
 	}
 	
-	public int jobpLgn(String jobpId, String jobpPasswd) { // 임시매개변수. 필요시 변경할것.
-		int result = 0;
-		
+	public JobProvDataBean jobpLgn(String jobpId, String jobpPasswd) { // 임시매개변수. 필요시 변경할것.
+		JobProvDataBean jbtDto = new JobProvDataBean();
 		if(check(jobpId)>0) {
 			// 아이디가 있다
-			JobProvDataBean jbtDto = jobpGet(jobpId);
-			if( jobpPasswd.equals( jbtDto.getJobpPasswd() ) ) {
+			JobProvDataBean checkdto = jobpGet(jobpId);
+			if( jobpPasswd.equals( checkdto.getJobpPasswd() ) ) {
 				//비밀번호 같다
-				result = 1;
-			} else {
-				//비밀번호 다르다
-				result = -1;
-			}				
-		} else {
-			// 아이디가 없다
-			result = 0;				
+				jbtDto = checkdto;
+			} 
 		}
-		return result;
+		return jbtDto;	
 	}
 	
 	public JobProvDataBean jobpGet(String jbpId) { // 임시매개변수. 필요시 변경할것.

@@ -15,7 +15,7 @@
 <h2>${param.year}년 ${param.month}월 ${param.date}일</h2>
 <h3>${param.day}요일</h3><br><br>
 <h2>새 스케줄 만들기</h2>
-<form action="schWrt.do" method="get">
+<form action="schWrt.do" method="post">
 	<table border="1">
 		<tr>
 			<th>시간선택하기</th>
@@ -38,7 +38,7 @@
 			<td colspan="2"><textarea name="schContent" rows="5" cols="50"></textarea></td>
 		<tr>
 			<th colspan="3">
-				<input type="submit" value="시간...시간을보자">
+				<input type="submit" value="작성">
 			</th>
 		</tr>
 	</table>

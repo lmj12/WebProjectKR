@@ -126,7 +126,6 @@
 
     function datePicker(year, month, date, day){
     	var len = $("#"+date).eq(0).text().length
-    	alert(len);
     	location.href="schCalander.do?year="+year+"&month="+month+"&date="+date+"&day="+day+"&len="+len
     }
     
