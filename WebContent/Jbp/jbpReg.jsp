@@ -10,18 +10,20 @@
 	//<!--  
 	$(document).ready(
 		function(){
+			
 			$('input[name=jobpId]').on(
 				'keyup',
 				function(event){
 					var jobpId = $('input[name=jobpId]').val();
 					var keyVal = $(this).val();
-					if(jobpId==""){
+									
+                    if (!(event.keyCode >=37 && event.keyCode<=40)) {
+                        var inputVal = $(this).val();
+                        $(this).val(inputVal.replace(/[^a-z]/gi,'')); 
+                    }else if(jobpId==""){
 						$('.idresult').text("아이디를 입력하지 않았습니다.");
-					} else if (65 > keyVal && keyVal > 90) {
-						
-					    $(this).val(inputVal.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,''));
-						$('.idresult').text("입력할 수 없는 값입니다..");	
-					} else if($('input[name=jobpId]').val().length<4|| $('input[name=jobpId]').val().length>15){
+					
+					}else if($('input[name=jobpId]').val().length<4|| $('input[name=jobpId]').val().length>15){
 						$('.idresult').text("아이디를 4~15자까지 입력해주세요.");
 					}else if( jobpId){
 						$.ajax({
@@ -116,24 +118,16 @@
 					
 		}		
 	);
-	function fn_press_han(obj){
-	 if (event.keyCode==8|| event.keyCode ==9 || event.keyCode ==37 || 
-				event.keyCode==39 || event.keyCode ==46) {
-		    obj.value = obj.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g,'');
-			$('.idresult').text("입력할 수 없는 값입니다..");	
-	 	}
-	}
+	
 	//-->
 </script>
-
 
 <form name="inputform" action="jbpReg.do" method="post">
 <table border="1">
 	<tr>
 		<th>아이디</th>
-		<td><input type="text" name="jobpId" 
-		 style="ime-mode:disabled;"/></td>
-		<td width="300" class="idresult">아이디를 4~15자까지 입력하세요</td>	
+		<td><input type="text" name="jobpId" /></td>
+		<td width="300" class="idresult">아이디를 4~15자까지 입력하세요, 영어, 숫자만 가능합니다</td>	
 	</tr>
 	
 	<tr>
