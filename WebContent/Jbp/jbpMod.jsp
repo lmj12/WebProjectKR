@@ -4,7 +4,7 @@
 <%@ include file="../setting/setting.jsp" %>
 <h2>구인자 정보수정페이지</h2>
 <!DOCTYPE html>
-	<script src="${js}jbpMod.js"></script>
+	<script src="${js}jbpReg.js"></script>
 
 
 
