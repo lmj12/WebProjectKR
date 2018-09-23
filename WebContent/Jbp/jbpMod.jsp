@@ -42,7 +42,7 @@
 	</tr>
 	<tr>
 		<th>전화번호</th>
-		<td> <input type="text" name="jobpTel"></td>
+		<td> <input type="text" name="jobpTel" placeholder="${jbpDto.getJobpTel() }"></td>
 		<td class="telresult"><input type="button" value="인증"></td>
 	</tr>
 	
