@@ -45,7 +45,7 @@
 	</tr>
 	<tr>
 		<th>전화번호</th>
-		<td> <input type="text" name="jobpTel" placeholder="지역번호 포함해서 "-"없이 전체전화번호를 입력하세요" size="55"></td>
+		<td> <input type="text" name="jobpTel" placeholder="지역번호 포함해서 '-' 없이 전체전화번호를 입력하세요" size="55"></td>
 		<td><input class="telresult" type="button" value="인증"></td>
 	</tr>
 	
