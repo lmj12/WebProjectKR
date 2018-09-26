@@ -4,7 +4,7 @@
 <%@ include file="../setting/setting.jsp" %>
 <h2>구인자 정보수정페이지</h2>
 <!DOCTYPE html>
-	<script src="${js}jbpMod.js"></script>
+	<script src="${js}jbpReg.js"></script>
 
 
 
@@ -42,7 +42,7 @@
 	</tr>
 	<tr>
 		<th>전화번호</th>
-		<td> <input type="text" name="jobpTel"></td>
+		<td> <input type="text" name="jobpTel" placeholder="${jbpDto.getJobpTel() }"></td>
 		<td class="telresult"><input type="button" value="인증"></td>
 	</tr>
 	
