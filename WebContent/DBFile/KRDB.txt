@@ -165,12 +165,12 @@ create sequence KRposition_seq
 	MAXVALUE 9999999
 	MINVALUE 1;
 
-insert into krposition values(KRposition_seq.nextval , '∆¿¿Â');
-insert into krposition values(KRposition_seq.nextval , 'Ω∫ƒµ');
-insert into krposition values(KRposition_seq.nextval , 'øπµµ');
-insert into krposition values(KRposition_seq.nextval , 'æ»≥ª');
-insert into krposition values(KRposition_seq.nextval , '∞Ê»£');
-insert into krposition values(KRposition_seq.nextval , '±‚≈∏');
+insert into krposition values(KRposition_seq.nextval , 'ÌåÄÏû•');
+insert into krposition values(KRposition_seq.nextval , 'Ïä§Ï∫î');
+insert into krposition values(KRposition_seq.nextval , 'ÏòàÎèÑ');
+insert into krposition values(KRposition_seq.nextval , 'ÏïàÎÇ¥');
+insert into krposition values(KRposition_seq.nextval , 'Í≤ΩÌò∏');
+insert into krposition values(KRposition_seq.nextval , 'Í∏∞ÌÉÄ');
 
 create table KRrecposition(
 	recid number NOT NULL,
