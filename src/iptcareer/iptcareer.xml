@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="IptCrr">
-
+	<select id="iptCheck" resultType="int" parameterType="String">
+		SELECT count(*) FROM kriptcareer WHERE iptid = #{memid}
+	</select>
       
   </mapper>
