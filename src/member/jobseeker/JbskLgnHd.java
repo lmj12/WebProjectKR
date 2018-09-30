@@ -29,7 +29,6 @@ public class JbskLgnHd implements JobSeekerHandler {
 		request.setAttribute( "result", result );
 		request.setAttribute( "jbskId", jbskId);
 
-		// TODO Auto-generated method stub
 		return new ModelAndView("/Jbp/jbskLgnPro");
 	
 	}
