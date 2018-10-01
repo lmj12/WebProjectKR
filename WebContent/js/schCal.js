@@ -103,10 +103,13 @@
     		data : {
     			year : year,
     			month : month,
+    			memId : memId,
+    			memType : memType
     		},
     		datatype : "json",
     		success : function(data){	//TODO : 30으로 되어있는거 enddate로 바꿔야함.
     			var list = $.parseJSON(data);
+    			sessionStorage.setItem("jobpId", list[0].jobpId);
     			for (var i=1; i<=30; i++){
     				$("#"+i).text(i);
     			}
@@ -126,6 +129,22 @@
 
     function datePicker(year, month, date, day){
     	var len = $("#"+date).eq(0).text().length
-    	location.href="schCalander.do?year="+year+"&month="+month+"&date="+date+"&day="+day+"&len="+len+"&jobpId="+jobpId
+    	if (len<3){
+    		if(memType==2){
+	    		var now = new Date()-86400000;//오늘 날자에서 하루 뺀 날자로 설정.
+	    		var pick =  (month+1) + "/" + date + "/"+ year;
+	    		var pickday = new Date(pick);
+	    		
+	    		if(pickday > now){
+	    			location.href="schCalander.do?year="+year+"&month="+month+"&date="+date+"&day="+day
+	    		} else {
+	    			alert("이미 지난 날자입니다.");
+	    		}
+    		} else {
+    			alert("스케줄은 구인자회원만이 만들 수 있습니다.")
+    		}
+    	} else {
+    		location.href="schView.do?year="+year+"&month="+month+"&date="+date+"&day="+day+"&memId="+memId
+    	}
     }
     

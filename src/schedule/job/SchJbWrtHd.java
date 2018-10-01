@@ -10,6 +10,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -45,6 +46,38 @@ public class SchJbWrtHd implements ScheduelJobHandler {
 		}
 		
 		return new ModelAndView("main");
+	}
+	
+	@RequestMapping(value = "ajaxSchJbWrt", produces="application/json") 
+	@ResponseBody
+	public int ajaxProcess(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
+		int schId = Integer.parseInt(request.getParameter("schId"));
+		int hallNum = Integer.parseInt(request.getParameter("hallNum"));
+		
+		ScdJbDataBean schJbDto = new ScdJbDataBean();
+		schJbDto.setHallNum(hallNum);
+		schJbDto.setSchId(schId);
+		schJbDto.setposId("1");
+		
+		return schJbDao.schJbWrt(schJbDto);
+	}
+	
+	@RequestMapping(value = "ajaxSchHallWrt", produces="application/json") 
+	@ResponseBody
+	public int ajaxProcess2(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
+		int schId = Integer.parseInt(request.getParameter("schId"));
+		int hallNum = Integer.parseInt(request.getParameter("hallNum"));
+		
+		ScdJbDataBean schJbDto = new ScdJbDataBean();
+		schJbDto.setHallNum(hallNum);
+		schJbDto.setSchId(schId);
+		schJbDto.setposId("1");
+		int rst = 0;
+		for (int i=0; i<5; i++) {
+			rst = schJbDao.schJbWrt(schJbDto);
+		}
+		
+		return rst;
 	}
 
 }

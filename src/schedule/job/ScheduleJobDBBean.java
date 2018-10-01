@@ -21,6 +21,11 @@ public class ScheduleJobDBBean {
 		session.clearCache();
 		return session.update("SchJb.mod",schJbDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
+	public int schJbDelHall(ScdJbDataBean schJbDto) {
+		session.flushStatements();
+		session.clearCache();
+		return session.delete("SchJb.hallDel",schJbDto);
+	}
 	
 	public int schJbDel(int schJbId) { // 임시매개변수. 필요시 변경할것.
 		session.flushStatements();
