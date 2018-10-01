@@ -1,4 +1,10 @@
 
+function erroralert( msg ) {
+	alert( msg );
+	history.back();
+} 
+
+
 $(document).ready(
 	function() {
 		// FIXME : 개발용 사업자번호 자동입력
@@ -33,6 +39,7 @@ $(document).ready(
 									},
 									error : function(e){
 										$('.idresult').val(e.message);
+										
 									}
 								}
 							);
@@ -171,6 +178,9 @@ $(document).ready(
 	}
 );
 
+
+
+
 var inputerror="입력형식에 맞지 않습니다.";
 function inputfocus() {
 	inputform.jobpId.focus();
@@ -180,10 +190,12 @@ function inputcheck(){
 		alert("아이디를 입력하세요");
 		inputform.jobpId.focus();
 		return false;
-	}else if( inputform.jobpId.value.length <4 || inputform.jobpId.value.length >15) {
+	}else if(inputform.jobpId.value){
+		if( inputform.jobpId.value.length <4 || inputform.jobpId.value.length >15) {
 		alert( "아이디길이를 확인하세요" );
 		inputform.jobpId.focus();
 		return false;
+		}
 	}
 	
 	 for (i=0; i<inputform.jobpId.value.length; i++)
@@ -196,7 +208,7 @@ function inputcheck(){
             {
              alert("아이디는 영문과 숫자로만 입력 가능 합니다!");
              inputform.jobpId.select();
-             return;
+             return false;
             }
      }
 
@@ -212,22 +224,27 @@ function inputcheck(){
 		return false;
 	}else if(! inputform.rejobpPasswd.value) {
 		alert( "비밀번호확인란을 입력하세요" );
-		inputform.jumin1.focus();
+		inputform.rejobpPasswd.focus();
 		return false;
 	} else if(inputform.jobpPasswd.value != inputform.rejobpPasswd.value ) {
 		alert( "비밀번호가 일치하지 않습니다." );
 		inputform.rejobpPasswd.focus();
 		return false;
 	}else if(! inputform.jobpTel.value) {
-		alert( "전화번호를 입력하세요" );
-		inputform.jumin1.focus();
-		return false;
-	} else if(( inputform.jobpTel.value.length <9 || inputform.jobpPasswd.value.length >11) 
-	||( inputform.jobpTel.value.indexOf( "-" ) != -1) ){
-		alert( "전화번호를 확인하세요" );
+		erroralert( "전화번호를 입력하세요" );
 		inputform.jobpTel.focus();
-		return false;	
-	} 
+		return false;
+	} else if(inputform.jobpTel.value){
+			if( inputform.jobpTel.value.length <9 || inputform.jobpPasswd.value.length >11) {
+					erroralert( "전화번호를 확인하세요" );
+					inputform.jobpTel.focus();
+					return false;	
+			} else if( inputform.jobpTel.value.indexOf( "-" ) != -1 ) {
+					erroralert("전화번호에서 '-'를 빼주세요");
+					inputform.jobpTel.focus();
+					return false;
+			}
+	}
 	//영문, 숫자, 특수문자 2종 이상 혼용해 비밀번호
 	var chk =0;
 	if(inputform.jobpPasswd.value.search(/[0-9]/g) != -1) chk++;
