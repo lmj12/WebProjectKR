@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ include file="../setting/setting.jsp" %>
 <h2><span>${sessionScope.memid}</span>님의 마이페이지입니다</h2>
 <form name="jbpmytopform" method="post" action="mypage.do" >
 <table border="1">	
@@ -13,6 +13,7 @@
 	<c:if test="${sessionScope.memType eq 1}">
     	<td>  <input type="button" value="신고게시판" onclick="location='boardList.do'"> </td>    		
     </c:if>
+    	<td> <input type="button" value="메인으로" onclick="location='main.do'"></td>
 		<td> <input type="button" value="로그아웃" onclick="location='logout.do'"></td>
 	</tr>	
 </table>

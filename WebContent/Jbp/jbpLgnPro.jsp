@@ -12,7 +12,7 @@
 			//<!--
 			// TODO : 나중에 알림메시지 수정필요
 			erroralert( "아이디 또는 비밀번호를 확인하세요" );
-			
+			history.back();
 			//-->
 		</script>
 		

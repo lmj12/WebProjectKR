@@ -7,9 +7,9 @@
 <h2>글목록</h2>
 
 <br>
-
+<input type="button" value="마이페이지" onclick="location='mypage.do'">
 <table border="1">
-	
+			
 	<tr>
 		<th colspan="5" align="left">
 		${sessionScope.memid}님의 게시판입니다. 

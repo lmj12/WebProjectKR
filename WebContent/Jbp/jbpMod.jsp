@@ -24,13 +24,17 @@
 	
 	<tr>
 		<th>비밀번호</th>
-		<td><input type="password" name="jobpPasswd"></td>
-		<td width="100" class="passwdresult">비밀번호를 입력하세요</td>	
+		<td><input type="password" name="jobpPasswd" value="${jbpDto.getJobpPasswd()}"></td>
+		<td width="100">
+			<input class="passwdresult" type="text" value="비밀번호를 변경하세요" readonly>
+		</td>	
 	</tr>
 	<tr>
 		<th>비밀번호확인</th>
-		<td><input type="password" name="rejobpPasswd"></td>
-		<td class="repasswdresult">같은 비밀번호를 입력하세요</td>	
+		<td><input type="password" name="rejobpPasswd" value="${jbpDto.getJobpPasswd()}"></td>
+		<td>
+			<input class="repasswdresult" type="text" value="같은 비밀번호로 변경하세요" readonly>
+		</td>	
 	</tr>
 	<tr>
 		<th>사업자번호</th>
@@ -42,7 +46,7 @@
 	</tr>
 	<tr>
 		<th>전화번호</th>
-		<td> <input type="text" name="jobpTel" placeholder="${jbpDto.getJobpTel() }"></td>
+		<td> <input type="text" name="jobpTel" value="${jbpDto.getJobpTel() }"></td>
 		<td class="telresult"><input type="button" value="인증"></td>
 	</tr>
 	
