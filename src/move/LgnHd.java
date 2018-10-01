@@ -13,7 +13,7 @@ public class LgnHd implements MoveHandler {
 	@RequestMapping("/Lgn")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws MoveException {
 		// TODO Auto-generated method stub
-		return new ModelAndView("/Jbp/jbpLgn");
+		return new ModelAndView("/lgn");
 	}
 
 }

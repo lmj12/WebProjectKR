@@ -15,16 +15,14 @@ public class JobSeekerDataBean {
 	private String jbskTel;
 	private String jbskPic;
 	private Timestamp jbskregdate;
+	private int jbskinfotype;
 	
 	public Timestamp getJbskregdate() {
 		return jbskregdate;
 	}
 	public void setJbskregdate(Timestamp jbskregdate) {
 		this.jbskregdate = jbskregdate;
-	}
-	private int jbskInfoType;
-	
-	
+	}	
 	public String getJbskId() {
 		return jbskId;
 	}
@@ -91,12 +89,13 @@ public class JobSeekerDataBean {
 	public void setJbskPic(String jbskPic) {
 		this.jbskPic = jbskPic;
 	}
-	public int getJbskInfoType() {
-		return jbskInfoType;
+	public int getJbskinfotype() {
+		return jbskinfotype;
 	}
-	public void setJbskInfoType(int jbskInfoType) {
-		this.jbskInfoType = jbskInfoType;
+	public void setJbskinfotype(int jbskinfotype) {
+		this.jbskinfotype = jbskinfotype;
 	}
+
 	
 	
 	

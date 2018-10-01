@@ -19,7 +19,7 @@
 <form name="jbkmybtmform" method="post" action="mypage.do" >
 <table border="1">
 	<tr>
-		<td> <input type="button" name="out" value="회원탈퇴" onclick="location='jbpDel.do'"></td>
+		<td> <input type="button" name="out" value="회원탈퇴" onclick="location='jbskDel.do'"></td>
 	</tr>
 </table>
 </form>

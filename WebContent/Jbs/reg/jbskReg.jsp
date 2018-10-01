@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<title> 구직자 회원가입 </title>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script src="../../js/jbskReg.js"></script>
+	<script src="./js/jbskReg.js"></script>
 	
 </head>
 <body>
@@ -40,7 +40,13 @@
 			<tr>
 				<th> 이름 </th>
 				<td>
-					<input class="input" type="text" name="jbskName" maxlength="15">
+					<input class="input" type="text" name="jbskName" maxlength="10">
+				</td>
+			</tr>
+			<tr>
+				<th> 생년월일 </th>
+				<td>
+					<input class="input" type="date" name="jbskBd">
 				</td>
 			</tr>
 			<tr>
@@ -60,7 +66,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" id="jbAddress" placeholder="지번주소" readonly>
+					<input type="text" name="jbAddress" id="jbAddress" placeholder="지번주소" readonly>
 					<!-- 정확한 용도를 모르겠으나 주소검색 시 검색창 꺼지게 만들어 줌 -->
 					<!-- 혹시 추후 주소 파싱해오는데 지장 생기면 body 태그 닫히는 곳 까지 내려버려도 무관함 -->
 					<span id="guide" style="color:#999"></span>
@@ -109,12 +115,12 @@
 				</td>
 			</tr>
 			<tr>
-				<th> 포지션 </th>
+				<th> 정보수신동의 </th>
 				<td>
-					<input type="checkbox" name="jbskInfoType" value="1">업무1
-					<input type="checkbox" name="jbskInfoType" value="2">업무2
-					<input type="checkbox" name="jbskInfoType" value="3">업무3
-					<input type="checkbox" name="jbskInfoType" value="4">업무4
+					<input type="radio" name="jbskinfotype" value="1">수신안함
+					<input type="radio" name="jbskinfotype" value="2">메일
+					<input type="radio" name="jbskinfotype" value="3">SMS
+					<input type="radio" name="jbskinfotype" value="4">메일, SMS
 				</td>
 			</tr>
 			<tr>	

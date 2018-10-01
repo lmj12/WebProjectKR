@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.jobseeker.JobSeekerException;
+import member.jobprov.JobProvDBBean;
 import member.jobseeker.JobSeekerDBBean;
 
 @Controller
@@ -20,13 +21,13 @@ public class JbskDelHd implements JobSeekerHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
 		String id = (String) request.getSession().getAttribute( "memid" );
 	
-		
+		JobSeekerDBBean jbskDao = new JobSeekerDBBean();
 		int result = jbskDao.jbskDel( id );
 		request.setAttribute( "result", result );
 	
 		
 		
 		// TODO Auto-generated method stub
-		return new ModelAndView("Jbsk/jbskDel");
+		return new ModelAndView("Jbs/jbskDel");
 	}
 }

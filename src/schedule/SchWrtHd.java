@@ -1,5 +1,6 @@
 package schedule;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -18,36 +19,31 @@ public class SchWrtHd implements ScheduleHandler {
 	@RequestMapping("/schWrt") // TODO : 수정필요한 경로.
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws SchException {
 		
+		try {
+			request.setCharacterEncoding( "utf-8" );
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	
 		Timestamp schstartTime;
 		Timestamp schendTime;
-		
+		System.out.println(request.getParameter("schstartTime"));
 		int year = Integer.parseInt(request.getParameter("year"));
 		int month = Integer.parseInt(request.getParameter("month"));
 		int date = Integer.parseInt(request.getParameter("date"));
 		
 		int sthour = Integer.parseInt(request.getParameter("schstartTime").substring(0, 2));
 		int stmin = Integer.parseInt(request.getParameter("schstartTime").substring(3,5));
-		String sttype = request.getParameter("schstartTime").substring(6);
 		
 		int edhour = Integer.parseInt(request.getParameter("schendTime").substring(0, 2));
 		int edmin = Integer.parseInt(request.getParameter("schendTime").substring(3,5));
-		String edtype = request.getParameter("schendTime").substring(6);
 		
-		if(sttype.equals("AM")) {
-			LocalDateTime loc = LocalDateTime.of(year, month, date, sthour, stmin);
-			schstartTime = Timestamp.valueOf(loc);
-		} else {
-			LocalDateTime loc = LocalDateTime.of(year, month, date, sthour+12, stmin);
-			schstartTime = Timestamp.valueOf(loc);
-		}
-		
-		if(edtype.equals("AM")) {
-			LocalDateTime loc = LocalDateTime.of(year, month, date, edhour, edmin);
-			schendTime = Timestamp.valueOf(loc);
-		} else {
-			LocalDateTime loc = LocalDateTime.of(year, month, date, edhour+12, edmin);
-			schendTime = Timestamp.valueOf(loc);
-		}
+		LocalDateTime loc = LocalDateTime.of(year, month, date, sthour, stmin);
+		schstartTime = Timestamp.valueOf(loc);
+	
+		loc = LocalDateTime.of(year, month, date, edhour, edmin);
+		schendTime = Timestamp.valueOf(loc);
+	
 		// 받은 시간을 처리해서 타임스탬프 형태로 변환하는 과정.
 		
 		ScheduleDataBean schDto = new ScheduleDataBean();
@@ -61,7 +57,9 @@ public class SchWrtHd implements ScheduleHandler {
 		
 		request.setAttribute("rst", rst);
 		
+		int schId = schDao.schGetId(schDto);
 		
+		request.setAttribute("schId", schId);
 		return new ModelAndView("schedule/schJbWrt"); 
 	}
 

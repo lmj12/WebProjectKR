@@ -20,7 +20,7 @@ public class JbskViewHd implements JobSeekerHandler {
 	@RequestMapping("/jbskView") 
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
 		
-			String jbskId = (String) request.getSession().getAttribute( "memid" ); 
+			String jbskId = (String) request.getSession().getAttribute( "memid" );
 			JobSeekerDataBean jbskDto = jbskDao.jbskGet(jbskId);
 			
 			
