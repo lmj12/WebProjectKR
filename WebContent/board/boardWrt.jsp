@@ -1,44 +1,79 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="board.BoardDBBean"%>
+<%@page import="board.BoardDataBean"%>
+<%@page import="java.io.UnsupportedEncodingException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ include file="setting.jsp" %>
+<script src="${js}board.js"></script>
 <h2> 글쓰기 </h2>
-<form method="post" action="writePro.do" name="writeform" onsubmit="return writecheck()">
-    		<input type="hidden" name="num" value="${num}">
-    		    	
+<c:if test="${result eq 0}">
+	<script type="text/javascript">
+		<!--
+		alert('inserterror');
+		//-->
+	</script>
+</c:if>
+<c:if test="${result eq 1}">
+	<c:redirect url="boardList.do"/>		
+</c:if>
+<%
+ 
+    request.setCharacterEncoding("UTF-8");
+//
+ 
+%>
+
+
+
+<form method="post" action="boardWrt.do" name="writeform" onsubmit="return writecheck()">
+    		
+    		 <input type="hidden" name="boardId" value="${boardId}">
+    		<input type="hidden" name="boardParentId" value="${boardParentId}">
+    		<input type="hidden" name="boardregdate" value="java.sql.Timestamp">
+    		<input type="hidden" name="userId" value="${sessionScope.memid}" readonly>
     	<table>
     		<tr>
     			<th colspan="2" align="right">
-    				<a href="list.jsp">${str_list}</a>&nbsp;&nbsp;&nbsp;
+    				<a href="boardList.do"> 글목록 </a>&nbsp;&nbsp;&nbsp;
     			</th>    			
     		</tr>
+    <c:if test="${sessionScope.memType ne 3}">
     		<tr>
-    			<th>글쓴이 </th>
-    			<td> <input class="input" type="text" name="writer" maxlength="10"> </td>
+    			<th>신고자 </th>
+    			<td> ${boardDto.getUserId()} </td>
+    		</tr>
+    </c:if>
+    <c:if test="${sessionScope.memType eq 3}">
+    		<tr>
+    			<th>신고자 </th>
+    			<td> ${boardDto.getboardParentId()} </td>
     		</tr>
     		<tr>
-    			<th> ${str_email} </th>
-    			<td> <input class="input" type="text" name="email" maxlength="30"> </td>
+    			<th>답변자</th>
+    			<td>  ${boardDto.getUserId()}</td>
     		</tr>
+    </c:if>
+    		
+    	
     		<tr>
-    			<th> ${str_subject} </th>
-    			<td> <input class="input" type="text" name="subject" maxlength="50"> </td>
-    		</tr>
-    		<tr>
-    			<th> 내용 </th>
+    			<th> 내용 </th>  
     			<td>
-    				<textarea name="content" rows="10" cols="40"></textarea>
+    				<textarea name="boardContent" rows="10" cols="40"></textarea>
     			</td>
+    			
     		</tr>
-    		<tr>
-    			<th> ${str_passwd} </th>
-    			<td> <input class="input" type="password" name="passwd" maxlength="12"> </td>
-    		</tr>
+    		
     		<tr>
     			<th colspan="2">
-    			<input class="inputbutton" type="submit" value="글작성">
+    			<input class="inputbutton" name="write" type="submit" value="글작성">
     			<input class="inputbutton" type="reset" value="글작성 취소">
-    			<input class="inputbutton" type="button" value="목록으로" onclick ="location='list.do'">
+    			<input class="inputbutton" type="button" value="목록으로" onclick ="location='boardList.do'">
     		</th>
     		</tr>
     	</table>
     	</form>
+
+    	
+ 
+  
