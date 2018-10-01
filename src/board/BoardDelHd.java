@@ -14,10 +14,10 @@ public class BoardDelHd implements BoardHandler {
 	@Override
 	@RequestMapping("/boardDel")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws BoardException {
-		int num = Integer.parseInt(request.getParameter("num"));
+		//int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 	
-		int boardId = Integer.parseInt(request.getParameter("boardId"));
+		String boardId = (request.getParameter("boardId"));
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("boardId", boardId);
 		

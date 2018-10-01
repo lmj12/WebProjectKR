@@ -7,3 +7,9 @@
 			${sessionScope.memid= null}
 			<c:redirect url="main.do"/>
 		</c:if>
+		
+<table>
+	<tr>
+	<th><input type="button" value="메인으로" onclick="main.do"> </th>
+	</tr>
+</table>

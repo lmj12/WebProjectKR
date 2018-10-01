@@ -1,18 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<h2>로그인pro</h2>
- 
 <%@ include file="../setting/setting.jsp" %>
-
+<!DOCTYPE html>
+	<script src="${js}jbpReg.js"></script>
+	
+<h2>로그인pro</h2>
 <%	// 로그인실패 	%> 
 	<c:if test="${result eq 0}">
 		<script type="text/javascript">
 			//<!--
 			// TODO : 나중에 알림메시지 수정필요
-			alert( "loginiderror" );
+			erroralert( "아이디 또는 비밀번호를 확인하세요" );
+			history.back();
 			//-->
 		</script>
+		
 	</c:if>
 
 	
