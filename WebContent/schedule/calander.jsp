@@ -8,6 +8,7 @@
 	var year;
 	var month; // 스케줄 땡겨오기위해서 변수 저장.
 	var lastday;
+	var jobpId = '${sessionScope.memid}';
 	$(document).ready(
 		function(){
 			calendar();

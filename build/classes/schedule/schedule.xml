@@ -10,4 +10,19 @@
     <insert id="wrt" parameterType="schedule.ScheduleDataBean">
     	insert into KrSchedule values(KRschedule_seq.nextVal,#{schstartTime},#{schendTime},#{schContent},#{jobpId})
     </insert>
+    <select id="getId" resultType="int" parameterType="schedule.ScheduleDataBean">
+    	select schid from krschedule where jobpid = #{jobpId} And schstarttime = #{schstartTime}
+    </select>
+    <select id="get" resultType="schedule.ScheduleDataBean" parameterType="schedule.ScheduleDataBean">
+    	select * from krschedule where jobpid=#{jobpId} And schstarttime &gt; #{schstartTime} And SCHENDTIME &lt; #{schendTime}
+    </select>
+     <select id="getById" resultType="schedule.ScheduleDataBean" parameterType="int">
+    	select * from krschedule where schId=#{schId}
+    </select>
+    <update id="mod" parameterType="schedule.ScheduleDataBean">
+    	update KrSchedule set SCHCONTENT=#{schContent},SCHSTARTTIME=#{schstartTime},SCHENDTIME=#{schendTime} where schId=#{schId}
+    </update>
+    <delete id="del" parameterType="int">
+    	delete from krschedule where schId=#{schId}
+    </delete>
   </mapper>

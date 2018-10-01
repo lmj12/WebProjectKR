@@ -20,20 +20,35 @@ public class ScheduleDBBean {
 	}
 	
 	public int schMod(ScheduleDataBean schDto) { // 임시매개변수. 필요시 변경할것.
-		int rst=0;
-		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		session.flushStatements();
+		session.clearCache();
+		return session.update("Sch.mod",schDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
 	
-	public int schDel(String schid) { // 임시매개변수. 필요시 변경할것.
-		int rst=0;
-		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	public int schDel(int schId) { 
+		session.flushStatements();
+		session.clearCache();
+		return session.delete("Sch.del",schId); 
 	}
 	
 	
-	public ScheduleDataBean schGet(String schid) { // 임시매개변수. 필요시 변경할것.
-		ScheduleDataBean schDto = new ScheduleDataBean();
-		return schDto; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	public int schGetId(ScheduleDataBean schDto) {
+		session.flushStatements();
+		session.clearCache();
+		return session.selectOne("Sch.getId",schDto);
+	}
+	
+	public ScheduleDataBean schGet(ScheduleDataBean schDto) { 
+		session.flushStatements();
+		session.clearCache();
+		return session.selectOne("Sch.get", schDto);
+	}
+	
+	public ScheduleDataBean schGet(int schId) { //오버로드
+		session.flushStatements();
+		session.clearCache();
+		return session.selectOne("Sch.getById", schId);
 	}
 	
 	
