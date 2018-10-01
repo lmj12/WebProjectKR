@@ -11,7 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class IptCrrMove implements MoveHandler {
 
 	@Override
-	@RequestMapping("/iptCrr")
+//	@RequestMapping("/iptCrr")
+	// 필요가 없는 듯
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws MoveException {
 		// TODO : move 입력경력사항 List 기본
 		return new ModelAndView("iptCrr/iptCrr");

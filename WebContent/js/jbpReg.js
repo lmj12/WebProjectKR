@@ -44,6 +44,7 @@ $(document).ready(
 				$('input[name=jobpId]').val()
 			}			
 		);
+		
 		//전화번호 - 없이 입력하도록
 			$('input[name=jobpTel]').on(
 					'keyup',
@@ -132,28 +133,29 @@ $(document).ready(
 				    		var serviceKey = 'zHRNYJ97QejMrVzKWNS6Hmc8j9Gd8oJ7p4LKd3MfUsTbmSI%2F2v3inaBqZm%2FTDmxvJPYg7gQ1QOEfbnPWE%2FRQvg%3D%3D';
 							var jbpName = $('input:text[name=jobpCn]').val();
 							var jbpNumber = parseBizID;
-							var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch?serviceKey";
+							var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch";
 							
 							$.ajax(
 									{
 										type : 'GET',
+										timeOut : 1000,
 										url : url,
 										data : {
 											serviceKey : serviceKey,
-										//	wkpl_nm : jbpName,
+								//			wkpl_nm : jbpName,
 											bzowr_rgst_no : jbpNumber,
+											_type : 'json',
 										},
 										dataType : 'json',
 										success : function(data){
 											alert('성공');
-											var xmlDoc = data.responseXML;
+											// TODO : 성공시 파싱
 											document.open();
-											document.write(xmlDoc);
 										},
 										error : function(e){
-											alert('error : ' + e);
+											alert('error내용 : ' + e);
 										}
-									}	
+									}
 							);
 				    	}
 				    	

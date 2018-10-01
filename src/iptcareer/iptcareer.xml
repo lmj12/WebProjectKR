@@ -5,7 +5,7 @@
 
   <mapper namespace="IptCrr">
 	<select id="iptCheck" resultType="int" parameterType="String">
-		SELECT count(*) FROM kriptcareer WHERE iptid = #{memid}
+		SELECT count(*) FROM kriptcareer WHERE jbskid = #{memid}
 	</select>
       
   </mapper>
