@@ -7,6 +7,7 @@
 <h2>구인자 회원가입 페이지</h2>
 <body onload="inputfocus()">
 <form name="inputform" action="jbpReg.do" method="post" onsubmit="return inputcheck()">
+<input type="hidden" name='confirm' value="0">
 <table border="1">
 	<tr>
 		<th>아이디</th>
@@ -45,7 +46,7 @@
 	</tr>
 	<tr>
 		<th>전화번호</th>
-		<td> <input type="text" name="jobpTel" placeholder="지역번호 포함해서 '-' 없이 전체전화번호를 입력하세요" size="55"></td>
+		<td> <input type="text" name="jobpTel" placeholder="지역번호 포함해서 '-'없이 전체전화번호를 입력하세요" size="55"></td>
 		<td><input class="telresult" type="button" value="인증"></td>
 	</tr>
 	

@@ -3,17 +3,17 @@ package board;
 import java.sql.Timestamp;
 
 public class BoardDataBean {
-	private int boardId;
+	private String boardId;
 	private Timestamp boardregdate;
 	private String boardContent;
 	private int boardStatus;
 	private int boardParentId;
-	private String userId;
+	private String boarduserId;
 	
-	public int getBoardId() {
+	public String getBoardId() {
 		return boardId;
 	}
-	public void setBoardId(int boardId) {
+	public void setBoardId(String boardId) {
 		this.boardId = boardId;
 	}
 	public Timestamp getBoardregdate() {
@@ -42,10 +42,10 @@ public class BoardDataBean {
 		this.boardParentId = boardParentId;
 	}
 	public String getUserId() {
-		return userId;
+		return boarduserId;
 	}
 	public void setUserId(String userId) {
-		this.userId = userId;
+		this.boarduserId = userId;
 	}
 	
 }

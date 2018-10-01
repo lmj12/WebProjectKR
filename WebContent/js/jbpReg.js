@@ -1,3 +1,10 @@
+
+function erroralert( msg ) {
+	alert( msg );
+	return false;
+} 
+
+
 $(document).ready(
 	function() {
 		// FIXME : 개발용 사업자번호 자동입력
@@ -28,10 +35,12 @@ $(document).ready(
 									url : 'Jbp/idcheck.jsp',
 									dataType : 'xml',
 									success : function(data){							
-										$('.idresult').val($(data).find('message').text());
+										$('.idresult').val($(data).find('message').text());										
 									},
 									error : function(e){
 										$('.idresult').val(e.message);
+										
+										
 									}
 								}
 							);
@@ -44,6 +53,28 @@ $(document).ready(
 				$('input[name=jobpId]').val()
 			}			
 		);
+		$(document).submit(				
+				function(event){
+					if($('.idresult').val().indexOf('없')!=-1){
+						erroralert("중복확인해주세요");
+						return false;
+					}else{
+						var form = $(this);
+					$.ajax({
+						type : form.attr('method'),
+						url : form.attr('action'),
+						data : form.serialize()
+					}).done(function(data) {
+				    	  
+				      }).fail(function(data) {
+				        // Optionally alert the user of an error here...
+				      });
+					}
+				}
+				);
+					
+						
+		
 		
 		//전화번호 - 없이 입력하도록
 			$('input[name=jobpTel]').on(
@@ -133,29 +164,28 @@ $(document).ready(
 				    		var serviceKey = 'zHRNYJ97QejMrVzKWNS6Hmc8j9Gd8oJ7p4LKd3MfUsTbmSI%2F2v3inaBqZm%2FTDmxvJPYg7gQ1QOEfbnPWE%2FRQvg%3D%3D';
 							var jbpName = $('input:text[name=jobpCn]').val();
 							var jbpNumber = parseBizID;
-							var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch";
+							var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch?serviceKey";
 							
 							$.ajax(
 									{
 										type : 'GET',
-										timeOut : 1000,
 										url : url,
 										data : {
 											serviceKey : serviceKey,
-								//			wkpl_nm : jbpName,
+										//	wkpl_nm : jbpName,
 											bzowr_rgst_no : jbpNumber,
-											_type : 'json',
 										},
 										dataType : 'json',
 										success : function(data){
 											alert('성공');
-											// TODO : 성공시 파싱
+											var xmlDoc = data.responseXML;
 											document.open();
+											document.write(xmlDoc);
 										},
 										error : function(e){
-											alert('error내용 : ' + e);
+											alert('error : ' + e);
 										}
-									}
+									}	
 							);
 				    	}
 				    	
@@ -168,8 +198,17 @@ $(document).ready(
 				}
 			}
 		);	// 사업자번호 유효성 검사
+		
+		
+		
+		
 	}
 );
+
+
+
+
+
 
 var inputerror="입력형식에 맞지 않습니다.";
 function inputfocus() {
@@ -180,10 +219,12 @@ function inputcheck(){
 		alert("아이디를 입력하세요");
 		inputform.jobpId.focus();
 		return false;
-	}else if( inputform.jobpId.value.length <4 || inputform.jobpId.value.length >15) {
+	}else if(inputform.jobpId.value){
+		if( inputform.jobpId.value.length <4 || inputform.jobpId.value.length >15) {
 		alert( "아이디길이를 확인하세요" );
 		inputform.jobpId.focus();
 		return false;
+		}
 	}
 	
 	 for (i=0; i<inputform.jobpId.value.length; i++)
@@ -196,7 +237,7 @@ function inputcheck(){
             {
              alert("아이디는 영문과 숫자로만 입력 가능 합니다!");
              inputform.jobpId.select();
-             return;
+             return false;
             }
      }
 
@@ -212,22 +253,29 @@ function inputcheck(){
 		return false;
 	}else if(! inputform.rejobpPasswd.value) {
 		alert( "비밀번호확인란을 입력하세요" );
-		inputform.jumin1.focus();
+		inputform.rejobpPasswd.focus();
 		return false;
 	} else if(inputform.jobpPasswd.value != inputform.rejobpPasswd.value ) {
 		alert( "비밀번호가 일치하지 않습니다." );
 		inputform.rejobpPasswd.focus();
 		return false;
 	}else if(! inputform.jobpTel.value) {
-		alert( "전화번호를 입력하세요" );
-		inputform.jumin1.focus();
-		return false;
-	} else if(( inputform.jobpTel.value.length <9 || inputform.jobpPasswd.value.length >11) 
-	||( inputform.jobpTel.value.indexOf( "-" ) != -1) ){
-		alert( "전화번호를 확인하세요" );
+		erroralert( "전화번호를 입력하세요" );
 		inputform.jobpTel.focus();
-		return false;	
-	} 
+		return false;
+	} else if(inputform.jobpTel.value){
+			if( inputform.jobpTel.value.length <9 || inputform.jobpPasswd.value.length >11) {
+					erroralert( "전화번호길이를 확인하세요" );
+					inputform.jobpTel.focus();		
+					return false;
+			} else if( inputform.jobpTel.value.indexOf( "-" ) != -1 ) {
+					erroralert("전화번호에서 '-'를 빼주세요");
+					inputform.jobpTel.focus();		
+					return false;
+			}
+	}
+	
+	
 	//영문, 숫자, 특수문자 2종 이상 혼용해 비밀번호
 	var chk =0;
 	if(inputform.jobpPasswd.value.search(/[0-9]/g) != -1) chk++;

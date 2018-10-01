@@ -30,7 +30,5 @@
         <mapper resource="schedule/job/job.xml"/>
         <mapper resource="schedule/schedule.xml"/>
         <mapper resource="team/team.xml"/>
-        	<!-- TODO : 테스트용 빈 mapping -->
-        <mapper resource="tester/tester.xml"/>
     </mappers>
 </configuration>

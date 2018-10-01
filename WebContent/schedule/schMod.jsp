@@ -25,7 +25,7 @@
 <h2>${year}년 ${month}월 ${date}일</h2>
 <h3>${day}요일</h3><br><br>
 <h2>스케줄 수정하기</h2>
-<form action="schModCon.do" method="post">
+<form action="schModCon.do" autocomplete="off" method="post">
 	<table border="1">
 		<tr>
 			<th>시간선택하기</th>

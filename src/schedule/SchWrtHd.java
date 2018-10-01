@@ -27,7 +27,6 @@ public class SchWrtHd implements ScheduleHandler {
 	
 		Timestamp schstartTime;
 		Timestamp schendTime;
-		System.out.println(request.getParameter("schstartTime"));
 		int year = Integer.parseInt(request.getParameter("year"));
 		int month = Integer.parseInt(request.getParameter("month"));
 		int date = Integer.parseInt(request.getParameter("date"));
@@ -52,6 +51,7 @@ public class SchWrtHd implements ScheduleHandler {
 		schDto.setSchContent(request.getParameter("schContent"));
 		schDto.setSchstartTime(schstartTime);
 		schDto.setSchendTime(schendTime);
+		
 		
 		int rst = schDao.schWrt(schDto); // DB로 처리.
 		
