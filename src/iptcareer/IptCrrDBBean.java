@@ -2,6 +2,7 @@ package iptcareer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -10,9 +11,9 @@ import mybatis.SqlMapClient;
 public class IptCrrDBBean {
 	private SqlSession session = SqlMapClient.getSession();
 	
-	public int iptCheck( String memid ) {
+	public int iptCheck( String jbskId ) {
 		// kriptcareer 안에 해당 아이디 입력경력사항 리스트가 있는지 확인
-		return session.selectOne("IptCrr.iptCheck", memid);
+		return session.selectOne("IptCrr.iptCheck", jbskId);
 	}
 	
 	public int iptWrt(IptCrrDataBean iptCrrDto) { // 임시매개변수. 필요시 변경할것.
