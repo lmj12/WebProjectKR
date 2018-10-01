@@ -37,8 +37,7 @@ public class IptCrrDBBean {
 	}
 	
 	public List<IptCrrDataBean> iptList(String jbskId) {
-		List<IptCrrDataBean> iptCrrs = new ArrayList<IptCrrDataBean>();
 		// iptCrrHd -> iptCrr.jsp
-		return iptCrrs;
+		return session.selectList("IptCrr.iptList", jbskId);
 	}
 }
