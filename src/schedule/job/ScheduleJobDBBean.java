@@ -17,13 +17,15 @@ public class ScheduleJobDBBean {
 	}
 	
 	public int schJbMod(ScdJbDataBean schJbDto) { // 임시매개변수. 필요시 변경할것.
-		int rst=0;
-		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		session.flushStatements();
+		session.clearCache();
+		return session.update("SchJb.mod",schJbDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
 	public int schJbDel(int schJbId) { // 임시매개변수. 필요시 변경할것.
-		int rst=0;
-		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		session.flushStatements();
+		session.clearCache();
+		return session.delete("SchJb.del",schJbId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
 	public ScdJbDataBean schJbGet(int schJbId) { // 임시매개변수. 필요시 변경할것.

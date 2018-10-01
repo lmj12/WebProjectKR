@@ -16,4 +16,10 @@
    <update id="cncl" parameterType="java.util.Map">
    		update KRschjob set JBSKID = NULL where SCHJBID = #{schjbId}
    </update>
+   <update id="mod" parameterType="schedule.job.ScdJbDataBean">
+   		update KRschjob set  POSID= #{posId} where SCHJBID = #{schjbId}
+   </update>
+   <delete id="del" parameterType="int">
+   		delete from KRschjob where SCHJBID = #{schJbId}
+   </delete>
   </mapper>
