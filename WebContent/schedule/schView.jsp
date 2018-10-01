@@ -5,6 +5,7 @@
 
 <h2>스케줄 뷰 페이지</h2><br>
 <script type="text/javascript">
+	var jobpId = sessionStorage.getItem("jobpId");
 	var jbskId = '${sessionScope.memid}';
 	var memType = '${sessionScope.memType}';
 	var jbskName = '${sessionScope.memName}';
@@ -23,6 +24,10 @@
 			
 		}
 	)
+	
+	function tocal(){
+		location.replace("tocal.do");
+	}
 	function makeTable(){
 		var shour = st.getHours();
 		var ehour = et.getHours();
@@ -182,6 +187,74 @@
 			}
 		})
 	}
+	function schjbInsert(hallNum, object){
+		$.ajax({
+	    	method : "POST",
+	    	url : "ajaxSchJbWrt.do",
+	    	cache : false,
+			async : false,
+			data : {
+				hallNum : hallNum,
+				schId : schId
+			},
+			datatype : "text",
+			success : function(data){
+				if(data==1){
+					alert("추가완료");
+					schJb();
+				} else {
+					alert("추가실패");
+				}
+			}, error:function(request,status,error){
+			    alert("schJb 추가 오류!");
+			}
+		})
+	}
+	function makeHall(hallNum){
+		var hallNum = hallNum+1;
+		$.ajax({
+	    	method : "POST",
+	    	url : "ajaxSchHallWrt.do",
+	    	cache : false,
+			async : false,
+			data : {
+				hallNum : hallNum,
+				schId : schId
+			},
+			datatype : "text",
+			success : function(data){
+				if(data==1){
+					alert("홀추가완료");
+					schJb();
+				} else {
+					alert("홀추가실패");
+				}
+			}, error:function(request,status,error){
+			    alert("schJb 홀추가 오류!");
+			}
+		})
+		
+	}
+	
+	function delHall(hallNum){
+		$.ajax({
+	    	method : "POST",
+	    	url : "ajaxSchHallDel.do",
+	    	cache : false,
+			async : false,
+			data : {
+				hallNum : hallNum,
+				schId : schId
+			},
+			datatype : "text",
+			success : function(data){
+				alert("홀삭제완료");
+				schJb();
+			}, error:function(request,status,error){
+			    alert("schJb 홀삭제 오류!");
+			}
+		})
+	}
 	
 	function schJb() {
 		$.ajax({
@@ -211,100 +284,102 @@
 							hlist.push(list[j]);
 						}	//	같은 홀번호를 가진 놈들을 같은 리스트에 푸쉬
 					}
+					if (hlist.length!=0){
+					schjbstr += "<div id='"+(i+1)+"'><input type='button' value='홀 추가' onclick='makeHall("+(i+1)+")'><table border='1'><th rowspan='"+(list.length*2)+"'>"+(i+1)+"번 홀</th><th>업무</th><th>지원자</th></tr>";
 					
-					schjbstr += "<div id='"+(i+1)+"'><table border='1'><th rowspan='"+(list.length*2)+"'>"+(i+1)+"번 홀</th><th>업무</th><th>지원자</th></tr>";
-					if(memType==1){	//구직자일경우 보여질 테이블 만들기.
-						for (var j=0; j<hlist.length; j++){
-				           if(hlist[j].posId == 1){	//팀장의 경우
-				        	   schjbstr += "<tr><td><input type='text' value='팀장' readonly></td>";
-				        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
-				        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
-				        	   } else{	// 지원자가 없다면
-				        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly></td></tr>";
-				        	   }
-				           } else if (hlist[j].posId == 2){
-				        	   schjbstr += "<tr><td><input type='text' value='스캔' readonly></td>";
-				        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
-				        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly></td>";
-				        	   } else{	// 지원자가 없다면
-				        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly></td></tr>";
-				        	   }
-				           } else if(hlist[j].posId == 3){
-				        	   schjbstr += "<tr><td><input type='text' value='예도' readonly></td>";
-				        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
-				        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly></td>";
-				        	   } else{	// 지원자가 없다면
-				        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly></td></tr>";
-				        	   }
-				           } else if (hlist[j].posId == 4){
-				        	   schjbstr += "<tr><td><input type='text' value='안내' readonly></td>";
-				        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
-				        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly></td>";
-				        	   } else{	// 지원자가 없다면
-				        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly></td></tr>";
-				        	   }
-				           } else if (hlist[j].posId == 5){
-				        	   schjbstr += "<tr><td><input type='text' value='경호' readonly></td>";
-				        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
-				        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly></td>";
-				        	   } else{	// 지원자가 없다면
-				        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly></td></tr>";
-				        	   }
-				           }
-				     	}
-					} else {
-						var cnt=0;
-						for (var j=0; j<hlist.length; j++){
-							 if(hlist[j].posId == 1){	//팀장의 경우
-					        	   schjbstr += "<tr><td><select id='s"+cnt+"'><option value='1' selected>팀장</option><option value='2'>스캔</option><option value='3'>"
-						            + "예도</option><option value='4'>안내</option><option value='5'>경호</option></select></td>"
+						if(memType==1){	//구직자일경우 보여질 테이블 만들기.
+							for (var j=0; j<hlist.length; j++){
+					           if(hlist[j].posId == 1){	//팀장의 경우
+					        	   schjbstr += "<tr><td><input type='text' value='팀장' readonly></td>";
 					        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
 					        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
 					        	   } else{	// 지원자가 없다면
-					        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+					        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly></td></tr>";
 					        	   }
-						           cnt++;
-					          } else if(hlist[j].posId == 2){	//스캔의 경우
-					        	   schjbstr += "<tr><td><select><option value='1' >팀장</option><option value='2' selected>스캔</option><option value='3'>"
-						            + "예도</option><option value='4'>안내</option><option value='5'>경호</option></select></td>"
+					           } else if (hlist[j].posId == 2){
+					        	   schjbstr += "<tr><td><input type='text' value='스캔' readonly></td>";
 					        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
-					        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
+					        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly></td>";
 					        	   } else{	// 지원자가 없다면
-					        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+					        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly></td></tr>";
 					        	   }
-					        	   cnt++;
-					          } else if(hlist[j].posId == 3){	//예도의 경우
-					        	   schjbstr += "<tr><td><select><option value='1' >팀장</option><option value='2'>스캔</option><option value='3' selected>"
-						            + "예도</option><option value='4'>안내</option><option value='5'>경호</option></select></td>"
+					           } else if(hlist[j].posId == 3){
+					        	   schjbstr += "<tr><td><input type='text' value='예도' readonly></td>";
 					        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
-					        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
+					        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly></td>";
 					        	   } else{	// 지원자가 없다면
-					        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+					        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly></td></tr>";
 					        	   }
-					        	   cnt++;
-					          } else if(hlist[j].posId == 4){	//안내
-					        	   schjbstr += "<tr><td><select><option value='1' >팀장</option><option value='2'>스캔</option><option value='3'>"
-						            + "예도</option><option value='4' selected>안내</option><option value='5'>경호</option></select></td>"
+					           } else if (hlist[j].posId == 4){
+					        	   schjbstr += "<tr><td><input type='text' value='안내' readonly></td>";
 					        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
-					        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
+					        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly></td>";
 					        	   } else{	// 지원자가 없다면
-					        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+					        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly></td></tr>";
 					        	   }
-					        	   cnt++;
-					          } else if(hlist[j].posId == 5){	//경호
-					        	   schjbstr += "<tr><td><select><option value='1' >팀장</option><option value='2' >스캔</option><option value='3'>"
-						            + "예도</option><option value='4'>안내</option><option value='5' selected>경호</option></select></td>"
+					           } else if (hlist[j].posId == 5){
+					        	   schjbstr += "<tr><td><input type='text' value='경호' readonly></td>";
 					        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
-					        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
+					        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly></td>";
 					        	   } else{	// 지원자가 없다면
-					        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+					        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly></td></tr>";
 					        	   }
-					        	   cnt++;
-					          } 
+					           }
+					     	}
+						} else {
+							var cnt=0;
+							for (var j=0; j<hlist.length; j++){
+								 if(hlist[j].posId == 1){	//팀장의 경우
+						        	   schjbstr += "<tr><td><select id='s"+cnt+"'><option value='1' selected>팀장</option><option value='2'>스캔</option><option value='3'>"
+							            + "예도</option><option value='4'>안내</option><option value='5'>경호</option></select></td>"
+						        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
+						        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
+						        	   } else{	// 지원자가 없다면
+						        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+						        	   }
+							           cnt++;
+						          } else if(hlist[j].posId == 2){	//스캔의 경우
+						        	   schjbstr += "<tr><td><select id='s"+cnt+"'><option value='1' >팀장</option><option value='2' selected>스캔</option><option value='3'>"
+							            + "예도</option><option value='4'>안내</option><option value='5'>경호</option></select></td>"
+						        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
+						        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
+						        	   } else{	// 지원자가 없다면
+						        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+						        	   }
+						        	   cnt++;
+						          } else if(hlist[j].posId == 3){	//예도의 경우
+						        	   schjbstr += "<tr><td><select id='s"+cnt+"'><option value='1' >팀장</option><option value='2'>스캔</option><option value='3' selected>"
+							            + "예도</option><option value='4'>안내</option><option value='5'>경호</option></select></td>"
+						        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
+						        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
+						        	   } else{	// 지원자가 없다면
+						        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+						        	   }
+						        	   cnt++;
+						          } else if(hlist[j].posId == 4){	//안내
+						        	   schjbstr += "<tr><td><select id='s"+cnt+"'><option value='1' >팀장</option><option value='2'>스캔</option><option value='3'>"
+							            + "예도</option><option value='4' selected>안내</option><option value='5'>경호</option></select></td>"
+						        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
+						        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
+						        	   } else{	// 지원자가 없다면
+						        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+						        	   }
+						        	   cnt++;
+						          } else if(hlist[j].posId == 5){	//경호
+						        	   schjbstr += "<tr><td><select id='s"+cnt+"'><option value='1' >팀장</option><option value='2' >스캔</option><option value='3'>"
+							            + "예도</option><option value='4'>안내</option><option value='5' selected>경호</option></select></td>"
+						        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
+						        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
+						        	   } else{	// 지원자가 없다면
+						        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+						        	   }
+						        	   cnt++;
+						          } 
+							}
+							schjbstr += "<tr><th colspan='3'><input type='button' value='필요인원추가' onclick='schjbInsert("+(i+1)+",this)'><input type='button' value='홀 삭제' onclick='delHall("+(i+1)+")'></th></tr>"
 						}
-						schjbstr += "<tr><th colspan='3'><input type='button' value='필요인원추가' onclick='makeRow(this)'></th></tr>"
-					}
 					schjbstr += "</table><br>"
+					}
 				}
 				document.getElementById("schJb").innerHTML = schjbstr;
 			}, error:function(request,status,error){
@@ -313,8 +388,57 @@
 		})
     	
 	}
+	
+	function schPrev(){
+		var time = st;
+		time.setMonth(st.getMonth()-1);
+		$.ajax({
+	    	method : "POST",
+	    	url : "ajaxSchPrev.do",
+	    	cache : false,
+			async : false,
+			data : {
+				jobpId : jobpId,
+				stime :  time.getTime()
+			},
+			datatype : "json",
+			success : function(data){
+				var sch = $.parseJSON(data);
+				alert(sch);
+			}, error:function(request,status,error){
+				alert("prev에러");
+			}
+		})
+			
+	}
+	function schNext(){
+		var time = et;
+		time.setMonth(et.getMonth()-1);
+		$.ajax({
+	    	method : "POST",
+	    	url : "ajaxSchNext.do",
+	    	cache : false,
+			async : false,
+			data : {
+				jobpId : jobpId,
+				etime : time.getTime()
+			},
+			datatype : "json",
+			success : function(data){
+				var sch = $.parseJSON(data);
+				alert(sch);
+			}, error:function(request,status,error){
+				alert("next에러");
+			}
+		})
+	}
 	//-->
 </script>
+<table><tr><th>
+<input type="button" value="달력으로" onclick="tocal()">
+<input type="button" value="이전스케줄" onclick="schPrev()">
+<input type="button" value="다음스케줄" onclick="schNext()">
+</th></tr></table><br>
 ${sessionScope.memName} 님의 스케줄<br>
 
 <div id="t"></div>

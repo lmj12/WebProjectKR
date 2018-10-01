@@ -15,7 +15,7 @@
 <h2>${param.year}년 ${param.month+1}월 ${param.date}일</h2>
 <h3>${param.day}요일</h3><br><br>
 <h2>새 스케줄 만들기</h2>
-<form action="schWrt.do" method="post">
+<form action="schWrt.do" autocomplete="off" method="post">
 	<table border="1">
 		<tr>
 			<th>시간선택하기</th>

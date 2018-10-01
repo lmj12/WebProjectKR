@@ -17,9 +17,12 @@
    		update KRschjob set JBSKID = NULL where SCHJBID = #{schjbId}
    </update>
    <update id="mod" parameterType="schedule.job.ScdJbDataBean">
-   		update KRschjob set  POSID= #{posId} where SCHJBID = #{schjbId}
+   		update KRschjob set POSID= #{posId} where SCHJBID = #{schjbId}
    </update>
    <delete id="del" parameterType="int">
    		delete from KRschjob where SCHJBID = #{schJbId}
+   </delete>
+   <delete id="hallDel" parameterType="schedule.job.ScdJbDataBean">
+   		delete from KRschjob where SCHID = #{schId} AND HALLNUM = #{hallNum}
    </delete>
   </mapper>

@@ -24,5 +24,18 @@ public class SchJbDelHd implements ScheduelJobHandler {
 		int schjbId = Integer.parseInt(request.getParameter("schjbId"));
 		return schJbDao.schJbDel(schjbId);
 	}
+	
+	@RequestMapping(value = "ajaxSchHallDel", produces="application/json") 
+	@ResponseBody
+	public int ajaxProcess2(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
+		int schId = Integer.parseInt(request.getParameter("schId"));
+		int hallNum = Integer.parseInt(request.getParameter("hallNum"));
+		
+		ScdJbDataBean schJbDto = new ScdJbDataBean();
+		schJbDto.setHallNum(hallNum);
+		schJbDto.setSchId(schId);
+		
+		return schJbDao.schJbDelHall(schJbDto);
+	}
 
 }

@@ -52,6 +52,7 @@ public class SchWrtHd implements ScheduleHandler {
 		schDto.setSchstartTime(schstartTime);
 		schDto.setSchendTime(schendTime);
 		
+		
 		int rst = schDao.schWrt(schDto); // DB로 처리.
 		
 		request.setAttribute("rst", rst);
