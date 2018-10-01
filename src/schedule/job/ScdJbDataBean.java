@@ -3,8 +3,8 @@ package schedule.job;
 public class ScdJbDataBean {
 	private int schjbId;
 	private int schId;
-	private String posPos;
-	private int schjbSalary;
+	private String posId;
+	private int hallNum ;
 	private String jbskId;
 	private String jbskName;
 	
@@ -20,17 +20,18 @@ public class ScdJbDataBean {
 	public void setSchId(int schId) {
 		this.schId = schId;
 	}
-	public String getPosPos() {
-		return posPos;
+	public String getposId() {
+		return posId;
 	}
-	public void setPosPos(String posPos) {
-		this.posPos = posPos;
+	public void setposId(String posId) {
+		this.posId = posId;
 	}
-	public int getSchjbsalary() {
-		return schjbSalary;
+	
+	public int getHallNum() {
+		return hallNum;
 	}
-	public void setSchjbsalary(int schjbSalary) {
-		this.schjbSalary = schjbSalary;
+	public void setHallNum(int hallNum) {
+		this.hallNum = hallNum;
 	}
 	public String getJbskId() {
 		return jbskId;

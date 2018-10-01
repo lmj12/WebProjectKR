@@ -15,8 +15,8 @@ public class JbpLgnHd implements JobProvHandler {
 	@Override
 	@RequestMapping("/jbpLgn")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
-		String jobpId = request.getParameter( "jobpId" );
-		String jobpPasswd = request.getParameter( "jobpPasswd" );
+		String jobpId = request.getParameter( "id" );
+		String jobpPasswd = request.getParameter( "passwd" );
 		int result = -1;
 		JobProvDBBean jbpDao = new JobProvDBBean(); 
 		JobProvDataBean jobpdto = jbpDao.jobpLgn( jobpId, jobpPasswd );

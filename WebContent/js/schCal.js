@@ -105,7 +105,7 @@
     			month : month,
     		},
     		datatype : "json",
-    		success : function(data){
+    		success : function(data){	//TODO : 30으로 되어있는거 enddate로 바꿔야함.
     			var list = $.parseJSON(data);
     			for (var i=1; i<=30; i++){
     				$("#"+i).text(i);
@@ -126,6 +126,6 @@
 
     function datePicker(year, month, date, day){
     	var len = $("#"+date).eq(0).text().length
-    	location.href="schCalander.do?year="+year+"&month="+month+"&date="+date+"&day="+day+"&len="+len
+    	location.href="schCalander.do?year="+year+"&month="+month+"&date="+date+"&day="+day+"&len="+len+"&jobpId="+jobpId
     }
     
