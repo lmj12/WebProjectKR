@@ -10,7 +10,7 @@ public class RecruitDataBean {
 	private String recSite;
 	private int recReadCnt;
 	private int recStatus;
-	private String jbpId;
+	private String jobpId;
 	private String jbpBnp;
 	private String jbpCn; // companyName
 	private String posPos;	//직무 포지션
@@ -59,11 +59,11 @@ public class RecruitDataBean {
 	public void setRecStatus(int recStatus) {
 		this.recStatus = recStatus;
 	}
-	public String getJbpId() {
-		return jbpId;
+	public String getJobpId() {
+		return jobpId;
 	}
-	public void setJbpId(String jbpId) {
-		this.jbpId = jbpId;
+	public void setJobpId(String jobpId) {
+		this.jobpId = jobpId;
 	}
 	public String getJbpBnp() {
 		return jbpBnp;

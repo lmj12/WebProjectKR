@@ -14,4 +14,12 @@
 	<a href="register.do">회원가입</a>
 	<a href="Lgn.do">로그인</a>
 </c:if>
+<br>
+<br>
+
+<tr>
+		<th colspan="2" height="100">
+			<jsp:include page="recList.do" flush="false"/>
+		</th>
+</tr>
 
