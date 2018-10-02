@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.jobseeker.JobSeekerException;
+import member.jobprov.JobProvDBBean;
+import member.jobprov.JobProvDataBean;
 import member.jobseeker.JobSeekerDBBean;
 
 
@@ -20,16 +22,26 @@ public class JbskLgnHd implements JobSeekerHandler {
 	@Override
 	@RequestMapping("/jbskLgn")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException{
-		String jbskId = request.getParameter( "jbskId" );
-		String jbskPasswd = request.getParameter( "jbskPasswd" );
-
-// FIXME : 입력경력사항 작업 중 에러막기로 임시 주석처리		
-//		int result = jbskDao.jbskLgn( jbskId, jbskPasswd );
+		String jbskId = request.getParameter( "id" );
+		String jbskPasswd = request.getParameter( "passwd" );
+		int result = -1;
+		JobSeekerDBBean jbskDao = new JobSeekerDBBean(); 
+		JobSeekerDataBean jbskdto = jbskDao.jbskLgn( jbskId, jbskPasswd );
+		String jbskName = jbskdto.getJbskName();
+		if (jbskName==null || jbskName.equals("")) {
+			result = 0;
+		} else {
+			result = 1;
+		}
 		
-//		request.setAttribute( "result", result );
+		
+		
+		request.setAttribute( "result", result );
 		request.setAttribute( "jbskId", jbskId);
+		request.setAttribute("memtype", 1);  // 구직자 : 1, 구인자 : 2 , 관리자 :3 
 
-		return new ModelAndView("/Jbp/jbskLgnPro");
+		// TODO Auto-generated method stub
+		return new ModelAndView("/Jbs/jbskLgnPro");
 	
 	}
 }
