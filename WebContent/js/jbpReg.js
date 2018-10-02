@@ -1,8 +1,5 @@
 
-function erroralert( msg ) {
-	alert( msg );
-	return false;
-} 
+
 
 
 $(document).ready(

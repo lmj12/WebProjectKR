@@ -16,6 +16,19 @@
 <!-- 테마적용 예정중-->
 	<!-- <link rel="stylesheet" type="text/css" href="../../bootstrap/theme.css"> -->
 
+<<script type="text/javascript">	//공용 펑션 error alert
+//<!--
+	function erroralert( msg ) {
+		alert( msg );
+		return false;
+	} 
+	
+	function errorback( msg ) {
+		alert( msg );
+		history.back();
+	} 
+//-->
+</script>
 
 <!-- 세팅 경로 -->
 <c:set var="setting" value="/KR_WebProject/setting/"/>
