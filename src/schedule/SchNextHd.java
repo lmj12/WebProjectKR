@@ -2,9 +2,6 @@ package schedule;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -33,15 +30,19 @@ public class SchNextHd implements ScheduleHandler {
 	public String ajaxProcess(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
 		String jobpId = request.getParameter("jobpId");
 		Timestamp etime = new Timestamp(Long.parseLong(request.getParameter("etime")));	//밀리세컨으로 넘어온 시간 타임스탬프로 변환.
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		ScheduleDataBean schDto = new ScheduleDataBean();
+		schDto.setJobpId(jobpId);
+		schDto.setSchendTime(etime);
+		
+		/*SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String et = sdf.format(etime);
 		
-		System.out.println(et);
+		
 		Map<String, String> map = new HashMap<String, String>(); 
 		map.put("jobpId", jobpId);
-		map.put("etime", et);
+		map.put("etime", et);*/
 		
-		ScheduleDataBean schDto = schDao.schNext(map);
+		schDto = schDao.schNext(schDto);
 		
 		ObjectMapper mapper = new ObjectMapper(); 
 		
