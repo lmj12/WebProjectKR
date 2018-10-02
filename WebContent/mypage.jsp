@@ -11,7 +11,8 @@
 		<td> <input type="button" value="팀" onclick="location=''"></td>
 		<td> <input type="button" value="스케줄" onclick="location=''"> </td>
 	<c:if test="${sessionScope.memType eq 1}">
-    	<td>  <input type="button" value="신고게시판" onclick="location='boardList.do'"> </td>    		
+    	<td> <input type="button" value="신고게시판" onclick="location='boardList.do'"> </td>    		
+    	<td> <input type="button" value="이력서" onclick="location='iptCrr.do'"> </td>
     </c:if>
     	<td> <input type="button" value="메인으로" onclick="location='main.do'"></td>
 		<td> <input type="button" value="로그아웃" onclick="location='logout.do'"></td>
