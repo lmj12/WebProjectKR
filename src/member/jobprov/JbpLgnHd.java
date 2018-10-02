@@ -32,7 +32,7 @@ public class JbpLgnHd implements JobProvHandler {
 		request.setAttribute("jobpCn", jobpcn);
 		request.setAttribute("memtype", 2);  // 구직자 : 1, 구인자 : 2 , 관리자 :3 
 
-		return new ModelAndView("Jbp/jbpLgnPro");
+		return new ModelAndView("/Jbp/jbpLgnPro");
 	}
 
 }
