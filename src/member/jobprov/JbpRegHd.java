@@ -5,15 +5,21 @@ package member.jobprov;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import team.TeamDBBean;
 @Controller
 public class JbpRegHd implements JobProvHandler {
-
+	@Resource
+	private JobProvDBBean jbpDao;
+	@Resource
+	private TeamDBBean teamDao;
 	@Override
 	@RequestMapping("/jbpReg")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
@@ -38,17 +44,13 @@ public class JbpRegHd implements JobProvHandler {
 		// tel		
 		jbpDto.setJobpTel(request.getParameter("jobpTel"));
 
-		
-		
-		
-		JobProvDBBean jbpDao = new JobProvDBBean();
-		
-		
 		int result = jbpDao.jobpReg( jbpDto );
 		
 		int rst = jbpDao.check("jobpId");
 		request.setAttribute( "result", result );
 		request.setAttribute("rst",	rst);
+		
+		teamDao.makeTeam(request.getParameter("jobpId"));
 		
 		
 
