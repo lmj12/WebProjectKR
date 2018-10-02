@@ -4,9 +4,10 @@
 <h2>공고조회 페이지</h2>
 
 <input type="button" value="메인으로" onclick="location='main.do'">
-
+<c:if test="${sessonScope.memid ne null}">
 <c:if test="${sessionScope.memType eq 2}">	
 공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
+</c:if>
 </c:if>		
 
 
