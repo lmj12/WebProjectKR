@@ -25,4 +25,7 @@
 		values( #{recId}, #{recStart}, #{recEnd}, #{reccontent}, #{recSite},
 		 #{recReadCnt}, #{recStatus}, #{jobpId})
 	</insert>
+	<select id="recGet"  parameterType="int" resultType="recruit.RecruitDataBean">
+		select * from KRrecruit where recId=#{recId}
+	</select>
   </mapper>
