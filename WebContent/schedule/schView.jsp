@@ -16,10 +16,13 @@
 	var sti = stime.split("/");
 	var eti = etime.split("/");
 	var st = new Date(sti[0],sti[1],sti[2],sti[3],sti[4],sti[5]);
+	st.setMonth(st.getMonth()-1);
 	var et = new Date(eti[0],eti[1],eti[2],eti[3],eti[4],eti[5]);
+	et.setMonth(et.getMonth()-1);
 	//<!--
 	$(document).ready(
 		function(){
+			
 			makeTable();
 			
 		}
@@ -390,8 +393,6 @@
 	}
 	
 	function schPrev(){
-		var time = st;
-		time.setMonth(st.getMonth()-1);
 		$.ajax({
 	    	method : "POST",
 	    	url : "ajaxSchPrev.do",
@@ -399,12 +400,21 @@
 			async : false,
 			data : {
 				jobpId : jobpId,
-				stime :  time.getTime()
+				stime :  st.getTime()
 			},
 			datatype : "json",
 			success : function(data){
 				var sch = $.parseJSON(data);
-				alert(sch);
+				if (sch){
+					$("#schJb").text('')
+					schId = sch.schId;
+					schContent = sch.schContent;
+					st = new Date(Number(sch.schstartTime));
+					et = new Date(Number(sch.schendTime));
+					makeTable();
+				} else {
+					alert("이전 스케줄이 없습니다.")
+				}
 			}, error:function(request,status,error){
 				alert("prev에러");
 			}
@@ -412,8 +422,6 @@
 			
 	}
 	function schNext(){
-		var time = et;
-		time.setMonth(et.getMonth()-1);
 		$.ajax({
 	    	method : "POST",
 	    	url : "ajaxSchNext.do",
@@ -421,12 +429,21 @@
 			async : false,
 			data : {
 				jobpId : jobpId,
-				etime : time.getTime()
+				etime : et.getTime()
 			},
 			datatype : "json",
 			success : function(data){
 				var sch = $.parseJSON(data);
-				alert(sch);
+				if (sch){
+					$("#schJb").text('')
+					schId = sch.schId;
+					schContent = sch.schContent;
+					st = new Date(Number(sch.schstartTime));
+					et = new Date(Number(sch.schendTime));
+					makeTable();
+				} else {
+					alert("다음 스케줄이 없습니다.")
+				}
 			}, error:function(request,status,error){
 				alert("next에러");
 			}

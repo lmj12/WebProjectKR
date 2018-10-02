@@ -52,16 +52,16 @@ public class ScheduleDBBean {
 	}
 	
 	
-	public ScheduleDataBean schNext(Map<String, String> map) { // 임시매개변수. 필요시 변경할것.
+	public ScheduleDataBean schNext(ScheduleDataBean schDto) { // 임시매개변수. 필요시 변경할것.
 		session.flushStatements();
 		session.clearCache();
-		return session.selectOne("Sch.next",map); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		return session.selectOne("Sch.next",schDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
-	public ScheduleDataBean schPrev(Map<String, String> map) { // 임시매개변수. 필요시 변경할것.
+	public ScheduleDataBean schPrev(ScheduleDataBean schDto) { // 임시매개변수. 필요시 변경할것.
 		session.flushStatements();
 		session.clearCache();
-		return session.selectOne("Sch.prev",map); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		return session.selectOne("Sch.prev",schDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
 	

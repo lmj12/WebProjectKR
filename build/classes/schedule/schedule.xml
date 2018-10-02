@@ -7,11 +7,11 @@
    <select id="cal" resultType="schedule.ScheduleDataBean" parameterType="java.util.Map">
     	select * from KrSchedule where JOBPID = #{jobpId} AND SCHSTARTTIME &gt; TO_DATE(${y}${m}01,'YYYYMMDD') AND SCHENDTIME &lt; TO_DATE(${ty}${tm}01,'YYYYMMDD')
     </select>
-    <select id="prev" resultType="schedule.ScheduleDataBean" parameterType="java.util.Map">
-    	select * from (select * from KrSchedule where JOBPID = #{jobpId} AND SCHENDTIME &lt; TO_DATE(${stime}, 'YYYY/MM/DD HH24:Mi:SS') order by SCHSTARTTIME desc) where rownum = 1;
+    <select id="prev" resultType="schedule.ScheduleDataBean" parameterType="schedule.ScheduleDataBean">
+    	select * from (select * from KrSchedule where JOBPID = #{jobpId} AND SCHENDTIME &lt; #{schstartTime} order by SCHSTARTTIME desc) where rownum=1
     </select>
-    <select id="next" resultType="schedule.ScheduleDataBean" parameterType="java.util.Map">
-    	select * from (select * from KrSchedule where JOBPID = #{jobpId} AND SCHSTARTTIME &gt; TO_DATE(${etime}, 'YYYY/MM/DD HH24:Mi:SS') order by SCHSTARTTIME asc) where rownum = 1;
+    <select id="next" resultType="schedule.ScheduleDataBean" parameterType="schedule.ScheduleDataBean">
+    	select * from (select * from KrSchedule where JOBPID = #{jobpId} AND SCHSTARTTIME &gt; #{schendTime} order by SCHSTARTTIME asc) where rownum=1
     </select>
     <insert id="wrt" parameterType="schedule.ScheduleDataBean">
     	insert into KrSchedule values(KRschedule_seq.nextVal,#{schstartTime},#{schendTime},#{schContent},#{jobpId})
