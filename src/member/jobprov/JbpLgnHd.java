@@ -2,6 +2,7 @@ package member.jobprov;
 
 
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,16 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import team.TeamDBBean;
 @Controller
 public class JbpLgnHd implements JobProvHandler {
-
+	@Resource
+	private JobProvDBBean jbpDao;
+	@Resource
+	private TeamDBBean teamDao;
 	@Override
 	@RequestMapping("/jbpLgn")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JbpException {
 		String jobpId = request.getParameter( "id" );
 		String jobpPasswd = request.getParameter( "passwd" );
 		int result = -1;
-		JobProvDBBean jbpDao = new JobProvDBBean(); 
 		JobProvDataBean jobpdto = jbpDao.jobpLgn( jobpId, jobpPasswd );
 		String jobpcn = jobpdto.getJobpCn();
 		if (jobpcn==null || jobpcn.equals("")) {
@@ -26,7 +31,9 @@ public class JbpLgnHd implements JobProvHandler {
 		} else {
 			result = 1;
 		}
+		int teamId = teamDao.getTeamId(jobpId);
 		
+		request.setAttribute("teamId", teamId);
 		request.setAttribute( "result", result );
 		request.setAttribute( "jobpId", jobpId);
 		request.setAttribute("jobpCn", jobpcn);

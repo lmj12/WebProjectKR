@@ -6,7 +6,7 @@
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 
 <sql:query var="rs" dataSource="jdbc/encore">
-	select count(*) from KRjobseeker where jobpId=?
+	select count(*) from KRjobseeker where jbskId=?
 	<sql:param value="${param.jbskId}"/>
 </sql:query>
 <c:forEach var="row" items="${rs.rowsByIndex}">

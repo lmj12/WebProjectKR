@@ -1,13 +1,15 @@
 package team;
 
-import member.jobprov.JobProvDataBean;
-import member.jobseeker.JobSeekerDataBean;
+import java.sql.Timestamp;
 
 public class TeamDataBean {
 	private int teamId;
-	private int tmStatus; // 승인상태
-	private JobProvDataBean jbpDto;
-	private JobSeekerDataBean jbskDto;
+	private String jbskId;
+	private int tmStatus; // 승인상
+	private String jbskName;
+	private int jbskGender;
+	private Timestamp jbskBd;
+	private String jbskTel;
 	
 	public int getTeamId() {
 		return teamId;
@@ -21,20 +23,36 @@ public class TeamDataBean {
 	public void setTmStatus(int tmStatus) {
 		this.tmStatus = tmStatus;
 	}
-	public JobProvDataBean getJbpDto() {
-		return jbpDto;
+	public String getJbskId() {
+		return jbskId;
 	}
-	public void setJbpDto(JobProvDataBean jbpDto) {
-		this.jbpDto = jbpDto;
+	public void setJbskId(String jbskId) {
+		this.jbskId = jbskId;
 	}
-	public JobSeekerDataBean getJbskDto() {
-		return jbskDto;
+	public String getJbskName() {
+		return jbskName;
 	}
-	public void setJbskDto(JobSeekerDataBean jbskDto) {
-		this.jbskDto = jbskDto;
+	public void setJbskName(String jbskName) {
+		this.jbskName = jbskName;
+	}
+	public int getJbskGender() {
+		return jbskGender;
+	}
+	public void setJbskGender(int jbskGender) {
+		this.jbskGender = jbskGender;
+	}
+	public Timestamp getJbskBd() {
+		return jbskBd;
+	}
+	public void setJbskBd(Timestamp jbskBd) {
+		this.jbskBd = jbskBd;
+	}
+	public String getJbskTel() {
+		return jbskTel;
+	}
+	public void setJbskTel(String jbskTel) {
+		this.jbskTel = jbskTel;
 	}
 	
-	
-
 	
 }

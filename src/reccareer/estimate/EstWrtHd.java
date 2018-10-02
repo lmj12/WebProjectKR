@@ -12,8 +12,8 @@ public class EstWrtHd implements EstimateHandler {
 	@Override
 	@RequestMapping("/estWrt")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws EstException {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO 지원이력 ID를 받아서 리퀘스트에 넣는 절차 필요.
+		return new ModelAndView("estimate/estimateForm");
 	}
 
 }
