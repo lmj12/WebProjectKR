@@ -4,5 +4,29 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="Team">
+   <insert id="make" parameterType="String">
+   		insert into KRTEAM values(KRteam_seq.nextVal,#{jbpId})
+   </insert>
+   <select id="getTeamId" parameterType="String" resultType="int">
+   		select TEAMID from KRTEAM where JOBPID = #{jbpId}
+   </select>
    
+   <insert id="req" parameterType="String">
+   		insert into KRTEAMMEMBER values(#{teamId},#{jbskId},0)
+   </insert>
+   <select id="getMemCount" parameterType="int" resultType="int">
+   		select count(*) from KRTEAMMEMBER where TEAMID = #{teamId}
+   </select>
+    <select id="jbskCk" parameterType="String" resultType="int">
+   		select count(*) from KRTEAMMEMBER where JBSKID = #{jbskId}
+   </select>
+   <update id="assign" parameterType="String">
+   		update KRTEAMMEMBER set TMSTATUS = 1 where JBSKID = #{jbskId}
+   </update>
+   <delete id="exit" parameterType="String">
+   		delete from KRTEAMMEMBER where JBSKID = #{jbskId}
+   </delete>
+   <select id="list" parameterType="int" resultType="team.TeamDataBean">
+   		select t.TEAMID,t.JBSKID,t.TMSTATUS,j.jbskName,j.jbskGender,j.jbskBd,j.jbskTel from KRTEAMMEMBER t, KRJOBSEEKER j where TEAMID= #{teamId} AND t.jbskId = j.jbskId
+   </select>
   </mapper>
