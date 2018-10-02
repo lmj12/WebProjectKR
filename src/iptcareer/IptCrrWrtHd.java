@@ -1,5 +1,9 @@
 package iptcareer;
 
+import java.io.UnsupportedEncodingException;
+import java.sql.Timestamp;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,15 +12,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IptCrrWrtHd implements InputCareerHandler {
-
+	@Resource
+	private IptCrrDBBean iptDao;
 	@Override
 	@RequestMapping("/iptCrrWrtPro")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws IptCrrException {
 		// TODO : 입력경력사항 writer
-		// 1. 로그인한 세션에서 아이디 받기
-		// 2. (유효성검사) 로그인한 아이디가 jbsk 맞는지 확인
-		// 3. jbsk가 아니면 false 페이지로 보내기 
-		//		, 맞으면 받은 아이디를 iptCrrWrt.jsp 로 넘겨줌
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		IptCrrDataBean iptCrrDto = new IptCrrDataBean();
+		// FIXME : iptId 는 NEXTVAL 로 들어간다
+		iptCrrDto.setIptId(Integer.parseInt(request.getParameter("iptId")));
+		iptCrrDto.setIptCompany(request.getParameter("iptCompany"));
+		iptCrrDto.setIptWh(request.getParameter("iptWh"));
+		Timestamp startDate = Timestamp.valueOf(request.getParameter("iptStart"));
+		Timestamp endDate = Timestamp.valueOf(request.getParameter("iptEnd"));
+		iptCrrDto.setIptStart(startDate);
+		iptCrrDto.setIptEnd(endDate);
+		iptCrrDto.setPosId(Integer.parseInt(request.getParameter("posId")));
+		iptCrrDto.setJbskId(request.getParameter("jbskId"));
+		iptCrrDto.setIptPeriod(Integer.parseInt(request.getParameter("iptPeriod")));
+		
+		int result = iptDao.iptWrt(iptCrrDto);
+		request.setAttribute("result", result);
+		request.setAttribute("iptCrrDto", iptCrrDto);
+		
 		
 		return new ModelAndView("iptCrr/iptCrr");
 	}

@@ -11,4 +11,8 @@
 		SELECT * FROM kriptcareer WHERE jbskid = #{jbskId, jdbcType=VARCHAR}
 		ORDER BY iptstart ASC
 	</select>
+<!-- 	<insert id="insertIptCrr" parameterType="iptcareer.IptCrrDataBean">
+		INSERT INTO kriptcareer 
+		VALUES( KRiptcareer_seq.NEXTVAL, #{iptCompany}, #{iptWh}, #{iptStart}, #{iptEnd}, #{posId}, #{jbskId}, #{iptPeriod, jdbcType=NUMERIC} )
+	</insert> -->
   </mapper>
