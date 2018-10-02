@@ -1,6 +1,5 @@
 package iptcareer;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -25,7 +24,7 @@ public class IptCrrHd implements InputCareerHandler {
 	@RequestMapping("/iptCrr")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws IptCrrException {
 		// TODO : 입력경력사항 종합화면
-		String jbskId = "aaa";	// FIXME : setSession 에 있는 아이디 아이디 임시로 주입
+		String jbskId = (String) request.getSession().getAttribute("memid");	// FIXME : setSession 에 있는 아이디 아이디 임시로 주입
 		int iptListCnt = iptCrrDao.iptCheck(jbskId);
 		JobSeekerDataBean jbskDto = jbskDao.jbskGet(jbskId);
 		

@@ -11,7 +11,7 @@
 	없으면 / 입력경력이 없다 출력 ,입력경력사항 쓰기 버튼
  -->
 
-<table border="1">
+<table>
 	<tr>
 		<td rowspan="5">사진</td>
 		<th colspan="4"> 이 력 서 </th>
@@ -50,7 +50,7 @@
 
 <form>
 	<!-- listCnt=iptid IPTCOMPANY	IPTWH	IPTSTART	IPTEND	IPTPOS	IPTPERIOD -->
-	<table border="1">	
+	<table>	
 		<thead>
 			<tr>
 				<td>번호</td>
@@ -64,23 +64,71 @@
 		</thead>
 		<tbody id="iptCrr_tbody">
 			<c:forEach var="iptDto" items="${iptDtoList}">
+				<c:set var="iptPos" value="${iptDto.iptPos}" />
+				<c:set var="iptId" value="${iptDto.iptId}" />
+				
 				<tr>
 					<td width="20"><input type="text" placeholder="번호" readonly /></td>
+					<input type='hidden' id='iptId' value="${iptId}">
 					<td><input type="text" placeholder="업체명" value="${iptDto.iptCompany}" /></td>
 					<td><input type="text" placeholder="근무지" value="${iptDto.iptWh}" /></td>
 					<td><fmt:formatDate value="${iptDto.iptStart}" pattern="yyyy년 MM월 dd일"/></td>
 					<td><fmt:formatDate value="${iptDto.iptEnd}" pattern="yyyy년 MM월 dd일"/></td>
 					<td>
-						<input type="text" placeholder="근무직무" value="${iptDto.iptPos}" />
-					<!-- TODO : iptCrr 근무직무 / 추후 이런식으로 바꾸고 싶음 	
-						<select class="form-control" id="sel1">
-						    <option value="1">팀장</option>
-						    <option value="2">스캔</option>
-						    <option value="3">예도</option>
-						    <option value="4">안내</option>
-						    <option value="5">경호</option>
-						    <option value="6">기타</option>
-						  </select> -->
+						<%-- <input type="text" placeholder="근무직무" value="${iptDto.iptPos}" /> --%>
+					<!-- TODO : iptCrr 근무직무 / 추후 이런식으로 바꾸고 싶음 -->	
+						<select class="form-control" id="iptPos">
+						    <c:choose>
+								<c:when test="${iptPos eq 1}">
+									<option value="1" selected="selected">팀장</option>
+									<option value="2">스캔</option>
+								    <option value="3">예도</option>
+								    <option value="4">안내</option>
+								    <option value="5">경호</option>
+								    <option value="6">기타</option>
+								</c:when>
+								<c:when test="${iptPos eq 2}">
+									<option value="1">팀장</option>
+									<option value="2" selected="selected">스캔</option>
+								    <option value="3">예도</option>
+								    <option value="4">안내</option>
+								    <option value="5">경호</option>
+								    <option value="6">기타</option>
+								</c:when>
+								<c:when test="${iptPos eq 3}">
+									<option value="1">팀장</option>
+									<option value="2">스캔</option>
+								    <option value="3" selected="selected">예도</option>
+								    <option value="4">안내</option>
+								    <option value="5">경호</option>
+								    <option value="6">기타</option>
+								</c:when>
+								<c:when test="${iptPos eq 4}">
+									<option value="1">팀장</option>
+									<option value="2">스캔</option>
+								    <option value="3">예도</option>
+								    <option value="4" selected="selected">안내</option>
+								    <option value="5">경호</option>
+								    <option value="6">기타</option>
+								</c:when>
+								<c:when test="${iptPos eq 5}">
+									<option value="1">팀장</option>
+									<option value="2">스캔</option>
+								    <option value="3">예도</option>
+								    <option value="4">안내</option>
+								    <option value="5" selected="selected">경호</option>
+								    <option value="6">기타</option>
+								</c:when>
+								<c:when test="${iptPos eq 6}">
+									<option value="1">팀장</option>
+									<option value="2">스캔</option>
+								    <option value="3">예도</option>
+								    <option value="4">안내</option>
+								    <option value="5">경호</option>
+								    <option value="6" selected="selected">기타</option>
+								</c:when>
+							</c:choose>
+						</select> 
 					</td>
 					<td><input type="text" placeholder="기간" value="${iptDto.iptEnd}-${iptDto.iptStart}" readonly /></td>
 					<td>
@@ -99,6 +147,8 @@
 		</tr>
 	</table>
 </form>
+
+
 </c:if>
 
 <%@ include file="../recCrr/recCrr.jsp" %>
