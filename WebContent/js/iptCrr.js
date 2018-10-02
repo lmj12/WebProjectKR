@@ -1,8 +1,8 @@
 
 $(function(){
-	/*$('table').addClass(
-		'table table-dark table-bordered'
-	);*/
+	$('table').addClass(
+		'table table-bordered'
+	);
 	
 	
 	// 입력경력 행추가
