@@ -103,7 +103,7 @@
 								    <option value="5">경호</option>
 								    <option value="6">기타</option>
 								</c:when>
-								<c:when test="${iptPos eq 2}">
+								<c:when test="${iptDto.posId eq 2}">
 									<option value="1">팀장</option>
 									<option value="2" selected="selected">스캔</option>
 								    <option value="3">예도</option>
@@ -111,7 +111,7 @@
 								    <option value="5">경호</option>
 								    <option value="6">기타</option>
 								</c:when>
-								<c:when test="${iptPos eq 3}">
+								<c:when test="${iptDto.posId eq 3}">
 									<option value="1">팀장</option>
 									<option value="2">스캔</option>
 								    <option value="3" selected="selected">예도</option>
@@ -119,7 +119,7 @@
 								    <option value="5">경호</option>
 								    <option value="6">기타</option>
 								</c:when>
-								<c:when test="${iptPos eq 4}">
+								<c:when test="${iptDto.posId eq 4}">
 									<option value="1">팀장</option>
 									<option value="2">스캔</option>
 								    <option value="3">예도</option>
@@ -127,7 +127,7 @@
 								    <option value="5">경호</option>
 								    <option value="6">기타</option>
 								</c:when>
-								<c:when test="${iptPos eq 5}">
+								<c:when test="${iptDto.posId eq 5}">
 									<option value="1">팀장</option>
 									<option value="2">스캔</option>
 								    <option value="3">예도</option>
@@ -135,7 +135,7 @@
 								    <option value="5" selected="selected">경호</option>
 								    <option value="6">기타</option>
 								</c:when>
-								<c:when test="${iptPos eq 6}">
+								<c:when test="${iptDto.posId eq 6}">
 									<option value="1">팀장</option>
 									<option value="2">스캔</option>
 								    <option value="3">예도</option>
