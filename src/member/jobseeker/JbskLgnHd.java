@@ -23,7 +23,7 @@ public class JbskLgnHd implements JobSeekerHandler {
 		String jbskId = request.getParameter( "jbskId" );
 		String jbskPasswd = request.getParameter( "jbskPasswd" );
 
-// 입력경력사항 작업 중 에러막기로 임시 주석처리		
+// FIXME : 입력경력사항 작업 중 에러막기로 임시 주석처리		
 //		int result = jbskDao.jbskLgn( jbskId, jbskPasswd );
 		
 //		request.setAttribute( "result", result );
