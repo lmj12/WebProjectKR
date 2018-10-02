@@ -11,11 +11,11 @@
 <table border="1">
 			
 	<tr>
-		<th colspan="5" align="left">
+		<th style="width : 15%" colspan="3" align="left">
 		${sessionScope.memid}님의 게시판입니다. 
 		</th>
-	<tr>
-		<th colspan="6" align="right">
+	
+		<th style="width : 5%" colspan="1" align="right">
 			<a href="boardWrt.do">글쓰기</a>
 			&nbsp;&nbsp;&nbsp;
 		</th>

@@ -4,5 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="Rec">
-   
+   	<select id="Rec.recCnt" resultType="int">
+   		select count(*) from KRrecruit
+   	</select>
+   	<update id="Rec.addCount" parameterType="int">
+		update KRrecruit set recCount=recCount+1 where recId=#{recId}
+	</update>
+	<select id="recList" resultType="recruit.RecruitDataBean" parameterType="java.util.Map">
+			select recId,recStart,recEnd,recContent,recSite,
+			recReadCnt,recStatus,jobpId,r 
+			from (select recId,recStart,recEnd,recContent,recSite,
+			recReadCnt,recStatus,jobpId,rownum r from
+			(select recId,recStart,recEnd,recContent,recSite,
+			recReadCnt,recStatus,jobpId from KRrecruit order by recStart desc) 
+			order by recStart desc) where r &gt;= #{start} and r &lt;= #{end}
+	</select>
+	<insert id="recWrt" parameterType="recruit.RecruitDataBean">
+		insert into KRrecruit(recId,recStart,recEnd,reccontent,recSite,
+			recReadCnt,recStatus,jobpId) 
+		values( #{recId}, #{recStart}, #{recEnd}, #{reccontent}, #{recSite},
+		 #{recReadCnt}, #{recStatus}, #{jobpId})
+	</insert>
   </mapper>
