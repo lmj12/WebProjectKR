@@ -1,9 +1,9 @@
 
 $(function(){
-	// 입력해놓은 경력 불러오기
-	$('#iptCrr_tbody').append(
-
-	);
+	/*$('table').addClass(
+		'table table-dark table-bordered'
+	);*/
+	
 	
 	// 입력경력 행추가
 	$('input:button[name="btn_add_tbody"]').on(
