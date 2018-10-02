@@ -7,5 +7,9 @@
 </c:if>
 
 <c:if test="${sessionScope.memType eq 1}"> <!--  구직자회원이면 -->
-
+	<script type="text/javascript">	
+		//<!--
+		errorback("권한이 있는 사용자가 아닙니다.")
+		//-->
+	</script>
 </c:if>
