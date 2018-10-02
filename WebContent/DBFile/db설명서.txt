@@ -1,13 +1,13 @@
-db¼³¸í¼­!
+dbì„¤ëª…ì„œ!
 
-1.KRDB.txt¸¦ ´Ù¿î¹Þ¾Æ¼­ Á¢±ÙÇÏ±â ½¬¿î À§Ä¡¿¡ ³õ´Â´Ù
+1.KRDB.txtë¥¼ ë‹¤ìš´ë°›ì•„ì„œ ì ‘ê·¼í•˜ê¸° ì‰¬ìš´ ìœ„ì¹˜ì— ë†“ëŠ”ë‹¤
 
-2. cmd¿¡ µé¾î°£´Ù
+2. cmdì— ë“¤ì–´ê°„ë‹¤
 
-3. cd (KRDB.txt°¡ ÀÖ´Â °æ·Î, ex C:\jquery) ¸í·É¾î¸¦ »ç¿ëÇØ¼­ °æ·Î¸¦ ¹Ù²Û´Ù
+3. cd (KRDB.txtê°€ ìžˆëŠ” ê²½ë¡œ, ex C:\jquery) ëª…ë ¹ì–´ë¥¼ ì‚¬ìš©í•´ì„œ ê²½ë¡œë¥¼ ë°”ê¾¼ë‹¤
 
-4. sqlplus encore/encore ¸í·É¾î·Î ¿À¶óÅ¬ 11g¿¡ ·Î±×ÀÎ ÇÑ´Ù
+4. sqlplus encore/encore ëª…ë ¹ì–´ë¡œ ì˜¤ë¼í´ 11gì— ë¡œê·¸ì¸ í•œë‹¤
 
-5. start KRDB.txt ·Î Å×ÀÌºíÀ» ¸¸µç´Ù.
+5. start KRDB.txt ë¡œ í…Œì´ë¸”ì„ ë§Œë“ ë‹¤.
 
-²ôÀÄ
+ë„ì•

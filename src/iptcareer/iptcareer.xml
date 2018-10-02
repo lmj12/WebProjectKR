@@ -4,6 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="IptCrr">
-
-      
+	<select id="iptCheck" parameterType="String" resultType="int" >
+		SELECT count(*) FROM kriptcareer WHERE jbskid = #{jbskId, jdbcType=VARCHAR}
+	</select>
+	<select id="iptList" parameterType="String" resultType="iptcareer.IptCrrDataBean">
+		SELECT * FROM kriptcareer WHERE jbskid = #{jbskId, jdbcType=VARCHAR}
+		ORDER BY iptstart ASC
+	</select>
   </mapper>
