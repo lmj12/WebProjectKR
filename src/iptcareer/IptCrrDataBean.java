@@ -3,12 +3,12 @@ package iptcareer;
 import java.sql.Timestamp;
 
 public class IptCrrDataBean {
-	private int iptId;
-	private String iptCompany;
-	private String iptWh; // 근무지
-	private Timestamp iptStart;
-	private Timestamp iptEnd;
-	private String iptPos;
+	private int iptId;			// 입력경력 idno
+	private String iptCompany;	// 업체명
+	private String iptWh; 		// 근무지
+	private Timestamp iptStart;	// 시작일시
+	private Timestamp iptEnd;	// 종료일시
+	private String iptPos;		// 직무
 	
 	public int getIptId() {
 		return iptId;
