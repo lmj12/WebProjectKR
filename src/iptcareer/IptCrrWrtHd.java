@@ -35,10 +35,26 @@ public class IptCrrWrtHd implements InputCareerHandler {
 		}
 		iptCrrDto.setIptCompany(request.getParameter("iptCompany"));
 		iptCrrDto.setIptWh(request.getParameter("iptWh"));
-		Timestamp startDate = Timestamp.valueOf(request.getParameter("iptStart"));
-		Timestamp endDate = Timestamp.valueOf(request.getParameter("iptEnd"));
-		iptCrrDto.setIptStart(startDate);
-		iptCrrDto.setIptEnd(endDate);
+		
+		String pattern = "MM/dd/yyyy";
+		String startStr = request.getParameter("iptStart");
+		String endStr = request.getParameter("iptEnd");
+		SimpleDateFormat startSdf = new SimpleDateFormat(pattern);
+		SimpleDateFormat endSdf = new SimpleDateFormat(pattern);
+		
+		Date startParse;
+		Date endParse;
+		try {
+			startParse = startSdf.parse(startStr);
+			endParse = endSdf.parse(endStr);
+			Timestamp startDate = new Timestamp(startParse.getTime());
+			Timestamp endDate = new Timestamp(endParse.getTime());
+			iptCrrDto.setIptStart(startDate);
+			iptCrrDto.setIptEnd(endDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		iptCrrDto.setPosId(Integer.parseInt(request.getParameter("posId")));
 		iptCrrDto.setJbskId(request.getParameter("jbskId"));
 		iptCrrDto.setIptPeriod(Integer.parseInt(request.getParameter("iptPeriod")));
