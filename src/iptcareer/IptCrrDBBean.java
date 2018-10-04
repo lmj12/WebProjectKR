@@ -15,7 +15,11 @@ public class IptCrrDBBean {
 	}
 	
 	public int iptWrt(IptCrrDataBean iptCrrDto) { 
-		return session.insert("IptCrr.insertIptCrr", iptCrrDto); 
+		return session.insert("IptCrr.mergeIptCrr", iptCrrDto); 
+	}
+	
+	public int iptModCheck(IptCrrDataBean iptCrrDto){
+		return session.selectOne("IptCrr.iptModCheck", iptCrrDto);
 	}
 	
 	public int iptMod(IptCrrDataBean iptCrrDto) { // 임시
