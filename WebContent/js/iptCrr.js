@@ -10,23 +10,20 @@ $(function(){
 //	);
 	
 	// Date Picker
+	$(document).find('.from, .to').removeClass('hasDatepicker').datepicker();	
+
 	var dateFormat = 
 		"mm/dd/yy",
-		from = $( "#from" ).datepicker({
+		from = $( ".from" ).datepicker({
 				language : "kr",
 				defaultDate: "+1w",
 				changeMonth: true,
-			}).on( "change", function() {
-				to.datepicker( "option", "minDate", getDate( this ) );
 			}),
-		to = $( "#to" ).datepicker({
+		to = $( ".to" ).datepicker({
 				language : "kr",
 				defaultDate: "+1w",
 				changeMonth: true,
-			}).on( "change", function() {
-				from.datepicker( "option", "maxDate", getDate( this ) );
 			});
-	
 	function getDate( element ) {
 		var date;
 		try {
@@ -43,18 +40,21 @@ $(function(){
 	);
 	
 	// 기간 구하기
-	$('#from, #to').on(
+	$('.from, .to').on(
 		'change',
 		function(event){
-			alert("변경");
-			var stDate = new Date($('#from').val());
-		    var endDate = new Date($('#to').val());
-		    alert(stDate);
-		    alert(endDate);
+			var stDate = new Date($('.from').val());
+		    var endDate = new Date($('.to').val());
 		    var btMs = endDate.getTime() - stDate.getTime() ;
 		    var btDay = btMs / (1000*60*60*24) ;
-		    if($('#fromTo').val() != NaN){
-		    	$('#fromTo').val(btDay);
+		    
+		    if($('.fromTo').val() != NaN){
+		    	if(btDay >= 30){
+		    		btDay = btDay / 30;
+		    		$('.fromTo').val(parseInt(btDay) + ' 개월');
+		    	} else {
+		    		$('.fromTo').val('1 개월');
+		    	}
 		    }
 		}
 	);
@@ -84,6 +84,8 @@ $(function(){
 			rowItem += 		'</td>';
 			rowItem += '<tr>';
 			$('#iptCrr_tbody').append(rowItem);
+			
+			$(document).find('.from, .to').removeClass('hasDatepicker').datepicker();
 			
 		}
 	);
