@@ -2,6 +2,9 @@ package iptcareer;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -14,11 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class IptCrrWrtHd implements InputCareerHandler {
 	@Resource
 	private IptCrrDBBean iptDao;
+	
 	@Override
-	@RequestMapping("/iptCrrWrtPro")
+	@RequestMapping("/iptCrrWrt")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws IptCrrException {
 		// TODO : 입력경력사항 writer
-		
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
