@@ -27,6 +27,11 @@ public class IptCrrWrtHd implements InputCareerHandler {
 		IptCrrDataBean iptCrrDto = new IptCrrDataBean();
 		// FIXME : iptId 는 NEXTVAL 로 들어간다
 		iptCrrDto.setIptId(Integer.parseInt(request.getParameter("iptId")));
+		if(request.getParameter("iptId") == null || request.getParameter("iptId").equals("")){
+			iptCrrDto.setIptId(0);
+		} else {
+			iptCrrDto.setIptId(Integer.parseInt(request.getParameter("iptId")));
+		}
 		iptCrrDto.setIptCompany(request.getParameter("iptCompany"));
 		iptCrrDto.setIptWh(request.getParameter("iptWh"));
 		Timestamp startDate = Timestamp.valueOf(request.getParameter("iptStart"));
