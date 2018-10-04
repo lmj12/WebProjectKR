@@ -1,5 +1,14 @@
 
 $(function(){
+	// debug
+//	$('*').on(
+//		'click',
+//		function(event){
+//			alert( $(this).val() );
+//			return false;
+//		}
+//	);
+	
 	// Date Picker
 	var dateFormat = 
 		"mm/dd/yy",
