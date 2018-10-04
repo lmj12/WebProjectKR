@@ -11,4 +11,55 @@
 		SELECT * FROM kriptcareer WHERE jbskid = #{jbskId, jdbcType=VARCHAR}
 		ORDER BY iptstart ASC
 	</select>
+	
+ 	<update id="mergeIptCrr" parameterType="iptcareer.IptCrrDataBean">
+		MERGE INTO kriptcareer ipt
+			USING dual
+			ON (ipt.iptId = #{iptId, jdbcType=NUMERIC})
+		WHEN MATCHED THEN
+			UPDATE SET 
+				iptCompany = #{iptCompany},
+				iptWh = #{iptWh},
+				iptStart = #{iptStart},
+				iptEnd = #{iptEnd},
+				posId = #{posId},
+				jbskId = #{jbskId, jdbcType=VARCHAR},
+				iptPeriod = #{iptPeriod, jdbcType=NUMERIC}
+				
+		WHEN NOT MATCHED THEN
+			INSERT (
+				iptId,
+				iptCompany,
+				iptWh,
+				iptStart,
+				iptEnd,
+				posId,
+				jbskId,
+				iptPeriod
+				)
+			VALUES ( 
+				KRiptcareer_seq.NEXTVAL, 
+				#{iptCompany}, 
+				#{iptWh}, 
+				#{iptStart}, 
+				#{iptEnd}, 
+				#{posId}, 
+				#{jbskId, jdbcType=VARCHAR}, 
+				#{iptPeriod, jdbcType=NUMERIC} 
+				)
+	</update>
+	
+	<select id="iptModCheck" parameterType="iptcareer.IptCrrDataBean" resultType="int">
+		SELECT * FROM kriptcareer 
+		WHERE 
+		IPTID = #{iptId, jdbcType=NUMERIC}			
+		<if test="iptId != null">
+			AND
+			IPTCOMPANY = #{iptCompany}	AND
+			IPTWH = #{iptWh}			AND
+			IPTSTART = #{iptStart}		AND
+			IPTEND = #{iptEnd}			AND
+			POSID = #{posId}
+		</if>
+	</select>
   </mapper>

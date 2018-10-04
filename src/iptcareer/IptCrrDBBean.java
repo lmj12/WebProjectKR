@@ -1,8 +1,6 @@
 package iptcareer;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -16,25 +14,28 @@ public class IptCrrDBBean {
 		return session.selectOne("IptCrr.iptCheck", jbskId);
 	}
 	
-	public int iptWrt(IptCrrDataBean iptCrrDto) { // 임시매개변수. 필요시 변경할것.
-		int rst=0;
-		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	public int iptWrt(IptCrrDataBean iptCrrDto) { 
+		return session.insert("IptCrr.mergeIptCrr", iptCrrDto); 
 	}
 	
-	public int iptMod(IptCrrDataBean iptCrrDto) { // 임시매개변수. 필요시 변경할것.
-		int rst=0;
-		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	public int iptModCheck(IptCrrDataBean iptCrrDto){
+		return session.selectOne("IptCrr.iptModCheck", iptCrrDto);
 	}
 	
-	public int iptDel(int iptId) { // 임시매개변수. 필요시 변경할것.
+	public int iptMod(IptCrrDataBean iptCrrDto) { // 임시
 		int rst=0;
-		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		return rst; 
 	}
 	
-	public IptCrrDataBean iptGet(int iptId) {
+	public int iptDel(int iptId) {	// 임시
+		int rst=0;
+		return rst; 
+	}
+	
+	public IptCrrDataBean iptGet(int iptId) {	// 임시
 		// 리스트에서 한 개 
 		IptCrrDataBean iptCrrDto = new IptCrrDataBean();
-		return iptCrrDto; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		return iptCrrDto; 
 	}
 	
 	public List<IptCrrDataBean> iptList(String jbskId) {

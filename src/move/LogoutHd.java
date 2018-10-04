@@ -13,7 +13,6 @@ public class LogoutHd implements MoveHandler {
 	@RequestMapping("/logout")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws MoveException {
 		request.getSession().removeAttribute( "memid" );
-		System.out.println("진입");
 		// TODO : logout/로그아웃핸들러
 		return new ModelAndView("main");
 	}

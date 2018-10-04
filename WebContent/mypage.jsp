@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../setting/setting.jsp" %>
 <script type="text/javascript">
@@ -24,6 +24,7 @@
 	</c:if>
 	<c:if test="${sessionScope.memType eq 1}">
     	<td>  <input type="button" value="신고게시판" onclick="location='boardList.do'"> </td>  
+    	<td> <input type="button" value="이력서" onclick="location='iptCrr.do'"> </td>
     	<c:if test="${sessionScope.teamReq eq 1}">
     		<script type="text/javascript">
 				//<!--

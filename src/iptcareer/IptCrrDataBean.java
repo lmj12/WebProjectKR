@@ -8,7 +8,9 @@ public class IptCrrDataBean {
 	private String iptWh; 		// 근무지
 	private Timestamp iptStart;	// 시작일시
 	private Timestamp iptEnd;	// 종료일시
-	private String iptPos;		// 직무
+	private int posId;
+	private String jbskId;
+	private int iptPeriod;
 	
 	public int getIptId() {
 		return iptId;
@@ -40,11 +42,23 @@ public class IptCrrDataBean {
 	public void setIptEnd(Timestamp iptEnd) {
 		this.iptEnd = iptEnd;
 	}
-	public String getIptPos() {
-		return iptPos;
+	public int getPosId() {
+		return posId;
 	}
-	public void setIptPos(String iptPos) {
-		this.iptPos = iptPos;
+	public void setPosId(int posId) {
+		this.posId = posId;
+	}
+	public String getJbskId() {
+		return jbskId;
+	}
+	public void setJbskId(String jbskId) {
+		this.jbskId = jbskId;
+	}
+	public int getIptPeriod() {
+		return iptPeriod;
+	}
+	public void setIptPeriod(int iptPeriod) {
+		this.iptPeriod = iptPeriod;
 	}
 	
 }
