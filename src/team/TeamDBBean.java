@@ -44,10 +44,10 @@ private SqlSession session = SqlMapClient.getSession();
 		return session.selectOne("Team.jbskCk",jbskId);
 	}
 	
-	public void teamAssign(String jbskId) { // 임시매개변수. 필요시 변경할것.
+	public int teamAssign(TeamDataBean teamDto) { // 임시매개변수. 필요시 변경할것.
 		session.flushStatements();
 		session.clearCache();
-		session.update("Team.assign", jbskId);
+		return session.update("Team.assign", teamDto);
 	}
 	
 	public int teamExit(TeamDataBean teamDto) { // 임시매개변수. 필요시 변경할것.

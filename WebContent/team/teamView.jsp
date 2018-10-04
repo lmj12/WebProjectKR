@@ -2,10 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../setting/setting.jsp" %>
 <!DOCTYPE html>
+<h4>나의 팀</h4>
 <div id="listd">
 
 </div>
 <br><br>
+<h4>승인 대기중인 구직자</h4>
 <div id="reql">
 
 </div>
@@ -26,8 +28,7 @@
 	$(document).ready(
 		function(){
 			if(tl[0]){
-				var list = $.parseJson(tl);
-				teamList(list);
+				teamList(tl);
 			} else {
 				$("#listd").text("팀원이 없습니다.");
 			}
@@ -40,13 +41,14 @@
 		var tabstr = '';
 		tabstr = "<table border='1'><tr><th>ID</th><th>이름</th><th>성별</th><th>생년월일</th><th>전화번호</th><th>추방</th></tr>"
 		for(var i=0; i<list.length; i++ ){
-			tabstr += "<tr><td id='t"+i+"'>"+list[i].jbskId+"</td><td>"+list[i].jbskName+"</td><td>"
+			tabstr += "<tr><td id='t"+i+"'>"+list[i].jbskId+"</td><td>"+list[i].jbskName+"</td>"
 			if(list[i].gender == 1){
 				tabstr += "<td>남</td>"
 			} else {
 				tabstr += "<td>여</td>"
 			}
-			tabstr += "<td>"+list[i].jbskBd+"</td><td>"+list[i].jbskTel+"</td><td><input type='button' value='추방' onclick='teamExit(this)'></td></tr>"
+			var date = new Date(Number(list[i].jbskBd));
+			tabstr += "<td>"+date.getFullYear()+"년 "+date.getMonth()+"월 "+date.getDate()+"일</td><td>"+list[i].jbskTel+"</td><td><input type='button' value='추방' onclick='teamExit(this)'></td></tr>"
 		}
 		$("#listd").html(tabstr);
 	}
@@ -134,6 +136,7 @@
 	
 	function teamExit(object){
 		var jbskId = object.parentElement.parentElement.firstChild.textContent;//id값 찾아가기.. 다른거 안먹어서 이걸로함..
+
 		$.ajax({
 		    method : "POST",
 		    url : "ajaxTeamExit.do",
