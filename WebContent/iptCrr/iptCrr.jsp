@@ -60,22 +60,14 @@
 		</thead>
 		<tbody id="iptCrr_tbody">
 			<c:forEach var="iptDto" items="${iptDtoList}">
-				<c:set var="iptId" value="${iptDto.iptId}" />
-				<c:set var="posId" value="${iptDto.posId}"/>
-				<script type="text/javascript">
-				//<!--
-				alert(posId);
-				//-->
-				</script>
 				<tr>
-					<td width="8px"><input type="text" name=iptId value="${iptId}" placeholder="번호" /></td>
-					<%-- 	<input type='hidden' id='iptId' value="${iptId}"> --%>
+					<td width="8px"><input type="text" name=iptId value="${iptDto.iptId}" placeholder="번호" /></td>
 					<td><input type="text" name="iptCompany" value="${iptDto.iptCompany}" placeholder="업체명"  /></td>
 					<td><input type="text" name="iptWh" value="${iptDto.iptWh}" placeholder="근무지" /></td>
-					<td><input type="text" name="iptStart" id="from" value="${iptDto.iptStart}"></td>
-					<td><input type="text" name="iptEnd" id="to" value="${iptDto.iptEnd}"></td>
+					<td><input type="text" name="iptStart" class="from" value="<fmt:formatDate value="${iptDto.iptStart}" pattern="MM/dd/yyyy"/>"></td>
+					<td><input type="text" name="iptEnd" class="to" value="<fmt:formatDate value="${iptDto.iptEnd}" pattern="MM/dd/yyyy"/>"></td>
 					<td>
-						<select class="form-control" name="posId" id="posId">
+						<select class="posId form-control" name="posId">
 					  		<!-- TODO : 스크립트 내에서 jstl, EL 태그를 써서 이런 반복 작업을 안 할 수도 있을텐데, 잘 안된다 -->
 						    <c:choose>
 								<c:when test="${iptDto.posId eq 1}">
@@ -137,10 +129,9 @@
 							</c:choose>
 						</select> 
 					</td>
-					<!-- TODO : DatePicker 연산해서 기간 도출 -->
-					<td><input type="text" name="iptPeriod" id="fromTo" value="" readonly placeholder="기간" /></td>
+					<td><input type="text" name="iptPeriod" class="fromTo" value="${iptDto.iptPeriod} 개월" placeholder="기간" /></td>
 					<td>
-						<button type="button" class="btn btn-danger"><i class="fa fa-minus"></i></button>
+						<button type="button" class="delCrr btn btn-danger"><i class="fa fa-minus"></i></button>
 					</td>
 				</tr>
 			</c:forEach>
@@ -148,8 +139,8 @@
 		<tr>
 			<td colspan="8">
 				<input type="button" name="btn_add_tbody" value="추가">
-				<input type="submit" name="btn_submit_tbody" value="저장">
-				<input type="reset" name="btn_reset_tbody" value="수정취소">
+				<input type="button" name="btn_submit_tbody" value="저장">
+				<input type="button" name="btn_reset_tbody" value="main" onclick="location='main.do'">
 			</td>
 		</tr>
 	</table>
