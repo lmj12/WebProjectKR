@@ -22,7 +22,6 @@
 			<tr>
 				<th> 1 </th>
 				<td> <input class="input" type="text" name="jbskId" maxlength="8" readonly></td>
-				<td>
 				<td> <input type="button" value="팀원 삭제"></td>
 			</tr>
 			<tr>

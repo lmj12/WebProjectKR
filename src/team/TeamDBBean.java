@@ -20,6 +20,12 @@ private SqlSession session = SqlMapClient.getSession();
 		return session.selectOne("Team.getTeamId",jbpId);
 	}
 	
+	public List<TeamDataBean> getTeamIdsk(String jbskId) {
+		session.flushStatements();
+		session.clearCache();
+		return session.selectList("Team.getTeamIdsk",jbskId);
+	}
+	
 	public int getMemCount(int teamId) {
 		session.flushStatements();
 		session.clearCache();
@@ -44,10 +50,22 @@ private SqlSession session = SqlMapClient.getSession();
 		session.update("Team.assign", jbskId);
 	}
 	
-	public int teamExit(String jbskId) { // 임시매개변수. 필요시 변경할것.
+	public int teamExit(TeamDataBean teamDto) { // 임시매개변수. 필요시 변경할것.
 		session.flushStatements();
 		session.clearCache();
-		return session.delete("Team.exit",jbskId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		return session.delete("Team.exit",teamDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	}
+	
+	public List <TeamDataBean> reqList(int teamId) { // 임시매개변수. 필요시 변경할것.
+		session.flushStatements();
+		session.clearCache();
+		return session.selectList("Team.reqList", teamId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	}
+	
+	public List <TeamDataBean> ckReq(String jbskId) { // 임시매개변수. 필요시 변경할것.
+		session.flushStatements();
+		session.clearCache();
+		return session.selectList("Team.ckReq", jbskId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
 	public List <TeamDataBean> teamList(int teamId) { // 임시매개변수. 필요시 변경할것.
