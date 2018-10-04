@@ -1,5 +1,7 @@
 package member.jobseeker;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.jobseeker.JobSeekerException;
+import team.TeamDBBean;
+import team.TeamDataBean;
 import member.jobprov.JobProvDBBean;
 import member.jobprov.JobProvDataBean;
 import member.jobseeker.JobSeekerDBBean;
@@ -18,7 +22,8 @@ import member.jobseeker.JobSeekerDBBean;
 public class JbskLgnHd implements JobSeekerHandler {
 	@Resource
 	public JobSeekerDBBean jbskDao;
-	
+	@Resource
+	private TeamDBBean teamDao;
 	@Override
 	@RequestMapping("/jbskLgn")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException{
@@ -33,9 +38,24 @@ public class JbskLgnHd implements JobSeekerHandler {
 		} else {
 			result = 1;
 		}
+		List<TeamDataBean> teamIds = teamDao.getTeamIdsk(jbskId);	//	1인값이 제일 먼저 나옴.
+		int teamId=0;
+		int teamReq=0;
+		if(teamIds == null || teamIds.size() == 0) {
+			
+		} else {
+			for (int i=0; i<teamIds.size(); i++) {
+				if(teamIds.get(i).getTmStatus()==1) {
+					teamId = teamIds.get(i).getTeamId();
+				} else {
+					teamReq=1;
+				}
+			}
+		}
+	
 		
-		
-		
+		request.setAttribute("teamId", teamId);
+		request.setAttribute("teamReq", teamReq);
 		request.setAttribute( "result", result );
 		request.setAttribute( "jbskId", jbskId);
 		request.setAttribute("memtype", 1);  // 구직자 : 1, 구인자 : 2 , 관리자 :3 

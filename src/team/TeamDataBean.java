@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 public class TeamDataBean {
 	private int teamId;
 	private String jbskId;
+	private String jobpCn;
 	private int tmStatus; // 승인상
 	private String jbskName;
 	private int jbskGender;
@@ -52,6 +53,12 @@ public class TeamDataBean {
 	}
 	public void setJbskTel(String jbskTel) {
 		this.jbskTel = jbskTel;
+	}
+	public String getJobpCn() {
+		return jobpCn;
+	}
+	public void setJobpCn(String jobpCn) {
+		this.jobpCn = jobpCn;
 	}
 	
 	

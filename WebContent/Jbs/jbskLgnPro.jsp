@@ -21,5 +21,7 @@
 		${sessionScope.memid = jbskId}
 		${sessionScope.memName = jbskName}
 		${sessionScope.memType = memtype}
+		${sessionScope.teamId = teamId}
+		${sessionScope.teamReq = teamReq}
 		<c:redirect url="main.do"/>
 	</c:if>

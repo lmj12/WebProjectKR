@@ -1,52 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:util="http://www.springframework.org/schema/util"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-						http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-						http://www.springframework.org/schema/context
-						http://www.springframework.org/schema/context/spring-context-4.3.xsd
-						http://www.springframework.org/schema/util
-						http://www.springframework.org/schema/util/spring-util-4.3.xsd
-						http://www.springframework.org/schema/aop
-						http://www.springframework.org/schema/aop/spring-aop-4.3.xsd 
-						http://www.springframework.org/schema/mvc
-						http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd ">		
-						
-	<context:component-scan base-package="iptcareer"/>
-	<context:component-scan base-package="board"/>
-	<context:component-scan base-package="member.admin"/>
-	<context:component-scan base-package="member.jobprov"/>
-	<context:component-scan base-package="member.jobseeker"/>
-	<context:component-scan base-package="move"/>
-	<context:component-scan base-package="mybatis"/>
-	<context:component-scan base-package="reccareer"/>
-	<context:component-scan base-package="reccareer.estimate"/>
-	<context:component-scan base-package="recruit"/>
-	<context:component-scan base-package="resume"/>
-	<context:component-scan base-package="schedule.job"/>
-	<context:component-scan base-package="schedule"/>
-	<context:component-scan base-package="team"/>
-	<mvc:annotation-driven>
-		<mvc:message-converters>
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
-				<property name="supportedMediaTypes">
-					<list>
-						<value>text/html; charset=UTF-8</value>
-					</list>
-				</property>
-			</bean>
-			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-				<property name="supportedMediaTypes">
-					<list>
-						<value>application/json; charset=UTF-8</value>
-					</list>
-				</property>
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
+   xmlns:p="http://www.springframework.org/schema/p"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:util="http://www.springframework.org/schema/util"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:aop="http://www.springframework.org/schema/aop"
+   xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                  http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+                  http://www.springframework.org/schema/context
+                  http://www.springframework.org/schema/context/spring-context-4.3.xsd
+                  http://www.springframework.org/schema/util
+                  http://www.springframework.org/schema/util/spring-util-4.3.xsd
+                  http://www.springframework.org/schema/aop
+                  http://www.springframework.org/schema/aop/spring-aop-4.3.xsd 
+                  http://www.springframework.org/schema/mvc
+                  http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd ">      
+                  
+   <context:component-scan base-package="iptcareer"/>
+   <context:component-scan base-package="board"/>
+   <context:component-scan base-package="member.admin"/>
+   <context:component-scan base-package="member.jobprov"/>
+   <context:component-scan base-package="member.jobseeker"/>
+   <context:component-scan base-package="move"/>
+   <context:component-scan base-package="mybatis"/>
+   <context:component-scan base-package="reccareer"/>
+   <context:component-scan base-package="reccareer.estimate"/>
+   <context:component-scan base-package="recruit"/>
+   <context:component-scan base-package="resume"/>
+   <context:component-scan base-package="schedule.job"/>
+   <context:component-scan base-package="schedule"/>
+   <context:component-scan base-package="team"/>
+   <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSize" value="10000000"/>
+        <property name="uploadTempDir" value="uploadTempDir"/>
+   </bean> 
+   <bean id="uploadTempDir" class="org.springframework.core.io.FileSystemResource">
+      <constructor-arg value="c:/image/"/>
+   </bean>
+   <mvc:annotation-driven>
+      <mvc:message-converters>
+         <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+            <property name="supportedMediaTypes">
+               <list>
+                  <value>text/html; charset=UTF-8</value>
+               </list>
+            </property>
+         </bean>
+         <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+            <property name="supportedMediaTypes">
+               <list>
+                  <value>application/json; charset=UTF-8</value>
+               </list>
+            </property>
+         </bean>
+      </mvc:message-converters>
+   </mvc:annotation-driven>
 </beans>
