@@ -58,18 +58,19 @@ $(function(){
 		    }
 		}
 	);
+	
 	// 입력경력 행추가
 	$('input:button[name="btn_add_tbody"]').on(
 		'click',
 		function(event){
 			var rowItem = '<tr>';
-			rowItem += 	'<td width="8px"><input type="text" name=iptId value="" placeholder="번호" /></td>';
+			rowItem += 		'<td width="8px"><input type="text" name=iptId value="" placeholder="번호 / hidden예정" /></td>';
 			rowItem += 		'<td><input type="text" name="iptCompany" value="" placeholder="업체명"  /></td>';
 			rowItem += 		'<td><input type="text" name="iptWh" value="" placeholder="근무지" /></td>';
-			rowItem += 		'<td><input type="text" name="iptStart" id="from" value=""></td>';
-			rowItem += 		'<td><input type="text" name="iptEnd" id="to" value=""></td>';
+			rowItem += 		'<td><input type="text" class="from" name="iptStart" value=""></td>';
+			rowItem += 		'<td><input type="text" class="to" name="iptEnd" value=""></td>';
 			
-			rowItem += 		'<td><select class="form-control" name="posId" id="posId">';
+			rowItem += 		'<td><select class="posId form-control" name="posId">';
 			rowItem +=			'<option value="1">팀장</option>';
 			rowItem +=			'<option value="2">스캔</option>';
 			rowItem +=			'<option value="3">예도</option>';
@@ -78,9 +79,9 @@ $(function(){
 			rowItem +=			'<option value="6">기타</option>';
 			rowItem +=		'</select></td>';
 			
-			rowItem += 		'<td><input type="text" name="iptPeriod" id="fromTo" value="" readonly placeholder="기간" /></td>';
+			rowItem += 		'<td><input type="text" name="iptPeriod" clss="fromTo" value="" readonly placeholder="기간" /></td>';
 			rowItem += 		'<td>';
-			rowItem += 			'<button type="button" class="btn btn-danger"> <i class="fa fa-minus"></i></button>';
+			rowItem += 			'<button type="button" class="delCrr btn btn-danger"> <i class="fa fa-minus"></i></button>';
 			rowItem += 		'</td>';
 			rowItem += '<tr>';
 			$('#iptCrr_tbody').append(rowItem);
@@ -89,15 +90,16 @@ $(function(){
 			
 		}
 	);
+	
 	// 입력경력 행삭제
 	$('#iptCrr_tbody').on(
 		'click',
-		'button',
+		'.delCrr',
 		function(event){
 			$(this).closest('tr').remove();
 		}
 	);
-});	
+	
 	$('input:button[name=btn_submit_tbody]').on(
 		'click',
 		function(){
