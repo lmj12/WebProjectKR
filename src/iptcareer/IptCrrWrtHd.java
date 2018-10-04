@@ -56,7 +56,7 @@ public class IptCrrWrtHd implements InputCareerHandler {
 		}
 		
 		iptCrrDto.setPosId(Integer.parseInt(request.getParameter("posId")));
-		iptCrrDto.setJbskId(request.getParameter("jbskId"));
+		iptCrrDto.setJbskId(jbskId);
 		iptCrrDto.setIptPeriod(Integer.parseInt(request.getParameter("iptPeriod")));
 		
 		int result = iptDao.iptWrt(iptCrrDto);
