@@ -44,7 +44,7 @@
 
 
 <script src="${js}iptCrr.js"></script>
-<form method="POST" action="iptCrrWrtPro.do">
+<form method="POST" name="iptCrrForm">
 	<!-- listCnt=iptid IPTCOMPANY	IPTWH	IPTSTART	IPTEND	posId	IPTPERIOD -->
 	<table>	
 		<thead>
