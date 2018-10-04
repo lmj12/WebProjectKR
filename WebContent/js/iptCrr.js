@@ -86,4 +86,61 @@ $(function(){
 			$(this).closest('tr').remove();
 		}
 	);
-});
+});	
+	$('input:button[name=btn_submit_tbody]').on(
+		'click',
+		function(){
+			$('#iptCrr_tbody tr').each(function () {
+				var cellItem = $(this).find(":input");
+				var itemObj = new Object();
+				
+				var stDate = new Date( cellItem.eq(3).val() );
+			    var endDate = new Date( cellItem.eq(4).val() );
+			    var btMs = endDate.getTime() - stDate.getTime() ;
+			    var btDay = btMs / (1000*60*60*24) ;
+			    
+		    	if(btDay >= 30){
+		    		btDay = parseInt(btDay / 30)+' 개월';
+		    	} else {
+		    		btDay = '1 개월';
+		    	}
+				
+				itemObj.iptId = cellItem.eq(0).val();	// 번호
+				itemObj.iptCompany = cellItem.eq(1).val();	// 업체명
+				itemObj.iptWh = cellItem.eq(2).val();	// 근무지
+				itemObj.iptStart = cellItem.eq(3).val();	// 시작일
+				itemObj.iptEnd = cellItem.eq(4).val();	// 종료일
+				itemObj.posId = cellItem.eq(5).val();	// 근무직무
+				
+				if(itemObj.iptId != undefined){
+					var realPeriod = btDay.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|" "]/g,"");
+					var queryStr = {
+						iptId : itemObj.iptId,
+						iptCompany : itemObj.iptCompany,
+						iptWh : itemObj.iptWh,
+						iptStart : itemObj.iptStart,
+						iptEnd : itemObj.iptEnd,
+						posId : itemObj.posId,
+						iptPeriod : realPeriod
+					}
+					
+					$.ajax({
+						type : 'POST',
+						url : 'iptCrrWrt.do',
+						data : queryStr,
+						dataType : 'json',
+						success : function(json){
+							alert ( "삽입성공" );
+						},
+						error:function(request,status,error){
+//						    alert( "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+							alert ("삽입실패 / 라고 뜨지만 들어는 감");
+						}
+					});
+				}
+			})
+		}     
+	);
+	            
+});             
+                
