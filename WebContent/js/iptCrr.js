@@ -9,6 +9,11 @@ $(function(){
 //		}
 //	);
 	
+	// 부트스트랩
+	$('table').addClass(
+		'table table-bordered'
+	);
+	
 	// Date Picker
 	$(document).find('.from, .to').removeClass('hasDatepicker').datepicker();	
 
@@ -33,11 +38,6 @@ $(function(){
 		}
 		return date;
 	}
-	
-	// 부트스트랩
-	$('table').addClass(
-		'table table-bordered'
-	);
 	
 	// 기간 구하기
 	$('.from, .to').on(
