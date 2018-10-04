@@ -22,11 +22,8 @@ public class TeamReqCk implements TeamHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws TeamException {
 		String jbskId = (String) request.getSession().getAttribute("memid");
 		
-		System.out.println(jbskId);
 		List<TeamDataBean> reqTeams = teamDao.ckReq(jbskId);
-		
 		ObjectMapper mapper = new ObjectMapper(); 
-		
 		String tl=""; 
 		try { 
 			tl = mapper.writeValueAsString(reqTeams);

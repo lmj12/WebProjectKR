@@ -23,8 +23,8 @@
     <select id="jbskCk" parameterType="String" resultType="int">
    		select count(*) from KRTEAMMEMBER where JBSKID = #{jbskId} AND TMSTATUS=1
    </select>
-   <update id="assign" parameterType="String">
-   		update KRTEAMMEMBER set TMSTATUS = 1 where JBSKID = #{jbskId}
+   <update id="assign" parameterType="team.TeamDataBean">
+   		update KRTEAMMEMBER set TMSTATUS = 1 where JBSKID = #{jbskId} AND TEAMID = #{teamId}
    </update>
    <delete id="exit" parameterType="team.TeamDataBean">
    		delete from KRTEAMMEMBER where JBSKID = #{jbskId} AND TEAMID = #{teamId}
