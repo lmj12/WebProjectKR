@@ -15,4 +15,18 @@
 		INSERT INTO kriptcareer 
 		VALUES( KRiptcareer_seq.NEXTVAL, #{iptCompany}, #{iptWh}, #{iptStart}, #{iptEnd}, #{posId}, #{jbskId}, #{iptPeriod, jdbcType=NUMERIC} )
 	</insert> -->
+	
+	<select id="iptModCheck" parameterType="iptcareer.IptCrrDataBean" resultType="int">
+		SELECT * FROM kriptcareer 
+		WHERE 
+		IPTID = #{iptId, jdbcType=NUMERIC}			
+		<if test="iptId != null">
+			AND
+			IPTCOMPANY = #{iptCompany}	AND
+			IPTWH = #{iptWh}			AND
+			IPTSTART = #{iptStart}		AND
+			IPTEND = #{iptEnd}			AND
+			POSID = #{posId}
+		</if>
+	</select>
   </mapper>
