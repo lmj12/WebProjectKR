@@ -21,7 +21,7 @@ public class RecViewHd implements RecruitHandler {
 		//System.out.println(recId);
 		RecruitDataBean recDto = recDao.recGet( recId );
 		
-		
+		RecruitDataBean recruitDto = recDao.recPosGet(recId);
 
 		//request.setAttribute( "number", number );
 		request.setAttribute( "pageNum", pageNum );

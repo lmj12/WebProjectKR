@@ -14,8 +14,32 @@
 
 		<tr>
 			<th>공고번호</th>
-			<td align="center"> <input type="text" name="recId" value="${recDto.recId}">	</td>
+			<td align="center"> <input type="text" name="recId" value="${recDto.recId}" readonly>	</td>
 		</tr>
+		<tr>
+			<th>직무 </th>
+			<td align="center"> 
+			<c:choose>
+			  <c:when test="${recruitDto.posId eq 1}">
+			  	팀장
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 2}">
+			   	스캔
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 3}">
+			   	예도
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 4}">
+			   	안내
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 5}">
+			   	경호
+			  </c:when>
+			  <c:otherwise>
+			   	기타
+			  </c:otherwise> 
+			 </c:choose>
+				</td>
 		<tr>
 			<th>시작일</th>
 			<td>${recDto.recStart}</td>

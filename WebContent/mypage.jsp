@@ -19,6 +19,14 @@
 </table>
 </form>
 
+<c:if test="${sessionScope.memType eq 2}">
+<tr>
+	
+			<jsp:include page="recMyView.do" flush="false"/>
+		
+</tr>
+</c:if>
+
 <br><br>
 <form name="jbkmybtmform" method="post" action="mypage.do" >
 <table border="1">

@@ -1,4 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
+<script type="text/javascript">
 var b= (document.getElementsByName("recEnd").value);
 
 var dateTime = (new Date(b));
@@ -46,7 +49,7 @@ function add(){
 	++cnt;
 	var addposx = document.getElementById("addposx");
 	var tr = document.createElement("tr");
-
+	for(var i=0; i<10; i++){
 	tr.innerHTML = "<select name='posPos"+cnt+"'>"
 		+ 	"<option value='1' selected>팀장</option>"	
 		+	"<option value='2'>스캔</option>"	
@@ -62,13 +65,8 @@ function add(){
 	//addposx.appendChild(td);
 	tr.colSpan =3;
 	addposx.appendChild(tr);
-	var elem = document.getElementById('posPos') 
-	var points = []; 
-	for(var i=0,len=elem.length;i<len;i++){  
-	    if (elem[i].selected){  
-	    points.push(elem[i].value);     
-	    } 
-	} 
+	
+	}
 }
 
 function delitem(){
@@ -76,3 +74,10 @@ function delitem(){
 	var deldiv = document.getElementById("id_"+cnt);
 	addposx.removeChild(deldiv);
 }
+
+
+
+
+
+
+</script>
