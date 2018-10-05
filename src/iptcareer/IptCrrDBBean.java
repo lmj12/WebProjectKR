@@ -22,22 +22,9 @@ public class IptCrrDBBean {
 		return session.selectOne("IptCrr.iptModCheck", iptCrrDto);
 	}
 	
-	public int iptMod(IptCrrDataBean iptCrrDto) { // 임시
-		int rst=0;
-		return rst; 
-	}
-	
 	public int iptDel(int iptId) {	// 임시
-		int rst=0;
-		return rst; 
+		return session.delete("IptCrr.delIptCrr", iptId); 
 	}
-	
-	public IptCrrDataBean iptGet(int iptId) {	// 임시
-		// 리스트에서 한 개 
-		IptCrrDataBean iptCrrDto = new IptCrrDataBean();
-		return iptCrrDto; 
-	}
-	
 	public List<IptCrrDataBean> iptList(String jbskId) {
 		// iptCrrHd -> iptCrr.jsp
 		return session.selectList("IptCrr.iptList", jbskId);

@@ -3,16 +3,24 @@
 <%@page import="java.util.List"%>
 <%@ include file="../setting/setting.jsp"%>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="${js}iptCrr.js"></script>
+
+<c:if test="${sessionErrorMsg ne null}">
+	<script type="text/javascript">
+	//<!--
+		var sessionErrorMsg = ${sessionErrorMsg};
+		alert( sessionErrorMsg );
+	//-->
+	</script>
+	<meta http-equiv="refresh" content="0; url=main.do">
+</c:if>
+
+
 
 <!DOCTYPE html>
 <h2> 이력서제작 및 경력입력 </h2>
-
-
-
-
 			
 										<!-- 기본 이력서 정보 -->
 <table>
@@ -42,8 +50,6 @@
 
 
 
-
-<script src="${js}iptCrr.js"></script>
 <form method="POST" name="iptCrrForm">
 	<!-- listCnt=iptid IPTCOMPANY	IPTWH	IPTSTART	IPTEND	posId	IPTPERIOD -->
 	<table>	
@@ -59,9 +65,12 @@
 			</tr>
 		</thead>
 		<tbody id="iptCrr_tbody">
+			<c:set var="cntNum" value="1" />
 			<c:forEach var="iptDto" items="${iptDtoList}">
+				<h4>iptId 는 ${iptDto.iptId}</h4>
 				<tr>
-					<td width="8px"><input type="text" name=iptId value="${iptDto.iptId}" placeholder="번호" /></td>
+					<input type="hidden" name="iptId" value="${iptDto.iptId}">
+					<td><input type="text" name="cntNum" value="${cntNum}" placeholder="번호" /></td>
 					<td><input type="text" name="iptCompany" value="${iptDto.iptCompany}" placeholder="업체명"  /></td>
 					<td><input type="text" name="iptWh" value="${iptDto.iptWh}" placeholder="근무지" /></td>
 					<td><input type="text" name="iptStart" class="from" value="<fmt:formatDate value="${iptDto.iptStart}" pattern="MM/dd/yyyy"/>"></td>
@@ -134,6 +143,7 @@
 						<button type="button" class="delCrr btn btn-danger"><i class="fa fa-minus"></i></button>
 					</td>
 				</tr>
+				<c:set var="cntNum" value="${cntNum + 1}" />
 			</c:forEach>
 		</tbody>
 		<tr>
