@@ -1,6 +1,5 @@
 package recruit;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,24 +13,31 @@ public class RecruitDBBean {
 	public int recWrt(RecruitDataBean recruitDto) { // 임시매개변수. 필요시 변경할것.			
 		return session.insert("Rec.recWrt", recruitDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
-	
+
 	public int recMod(RecruitDataBean recruitDto) { // 임시매개변수. 필요시 변경할것.
-		int rst=0;
-		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		return session.update("Rec.recMod", recruitDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
-	public int recDel(int rctId) { // 임시매개변수. 필요시 변경할것.
-		int rst=0;
-		return rst; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	public int recDel(int recId) { // 임시매개변수. 필요시 변경할것.
+		return session.delete("Rec.recDel", recId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
-	
+	public int recPos(Map<String, Integer> map) {		
+		return session.insert("Rec.recPos", map);
+	}
+	public List<RecruitDataBean> recPosGet(int recId) {
+		return session.selectList("Rec.recPosGet", recId);
+	}
+	public int recGetId(RecruitDataBean recruitDto) {
+		session.flushStatements();
+		session.clearCache();
+		return session.selectOne("Rec.getId",recruitDto );
+	}
 	public void recStaCng(int rctId) { // 임시매개변수. 필요시 변경할것.
 		
 	}
 	
-	public List<RecruitDataBean> recMyList(String jbpId) { // 임시매개변수. 필요시 변경할것.
-		List<RecruitDataBean> myRecs = new ArrayList<RecruitDataBean>();
-		return myRecs; // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	public List<RecruitDataBean> recMyList(String jobpId) { // 임시매개변수. 필요시 변경할것.
+		return session.selectList("Rec.recMyList", jobpId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
 	public RecruitDataBean recGet(int recId) { // 임시매개변수. 필요시 변경할것.
@@ -44,7 +50,14 @@ public class RecruitDBBean {
 	public int recCnt() {
 		return session.selectOne("Rec.recCnt");				
 	}
+	public int recMyCnt(String jobpId) {
+		return session.selectOne("Rec.recMyCnt", jobpId);
+	}
+	public int recMax() {
+		return session.selectOne("Rec.recMax");
+	}
 	public void addCount(int recId) {			
 		session.update("Rec.addCount", recId);
 	}
+
 }

@@ -14,8 +14,34 @@
 
 		<tr>
 			<th>공고번호</th>
-			<td align="center"> <input type="text" name="recId" value="${recDto.recId}">	</td>
+			<td align="center">${recDto.recId}</td>
 		</tr>
+		<tr>
+			<th>직무 </th>
+			<td align="center"> 
+			<c:forEach var="recruitDto" items="${recruitDto}">
+			<c:choose>
+			  <c:when test="${recruitDto.posId eq 1}">
+			  	팀장
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 2}">
+			   	스캔
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 3}">
+			   	예도
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 4}">
+			   	안내
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 5}">
+			   	경호
+			  </c:when>
+			  <c:otherwise>
+			   	기타
+			  </c:otherwise> 
+			 </c:choose>
+			 </c:forEach>
+				</td>
 		<tr>
 			<th>시작일</th>
 			<td>${recDto.recStart}</td>
@@ -36,25 +62,21 @@
 			</td>
 		</tr>
 		<tr>
-			<th>모집직무 </th>
-			<td align="center">
-				${recDto.getPosPos()}
-			</td>
-		<tr>
 			<th>공고내용</th>
 			<td align="center">
 				${recDto.getReccontent()}
 			</td>
+		</tr>
 		<tr>
 			<th>사업자이름</th>
 			<td align="center">
-				${recDto.getJbpCn()}
+				${jbpDto.jobpCn}
 			</td>
 		</tr>
 		<tr>
 			<th>사업자번호 </th>
 			<td align="center">
-				${recDto.getJbpBnp()}
+				${jbpDto.jobpBno}
 			</td>
 		<tr>
 			<th>링크</th>
@@ -79,7 +101,7 @@
 		</c:if>
 			
 			<input class="inputbutton" type="button" value="목록으로"
-				onclick="location='recList.do?recId=${recDto.recId}&pageNum=${pageNum}'">
+				onclick="location='main.do?pageNum=${pageNum}'">
 		</th>
 	</tr>		
 </table>

@@ -1,5 +1,6 @@
 package recruit;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,11 +13,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.jobprov.JobProvDBBean;
+import member.jobprov.JobProvDataBean;
+
 
 @Controller
 public class RecListHd implements RecruitHandler {
 	@Resource
 	public RecruitDBBean recDao;
+	@Resource
+	public JobProvDBBean jbpDao;
 	@Override
 	@RequestMapping("/recList")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws RecruitException {
@@ -38,7 +44,7 @@ public class RecListHd implements RecruitHandler {
 		
 		
 		
-		//int recId = Integer.parseInt(request.getParameter("recId"));
+		//
 		pageNum = request.getParameter("pageNum");
 		if(pageNum==null || pageNum.equals("")){
 			pageNum = "1";
@@ -72,8 +78,31 @@ public class RecListHd implements RecruitHandler {
 			map.put("start", start);
 			map.put("end", end);
 			List <RecruitDataBean> articles = recDao.recList( map );
-			request.setAttribute( "articles", articles );
+			
+			List <RecListDataBean> articleList = new ArrayList<RecListDataBean>();
+			for(int i=0; i<articles.size(); i++) {
+				RecListDataBean recList = new RecListDataBean();
+				RecruitDataBean recDto = articles.get(i);
+				recList.setRecDto(recDto);
+				
+				int recId = recDto.getRecId();
+				String jbpId = recDto.getJobpId();
+				JobProvDataBean jbpDto= jbpDao.jobpGet(jbpId);
+				recList.setJobpDto(jbpDto);
+		
+				List<RecruitDataBean> poss = recDao.recPosGet(recId);
+				recList.setPoss(poss);
+				articleList.add(recList);
+			}
+			request.setAttribute("articleList", articleList);
+			request.setAttribute("cnt", articles.size());
+			
+		
+		
+		
 		}
+	
+		
 		
 		// TODO Auto-generated method stub
 		return new ModelAndView("/recruit/recList");

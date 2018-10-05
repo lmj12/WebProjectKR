@@ -15,7 +15,7 @@ public class RecruitDataBean {
 	private String jbpCn; // companyName
 	private String posPos;	//직무 포지션
 	private int crrCnt;	//지원자 숫자
-	
+	private int posId;
 	
 	public int getRecId() {
 		return recId;
@@ -88,6 +88,12 @@ public class RecruitDataBean {
 	}
 	public void setCrrCnt(int crrCnt) {
 		this.crrCnt = crrCnt;
+	}
+	public int getPosId() {
+		return posId;
+	}
+	public void setPosId(int posId) {
+		this.posId = posId;
 	}
 	
 	

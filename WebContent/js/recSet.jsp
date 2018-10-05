@@ -1,4 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
+<script type="text/javascript">
 var b= (document.getElementsByName("recEnd").value);
 
 var dateTime = (new Date(b));
@@ -28,38 +31,26 @@ function writecheck(){
 	}else if(!recwrite.recSite.value){
 		erroralert("사이트를 입력해주세요.");
 		return false;
-	}/*else if(rewrite.addpos.clicked == false){
+	}else if(rewrite.addpos.clicked == false){
 		alert("직무를 설정해주세요");
 		return false;
 	}else if(document.getElementById('addpos').clicked == false){
 		   alert("직무를 선택해주세요");
 		   return false;
-	}*/
-	/*if(document.getElementById('confirm').value == 0 ) {
+	}
+	if(document.getElementById('confirm').value == 0 ) {
 		erroralert( "직무를 선택해주세요" );
 		return false;
-	}*/
-	
-	var elem = document.getElementsByName('posPos') ;
-	
-	var points = []; 
-	for(var i=0 ;i<elem.length ;i++){  
-	    if (elem[i].value){  
-	    points.push(elem[i].value);   
-	    } 
-	} 
-	var id= document.getElementById('id');
-	id.setAttribute("value", points);
-	
+	}	
 }
-
+var cnt = 0;
 
 function add(){
 	++cnt;
 	var addposx = document.getElementById("addposx");
 	var tr = document.createElement("tr");
-
-	tr.innerHTML = "<select name='posPos'>"
+	for(var i=0; i<10; i++){
+	tr.innerHTML = "<select name='posPos"+cnt+"'>"
 		+ 	"<option value='1' selected>팀장</option>"	
 		+	"<option value='2'>스캔</option>"	
 		+	"<option value='3'>예도</option>"	
@@ -75,6 +66,7 @@ function add(){
 	tr.colSpan =3;
 	addposx.appendChild(tr);
 	
+	}
 }
 
 function delitem(){
@@ -82,3 +74,10 @@ function delitem(){
 	var deldiv = document.getElementById("id_"+cnt);
 	addposx.removeChild(deldiv);
 }
+
+
+
+
+
+
+</script>

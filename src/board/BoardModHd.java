@@ -10,17 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import recruit.RecruitDBBean;
 @Controller
 public class BoardModHd implements BoardHandler {
-
 	@Resource
 	public BoardDBBean boardDao;
+	
 	@Override
 	@RequestMapping("/boardMod")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws BoardException {
 		if(request.getParameter("modify")==null) {
 			
-			//int num = Integer.parseInt( request.getParameter( "num" ) );
+			
 			
 			String pageNum = request.getParameter( "pageNum" );
 			String boardId = ( request.getParameter( "boardId" ) );
@@ -34,7 +36,7 @@ public class BoardModHd implements BoardHandler {
 				BoardDataBean boardDto =boardDao.boardGet( boardId );
 				request.setAttribute( "boardDto", boardDto );
 				
-				return new ModelAndView("/board/boardMod");
+				return new ModelAndView("/recruit/recMod");
 			
 		}else {
 			
@@ -59,7 +61,7 @@ public class BoardModHd implements BoardHandler {
 			request.setAttribute( "result", result );
 			request.setAttribute( "pageNum", pageNum );
 			
-			return new ModelAndView("/board/boardMod");
+			return new ModelAndView("/recruit/recMod");
 			
 		}
 		

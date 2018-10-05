@@ -3,8 +3,24 @@
 <%@ include file="../setting/setting.jsp" %>
 <script src="${js}recSet.js"></script>
 <h2>공고 등록페이지</h2>
+<script type="text/javascript">
+var cnt = 0;
+
+</script>
+<c:if test="${rst eq 0}">
+	<script type="text/javascript">
+	
+		<!--
+		erroralert('inserterror');
+		//-->
+	</script>
+</c:if>
+<c:if test="${rst eq 1}">
+	<c:redirect url="recList.do"/>		
+</c:if>
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
+	
 		<!--
 		erroralert('inserterror');
 		//-->
@@ -13,28 +29,21 @@
 <c:if test="${result eq 1}">
 	<c:redirect url="recList.do"/>		
 </c:if>
-<form name="recwrite" method="post" action="recWrt.do" >
+<body onload="writefocus()">
+<form name="recwrite" method="post" action="recWrt.do" onsubmit="return writecheck()">
 <table border="1">
 <input type="hidden" name="jobpId" value="${jbpDto.jobpId}">
-	<tr>
-		<th>공고번호  </th>
-		<td> <input type="text" name="recId" value="${recDto.recId}" readonly> </td>
-	
-		
+<input type="hidden" name="recId" value="${recId}">
+	<tr>		
 		<th> 종료일</th>
 		<td> <input type="datetime-local" name="recEnd">	</td>
-	
+	</tr>
+	<tr id="addposx">
 		<th>공고 직무 </th>
-		<td> 
-		<select name="posPos">
-			<option value="팀장" selected>팀장</option>	
-			<option value="스캔">스캔</option>	
-			<option value="예도">예도</option>	
-			<option value="안내">안내</option>
-			<option value="경호">경호</option>		
-			<option value="기타">기타</option>	
-		</select>			
-		</td>
+		<td> 		
+		<input type="button" value="추가" name="addpos" onclick="return add()"> 
+		<input type="hidden" id="confirm" value="0">
+		<input type="hidden" id="id" name='id'>	</td>
 	</tr>
 	<tr>
 		<th colspan="8">공고내용</th>	
@@ -66,3 +75,4 @@
 
 </table>
 </form>
+</body>
