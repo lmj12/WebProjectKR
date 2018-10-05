@@ -79,12 +79,11 @@
 			<tr>
 				<th> 15 </th>
 				<td> <input class="input" type="text" name="jbskTeam" maxlength="8" readonly>
-			</tr>
-			
-			
-			
+			</tr>	
 		</table>	
 	</form>
+	
+
 	
 	
 	

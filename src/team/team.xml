@@ -11,22 +11,31 @@
    		select TEAMID from KRTEAM where JOBPID = #{jbpId}
    </select>
    
-   <insert id="req" parameterType="String">
+   <select id="getTeamIdsk" parameterType="String" resultType="team.TeamDataBean">
+   		select TEAMID from KRTEAMMEMBER where JBSKID = #{jbskId} ORDER BY TMSTATUS DESC
+   </select>
+   <insert id="req" parameterType="team.TeamDataBean">
    		insert into KRTEAMMEMBER values(#{teamId},#{jbskId},0)
    </insert>
    <select id="getMemCount" parameterType="int" resultType="int">
    		select count(*) from KRTEAMMEMBER where TEAMID = #{teamId}
    </select>
     <select id="jbskCk" parameterType="String" resultType="int">
-   		select count(*) from KRTEAMMEMBER where JBSKID = #{jbskId}
+   		select count(*) from KRTEAMMEMBER where JBSKID = #{jbskId} AND TMSTATUS=1
    </select>
-   <update id="assign" parameterType="String">
-   		update KRTEAMMEMBER set TMSTATUS = 1 where JBSKID = #{jbskId}
+   <update id="assign" parameterType="team.TeamDataBean">
+   		update KRTEAMMEMBER set TMSTATUS = 1 where JBSKID = #{jbskId} AND TEAMID = #{teamId}
    </update>
-   <delete id="exit" parameterType="String">
-   		delete from KRTEAMMEMBER where JBSKID = #{jbskId}
+   <delete id="exit" parameterType="team.TeamDataBean">
+   		delete from KRTEAMMEMBER where JBSKID = #{jbskId} AND TEAMID = #{teamId}
    </delete>
    <select id="list" parameterType="int" resultType="team.TeamDataBean">
-   		select t.TEAMID,t.JBSKID,t.TMSTATUS,j.jbskName,j.jbskGender,j.jbskBd,j.jbskTel from KRTEAMMEMBER t, KRJOBSEEKER j where TEAMID= #{teamId} AND t.jbskId = j.jbskId
+   		select t.TEAMID,t.JBSKID,t.TMSTATUS,j.jbskName,j.jbskGender,j.jbskBd,j.jbskTel from KRTEAMMEMBER t, KRJOBSEEKER j where TEAMID= #{teamId} AND t.jbskId = j.jbskId AND TMSTATUS=1
+   </select>
+   <select id="reqList" parameterType="int" resultType="team.TeamDataBean">
+   		select t.JBSKID,j.jbskName from KRTEAMMEMBER t, KRJOBSEEKER j where TEAMID= #{teamId} AND t.jbskId = j.jbskId AND TMSTATUS=0
+   </select>
+   <select id="ckReq" parameterType="String" resultType="team.TeamDataBean">
+   		select t.TEAMID, t.JOBPID, j.JOBPCN from KRTeam t, KRTEAMMEMBER	m ,KRjobprov j where m.JBSKID = #{JBSKID} AND m.TEAMID = t.TEAMID AND t.JOBPID = j.JOBPID 
    </select>
   </mapper>

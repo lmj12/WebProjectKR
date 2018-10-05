@@ -1,5 +1,13 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="java.io.File"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+ 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +25,7 @@
 	<h2> 구직자 회원가입 </h2>
 
 	<!-- <form method="post" action="jbskReg.do" name="jbskReg"> 실시간 처리 전-->
-	<form name="inputform" method="post" action="jbskReg.do" onsubmit="return inputcheck()">
+	<form name="inputform" method="post" action="jbskReg.do" enctype="multipart/form-data" onsubmit="return inputcheck()">
 	<input type="hidden" name='confirm' value="0">
 		<table border="1">
 			<tr>
@@ -147,11 +155,12 @@
 			<tr>
 				<th> 사진 </th>
 				<td>
-					<input type="file" name="jbskPic">
+					<input class="input" type="file" name="jbskPic">
 				</td>
 				<td>
 					<input class="input" type="text" name="jbskPic2" maxlength="15" readonly>
 				</td>
+				
 			</tr>
 			<tr>
 				<th> 정보수신동의 </th>
