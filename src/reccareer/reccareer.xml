@@ -4,5 +4,31 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="RecCrr">
-   
+   	<insert id="apply" parameterType="reccareer.RecCrrDataBean">
+   		insert into KRRECCAREER	values(KRRECCAREER_seq.nextVal,#{recId},#{posId},#{recCrrSta},#{rsmId})
+   </insert>
+   <delete id="cncl" parameterType="int">
+   		delete from KRRECCAREER where RECCRRID = #{recCrrId}
+   </delete>
+   <update id="mod" parameterType="reccareer.RecCrrDataBean">
+   		update KRRECCAREER set POSID = #{posId} where RECCRRID=#{recCrrId}
+   </update>
+   <select id="getById" parameterType="reccareer.RecCrrDataBean" resultType="reccareer.RecCrrDataBean">
+   		select c.RECCRRID, c.RECID, c.POSID, c.RECCRRSTA, c.RSMID, r.JBSKID	 from KRRECCAREER c, KRRESUME r where c.RSMID = r.RSMID AND RECID = #{recId} AND JBSKID = #{JBSKID}
+   </select>
+   <select id="get" parameterType="int" resultType="reccareer.RecCrrDataBean">
+   		select c.RECCRRID, c.RECID, c.POSID, c.RECCRRSTA, c.RSMID, r.JBSKID from KRRECCAREER c, KRRESUME r where c.RSMID = r.RSMID AND RECCRRID=#{recCrrId}
+   </select>
+   <select id="myList" parameterType="String" resultType="reccareer.RecCrrDataBean">
+   		select c.RECCRRID, c.RECID, c.POSID, c.RECCRRSTA, c.RSMID, r.JBSKID	 from KRRECCAREER c, KRRESUME r where c.RSMID = r.RSMID AND JBSKID = #{jbskId}
+   </select>
+   <select id="applyList" parameterType="int" resultType="reccareer.RecCrrDataBean">
+   		select c.RECCRRID, c.RECID, c.POSID, c.RECCRRSTA, c.RSMID, r.JBSKID	 from KRRECCAREER c, KRRESUME r where c.RSMID = r.RSMID AND RECID = #{recId} 
+   </select>
+   <select id="crrCnt" parameterType="int" resultType="int">
+   		select count(*) from KRRECCAREER where RECID = #{recId}
+   </select>
+   <update id="cng" parameterType="java.util.Map">
+   		update KRRECCAREER set RECCRRSTA = #{recCrrSta} where RECCRRID=#{recCrrId}
+   </update>
   </mapper>

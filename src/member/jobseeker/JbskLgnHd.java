@@ -44,7 +44,10 @@ public class JbskLgnHd implements JobSeekerHandler {
 		if(teamIds == null || teamIds.size() == 0) {
 			
 		} else {
+			System.out.println("size : " + teamIds.size());
+			
 			for (int i=0; i<teamIds.size(); i++) {
+				System.out.println("TmStatus : "+  teamIds.get(i).getTmStatus());
 				if(teamIds.get(i).getTmStatus()==1) {
 					teamId = teamIds.get(i).getTeamId();
 				} else {
@@ -53,7 +56,6 @@ public class JbskLgnHd implements JobSeekerHandler {
 			}
 		}
 	
-		
 		request.setAttribute("teamId", teamId);
 		request.setAttribute("teamReq", teamReq);
 		request.setAttribute( "result", result );

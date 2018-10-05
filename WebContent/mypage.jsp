@@ -8,6 +8,13 @@
 			location.href="teamReqCk.do"
 		} 
 	}
+	function toModify(){
+		if(${sessionScope.memType}==2){
+			location.href="jbpView.do"
+		} else if(${sessionScope.memType}==1) {
+			location.href="jbskView.do"
+		}
+	}
 	//-->
 </script>
 
@@ -17,7 +24,7 @@
 	<tr>
 		<th> <input type="text" name="jbksearch"> </th>
 		<td> <input type="button" value="검색"> </td>
-		<td> <input type="button" name="change" value="정보수정" onclick="location='jbpView.do'"> </td>
+		<td> <input type="button" name="change" value="정보수정" onclick="toModify()"> </td>
 	<c:if test="${sessionScope.teamId ne 0 }">
 		<td> <input type="button" value="팀" onclick="location='teamList.do'"></td>
 		<td> <input type="button" value="스케줄" onclick="location=''"> </td>
@@ -25,7 +32,7 @@
 	<c:if test="${sessionScope.memType eq 1}">
     	<td>  <input type="button" value="신고게시판" onclick="location='boardList.do'"> </td>  
     	<td> <input type="button" value="이력서" onclick="location='iptCrr.do'"> </td>
-    	<c:if test="${sessionScope.teamReq eq 1}">
+    	<c:if test="${sessionScope.teamReq eq '1' }">
     		<script type="text/javascript">
 				//<!--
 				alertTeam();
