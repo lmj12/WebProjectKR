@@ -1,6 +1,5 @@
-
 $(function(){
-	// debug
+	//////////////////////////////// debug ////////////////////////////////
 //	$('*').on(
 //		'click',
 //		function(event){
@@ -8,6 +7,37 @@ $(function(){
 //			return false;
 //		}
 //	);
+//	$('*').on(
+//		'click',
+//		function(event){
+//			alert( $(this).prop('tagName') );
+//			return false;
+//		}
+//	);
+	// debug .from / .to / .fromTo 찾기
+//	$('.from').on(
+//		'change',
+//		function(event){
+//			alert( 'this의 tagName : ' + $(this).prop('tagName') );
+//			alert( 'this의 value : ' + $(this).val() );
+//			alert( $(this).parent('td').prop('tagName') );	// TD
+//			alert( $(this).parent('td').siblings().prop('tagName') );	// INPUT
+//			alert( $(this).parent('td').siblings().find('.fromTo').val() );	// 1개월
+//			alert( $(this).parent('td').find('.from').val() );	// undefined
+//			alert( $(this).parent('td').siblings().find('.to').val() );	// .to value
+//			alert( $(this).parent('td').siblings('td').find('fromTo').val() );
+//			return false;
+//		}
+//	);
+	// debug iptId 찾기 
+//	$('#iptCrr_tbody').on(
+//		'click',
+//		'.delCrr',
+//		function(event){
+//			alert( $(this).parent().siblings().eq(0).val() );
+//		}
+//	);
+//////////////////////////////////////////////////////////////////////////////
 	
 	// 부트스트랩
 	$('table').addClass(
@@ -39,23 +69,43 @@ $(function(){
 		return date;
 	}
 	
-	// 기간 구하기
-	$('.from, .to').on(
+	// 기간 산출 및 출력
+	$(document).on(
 		'change',
+		'.from',
 		function(event){
-			var stDate = new Date($('.from').val());
-		    var endDate = new Date($('.to').val());
-		    var btMs = endDate.getTime() - stDate.getTime() ;
+			var stDate = new Date( $(this).val() );
+		    var edDate = new Date( $(this).parent('td').siblings('td').find('.to').val() );
+		    var btMs = edDate.getTime() - stDate.getTime() ;
 		    var btDay = btMs / (1000*60*60*24) ;
 		    
-		    if($('.fromTo').val() != NaN){
+		    if( $(this).parent('td').siblings().find('.fromTo').val() != NaN){
 		    	if(btDay >= 30){
 		    		btDay = btDay / 30;
-		    		$('.fromTo').val(parseInt(btDay) + ' 개월');
+		    		$(this).parent('td').siblings('td').find('.fromTo').val(parseInt(btDay) + ' 개월');
 		    	} else {
-		    		$('.fromTo').val('1 개월');
+		    		$(this).parent('td').siblings('td').find('.fromTo').val('1 개월');
 		    	}
 		    }
+		}
+	);
+	$(document).on(
+		'change',
+		'.to',
+		function(event){
+			var stDate = new Date( $(this).parent('td').siblings('td').find('.from').val() );
+		    var edDate = new Date( $(this).val() );
+		    var btMs = edDate.getTime() - stDate.getTime() ;
+		    var btDay = btMs / (1000*60*60*24) ;
+		    
+			if( $(this).parent('td').siblings().find('.fromTo').val() != NaN){
+		    	if(btDay >= 30){
+		    		btDay = btDay / 30;
+		    		$(this).parent('td').siblings('td').find('.fromTo').val(parseInt(btDay) + ' 개월');
+		    	} else {
+		    		$(this).parent('td').siblings('td').find('.fromTo').val('1 개월');
+		    	}
+			}
 		}
 	);
 	
@@ -63,8 +113,11 @@ $(function(){
 	$('input:button[name="btn_add_tbody"]').on(
 		'click',
 		function(event){
+			var iptNum = 0;	// iptcareer.xml 에 iptId를 겹치지 않게 하기 위함
+			var cntNum = eval( $(document).find('input[name=cntNum]').last().val() )+ 1;
 			var rowItem = '<tr>';
-			rowItem += 		'<td width="8px"><input type="text" name=iptId value="" placeholder="번호 / hidden예정" /></td>';
+			rowItem +=		'<input type="hidden" name="iptId" value="'+iptNum+'">';
+			rowItem += 		'<td><input type="text" name="cntNum" value="' + cntNum + '" placeholder="번호" /></td>';
 			rowItem += 		'<td><input type="text" name="iptCompany" value="" placeholder="업체명"  /></td>';
 			rowItem += 		'<td><input type="text" name="iptWh" value="" placeholder="근무지" /></td>';
 			rowItem += 		'<td><input type="text" class="from" name="iptStart" value=""></td>';
@@ -79,7 +132,7 @@ $(function(){
 			rowItem +=			'<option value="6">기타</option>';
 			rowItem +=		'</select></td>';
 			
-			rowItem += 		'<td><input type="text" name="iptPeriod" clss="fromTo" value="" readonly placeholder="기간" /></td>';
+			rowItem += 		'<td><input type="text" name="iptPeriod" class="fromTo" value="" readonly placeholder="기간" /></td>';
 			rowItem += 		'<td>';
 			rowItem += 			'<button type="button" class="delCrr btn btn-danger"> <i class="fa fa-minus"></i></button>';
 			rowItem += 		'</td>';
@@ -96,10 +149,25 @@ $(function(){
 		'click',
 		'.delCrr',
 		function(event){
-			$(this).closest('tr').remove();
+			$.ajax({
+				type : 'POST',
+				url : 'iptCrrDel.do',
+				data : {
+					iptId : $(this).parent().siblings().eq(0).val()
+				},
+				success : function(){
+					alert( '삭제성공' );
+					$(this).closest('tr').remove();
+					location.reload();
+				},
+				error : function(request,status,error){
+				    alert( "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+			});
 		}
 	);
 	
+	// 저장버튼 눌러서 INSERT, UPDATE 동시에 진행
 	$('input:button[name=btn_submit_tbody]').on(
 		'click',
 		function(){
@@ -108,8 +176,8 @@ $(function(){
 				var itemObj = new Object();
 				
 				var stDate = new Date( cellItem.eq(3).val() );
-			    var endDate = new Date( cellItem.eq(4).val() );
-			    var btMs = endDate.getTime() - stDate.getTime() ;
+			    var edDate = new Date( cellItem.eq(4).val() );
+			    var btMs = edDate.getTime() - stDate.getTime() ;
 			    var btDay = btMs / (1000*60*60*24) ;
 			    
 		    	if(btDay >= 30){
@@ -117,15 +185,15 @@ $(function(){
 		    	} else {
 		    		btDay = '1 개월';
 		    	}
-				
+		    	
 				itemObj.iptId = cellItem.eq(0).val();	// 번호
-				itemObj.iptCompany = cellItem.eq(1).val();	// 업체명
-				itemObj.iptWh = cellItem.eq(2).val();	// 근무지
-				itemObj.iptStart = cellItem.eq(3).val();	// 시작일
-				itemObj.iptEnd = cellItem.eq(4).val();	// 종료일
-				itemObj.posId = cellItem.eq(5).val();	// 근무직무
+				itemObj.iptCompany = cellItem.eq(2).val();	// 업체명
+				itemObj.iptWh = cellItem.eq(3).val();	// 근무지
+				itemObj.iptStart = cellItem.eq(4).val();	// 시작일
+				itemObj.iptEnd = cellItem.eq(5).val();	// 종료일
+				itemObj.posId = cellItem.eq(6).val();	// 근무직무
 				
-				if(itemObj.iptId != undefined){
+				if( itemObj.iptId != undefined ){
 					var realPeriod = btDay.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|" "]/g,"");
 					var queryStr = {
 						iptId : itemObj.iptId,
@@ -141,19 +209,16 @@ $(function(){
 						type : 'POST',
 						url : 'iptCrrWrt.do',
 						data : queryStr,
-						dataType : 'json',
-						success : function(json){
-							alert ( "삽입성공" );
+						success : function(){
+							alert ( '삽입성공' );
+							location.reload();
 						},
-						error:function(request,status,error){
-//						    alert( "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-							alert ("삽입실패 / 라고 뜨지만 들어는 감");
+						error : function(request,status,error){
+						    alert( "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 						}
 					});
 				}
 			})
 		}     
 	);
-	            
-});             
-                
+});

@@ -1,0 +1,26 @@
+이슈
+	-----iptId 가 pk 여서 seq 로 넘어가는 상황----
+	1. 번호는 보여주기용으로 순서대로 배치, iptId는 hidden으로 숨기기
+	2. 2개 일 때 번호가 20 에서 23으로 건너 뜀
+		-> 3개 넣었을 떄 23 에서 26으로 건너 뜀
+		-> 더 너엏을 때 31->35 => 잘못해서 3번누름
+		-> 36->39 => 40->30 ????
+	3. 기간 자동 계산 안됨
+	4. 삭제 아직 없음
+	5. 부트스트랩이 문제인지 뭐가 문제인지 
+	$.ajax 에서 success 로 못띄우고 error 로 보냄
+	-> 해결해야 확인메세지라도 띄우는데.... 안되면 숨겨서 그대로 가야지 뭐
+
+CREATE OR REPLACE
+FUNCTION seq_nextval_on_demand (p_seq_name  IN  VARCHAR2)
+  RETURN NUMBER
+IS
+  v_seq_val  NUMBER;
+BEGIN
+  EXECUTE IMMEDIATE 'select ' || p_seq_name || '.nextval from dual'
+     INTO v_seq_val;
+ 
+  RETURN v_seq_val;
+END seq_nextval_on_demand;
+
+http://alex-td.blogspot.com/2012/07/sequences-nextval-in-merge-operator.html
