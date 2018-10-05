@@ -62,4 +62,8 @@
 			POSID = #{posId}
 		</if>
 	</select>
+	
+	<delete id="delIptCrr" parameterType="int">
+		DELETE FROM kriptcareer WHERE iptId = #{iptId, jdbcType=NUMERIC}
+	</delete>
   </mapper>
