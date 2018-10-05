@@ -13,7 +13,7 @@
 			$('input[name=jbskPasswd]').on(
 				'keyup',
 				function(event){
-					var jbskPasswd = $('input[name=jPasswd]').val();
+					var jbskPasswd = $('input[name=jbskPasswd]').val();
 					if(jbskPasswd){
 						if(isNaN(jbskPasswd)){
 							$('.passwdresult').text('사용할 수 있습니다');
