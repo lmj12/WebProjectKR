@@ -3,9 +3,13 @@
 <%@ include file="../setting/setting.jsp"%>
 <script type="text/javascript">
 	//<!--
+	$(document).ready(function(){
+	   appTable();
+	});
 	function recApply() {
 		var recId = $("#recId").val()
-		var jbskId = ${sessionScope.memid};
+		var jbskId = '${sessionScope.memid}';
+		var posId = $("#pos option:selected").val();
 		$.ajax({
 	    	method : "POST",
 	    	url : "ajaxRecCrrApply.do",
@@ -16,10 +20,9 @@
 				posId : posId,
 				jbskId : jbskId
 			},
-			datatype : "json",
+			datatype : "text",
 			success : function(data){
-			
-				
+				alert("지원성공했습니다.")
 			}, error:function(request,status,error){
 				alert();
 			}
@@ -27,10 +30,11 @@
 	}
 	
 	function appTable(){
-		var appstr ='<select>';
-		var recDto = ${recruitDto};
-		for (var i=0; i<recDto.length; i++){
-			var posId = recDto[i].posId;
+		var appstr ="<select id='pos'>";
+		var posIds = document.getElementsByName("posId");
+		
+		for (var i=0; i<posIds.length; i++){
+			var posId = posIds[i].value
 			var posName;
 			if(posId==1){
 				posName = "팀장";
@@ -45,8 +49,8 @@
 			}
 			appstr += "<option value='"+posId+"'>"+posName+"</option>"  
 		}
-		appstr += "</select><input type='button' onclick='recApply()'>"
-		$("#app").html();
+		appstr += "</select><input type='button' value='지원' onclick='recApply()'>"
+		$("#app").html(appstr);
 	}
 	//-->
 </script>
@@ -70,6 +74,7 @@
 			<th>직무 </th>
 			<td align="center"> 
 			<c:forEach var="recruitDto" items="${recruitDto}">
+			<input type="hidden" value="${recruitDto.posId}" name="posId">
 			<c:choose>
 			  <c:when test="${recruitDto.posId eq 1}">
 			  	팀장
@@ -134,12 +139,7 @@
 				${recDto.getRecSite()}
 			</td>
 		</tr>
-</table>			
-<br>
-	
-	
-<table border='1'>
-	<tr>
+			<tr>
 		<th colspan="4">
 		<c:if test="${sessionScope.memid eq jobpDto.jobpId}">
 			<input class="inputbutton" type="button" value="공고수정"
@@ -152,6 +152,11 @@
 				onclick="location='main.do?pageNum=${pageNum}'">
 		</th>
 	</tr>	
+</table>			
+<br>
+	
+	
+<table border='1'>
 	<tr>
 		<th colspan='4' id="app">
 		
