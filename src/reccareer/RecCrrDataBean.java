@@ -5,10 +5,10 @@ import member.jobseeker.JobSeekerDataBean;
 public class RecCrrDataBean {
 	private int recCrrId;
 	private int recId;
-	private String posPos;
+	private String posId;
 	private JobSeekerDataBean jbskDto;
 	private int recCrrSta;
-	
+	private String jbskId;
 	public int getRecCrrId() {
 		return recCrrId;
 	}
@@ -21,11 +21,11 @@ public class RecCrrDataBean {
 	public void setRecId(int recId) {
 		this.recId = recId;
 	}
-	public String getPosPos() {
-		return posPos;
+	public String getPosId() {
+		return posId;
 	}
-	public void setPosPos(String posPos) {
-		this.posPos = posPos;
+	public void setPosId(String posId) {
+		this.posId = posId;
 	}
 	public JobSeekerDataBean getJbskDto() {
 		return jbskDto;
@@ -39,6 +39,14 @@ public class RecCrrDataBean {
 	public void setRecCrrSta(int recCrrSta) {
 		this.recCrrSta = recCrrSta;
 	}
+	public String getJbskId() {
+		return jbskId;
+	}
+	public void setJbskId(String jbskId) {
+		this.jbskId = jbskId;
+	}
+	
+	
 	
 	
 }

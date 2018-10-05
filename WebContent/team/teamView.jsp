@@ -2,22 +2,25 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../setting/setting.jsp" %>
 <!DOCTYPE html>
+
 <h4>나의 팀</h4>
 <div id="listd">
 
 </div>
+
+<c:if test="${sessionScope.memType ne 1}">
 <br><br>
 <h4>승인 대기중인 구직자</h4>
 <div id="reql">
-
-</div>
-<br><br>
-<h4>팀 가입 요청을 보낼 아이디를 입력하세요.</h4>
-<input type="text" id="jbskId" > <input type="button" value="검색" onclick="jbskGet()">
-<div id="rst">
-
 </div>
 
+
+	<br><br>
+	<h4>팀 가입 요청을 보낼 아이디를 입력하세요.</h4>
+	<input type="text" id="jbskId" > <input type="button" value="검색" onclick="jbskGet()">
+	<div id="rst">
+	</div>
+</c:if>
 
 <script type="text/javascript">
 	//<!--
@@ -32,14 +35,20 @@
 			} else {
 				$("#listd").text("팀원이 없습니다.");
 			}
-			reqList();
+			if(${sessionScope.memType} != 1){
+				reqList();
+			}
 		}
 	)
 			
 	
 	function teamList(list){
 		var tabstr = '';
-		tabstr = "<table border='1'><tr><th>ID</th><th>이름</th><th>성별</th><th>생년월일</th><th>전화번호</th><th>추방</th></tr>"
+		tabstr = "<table border='1'><tr><th>ID</th><th>이름</th><th>성별</th><th>생년월일</th><th>전화번호</th>"
+		if(${sessionScope.memType} != 1){
+			tabstr += "<th>추방</th>"
+		}
+		tabstr +=	"</tr>"
 		for(var i=0; i<list.length; i++ ){
 			tabstr += "<tr><td id='t"+i+"'>"+list[i].jbskId+"</td><td>"+list[i].jbskName+"</td>"
 			if(list[i].gender == 1){
@@ -48,7 +57,11 @@
 				tabstr += "<td>여</td>"
 			}
 			var date = new Date(Number(list[i].jbskBd));
-			tabstr += "<td>"+date.getFullYear()+"년 "+date.getMonth()+"월 "+date.getDate()+"일</td><td>"+list[i].jbskTel+"</td><td><input type='button' value='추방' onclick='teamExit(this)'></td></tr>"
+			tabstr += "<td>"+date.getFullYear()+"년 "+date.getMonth()+"월 "+date.getDate()+"일</td><td>"+list[i].jbskTel+"</td>"
+			if(${sessionScope.memType} != 1){
+				tabstr += "<td><input type='button' value='추방' onclick='teamExit(this)'></td></tr>"
+			}
+			tabstr += "</table>"
 		}
 		$("#listd").html(tabstr);
 	}

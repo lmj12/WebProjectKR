@@ -12,7 +12,7 @@
    </select>
    
    <select id="getTeamIdsk" parameterType="String" resultType="team.TeamDataBean">
-   		select TEAMID from KRTEAMMEMBER where JBSKID = #{jbskId} ORDER BY TMSTATUS DESC
+   		select * from KRTEAMMEMBER where JBSKID = #{jbskId} ORDER BY TMSTATUS DESC
    </select>
    <insert id="req" parameterType="team.TeamDataBean">
    		insert into KRTEAMMEMBER values(#{teamId},#{jbskId},0)
