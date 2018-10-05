@@ -7,6 +7,9 @@
   <delete id="Rec.recDel" parameterType="int">
    		delete from KRrecruit where recId=#{recId}
    </delete>
+   <update id="recStaCng" parameterType="int">
+   		update KRrecruit set recStatus=recStatus+1 where recId=#{recId}
+   </update>
    <update id="Rec.addCount" parameterType="int">
 		update KRrecruit set recCount=recCount+1 where recId=#{recId}
 	</update>

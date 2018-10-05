@@ -32,8 +32,8 @@ public class RecruitDBBean {
 		session.clearCache();
 		return session.selectOne("Rec.getId",recruitDto );
 	}
-	public void recStaCng(int rctId) { // 임시매개변수. 필요시 변경할것.
-		
+	public int recStaCng(int recId) { // 임시매개변수. 필요시 변경할것.
+		return session.update("Rec.recStaCng", recId);
 	}
 	
 	public List<RecruitDataBean> recMyList(String jobpId) { // 임시매개변수. 필요시 변경할것.

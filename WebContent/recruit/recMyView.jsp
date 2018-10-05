@@ -34,10 +34,10 @@
 		<th>공고상태</th>
 		<td>
 					<c:if test="${article.recStatus eq 0}">
-				    		모집중
+				    		<option value="0" selected>모집중 </option>
 				    </c:if>
 				    <c:if test="${article.recStatus eq 1}">
-				    		모집완료
+				    		<option value="1" selected>모집완료 </option>
 				    </c:if>
 				</td>		
 	</tr>
@@ -96,6 +96,10 @@
 	</tr>
 	
 </table>
+<select id="sta" name="sta">
+		<option value="0" selected>모집중 </option>
+		<option value="1">모집완료</option>
+</select>
 <br><br>
 </c:forEach>		
 </c:if>	
