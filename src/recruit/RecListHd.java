@@ -1,5 +1,6 @@
 package recruit;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,14 +78,28 @@ public class RecListHd implements RecruitHandler {
 			map.put("start", start);
 			map.put("end", end);
 			List <RecruitDataBean> articles = recDao.recList( map );
-			request.setAttribute( "articles", articles );
+			
+			List <RecListDataBean> articleList = new ArrayList<RecListDataBean>();
 			for(int i=0; i<articles.size(); i++) {
-				int a = articles.get(i).getRecId();
-				RecruitDataBean recDto = recDao.recGet(a);
+				RecListDataBean recList = new RecListDataBean();
+				RecruitDataBean recDto = articles.get(i);
+				recList.setRecDto(recDto);
+				
+				int recId = recDto.getRecId();
 				String jbpId = recDto.getJobpId();
 				JobProvDataBean jbpDto= jbpDao.jobpGet(jbpId);
-				request.setAttribute("jbpDto", jbpDto);
+				recList.setJobpDto(jbpDto);
+		
+				List<RecruitDataBean> poss = recDao.recPosGet(recId);
+				recList.setPoss(poss);
+				articleList.add(recList);
 			}
+			request.setAttribute("articleList", articleList);
+			request.setAttribute("cnt", articles.size());
+			
+		
+		
+		
 		}
 	
 		

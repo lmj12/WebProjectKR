@@ -11,10 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import member.jobprov.JobProvDBBean;
+import member.jobprov.JobProvDataBean;
 @Controller
 public class RecMyViewHd implements RecruitHandler {
 	@Resource
 	public RecruitDBBean recDao;
+	@Resource
+	public JobProvDBBean jbpDao;
 	@Override
 	@RequestMapping("/recMyView")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws RecruitException {
@@ -71,6 +76,16 @@ public class RecMyViewHd implements RecruitHandler {
 			
 			List <RecruitDataBean> articles = recDao.recMyList( jobpId );
 			request.setAttribute( "articles", articles );
+			for(int i=0; i<articles.size(); i++) {
+				int a = articles.get(i).getRecId();
+				RecruitDataBean recDto = recDao.recGet(a);
+				String jbpId = recDto.getJobpId();
+				JobProvDataBean jbpDto= jbpDao.jobpGet(jbpId);
+				request.setAttribute("jbpDto", jbpDto);
+							
+				List<RecruitDataBean> recruitDto = recDao.recPosGet(a);
+				request.setAttribute("recruitDto", recruitDto);
+			}
 		}
 		
 		// TODO Auto-generated method stub

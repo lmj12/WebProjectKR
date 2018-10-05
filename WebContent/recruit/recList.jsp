@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../setting/setting.jsp"%>
 <h2>공고조회 페이지</h2>
-
 <input type="button" value="메인으로" onclick="location='main.do'">
 
 <c:if test="${sessionScope.memType eq 2}">	
@@ -20,23 +19,23 @@
 		</tr>
 </c:if>
 <c:if test="${count ne 0}">
-<c:forEach var="article" items="${articles}">
-<input type="hidden" name="recId" value="${article.recId}">
-<table border="1" style="cursor:hand;" onclick="location.href='recView.do?recId=${article.recId}&pageNum=${pageNum}'">	
-<input type="hidden" name="recId" value="${article.recId}">
+<c:forEach var="article" items="${articleList}">
+<input type="hidden" name="recId" value="${article.recDto.recId}">
+<table border="1" style="cursor:hand;" onclick="location.href='recView.do?recId=${article.recDto.recId}&pageNum=${pageNum}'">	
+
 	<tr>
 		<th>공고번호 </th>
 		<td align="center">
-				${article.recId}				
+				${article.recDto.recId}				
 		</td>	
 	</tr>
 	<tr>
 		<th>공고상태</th>
 		<td>
-					<c:if test="${article.recStatus eq 0}">
+					<c:if test="${article.recDto.recStatus eq 0}">
 				    		모집중
 				    </c:if>
-				    <c:if test="${article.recStatus eq 1}">
+				    <c:if test="${article.recDto.recStatus eq 1}">
 				    		모집완료
 				    </c:if>
 				</td>		
@@ -44,39 +43,60 @@
 	<tr>
 		<th>사업자 이름</th>
 		<td align="center">						
-					<a href ="recView.do?recId=${article.recId}&pageNum=${pageNum}">
-						${jbpDto.jobpCn}
+						${article.jobpDto.jobpCn}
 					</a>	
 				</td>				
 	</tr>
 	<tr>
 		<th>직무</th>
-		<td align="center">					
-					${article.posPos}
-				</td>				
+		<td align="center" id="position"> 
+			<c:forEach var="recruitDto" items="${article.poss}">
+				<c:choose>
+				  <c:when test="${recruitDto.posId eq 1}">
+				  	팀장
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 2}">
+				   	스캔
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 3}">
+				   	예도
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 4}">
+				   	안내
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 5}">
+				   	경호
+				  </c:when>
+				  <c:otherwise>
+				   	기타
+				  </c:otherwise> 
+			 	</c:choose>
+			 </c:forEach>
+		</td>				
 	</tr>
 	<tr>
 		<th>시작일</th>
 		<td align="center">
-					${article.recStart}		
+					${article.recDto.recStart}		
 				</td>				
 	</tr>
 	<tr>
 		<th>종료일</th>
 		<td align="center">
-					${article.recEnd}
+					${article.recDto.recEnd}
 				</td>	
 	</tr>
 	<tr>
 		<th>조회수</th>
 		<td align="center">
-					${article.recReadCnt}	
+					${article.recDto.recReadCnt}	
 				</td>				
 	</tr>
 	
 </table>
 <br><br>
-</c:forEach>		
+</c:forEach>
+		
 </c:if>	
 	
 <br>

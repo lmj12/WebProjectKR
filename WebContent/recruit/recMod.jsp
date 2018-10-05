@@ -4,6 +4,10 @@
 <%@ include file="../setting/setting.jsp" %>
 <script src="${js}recSet.js"></script>
 <h2>공고수정페이지</h2>
+<script type="text/javascript">
+var cnt = 0;
+
+</script>
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
 		<!--

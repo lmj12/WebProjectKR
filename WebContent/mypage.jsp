@@ -40,6 +40,8 @@
 </form>
 
 <c:if test="${sessionScope.memType eq 2}">
+
+
 <tr>
 	
 			<jsp:include page="recMyView.do" flush="false"/>
