@@ -12,7 +12,7 @@ public class RecCrrApplyHd implements RecruitCareerHandler {
 	@Override
 	@RequestMapping("/reccrrApply")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws RecCrrException {
-		return null;
+		return null;	//얘도 깡통일듯.
 	}
 
 }

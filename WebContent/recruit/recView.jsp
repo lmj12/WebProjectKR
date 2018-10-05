@@ -1,6 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../setting/setting.jsp"%>
+<script type="text/javascript">
+	//<!--
+	function recApply() {
+		var recId = $("#recId").val()
+		var jbskId = ${sessionScope.memid};
+		$.ajax({
+	    	method : "POST",
+	    	url : "ajaxRecCrrApply.do",
+	    	cache : false,
+			async : false,
+			data : {
+				recId : recId,
+				posId : posId,
+				jbskId : jbskId
+			},
+			datatype : "json",
+			success : function(data){
+			
+				
+			}, error:function(request,status,error){
+				alert();
+			}
+		})
+	}
+	
+	function appTable(){
+		var appstr ='<select>';
+		var recDto = ${recruitDto};
+		for (var i=0; i<recDto.length; i++){
+			var posId = recDto[i].posId;
+			var posName;
+			if(posId==1){
+				posName = "팀장";
+			} else if(posId==2){
+				posName = "스캔";
+			} else if(posId==3){
+				posName = "예도"
+			} else if(posId==4){
+				posName = "안내"
+			} else if(posId==5){
+				posName = "경호"
+			}
+			appstr += "<option value='"+posId+"'>"+posName+"</option>"  
+		}
+		appstr += "</select><input type='button' onclick='recApply()'>"
+		$("#app").html();
+	}
+	//-->
+</script>
 <h2>공고내용 페이지</h2>
 
 <table border="1">
@@ -14,7 +63,8 @@
 
 		<tr>
 			<th>공고번호</th>
-			<td align="center">${recDto.recId}</td>
+			<td align="center">${recDto.recId}<input type="hidden" id="recId" value="${recDto.recId}"></td>
+			
 		</tr>
 		<tr>
 			<th>직무 </th>
@@ -84,16 +134,14 @@
 				${recDto.getRecSite()}
 			</td>
 		</tr>
-			
-
+</table>			
+<br>
 	
 	
-	
+<table border='1'>
 	<tr>
 		<th colspan="4">
-			<input class="inputbutton" type="button" value="지원"
-				onclick="location='recMyView.do?recId=${recDto.recId}&pageNum=${pageNum}'">
-		<c:if test="${sessionScope.memType eq 2}">
+		<c:if test="${sessionScope.memid eq jobpDto.jobpId}">
 			<input class="inputbutton" type="button" value="공고수정"
 				onclick="location='recMod.do?recId=${recDto.recId}&pageNum=${pageNum}'">
 			<input class="inputbutton" type="button" value="공고삭제"
@@ -103,5 +151,10 @@
 			<input class="inputbutton" type="button" value="목록으로"
 				onclick="location='main.do?pageNum=${pageNum}'">
 		</th>
-	</tr>		
+	</tr>	
+	<tr>
+		<th colspan='4' id="app">
+		
+		</th>
+	</tr>
 </table>
