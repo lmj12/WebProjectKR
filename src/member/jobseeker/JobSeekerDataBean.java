@@ -16,6 +16,7 @@ public class JobSeekerDataBean {
 	private String jbskPic;
 	private Timestamp jbskregdate;
 	private int jbskinfotype;
+	private String jbskIt;
 	
 	public Timestamp getJbskregdate() {
 		return jbskregdate;
@@ -94,6 +95,12 @@ public class JobSeekerDataBean {
 	}
 	public void setJbskinfotype(int jbskinfotype) {
 		this.jbskinfotype = jbskinfotype;
+	}
+	public String getJbskIt() {
+		return jbskIt;
+	}
+	public void setJbskIt(String jbskIt) {
+		this.jbskIt = jbskIt;
 	}
 
 	

@@ -1,23 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../setting/setting.jsp"%>
+
+<%-- <%@ include file="../setting/setting.jsp"%> --%>
 <h2>내 공고 보기 </h2>
 
-<input type="button" value="마이페이지로" onclick="location='mypage.do'">
-
 <c:if test="${sessionScope.memType eq 2}">	
-공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
+	공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
 </c:if>
-		
-
-
-
-
 
 <c:if test="${count eq 0}">	
-		<tr>	
+		<div>	
 		<td>공고가 없습니다 </td>			
-		</tr>
+		</div>
 </c:if>
 <c:if test="${count ne 0}">
 <c:forEach var="article" items="${articles}">
