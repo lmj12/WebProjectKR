@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+
+
 import member.jobprov.JobProvDBBean;
 import member.jobprov.JobProvDataBean;
 @Controller
@@ -39,8 +41,12 @@ public class RecMyViewHd implements RecruitHandler {
 		
 		
 		String jobpId = (String) request.getSession().getAttribute("memid");
-		count = recDao.recMyCnt(jobpId);	
 		
+		try {
+		count = recDao.recMyCnt(jobpId);	
+		}catch(NullPointerException e) {
+			e.printStackTrace();
+		}
 		
 		
 		//int recId = Integer.parseInt(request.getParameter("recId"));
@@ -81,15 +87,16 @@ public class RecMyViewHd implements RecruitHandler {
 				RecruitDataBean recDto = recDao.recGet(a);
 				String jbpId = recDto.getJobpId();
 				JobProvDataBean jbpDto= jbpDao.jobpGet(jbpId);
-				request.setAttribute("jbpDto", jbpDto);
-							
+				request.setAttribute("jbpDto", jbpDto);				
 				List<RecruitDataBean> recruitDto = recDao.recPosGet(a);
-				request.setAttribute("recruitDto", recruitDto);
-			}
+				request.setAttribute("recruitDto", recruitDto);	
+				
+				}
+			
 		}
 		
 		// TODO Auto-generated method stub
-		return new ModelAndView("/recruit/recMyView");
+		return new ModelAndView("/recruit/recMyList");
 	}
 
 }

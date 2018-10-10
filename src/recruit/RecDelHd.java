@@ -19,7 +19,7 @@ public class RecDelHd implements RecruitHandler {
 		int recId = Integer.parseInt(request.getParameter("recId"));
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("recId", recId);
-		
+		recDao.recDelPos(recId);
 		int result = recDao.recDel(recId);
 		
 		request.setAttribute("result", result);

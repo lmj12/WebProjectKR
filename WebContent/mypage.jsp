@@ -51,7 +51,7 @@
 
 <tr>
 	
-			<jsp:include page="recMyView.do" flush="false"/>
+	<jsp:include page="recMyView.do" flush="false"/>	
 		
 </tr>
 </c:if>

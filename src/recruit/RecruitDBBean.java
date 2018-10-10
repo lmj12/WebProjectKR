@@ -14,8 +14,8 @@ public class RecruitDBBean {
 		return session.insert("Rec.recWrt", recruitDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 
-	public int recMod(RecruitDataBean recruitDto) { // 임시매개변수. 필요시 변경할것.
-		return session.update("Rec.recMod", recruitDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	public int recMod(RecruitDataBean recDto) { // 임시매개변수. 필요시 변경할것.
+		return session.update("Rec.recMod", recDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
 	public int recDel(int recId) { // 임시매개변수. 필요시 변경할것.
@@ -32,8 +32,11 @@ public class RecruitDBBean {
 		session.clearCache();
 		return session.selectOne("Rec.getId",recruitDto );
 	}
-	public int recStaCng(int recId) { // 임시매개변수. 필요시 변경할것.
-		return session.update("Rec.recStaCng", recId);
+	public int recStaCng(RecruitDataBean recDto) { // 임시매개변수. 필요시 변경할것.
+		return session.update("Rec.recStaCng", recDto);
+	}
+	public int recStaPro(String jobpId) {
+		return session.selectOne("Rec.recStaPro", jobpId);
 	}
 	
 	public List<RecruitDataBean> recMyList(String jobpId) { // 임시매개변수. 필요시 변경할것.
@@ -58,6 +61,15 @@ public class RecruitDBBean {
 	}
 	public void addCount(int recId) {			
 		session.update("Rec.addCount", recId);
+	}
+
+	public int recDelPos(int recId) {
+		return session.delete("Rec.recDelPos", recId);		
+	}
+
+	
+	public int recEndCng(int recStatus) {
+		return session.update("Rec.recEndCng", recStatus);		
 	}
 
 }

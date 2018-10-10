@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<tr>
-	<select id="sta" name="sta">
-		<option value="0" selected>모집중 </option>
-		<option value="1">모집완료</option>
-	</select>
-
-</tr>
+<c:if test="${result eq 0}">
+	<script type="text/javascript">
+		<!--
+		alert( modifyerror );
+		//-->
+	</script>		
+	<meta http-equiv="refresh" content="0; url=recMyView.do?pageNum=${pageNum}">
+</c:if>
+<c:if test="${result eq 1}">
+	<c:redirect url="recMyView.do?pageNum=${pageNum}"/>
+</c:if>	

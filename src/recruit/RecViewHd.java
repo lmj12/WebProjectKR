@@ -37,7 +37,7 @@ public class RecViewHd implements RecruitHandler {
 		request.setAttribute( "recDto", recDto );
 		request.setAttribute("recruitDto", recruitDto);
 	
-		
+		recDao.addCount(recId);
 		
 		
 		

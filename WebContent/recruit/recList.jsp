@@ -21,7 +21,7 @@
 <c:if test="${count ne 0}">
 <c:forEach var="article" items="${articleList}">
 <input type="hidden" name="recId" value="${article.recDto.recId}">
-<table border="1" style="cursor:hand;" onclick="location.href='recView.do?recId=${article.recDto.recId}&pageNum=${pageNum}'">	
+<table border="1" style="cursor:hand;" onclick="location.href='recView.do?recId=${article.recDto.recId}&pageNum=${pageNum}&recReadCnt=${recReadCnt}'">	
 
 	<tr>
 		<th>공고번호 </th>

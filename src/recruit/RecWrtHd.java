@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -82,7 +83,7 @@ public class RecWrtHd implements RecruitHandler {
 			
 			
 			 
-			recruitDto.setRecStart( new Timestamp( System.currentTimeMillis() ));
+			/*recruitDto.setRecStart( new Timestamp( System.currentTimeMillis() ));
 	        Timestamp sysdate = new Timestamp( System.currentTimeMillis() );
 	        String input = request.getParameter("recEnd").replace('T', ' ');
 	       
@@ -114,15 +115,40 @@ public class RecWrtHd implements RecruitHandler {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		       		
+		       		*/
+	        recruitDto.setRecStart( new Timestamp( System.currentTimeMillis() ));
+	       
+	       
+	        String endStr = request.getParameter("recEnd");
+			String endTime = request.getParameter("recEndTime");
+					
+			String time = (endStr + ' ' +endTime);
+			String real = "MM/dd/yyyy hh:mm";
+			
+			
+			
+			SimpleDateFormat endtm = new SimpleDateFormat(real);
+			Date timeD;
+			
+			try {
+				
+				timeD = endtm.parse(time);				
+				
+				Timestamp endDate = new Timestamp(timeD.getTime());
+				
+				recruitDto.setRecEnd(endDate);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			
 			
 			int result = recDao.recWrt( recruitDto );
 			if (result==1) {
 				
 				String pos = request.getParameter("id");
 				String array[] = (pos.split(","));		
-				System.out.println(recruitDto.getRecStart());
-				System.out.println(recruitDto.getJobpId());
+				
 				int recId = recDao.recGetId(recruitDto);
 				for(int i=0; i<array.length; i++) {				
 				
@@ -143,6 +169,6 @@ public class RecWrtHd implements RecruitHandler {
 		}
 		
 		
-		}
-
+	}
+	
 }

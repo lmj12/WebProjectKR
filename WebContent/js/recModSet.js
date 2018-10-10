@@ -1,4 +1,3 @@
-
 // Daum Api 주소 검색 
 
 function searchPostcode() {
@@ -116,65 +115,52 @@ function searchPostcode() {
 		}
 	);
 	
-	
-
-function writefocus(){
-	var x = document.getElementsByName("recEnd").required;
+function refocus(){
+	var x = document.getElementsByName("End").required;
 	x=true;
 }
 
-
-function writecheck(){
-	if(!recwrite.recEnd.value){
+function recheck(){
+	if(recMod.conval.value == 0){
+		erroralert("직무를 선택해주세요");
+		recMod.conval.focus();
+		return false;
+	}else if(!recMod.End.value){
 		alert("날짜를 입력해주세요");
 		return false;
-	}else if(!recwrite.reccontent.value){
+	}else if(!recMod.reccontent.value){
 		alert("내용을 입력해주세요");
 		return false;
-	}else if(!recwrite.recSite.value){
+	}else if(!recMod.recSite.value){
 		erroralert("사이트를 입력해주세요.");
 		return false;
-	}else if( recwrite.confirm.value == 0 ) {
-		erroralert( "직무를 선택해주세요");
-		recwrite.confirm.focus();
-		return false;
-	}else if(!recwrite.recEnd.value){
+	}else if(!recMod.End.value){
 		alert("날짜를 입력해주세요");
 		return false;
-	}else if(!recwrite.recEndTime.value){
+	}else if(!recMod.EndTime.value){
 		alert("시간을 입력해주세요");
 		return false;
 	}
-	var elem = document.getElementsByName('posPos') ;
-	
-	var points = []; 
-	for(var i=0 ;i<elem.length ;i++){  
-	    if (elem[i].value){  
-	    points.push(elem[i].value);   
+	var em = document.getElementsByName('xosXos');
+	var point = []; 
+	for(var i=0 ;i<em.length ;i++){  
+	    if (em[i].value){  
+	    point.push(em[i].value); 
+	    //alert(em[i].value);
 	    } 
 	} 
 	var id= document.getElementById('id');
-	id.setAttribute("value", points);
+	id.setAttribute("value", point);
 	
 }
-
-
-//모집상태 변경
-function change(){
-	var elem = document.getElementsByName('sta');
-	var points = null;
-	points.push(elem[recId].value);
-	var value = document.getElementById('value');
-	value.setAttribute("val", points);
-}
-
 //직무추가
-function add(){
+//직무추가
+function adda(){
 	++cnt;
 	var addposx = document.getElementById("addposx");
 	var tr = document.createElement("tr");
 
-	tr.innerHTML = "<select name='posPos'>"
+	tr.innerHTML = "<select name='xosXos'>"
 		+ 	"<option value='1' selected>팀장</option>"	
 		+	"<option value='2'>스캔</option>"	
 		+	"<option value='3'>예도</option>"	
@@ -185,18 +171,18 @@ function add(){
 		+ 	"&nbsp;"
 		+"<input type='button' value='삭제' onclick='delitem("+cnt+")'> ";
 		+"<input type='button' value='삭제' onclick='delitem("+cnt+")'> ";
-	tr.setAttribute("id", "id_"+cnt);
+	tr.setAttribute("di", "di/"+cnt);
 	//addposx.appendChild(td);
 	tr.colSpan =3;
 	addposx.appendChild(tr);
 	
-	document.recwrite.confirm.value =1;
+	document.recMod.conval.value =1;
 	
 }
 //직무제거
 
 function delitem(){
 	var addposx=document.getElementById("addposx");
-	var deldiv = document.getElementById("id_"+cnt);
+	var deldiv = document.getElementById("di/"+cnt);
 	addposx.removeChild(deldiv);
 }
