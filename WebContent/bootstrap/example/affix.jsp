@@ -27,7 +27,11 @@
      position: relative;
      top: 50px;
   }
-  #target_body {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
+  #section1 {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
+  #section2 {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
+  #section3 {padding-top:50px;height:500px;color: #fff; background-color: #ff9800;}
+  #section41 {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
+  #section42 {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
   </style>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
