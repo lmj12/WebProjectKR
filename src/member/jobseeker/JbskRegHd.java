@@ -44,7 +44,7 @@ public class JbskRegHd implements JobSeekerHandler {
 		}else {
 			compemail = ema1+"@"+ema2;
 		}
-		
+		System.out.println(ema2);
 		String ad = request.getParameter("jbAddress");
 		System.out.println(request.getParameter("jbskBd"));
 		int year = Integer.parseInt(request.getParameter("jbskBd").split("-")[0]);

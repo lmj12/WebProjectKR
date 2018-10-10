@@ -131,11 +131,17 @@
 				<td>
 					 <input type="text" name="jbskEmail1" maxlength="50">@
                        	 <select name="jbskEmail2" id="jbskEmail2">
-                        	    <option value="1">naver.com</option>
+                        		 <option>naver.com</option>
+                        	    <option>daum.net</option>
+                        	    <option>gmail.com</option>
+                         	   <option>nate.com</option>
+                         	   <option>직접입력</option>   
+                        	
+                        	   <!--  <option value="1">naver.com</option>
                         	    <option value="2">daum.net</option>
                         	    <option value="3">gmail.com</option>
                          	   <option value="4">nate.com</option>
-                         	   <option value="5">직접입력</option>                        
+                         	   <option value="5">직접입력</option>     -->                    
                         </select>
                 </td>
                 <td>
