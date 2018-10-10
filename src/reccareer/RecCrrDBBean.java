@@ -28,7 +28,13 @@ public class RecCrrDBBean {
 		return session.update("RecCrr.mod", recCrrDto); 
 	}
 	
-	public RecCrrDataBean recCrrGetById(RecCrrDataBean recCrrDto) {// jbskId와 recId로 찾는 메소드
+	public int appCk(RecCrrDataBean recCrrDto) {// jbskId와 recId로 찾는 메소드
+		session.flushStatements();
+		session.clearCache();
+		return session.selectOne("RecCrr.appCk", recCrrDto); 
+	}
+	
+	public RecCrrDataBean recCrrGetById(RecCrrDataBean recCrrDto) {
 		session.flushStatements();
 		session.clearCache();
 		return session.selectOne("RecCrr.getById", recCrrDto); 
