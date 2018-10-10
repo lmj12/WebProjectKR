@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="Jbs">
-     <insert id="jbskReg" parameterType="member.jobseeker.JobSeekerDataBean">
-      insert into KRjobseeker values( #{jbskId}, #{jbskPasswd},  sysdate , #{jbskName}, #{jbskGender}, #{jbskBd}, #{jbskAdd1}, #{jbskAdd2}, #{jbskAdd3}, #{jbskEmail, jdbcType=VARCHAR}, #{jbskTel}, #{jbskPic, jdbcType=VARCHAR}, #{jbskinfotype}, '')
+   <insert id="jbskReg" parameterType="member.jobseeker.JobSeekerDataBean">
+      insert into KRjobseeker values( #{jbskId}, #{jbskPasswd},  sysdate , #{jbskName}, #{jbskGender}, #{jbskBd}, #{jbskAdd1}, #{jbskAdd2}, #{jbskAdd3}, #{jbskEmail, jdbcType=VARCHAR}, #{jbskTel}, #{jbskPic, jdbcType=VARCHAR}, #{jbskinfotype}, '자기소개서')
    </insert>
    <select id="checkId" parameterType="String" resultType="int">
       select count(*) from KRjobseeker where jbskId=#{jbskId, jdbcType=VARCHAR} 
