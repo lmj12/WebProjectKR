@@ -37,7 +37,7 @@
 	
 	<tr>
 		<th>사업자번호</th>
-		<td><input type="text" name="jobpBno" readonly></td>
+		<td><input type="text" name="jobpBno" value="1078614075" readonly></td>
 		<td><input type="button" name="checkBizID" value="확인"></td>
 	</tr>
 	<tr>
