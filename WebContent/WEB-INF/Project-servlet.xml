@@ -27,7 +27,6 @@
    <context:component-scan base-package="reccareer"/>
    <context:component-scan base-package="reccareer.estimate"/>
    <context:component-scan base-package="recruit"/>
-   <context:component-scan base-package="resume"/>
    <context:component-scan base-package="schedule.job"/>
    <context:component-scan base-package="schedule"/>
    <context:component-scan base-package="team"/>
