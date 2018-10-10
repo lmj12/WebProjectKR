@@ -16,7 +16,6 @@ import move.MoveDBBean;
 import reccareer.RecCrrDBBean;
 import reccareer.estimate.EstimateDBBean;
 import recruit.RecruitDBBean;
-import resume.ResumeDBBean;
 import schedule.ScheduleDBBean;
 import schedule.job.ScheduleJobDBBean;
 import team.TeamDBBean;
@@ -87,12 +86,6 @@ public class CreateBean {
 	public RecruitDBBean recDao() {
 		RecruitDBBean recDao = new RecruitDBBean();
 		return recDao;
-	}
-	
-	@Bean
-	public ResumeDBBean rsmDao() {
-		ResumeDBBean rsmDao = new ResumeDBBean();
-		return rsmDao;
 	}
 	
 	@Bean

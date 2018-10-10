@@ -60,6 +60,7 @@ public class JbskLgnHd implements JobSeekerHandler {
 		request.setAttribute("teamReq", teamReq);
 		request.setAttribute( "result", result );
 		request.setAttribute( "jbskId", jbskId);
+		request.setAttribute("jbskName", jbskName);
 		request.setAttribute("memtype", 1);  // 구직자 : 1, 구인자 : 2 , 관리자 :3 
 
 		// TODO Auto-generated method stub

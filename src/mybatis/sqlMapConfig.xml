@@ -26,7 +26,6 @@
         <mapper resource="reccareer/reccareer.xml"/>
         <mapper resource="reccareer/estimate/estimate.xml"/>
         <mapper resource="recruit/recruit.xml"/>
-        <mapper resource="resume/resume.xml"/>
         <mapper resource="schedule/job/job.xml"/>
         <mapper resource="schedule/schedule.xml"/>
         <mapper resource="team/team.xml"/>
