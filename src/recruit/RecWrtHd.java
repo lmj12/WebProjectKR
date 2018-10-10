@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,14 +47,10 @@ public class RecWrtHd implements RecruitHandler {
 		
 		if(request.getParameter("write")== null) {
 			//제목글인 경우
-			int recId=0;
-			//int count=recDao.recMax();
-			
+			int recId=0;		
 			
 			int recStatus = 0; //공고상태
-			String reccontent = null;
-			//String posPos = null;
-			
+			String reccontent = null;			
 			
 		    String jobpId = (String) request.getSession().getAttribute("memid");
 		    JobProvDataBean jbpDto = jbpDao.jobpGet(jobpId);
@@ -61,16 +58,10 @@ public class RecWrtHd implements RecruitHandler {
 			request.setAttribute("jobpId", jobpId);
 			
 			
-			//System.out.println(recId);
-			
-			//System.out.println(new Date());
-			
-			RecruitDataBean recDto = new RecruitDataBean();
-			
-			//System.out.println(recDto.getRecId());
+			RecruitDataBean recDto = new RecruitDataBean();				
 			request.setAttribute("recStatus", recStatus);
 			request.setAttribute("reccontent", reccontent);
-			//request.setAttribute("posPos", posPos);
+			
 			request.setAttribute("recDto", recDto);			
 					
 			return new ModelAndView("/recruit/recWrt");
@@ -82,10 +73,9 @@ public class RecWrtHd implements RecruitHandler {
 			
 			
 			RecruitDataBean recruitDto = new RecruitDataBean();
-			//System.out.println(recruitDto.getJobpId());
-			//recruitDto.setJbpCn(request.getParameter("jbpCn"));
+			
 			recruitDto.setRecSite(request.getParameter("recSite"));
-			//recruitDto.setJbpBnp(request.getParameter("jbpBnp"));
+			
 			recruitDto.setJobpId(request.getParameter("jobpId"));
 			recruitDto.setRecStatus(0);
 			recruitDto.setRecReadCnt(0);
@@ -93,10 +83,10 @@ public class RecWrtHd implements RecruitHandler {
 			
 			
 			 
-			recruitDto.setRecStart( new Timestamp( System.currentTimeMillis() ));
+			/*recruitDto.setRecStart( new Timestamp( System.currentTimeMillis() ));
 	        Timestamp sysdate = new Timestamp( System.currentTimeMillis() );
 	        String input = request.getParameter("recEnd").replace('T', ' ');
-	       //System.out.println(input);
+	       
 	        java.util.Date date;
 			try {				
 				 date = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(input);
@@ -104,9 +94,9 @@ public class RecWrtHd implements RecruitHandler {
 			       cal.setTime(date);
 			       cal.add(Calendar.SECOND, 10);
 			       Date caltodate = cal.getTime();
-			       //date.getTime()
+			      
 				Timestamp timestamp = new Timestamp(caltodate.getTime());
-			//System.out.println(timestamp);
+			
 				if(timestamp.before(sysdate)) {
 					response.setContentType("text/html; charset=UTF-8");
 					PrintWriter out;
@@ -125,22 +115,43 @@ public class RecWrtHd implements RecruitHandler {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		       		
-			//recruitDto.setRecId(Integer.parseInt(request.getParameter("recId")));
-			//recruitDto.setCrrCnt(Integer.parseInt(request.getParameter("crrCnt")));
+		       		*/
+	        recruitDto.setRecStart( new Timestamp( System.currentTimeMillis() ));
+	       
+	       
+	        String endStr = request.getParameter("recEnd");
+			String endTime = request.getParameter("recEndTime");
+					
+			String time = (endStr + ' ' +endTime);
+			String real = "MM/dd/yyyy hh:mm";
+			
+			
+			
+			SimpleDateFormat endtm = new SimpleDateFormat(real);
+			Date timeD;
+			
+			try {
+				
+				timeD = endtm.parse(time);				
+				
+				Timestamp endDate = new Timestamp(timeD.getTime());
+				
+				recruitDto.setRecEnd(endDate);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			
+			
 			int result = recDao.recWrt( recruitDto );
 			if (result==1) {
 				
 				String pos = request.getParameter("id");
 				String array[] = (pos.split(","));		
-				System.out.println(recruitDto.getRecStart());
-				System.out.println(recruitDto.getJobpId());
+				
 				int recId = recDao.recGetId(recruitDto);
 				for(int i=0; i<array.length; i++) {				
-					/*int num = array.length;
-					int pos1[] = new int[num];	
-					pos1[i] =Integer.parseInt(array[i]);
-					System.out.println(pos1[i]+"*");*/
+				
 					int posId = Integer.parseInt(array[i]);
 					
 					Map <String, Integer > map = new HashMap<String, Integer>();
@@ -148,7 +159,7 @@ public class RecWrtHd implements RecruitHandler {
 					map.put("posId", posId);
 					recDao.recPos(map);
 	
-				//request.setAttribute("rst", rst);
+			
 				}
 			}	
 			request.setAttribute( "result", result );
@@ -158,6 +169,6 @@ public class RecWrtHd implements RecruitHandler {
 		}
 		
 		
-		}
-
+	}
+	
 }

@@ -46,15 +46,15 @@
 </table>
 </form>
 
-
-<!-- container.jsp 로 이동 -->
-<%-- 
 <c:if test="${sessionScope.memType eq 2}">
-	<tr>
-		<jsp:include page="recMyView.do" flush="false"/>
-	</tr>
-</c:if> 
---%>
+
+
+<tr>
+	
+	<jsp:include page="recMyView.do" flush="false"/>	
+		
+</tr>
+</c:if>
 
 <br><br>
 <form name="jbkmybtmform" method="post" action="mypage.do" >

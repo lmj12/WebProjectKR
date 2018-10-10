@@ -1,5 +1,8 @@
 package recruit;
 
+import java.util.List;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,12 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class RecStaCngHd implements RecruitHandler {
-
+	@Resource
+	public RecruitDBBean recDao;	
 	@Override
 	@RequestMapping("/recStaCng")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws RecruitException {
-		// TODO Auto-generated method stub
-		return null;
+		if(request.getParameter("cng")!= null) {	
+			
+			int recId = Integer.parseInt(request.getParameter("recId"));
+			//System.out.println(recId);
+			String cng = request.getParameter("opt");
+			int result = 0;
+			if(cng.equals("1")) {
+				System.out.println(cng);
+				RecruitDataBean recDto = recDao.recGet(recId);
+				recDto.setRecId(recId);
+				recDto.setRecStatus(1);
+				result = recDao.recStaCng(recDto);
+			}else if(cng.equals("2")) {
+				RecruitDataBean recDto = recDao.recGet(recId);
+				recDto.setRecId(recId);
+				recDto.setRecStatus(0);
+				result = recDao.recStaCng(recDto);
+			}
+			request.setAttribute("result", result);
+		}
+			
+		return new ModelAndView("/recruit/recStaCng");
 	}
 
-}
+	}

@@ -4,23 +4,32 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="Rec">
+  <delete id="recDelPos" parameterType="int">
+  		delete from KRrecposition where recId=#{recId}
+  </delete>
   <delete id="Rec.recDel" parameterType="int">
    		delete from KRrecruit where recId=#{recId}
    </delete>
-   <update id="Rec.addCount" parameterType="int">
-		update KRrecruit set recCount=recCount+1 where recId=#{recId}
+   <update id="recStaCng" parameterType="recruit.RecruitDataBean">
+   		update KRrecruit set recStatus=#{recStatus} where recId=#{recId}
+   </update>
+   <update id="addCount" parameterType="int">
+		update KRrecruit set recReadCnt=recReadCnt+1 where recId=#{recId}
 	</update>
 	<update id="Rec.recMod" parameterType="recruit.RecruitDataBean">
-   		update KRboard set recStart=#{recStart},recEnd=#{recEnd},reccontent=#{reccontent},
+   		update KRrecruit set recStart=#{recStart}, recEnd=#{recEnd}, reccontent=#{reccontent}, 
    		recSite=#{recSite} where recId=#{recId}
    </update>
+   <select id="recStaPro" parameterType="String" resultType="int">
+  		select recId from KRrecruit where jobpId=#{jobpId} 
+   </select>
    	<select id="Rec.recCnt" resultType="int">
    		select count(*) from KRrecruit
    	</select>
    	<select id="Rec.recMax" resultType="int">
    		select max(recId) from KRrecruit
    	</select>
-   	<select id="Rec.recMyCnt" resultType="int">
+   	<select id="Rec.recMyCnt" parameterType="String" resultType="int">
    		select count(*) from KRrecruit where jobpId=#{jobpId}
    	</select>
    	
@@ -45,6 +54,9 @@
 			recReadCnt,recStatus,jobpId from KRrecruit order by recStart desc) 
 			order by recStart desc) where r &gt;= #{start} and r &lt;= #{end}
 	</select>
+	<update id="recEndCng"	parameterType="int">
+			update KRrecruit set recStatus=#{recStatus} where recEnd&gt;=sysdate	
+	</update>
 	<insert id="recWrt" parameterType="recruit.RecruitDataBean">
 		insert into KRrecruit values( KRrecruit_seq.nextval, #{recStart}, #{recEnd}, #{reccontent}, #{recSite},
 		 #{recReadCnt}, #{recStatus}, #{jobpId})
@@ -52,5 +64,7 @@
 	<insert id="Rec.recPos" parameterType="java.util.Map">
    		insert into KRrecposition values(#{recId}, #{posId}) 
    </insert>
-	
+	<update id="recPosCng" parameterType="java.util.Map">
+		update KRrecposition set posId=#{posId} where recId=#{recId}
+	</update>
   </mapper>

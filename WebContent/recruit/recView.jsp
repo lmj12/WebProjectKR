@@ -147,14 +147,13 @@
 				${jbpDto.jobpBno}
 			</td>
 		<tr>
-			<th>링크</th>
+			<th>주소</th>
 			<td align="center">
 				${recDto.getRecSite()}
 			</td>
 		</tr>
 			<tr>
 		<th colspan="4">
-		
 			<c:if test="${sessionScope.memid eq jbpDto.jobpId}">
 				<input class="inputbutton" type="button" value="공고수정"
 					onclick="location='recMod.do?recId=${recDto.recId}&pageNum=${pageNum}'">
@@ -163,8 +162,6 @@
 				<input type="button" value="지원현황"
 					onclick="location='recCrrView.do?recId=${recDto.recId}'">
 			</c:if>
-		
-			
 			<input class="inputbutton" type="button" value="목록으로"
 				onclick="location='main.do?pageNum=${pageNum}'">
 		</th>
