@@ -159,6 +159,7 @@ $(function(){
 					alert( '삭제성공' );
 					$(this).closest('tr').remove();
 					location.reload();
+					alert('page가 새로고침 되었습니다.');
 				},
 				error : function(request,status,error){
 				    alert( "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -175,11 +176,10 @@ $(function(){
 				var cellItem = $(this).find(":input");
 				var itemObj = new Object();
 				
-				var stDate = new Date( cellItem.eq(3).val() );
-			    var edDate = new Date( cellItem.eq(4).val() );
+				var stDate = new Date( cellItem.eq(4).val() );
+			    var edDate = new Date( cellItem.eq(5).val() );
 			    var btMs = edDate.getTime() - stDate.getTime() ;
 			    var btDay = btMs / (1000*60*60*24) ;
-			    
 		    	if(btDay >= 30){
 		    		btDay = parseInt(btDay / 30)+' 개월';
 		    	} else {
@@ -210,8 +210,9 @@ $(function(){
 						url : 'iptCrrWrt.do',
 						data : queryStr,
 						success : function(){
-							alert ( '삽입성공' );
+							alert( '삽입성공' );
 							location.reload();
+							alert('page가 새로고침 되었습니다.');
 						},
 						error : function(request,status,error){
 						    alert( "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

@@ -30,7 +30,6 @@ public class IptCrrWrtHd implements InputCareerHandler {
 		IptCrrDataBean iptCrrDto = new IptCrrDataBean();
 		String jbskId = (String) request.getSession().getAttribute("memid");
 		
-		// FIXME : iptId 는 NEXTVAL 로 들어간다?
 		if(request.getParameter("iptId") == null || request.getParameter("iptId").equals("")){
 			iptCrrDto.setIptId(0);
 		} else {
