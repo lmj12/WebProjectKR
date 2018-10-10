@@ -4,8 +4,13 @@
 
 $(document).ready(
 	function() {
-		// FIXME : 개발용 사업자번호 자동입력
-		$('input:text[name=jobpBno]').val('1078614075');
+		$('input:button[name=checkBizID]').on(
+				'click',
+				function(){
+					window.open("jbpBizCheckMove.do","","width=250, heigt=200");
+				}
+			);
+		
 		$('.idresult').val("아이디0");
 		
 		$('input[name=jobpId]').on(
@@ -123,82 +128,6 @@ $(document).ready(
 			$('input[name=rejobpPasswd]').val()
 			}
 		);
-		
-		$('input:button[name=checkBizID]').on(
-			'click',
-			function checkBizID() {
-				
-				if( !$('input:text[name=jobpBno]').val() ){
-					alert("사업자번호를 입력해주세요");
-					return false;
-				} else {
-					var bizID = $('input:text[name=jobpBno]').val();
-				    var checkID = new Array(1, 3, 7, 1, 3, 7, 1, 3, 5, 1);
-				    var tmpBizID, i, chkSum=0, c2, remander;
-				    var result;
-				    
-				    bizID = bizID.replace(/-/gi,'');	// 들어있는 - 를 모두 빈칸으로 치환함
-				 
-				    for (i=0; i<=7; i++) {
-				        chkSum += checkID[i] * bizID.charAt(i);
-				    }
-				 
-				    c2 = "0" + (checkID[8] * bizID.charAt(8));
-				    c2 = c2.substring(c2.length - 2, c2.length);
-				    chkSum += Math.floor(c2.charAt(0)) + Math.floor(c2.charAt(1));
-				    remander = (10 - (chkSum % 10)) % 10 ;
-				 
-				    if (Math.floor(bizID.charAt(9)) == remander) {
-				    	alert('사업자등록번호 형식에 맞는 번호입니다');
-				    	// TODO : 맞는 사업자 등록번호일 시, bizID 앞 6자리 파싱해서 공공데이터 포털날리고
-				    	// 폼 만들어서 선택하게끔
-				    	var bizName = $('input:text[name=jobpCn]').val();
-				    	var parseBizID = bizID.substring(0, 6);
-				    	
-				    	bizListCheck();
-				    	
-				    	function bizListCheck() {
-				    		var serviceKey = 'zHRNYJ97QejMrVzKWNS6Hmc8j9Gd8oJ7p4LKd3MfUsTbmSI%2F2v3inaBqZm%2FTDmxvJPYg7gQ1QOEfbnPWE%2FRQvg%3D%3D';
-							var jbpName = $('input:text[name=jobpCn]').val();
-							var jbpNumber = parseBizID;
-							var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch?serviceKey";
-							
-							$.ajax(
-									{
-										type : 'GET',
-										url : url,
-										data : {
-											serviceKey : serviceKey,
-										//	wkpl_nm : jbpName,
-											bzowr_rgst_no : jbpNumber,
-										},
-										dataType : 'json',
-										success : function(data){
-											alert('성공');
-											var xmlDoc = data.responseXML;
-											document.open();
-											document.write(xmlDoc);
-										},
-										error : function(e){
-											alert('error : ' + e);
-										}
-									}	
-							);
-				    	}
-				    	
-				    	result = true ; // OK!
-				    } else {
-				    	alert('사업자등록번호 형식에 맞지 않습니다');
-				        result = false;
-				    }
-				    return result;
-				}
-			}
-		);	// 사업자번호 유효성 검사
-		
-		
-		
-		
 	}
 );
 
