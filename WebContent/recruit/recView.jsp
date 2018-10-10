@@ -1,6 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../setting/setting.jsp"%>
+<script type="text/javascript">
+	//<!--
+	
+	$(document).ready(function(){
+	   	appTable();
+	});
+	function recApply() {
+		var memType = ${sessionScope.memType}
+		if(memType==1){
+			var recId = $("#recId").val()
+			var jbskId = '${sessionScope.memid}';
+			var posId = $("#pos option:selected").val();
+			$.ajax({
+		    	method : "POST",
+		    	url : "ajaxRecCrrApply.do",
+		    	cache : false,
+				async : false,
+				data : {
+					recId : recId,
+					posId : posId,
+					jbskId : jbskId
+				},
+				datatype : "text",
+				success : function(data){
+					alert("지원성공했습니다.")
+				}, error:function(request,status,error){
+					alert();
+				}
+			})
+		} else {
+			alert("지원할 수 없는 형태의 사용자입니다.")
+		}
+	}
+	
+	function appTable(){
+		var appstr ="<select id='pos'>";
+		var posIds = document.getElementsByName("posId");
+		
+		for (var i=0; i<posIds.length; i++){
+			var posId = posIds[i].value
+			var posName;
+			if(posId==1){
+				posName = "팀장";
+			} else if(posId==2){
+				posName = "스캔";
+			} else if(posId==3){
+				posName = "예도"
+			} else if(posId==4){
+				posName = "안내"
+			} else if(posId==5){
+				posName = "경호"
+			}
+			appstr += "<option value='"+posId+"'>"+posName+"</option>"  
+		}
+		appstr += "</select><input type='button' value='지원' onclick='recApply()'>"
+		$("#app").html(appstr);
+	}
+	//-->
+</script>
 <h2>공고내용 페이지</h2>
 
 <table border="1">
@@ -14,12 +73,14 @@
 
 		<tr>
 			<th>공고번호</th>
-			<td align="center">${recDto.recId}</td>
+			<td align="center">${recDto.recId}<input type="hidden" id="recId" value="${recDto.recId}"></td>
+			
 		</tr>
 		<tr>
 			<th>직무 </th>
 			<td align="center"> 
 			<c:forEach var="recruitDto" items="${recruitDto}">
+			<input type="hidden" value="${recruitDto.posId}" name="posId">
 			<c:choose>
 			  <c:when test="${recruitDto.posId eq 1}">
 			  	팀장
@@ -84,24 +145,29 @@
 				${recDto.getRecSite()}
 			</td>
 		</tr>
-			
-
-	
-	
-	
-	<tr>
+			<tr>
 		<th colspan="4">
-			<input class="inputbutton" type="button" value="지원"
-				onclick="location='recMyView.do?recId=${recDto.recId}&pageNum=${pageNum}'">
-		<c:if test="${sessionScope.memType eq 2}">
-			<input class="inputbutton" type="button" value="공고수정"
-				onclick="location='recMod.do?recId=${recDto.recId}&pageNum=${pageNum}'">
-			<input class="inputbutton" type="button" value="공고삭제"
-				onclick="location='recDel.do?recId=${recDto.recId}&pageNum=${pageNum}'">
-		</c:if>
+		
+			<c:if test="${sessionScope.memid eq jbpDto.jobpId}">
+				<input class="inputbutton" type="button" value="공고수정"
+					onclick="location='recMod.do?recId=${recDto.recId}&pageNum=${pageNum}'">
+				<input class="inputbutton" type="button" value="공고삭제"
+					onclick="location='recDel.do?recId=${recDto.recId}&pageNum=${pageNum}'">
+			</c:if>
+		
 			
 			<input class="inputbutton" type="button" value="목록으로"
 				onclick="location='main.do?pageNum=${pageNum}'">
 		</th>
-	</tr>		
+	</tr>	
+</table>			
+<br>
+	
+	
+<table border='1'>
+	<tr>
+		<th colspan='4' id="app">
+		
+		</th>
+	</tr>
 </table>
