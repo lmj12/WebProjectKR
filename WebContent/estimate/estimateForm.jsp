@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../setting/setting.jsp" %>
+<%@ include file="/setting/design_setting_upper.jsp" %>
+<%@ include file="/setting/setting.jsp" %>
 <!DOCTYPE html>
 <c:if test="${sessionScope.memType ne 1}">	<!--  구직자회원이 아니면  -->
 <br>
@@ -24,3 +25,5 @@
 		//-->
 	</script>
 </c:if>
+
+<%@ include file="/setting/design_setting_footer.jsp" %>

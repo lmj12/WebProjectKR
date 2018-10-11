@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
-<%@ include file="../setting/setting.jsp"%>
+<%@ include file="/setting/design_setting_upper.jsp" %>
+<%@ include file="/setting/setting.jsp"%>
 <!DOCTYPE html>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -185,5 +186,5 @@
 
 
 
-<%@ include file="../recCrr/recCrr.jsp" %>
+<%@ include file="/setting/design_setting_footer.jsp" %>
 	

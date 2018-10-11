@@ -53,14 +53,11 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="main.do"><span
 						class="glyphicon glyphicon glyphicon-home"></span> Main</a></li>
-				<li>
 				<c:if test="${sessionScope.memid ne null}">
-					<a href="logout.do">
+					<li>
+						<a href="logout.do"><span class="glyphicon glyphicon glyphicon-log-out"></span>Logout</a>
+					</li>
 				</c:if>
-				<c:if test="${sessionScope.memid eq null}">
-					<a href="#">
-				</c:if>
-				<span	class="glyphicon glyphicon glyphicon-log-out"></span>Logout</a></li>
 			</ul>
 		</div>
 	</div>

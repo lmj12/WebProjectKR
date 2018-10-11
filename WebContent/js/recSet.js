@@ -131,9 +131,9 @@ function writecheck(){
 	}else if(!recwrite.reccontent.value){
 		alert("내용을 입력해주세요");
 		return false;
-	}else if(!recwrite.recSite.value){
-		erroralert("사이트를 입력해주세요.");
-		return false;
+//	}else if(!recwrite.recSite.value){
+//		erroralert("사이트를 입력해주세요.");
+//		return false;
 	}else if( recwrite.confirm.value == 0 ) {
 		erroralert( "직무를 선택해주세요");
 		recwrite.confirm.focus();

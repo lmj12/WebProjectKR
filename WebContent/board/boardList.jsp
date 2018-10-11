@@ -1,6 +1,7 @@
 <%@page import="board.BoardDataBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/board/setting.jsp" %>
 <!DOCTYPE html>
 	<script src="${js}board.js"></script>
@@ -87,3 +88,4 @@
 		<a href ="boardList.do?pageNum=${pageCount}">[▶▶]</a>
 	</c:if>	
 </c:if>
+<%@ include file="/setting/design_setting_footer.jsp" %>
