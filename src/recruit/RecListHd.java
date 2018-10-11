@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import board.BoardDataBean;
 import member.jobprov.JobProvDBBean;
 import member.jobprov.JobProvDataBean;
 import schedule.job.SchJbException;
