@@ -161,11 +161,12 @@ function writecheck(){
 
 //모집상태 변경
 function change(){
-	var elem = document.getElementsByName('sta');
-	var points = null;
-	points.push(elem[recId].value);
-	var value = document.getElementById('value');
-	value.setAttribute("val", points);
+	var target = document.getElementById("sta");
+	var t = target.options[target.selectedIndex].value;
+		
+	var val = document.getElementById("val");
+	val.setAttribute("value", t);
+
 }
 
 //직무추가

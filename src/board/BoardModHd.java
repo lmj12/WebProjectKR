@@ -20,6 +20,11 @@ public class BoardModHd implements BoardHandler {
 	@Override
 	@RequestMapping("/boardMod")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws BoardException {
+		try {
+			request.setCharacterEncoding( "utf-8" );
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		if(request.getParameter("modify")==null) {
 			
 			
@@ -36,15 +41,11 @@ public class BoardModHd implements BoardHandler {
 				BoardDataBean boardDto =boardDao.boardGet( boardId );
 				request.setAttribute( "boardDto", boardDto );
 				
-				return new ModelAndView("/recruit/recMod");
+				return new ModelAndView("/board/boardMod");
 			
 		}else {
 			
-			try {
-				request.setCharacterEncoding( "utf-8" );
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
+		
 			
 			BoardDataBean boardDto = new BoardDataBean();
 			boardDto.setBoardContent(request.getParameter("boardContent"));
@@ -61,7 +62,7 @@ public class BoardModHd implements BoardHandler {
 			request.setAttribute( "result", result );
 			request.setAttribute( "pageNum", pageNum );
 			
-			return new ModelAndView("/recruit/recMod");
+			return new ModelAndView("/board/boardMod");
 			
 		}
 		
