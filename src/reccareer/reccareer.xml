@@ -7,11 +7,11 @@
    	<insert id="apply" parameterType="reccareer.RecCrrDataBean">
    		insert into KRRECCAREER	values(KRRECCAREER_seq.nextVal,#{recId},#{posId},0,#{jbskId})
    </insert>
-   <delete id="cncl" parameterType="int">
-   		delete from KRRECCAREER where RECCRRID = #{recCrrId}
+   <delete id="cncl" parameterType="reccareer.RecCrrDataBean">
+   		delete from KRRECCAREER where RECID = #{recId} AND JBSKID = #{jbskId}
    </delete>
    <update id="mod" parameterType="reccareer.RecCrrDataBean">
-   		update KRRECCAREER set POSID = #{posId} where RECCRRID=#{recCrrId}
+   		update KRRECCAREER set POSID = #{posId} where RECID = #{recId} AND JBSKID = #{jbskId}
    </update>
    <select id="appCk" parameterType="reccareer.RecCrrDataBean" resultType="int">
    		select count(*)	from KRRECCAREER where RECID = #{recId} AND JBSKID = #{jbskId}
@@ -20,7 +20,10 @@
    		select c.RECCRRID, c.RECID, c.POSID, c.RECCRRSTA, c.RSMID, r.JBSKID from KRRECCAREER c, KRRESUME r where c.RSMID = r.RSMID AND RECCRRID=#{recCrrId}
    </select>
    <select id="myList" parameterType="String" resultType="reccareer.RecCrrDataBean">
-   		select c.RECCRRID, c.RECID, c.POSID, c.RECCRRSTA, c.RSMID, r.JBSKID	 from KRRECCAREER c, KRRESUME r where c.RSMID = r.RSMID AND JBSKID = #{jbskId}
+   		select c.*, r.RECID, r.RECEND, r.RECSTATUS, r.JOBPID from KRRECCAREER c, KRRECRUIT r where c.RECId = r.RECID AND c.JBSKID = #{jbskId} AND (r.RECSTATUS = 1 OR r.RECSTATUS = 0)  
+   </select>
+   <select id="myPrevList" parameterType="String" resultType="reccareer.RecCrrDataBean">
+   		select c.*, r.RECID, r.RECEND, r.RECSTATUS, r.JOBPID from KRRECCAREER c, KRRECRUIT r where c.RECId = r.RECID AND c.JBSKID = #{jbskId} AND r.RECSTATUS = 2  
    </select>
    <select id="applyList" parameterType="int" resultType="reccareer.RecCrrDataBean">
    		select c.*, j.jbskId, j.jbskName, j.jbskGender, j.jbskTel from KRRECCAREER c, KRJOBSEEKER j where c.JBSKID = j.JBSKID AND RECID = #{recId} 
