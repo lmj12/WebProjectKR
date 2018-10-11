@@ -115,8 +115,8 @@
 	<th>모집상태 변경 </th>
 	<td>
 	<select name="sta" id="sta">
-		<option name="opt['recId']" value="2" selected>모집중 </option>
-		<option name="opt['recId']" value="1">모집완료</option>
+		<option name="opt" value="2" selected>모집중 </option>
+		<option name="opt" value="1">모집완료</option>
 	</select>
 	</td>
 	<td>
