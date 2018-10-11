@@ -16,6 +16,8 @@ public class RecruitDataBean {
 	private String posPos;	//직무 포지션
 	private int crrCnt;	//지원자 숫자
 	private int posId;
+	private String stime;
+	private String etime;
 	
 	public int getRecId() {
 		return recId;
@@ -95,9 +97,16 @@ public class RecruitDataBean {
 	public void setPosId(int posId) {
 		this.posId = posId;
 	}
-	
-	
-	
-	
-	
+	public String getStime() {
+		return stime;
+	}
+	public void setStime(String stime) {
+		this.stime = stime;
+	}
+	public String getEtime() {
+		return etime;
+	}
+	public void setEtime(String etime) {
+		this.etime = etime;
+	}
 }

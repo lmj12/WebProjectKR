@@ -90,6 +90,9 @@ public class RecListHd implements RecruitHandler {
 			for(int i=0; i<articles.size(); i++) {
 				RecListDataBean recList = new RecListDataBean();
 				RecruitDataBean recDto = articles.get(i);
+				SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+				recDto.setStime(sf.format(recDto.getRecStart()));
+				recDto.setEtime(sf.format(recDto.getRecEnd()));
 				recList.setRecDto(recDto);
 				
 				int recId = recDto.getRecId();
@@ -122,18 +125,19 @@ public class RecListHd implements RecruitHandler {
 		List<RecruitDataBean> rst = recDao.getAdm();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		for(int i=0; i<rst.size(); i++) {
-			rst.get(i).setBoardregTime(sdf.format(rst.get(i).getBoardregdate()));
+			rst.get(i).setStime(sdf.format(rst.get(i).getRecStart()));
+			rst.get(i).setEtime(sdf.format(rst.get(i).getRecEnd()));
 		}
 		ObjectMapper mapper = new ObjectMapper(); 
 		
-		String atcs=""; 
+		String recs=""; 
 		try { 
-			atcs = mapper.writeValueAsString(rst);
+			recs = mapper.writeValueAsString(rst);
 			
 		} catch (IOException e) { 
 			e.printStackTrace(); 
 		}
 		
-		return atcs;
+		return recs;
 	}
 }

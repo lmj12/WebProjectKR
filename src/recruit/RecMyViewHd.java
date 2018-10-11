@@ -1,8 +1,16 @@
 package recruit;
 
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
+import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -81,24 +89,55 @@ public class RecMyViewHd implements RecruitHandler {
 		if( count > 0 ) {
 			
 			List <RecruitDataBean> articles = recDao.recMyList( jobpId );
-			request.setAttribute( "articles", articles );
+			
+			List <RecListDataBean> articleList = new ArrayList<RecListDataBean>();
 			for(int i=0; i<articles.size(); i++) {
-				int a = articles.get(i).getRecId();
-				RecruitDataBean recDto = recDao.recGet(a);
+				RecListDataBean recList = new RecListDataBean();
+				RecruitDataBean recDto = articles.get(i);
+				SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+				recDto.setStime(sf.format(recDto.getRecStart()));
+				recDto.setEtime(sf.format(recDto.getRecEnd()));
+				recList.setRecDto(recDto);
+				
+				int recId = recDto.getRecId();
 				String jbpId = recDto.getJobpId();
 				JobProvDataBean jbpDto= jbpDao.jobpGet(jbpId);
-				request.setAttribute("jbpDto", jbpDto);				
-				List<RecruitDataBean> recruitDto = recDao.recPosGet(a);
-				request.setAttribute("recruitDto", recruitDto);	
+				recList.setJobpDto(jbpDto);
+		
+				List<RecruitDataBean> poss = recDao.recPosGet(recId);
+				recList.setPoss(poss);
+				articleList.add(recList);			
+			}
+			
+			List<RecruitDataBean> lists = recDao.recMyListFin(jobpId);
+			List<RecListDataBean> twoList = new ArrayList<RecListDataBean>();
+			for(int i=0; i<lists.size(); i++) {
+				RecListDataBean recList = new RecListDataBean();
+				RecruitDataBean recDto = lists.get(i);
+				SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+				recDto.setStime(sf.format(recDto.getRecStart()));
+				recDto.setEtime(sf.format(recDto.getRecEnd()));
+				recList.setRecDto(recDto);
 				
-				}
+				int recId = recDto.getRecId();
+				String jbpId = recDto.getJobpId();
+				JobProvDataBean jbpDto= jbpDao.jobpGet(jbpId);
+				recList.setJobpDto(jbpDto);
+		
+				List<RecruitDataBean> poss = recDao.recPosGet(recId);
+				recList.setPoss(poss);
+				twoList.add(recList);			
+			}
+			request.setAttribute("articleList", articleList);
+			request.setAttribute("twoList", twoList);
+			request.setAttribute("cnt", articles.size());
 			
 		}
      
 		
-		
 		// TODO Auto-generated method stub
 		return new ModelAndView("/recruit/recMyList");
 	}
+	
 
 }
