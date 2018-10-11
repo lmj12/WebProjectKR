@@ -109,22 +109,13 @@ $(document).ready(
 	}
 	
 	function inputcheck(){
-		
+	
 		var thumbext = document.getElementById("file").value; //파일을 추가한 input 박스의 값
 		thumbext = thumbext.slice(thumbext.indexOf(".") + 1).toLowerCase(); //파일 확장자를 잘라내고, 비교를 위해 소문자로 만듭니다.
 		
 		var target = document.getElementById("jbskEmail2");
-
 		
-		if( !inputform.jbskId.value){
-			alert("아이디를 입력하세요");
-			inputform.jbskId.focus();
-			return false;
-		}else if( inputform.jbskId.value.length <4 || inputform.jbskId.value.length >15) {
-			alert( "아이디길이를 확인하세요" );
-			inputform.jbskId.focus();
-			return false;
-		}else if(!inputform.jbskPasswd.value || inputform.jbskPasswd.value == '') {
+		if(!inputform.jbskPasswd.value || inputform.jbskPasswd.value == '') {
 			alert( "비밀번호를 입력하세요");
 			return false;
 		}else if( inputform.jbskPasswd.value.length <6 || inputform.jbskPasswd.value.length >15) {
@@ -135,12 +126,6 @@ $(document).ready(
 			return false;
 		}else if(inputform.jbskPasswd.value != inputform.jbskRePasswd.value ) {
 			alert( "비밀번호가 일치하지 않습니다." );
-			return false;
-		}else if(! inputform.jbskName.value) {
-			alert( "이름을 입력하세요" );
-			return false;
-		} else if(! inputform.jbskBd.value) {
-			alert( "생년월일을 선택하세요" );
 			return false;
 		}else if(! inputform.jbskGender.value) {
 			alert( "성별을 선택하세요" );
@@ -239,4 +224,3 @@ $(document).ready(
 		
 	}
 	
-
