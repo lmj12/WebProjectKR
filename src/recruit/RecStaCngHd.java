@@ -41,26 +41,29 @@ public class RecStaCngHd implements RecruitHandler {
 	@RequestMapping(value = "ajaxRecStaCng", produces="application/json") 
 	@ResponseBody
 	public int ajaxprocess(HttpServletRequest request, HttpServletResponse response) throws RecruitException {
-		
+			
 			int recId = Integer.parseInt(request.getParameter("recId"));
 			//System.out.println(recId);
 			String cng = request.getParameter("cng");
 			int result = -1;
-			if(cng.equals("1")) {
-				System.out.println(cng);
-				RecruitDataBean recDto = recDao.recGet(recId);
-				recDto.setRecId(recId);
-				recDto.setRecStatus(1);
-				result = recDao.recStaCng(recDto);
-				
-			}else if(cng.equals("0")) {
-				RecruitDataBean recDto = recDao.recGet(recId);
-				recDto.setRecId(recId);
-				recDto.setRecStatus(0);
-				result = recDao.recStaCng(recDto);
-				
-			}
 			
+				if(cng.equals("1")) {					
+					RecruitDataBean recDto = recDao.recGet(recId);					
+					recDto.setRecId(recId);
+					recDto.setRecStatus(1);
+					result = recDao.recStaCng(recDto);				
+				}else if(cng.equals("0")) {
+					RecruitDataBean recDto = recDao.recGet(recId);
+					recDto.setRecId(recId);
+					recDto.setRecStatus(0);
+					result = recDao.recStaCng(recDto);					
+				}else if(cng.equals("2")) {
+					RecruitDataBean recDto = recDao.recGet(recId);
+					recDto.setRecId(recId);
+					recDto.setRecStatus(2);
+					result = recDao.recStaCng(recDto);
+				}
+				
 			if(result==1) { 
 				return Integer.parseInt(cng);
 			} else {

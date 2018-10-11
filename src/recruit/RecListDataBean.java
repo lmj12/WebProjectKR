@@ -8,7 +8,15 @@ public class RecListDataBean {
 	private RecruitDataBean recDto;
 	private JobProvDataBean jobpDto;
 	private List<RecruitDataBean> poss;
+	private List<RecruitDataBean> daDto;
 	
+	
+	public List<RecruitDataBean> getDaDto() {
+		return daDto;
+	}
+	public void setDaDto(List<RecruitDataBean> daDto) {
+		this.daDto = daDto;
+	}
 	public RecruitDataBean getRecDto() {
 		return recDto;
 	}
