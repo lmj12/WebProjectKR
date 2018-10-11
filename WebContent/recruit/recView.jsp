@@ -4,8 +4,16 @@
 <script type="text/javascript">
 	//<!--
 	
+	var recStart = '${recDto.recStart}';
+	var st = new Date(recStart).format("yyyy/MM/dd hh:mm");
+	
+	var recEnd = '${recDto.recEnd}';
+	var et = new Date(recEnd).format("yyyy/MM/dd hh:mm");;
+
 	$(document).ready(function(){
 	   	appTable();
+	   	$("#st").text(st);
+	   	$("#et").text(et);	
 	});
 	function recApply() {
 		var memType = ${sessionScope.memType}
@@ -112,21 +120,24 @@
 				</td>
 		<tr>
 			<th>시작일</th>
-			<td>${recDto.recStart}</td>
+			<td id='st'></td>
 		</tr>
 		<tr>
 			<th>종료일</th>
-			<td>${recDto.getRecEnd()}</td>
+			<td id='et'></td>
 		</tr>
 		<tr>
 			<th>공고상태</th>
 			<td align="center"> 
-				<c:if test="${recDto.recStatus eq 0}">
-					모집중
-				</c:if>
-				<c:if test="${recDto.recStatus eq 1}">
-					모집완료
-				</c:if>
+				<c:if test="${article.recDto.recStatus eq 0}">
+				    		모집중
+				    </c:if>
+				    <c:if test="${article.recDto.recStatus eq 1}">
+				    		모집완료
+				    </c:if>
+				    <c:if test="${article.recDto.recStatus eq 2}">
+				    		완료
+				    </c:if>	
 			</td>
 		</tr>
 		<tr>

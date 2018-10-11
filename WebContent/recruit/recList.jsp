@@ -38,6 +38,9 @@
 				    <c:if test="${article.recDto.recStatus eq 1}">
 				    		모집완료
 				    </c:if>
+				    <c:if test="${article.recDto.recStatus eq 2}">
+				    		완료
+				    </c:if>	
 				</td>		
 	</tr>
 	<tr>
@@ -77,13 +80,13 @@
 	<tr>
 		<th>시작일</th>
 		<td align="center">
-					${article.recDto.recStart}		
+					${article.recDto.stime}		
 				</td>				
 	</tr>
 	<tr>
 		<th>종료일</th>
 		<td align="center">
-					${article.recDto.recEnd}
+					${article.recDto.etime}
 				</td>	
 	</tr>
 	<tr>

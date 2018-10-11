@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import mybatis.SqlMapClient;
 
 public class RecruitDBBean {
+	
 	private SqlSession session = SqlMapClient.getSession();
 	
 	public int recWrt(RecruitDataBean recruitDto) { // 임시매개변수. 필요시 변경할것.			
@@ -38,15 +39,12 @@ public class RecruitDBBean {
 	public int recStaPro(String jobpId) {
 		return session.selectOne("Rec.recStaPro", jobpId);
 	}
-	
 	public List<RecruitDataBean> recMyList(String jobpId) { // 임시매개변수. 필요시 변경할것.
 		return session.selectList("Rec.recMyList", jobpId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
-	
 	public RecruitDataBean recGet(int recId) { // 임시매개변수. 필요시 변경할것.
 		return session.selectOne("Rec.recGet", recId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
-	
 	public List<RecruitDataBean> recList(Map<String, Integer> map) { // 임시매개변수. 필요시 변경할것.		
 		return session.selectList("Rec.recList", map); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
@@ -62,14 +60,14 @@ public class RecruitDBBean {
 	public void addCount(int recId) {			
 		session.update("Rec.addCount", recId);
 	}
-
 	public int recDelPos(int recId) {
 		return session.delete("Rec.recDelPos", recId);		
 	}
-
-	
 	public int recEndCng(int recStatus) {
 		return session.update("Rec.recEndCng", recStatus);		
 	}
 
+	public List<RecruitDataBean> recMyListFin(String jobpId) {
+		return session.selectList("Rec.recMyListFin", jobpId);
+	}
 }
