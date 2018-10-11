@@ -94,6 +94,8 @@ public class RecMyViewHd implements RecruitHandler {
 				}
 			
 		}
+     
+		
 		
 		// TODO Auto-generated method stub
 		return new ModelAndView("/recruit/recMyList");
