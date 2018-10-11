@@ -1,5 +1,5 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <!-- container 내용 가변위치 -->
-<%@ include file="/recruit/recList.jsp" %>
+<jsp:include page="recList.do" flush="false"/>
  
 <%@ include file="/setting/design_setting_footer.jsp" %>
