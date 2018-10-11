@@ -15,6 +15,7 @@
 	   	$("#st").text(st);
 	   	$("#et").text(et);	
 	});
+
 	function recApply() {
 		var memType = ${sessionScope.memType}
 		if(memType==1){
@@ -50,6 +51,171 @@
 		}
 	}
 	
+	function recCncl() {
+		var memType = ${sessionScope.memType}
+		if(memType==1){
+			var recId = $("#recId").val()
+			var jbskId = '${sessionScope.memid}';
+			$.ajax({
+		    	method : "POST",
+		    	url : "ajaxRecCrrCk.do",
+		    	cache : false,
+				async : false,
+				data : {
+					recId : recId,
+					jbskId : jbskId
+				},
+				datatype : "text",
+				success : function(data){
+					var con;
+					if (data == 0){
+						alert("지원하지 않은 공고입니다.");
+						con = false;
+					} else if (data == 1){
+						con = confirm("현재 지원되어 있는 직무는 '팀장' 입니다. 지원취소 하시겠습니까?")
+					}  else if (data == 2){
+						con = confirm("현재 지원되어 있는 직무는 '스캔' 입니다. 지원취소 하시겠습니까?")
+					}  else if (data == 3){
+						con = confirm("현재 지원되어 있는 직무는 '예도' 입니다. 지원취소 하시겠습니까?")
+					}  else if (data == 4){
+						con = confirm("현재 지원되어 있는 직무는 '안내' 입니다. 지원취소 하시겠습니까?")
+					}  else if (data == 5){
+						con = confirm("현재 지원되어 있는 직무는 '경호' 입니다. 지원취소 하시겠습니까?")
+					}  else if (data == 6){
+						con = confirm("현재 지원되어 있는 직무는 '기타' 입니다. 지원취소 하시겠습니까?")
+					}
+					
+					if(con){
+						recCnclConfirm();
+					}
+					
+				}, error:function(request,status,error){
+					alert();
+				}
+			})
+		} else {
+			alert("지원할 수 없는 형태의 사용자입니다.")
+		}
+	}
+	
+	function recCnclConfirm() {
+		var recId = $("#recId").val()
+		var jbskId = '${sessionScope.memid}';
+		$.ajax({
+	    	method : "POST",
+	    	url : "ajaxRecCrrCncl.do",
+	    	cache : false,
+			async : false,
+			data : {
+				recId : recId,
+				jbskId : jbskId
+			},
+			datatype : "text",
+			success : function(data){
+				if(data == 1){
+					alert("지원취소했습니다.")
+				} else {
+					alert("취소에 실패했습니다. 다시 시도해주세요.")
+				}
+				
+			}, error:function(request,status,error){
+				alert();
+			}
+		})
+		
+	}
+	
+	function recMod() {
+		var memType = ${sessionScope.memType}
+		if(memType==1){
+			var recId = $("#recId").val()
+			var jbskId = '${sessionScope.memid}';
+			var posId = $("#pos option:selected").val();
+			var posName;
+			if(posId==1){
+				posName="팀장";
+			} else if (posId==2){
+				posName="스캔"
+			} else if (posId==3){
+				posName="예도"
+			} else if (posId==4){
+				posName="안내"
+			} else if (posId==5){
+				posName="경호"
+			} else if (posId==6){
+				posName="기타"
+			}
+			$.ajax({
+		    	method : "POST",
+		    	url : "ajaxRecCrrCk.do",
+		    	cache : false,
+				async : false,
+				data : {
+					recId : recId,
+					jbskId : jbskId
+				},
+				datatype : "text",
+				success : function(data){
+					var con;
+					if(posId == data){
+						alert("현재 지원한 직무와 같은 직무입니다.");
+						con = false;
+					} else if (data == 0){
+						alert("지원하지 않은 공고입니다.");
+						con = false;
+					} else if (data == 1){
+						con = confirm("현재 지원되어 있는 직무는 '팀장' 입니다. '" +posName+ "'직무로 다시 지원하시겠습니까?")
+					}  else if (data == 2){
+						con = confirm("현재 지원되어 있는 직무는 '스캔' 입니다. '" +posName+ "'직무로 다시 지원하시겠습니까?")
+					}  else if (data == 3){
+						con = confirm("현재 지원되어 있는 직무는 '예도' 입니다. '" +posName+ "'직무로 다시 지원하시겠습니까?")
+					}  else if (data == 4){
+						con = confirm("현재 지원되어 있는 직무는 '안내' 입니다. '" +posName+ "'직무로 다시 지원하시겠습니까?")
+					}  else if (data == 5){
+						con = confirm("현재 지원되어 있는 직무는 '경호' 입니다. '" +posName+ "'직무로 다시 지원하시겠습니까?")
+					}  else if (data == 6){
+						con = confirm("현재 지원되어 있는 직무는 '기타' 입니다. '" +posName+ "'직무로 다시 지원하시겠습니까?")
+					}
+					
+					if(con){
+						recModConfirm(posId);
+					}
+					
+				}, error:function(request,status,error){
+					alert();
+				}
+			})
+		} else {
+			alert("지원할 수 없는 형태의 사용자입니다.")
+		}
+	}
+	
+	function recModConfirm(posId) {
+		var recId = $("#recId").val()
+		var jbskId = '${sessionScope.memid}';
+		$.ajax({
+	    	method : "POST",
+	    	url : "ajaxRecCrrMod.do",
+	    	cache : false,
+			async : false,
+			data : {
+				recId : recId,
+				jbskId : jbskId,
+				posId : posId
+			},
+			datatype : "text",
+			success : function(data){
+				if(data == 1){
+					alert("수정성공했습니다.")
+				} else {
+					alert("수정에 실패했습니다. 다시 시도해주세요.")
+				}
+			}, error:function(request,status,error){
+				alert();
+			}
+		})
+	}
+	
 	function appTable(){
 		var appstr ="<select id='pos'>";
 		var posIds = document.getElementsByName("posId");
@@ -67,11 +233,17 @@
 				posName = "안내"
 			} else if(posId==5){
 				posName = "경호"
+			} else {
+				posName = "기타"
 			}
 			appstr += "<option value='"+posId+"'>"+posName+"</option>"  
 		}
-		appstr += "</select><input type='button' value='지원' onclick='recApply()'>"
+		appstr += "</select>"
 		$("#app").html(appstr);
+	}
+	
+	function back(){
+		history.back()
 	}
 	//-->
 </script>
@@ -174,7 +346,7 @@
 					onclick="location='recCrrView.do?recId=${recDto.recId}'">
 			</c:if>
 			<input class="inputbutton" type="button" value="목록으로"
-				onclick="location='main.do?pageNum=${pageNum}'">
+				onclick="back()">
 		</th>
 	</tr>	
 </table>			
@@ -185,6 +357,11 @@
 	<tr>
 		<th colspan='4' id="app">
 		
+		</th>
+		<th>
+			<input type='button' value='지원' onclick='recApply()'>
+			<input type='button' value='지원취소' onclick='recCncl()'>
+			<input type='button' value='지원수정' onclick='recMod()'>
 		</th>
 	</tr>
 </table>

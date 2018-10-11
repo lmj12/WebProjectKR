@@ -19,6 +19,9 @@ public class RecCrrDataBean {
 	private String jbskPic;
 	private String jbskInfoType;
 	private String jbskIt;
+	private Timestamp recEnd;
+	private String jobpId;
+	private int recStatus;
 	
 	public int getRecCrrId() {
 		return recCrrId;
@@ -115,6 +118,24 @@ public class RecCrrDataBean {
 	}
 	public void setJbskIt(String jbskIt) {
 		this.jbskIt = jbskIt;
+	}
+	public Timestamp getRecEnd() {
+		return recEnd;
+	}
+	public void setRecEnd(Timestamp recEnd) {
+		this.recEnd = recEnd;
+	}
+	public String getJobpId() {
+		return jobpId;
+	}
+	public void setJobpId(String jobpId) {
+		this.jobpId = jobpId;
+	}
+	public int getRecStatus() {
+		return recStatus;
+	}
+	public void setRecStatus(int recStatus) {
+		this.recStatus = recStatus;
 	}
 	
 }

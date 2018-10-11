@@ -16,10 +16,10 @@ public class RecCrrDBBean {
 		return session.insert("RecCrr.apply", recCrrDto); 
 	}
 	
-	public int recCrrCncl(int recCrrId) {
+	public int recCrrCncl(RecCrrDataBean recCrrDto) {
 		session.flushStatements();
 		session.clearCache();
-		return session.delete("RecCrr.cncl", recCrrId); 
+		return session.delete("RecCrr.cncl", recCrrDto); 
 	}
 	
 	public int recCrrMod(RecCrrDataBean recCrrDto) {
@@ -50,6 +50,12 @@ public class RecCrrDBBean {
 		session.flushStatements();
 		session.clearCache();
 		return session.selectList("RecCrr.myList", jbskId); 
+	}
+	
+	public List<RecCrrDataBean> recCrrMyPrevList(String jbskId) {
+		session.flushStatements();
+		session.clearCache();
+		return session.selectList("RecCrr.myPrevList", jbskId); 
 	}
 	
 	public int recCrrCnt(int recId) {
