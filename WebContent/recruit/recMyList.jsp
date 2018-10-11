@@ -63,7 +63,7 @@
 <c:if test="${count eq 0}">	
 		<tr>
 			<td colspan="6" align="center">
-				${msg_list_x}
+				공고가 없습니다
 			</td>
 		</tr>
 	</c:if>
@@ -145,7 +145,7 @@
 				
 	<tr>
 		<th style="width : 15%" colspan="7" align="left">
-		${sessionScope.memid}님의 공고확인페이지입니다. 
+		${sessionScope.memid}님의 완료된 공고확인페이지입니다. 
 		</th>
 	
 		
@@ -164,7 +164,7 @@
 <c:if test="${count eq 0}">	
 		<tr>
 			<td colspan="6" align="center">
-				${msg_list_x}
+				공고가 없습니다
 			</td>
 		</tr>
 	</c:if>

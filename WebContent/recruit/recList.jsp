@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../setting/setting.jsp"%>
+<script src="${js}recCng.js"></script>
 <h2>공고조회 페이지</h2>
 <input type="button" value="메인으로" onclick="location='main.do'">
 
@@ -31,7 +32,7 @@
 	</tr>
 	<tr>
 		<th>공고상태</th>
-		<td>
+		<td id="con">
 					<c:if test="${article.recDto.recStatus eq 0}">
 				    		모집중
 				    </c:if>
@@ -47,8 +48,8 @@
 		<th>사업자 이름</th>
 		<td align="center">						
 						${article.jobpDto.jobpCn}
-					</a>	
-				</td>				
+				
+		</td>				
 	</tr>
 	<tr>
 		<th>직무</th>
@@ -93,8 +94,28 @@
 		<th>조회수</th>
 		<td align="center">
 					${article.recDto.recReadCnt}	
-				</td>				
+				</td>	
+				
 	</tr>
+	<c:if test="${sessionScope.memid eq article.jobpDto.jobpId}">
+	<c:if test="${article.recDto.recStatus ne 2}">
+	<tr>
+		<th>공고상태변경</th>
+				<td onclick="event.cancelBubble = true;">
+				
+				<select name="sta" id="sta">
+					<option value="0" selected>모집중 </option>
+					<option value="1">모집완료</option>
+					<option value="2">완료</option>
+				</select>	
+				
+				<input type="button" name="cng" value="변경" onclick="recCng(${article.recDto.recId})">
+				<input type="hidden" id="val" name="val">
+			
+				</td>						
+	</tr>
+	</c:if>
+	</c:if>
 	
 </table>
 <br><br>
