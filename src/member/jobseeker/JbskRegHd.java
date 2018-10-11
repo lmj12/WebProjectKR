@@ -30,54 +30,7 @@ public class JbskRegHd implements JobSeekerHandler {
 	@Override
 	//@RequestMapping("/jbskReg")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
-		try {
-			request.setCharacterEncoding( "utf-8" );
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-			
-		String compemail="";
-		String ema1 = request.getParameter("jbskEmail1");
-		String ema2 = request.getParameter("jbskEmail2");
- 		if(ema1.contains("@") || (ema2=="직접입력")) {
-			compemail = request.getParameter("jbskEmail1");
-		}else {
-			compemail = ema1+"@"+ema2;
-		}
-		System.out.println(ema2);
-		String ad = request.getParameter("jbAddress");
-		System.out.println(request.getParameter("jbskBd"));
-		int year = Integer.parseInt(request.getParameter("jbskBd").split("-")[0]);
-		int month = Integer.parseInt(request.getParameter("jbskBd").split("-")[1]);
-		int day = Integer.parseInt(request.getParameter("jbskBd").split("-")[2]);
-		
-		LocalDateTime loc = LocalDateTime.of(year, month, day, 1 , 30);
-		
-		JobSeekerDataBean jbskDto =  new JobSeekerDataBean();
-		
-		jbskDto.setJbskId(request.getParameter("jbskId"));
-		jbskDto.setJbskName(request.getParameter("jbskName"));
-		jbskDto.setJbskPasswd(request.getParameter("jbskPasswd"));
-		jbskDto.setJbskGender(Integer.parseInt(request.getParameter("jbskGender")));
-		jbskDto.setJbskEmail(compemail);
-		//jbskDto.setJbskPic(	);
-		jbskDto.setJbskAdd1(ad.split(" ")[0]);
-		jbskDto.setJbskAdd2(ad.split(" ")[1]);
-		jbskDto.setJbskAdd3(ad.split(" ")[2]);
-		jbskDto.setJbskTel(request.getParameter("jbskTel"));
-		jbskDto.setJbskregdate( new Timestamp( System.currentTimeMillis() ) );
-		jbskDto.setJbskBd(Timestamp.valueOf(loc));
-		jbskDto.setJbskinfotype(Integer.parseInt(request.getParameter("jbskinfotype")));
-		
-		int result = jbskDao.jbskReg( jbskDto );
-		
-		int rst = jbskDao.check("jbskId");
-		request.setAttribute( "result", result );
-		request.setAttribute("rst",	rst);
-		
-		
-		// TODO Auto-generated method stub
-		return new ModelAndView("Jbs/registerJbs");
+		return null;
 		
 	}
 	
@@ -98,8 +51,8 @@ public class JbskRegHd implements JobSeekerHandler {
              
         String original = mf.getOriginalFilename(); // 업로드하는 파일 name
              
-        System.out.println("!!!!!!!!!!"+original);  // file original name
-        System.out.println("!!!!!!!!!!"+mf.getSize());// file size
+        //System.out.println("!!!!!!!!!!"+original);  // file original name
+        //System.out.println("!!!!!!!!!!"+mf.getSize());// file size
              
         uploadPath = path+original; // 파일 업로드 경로 + 파일 이름
          
@@ -123,8 +76,6 @@ public class JbskRegHd implements JobSeekerHandler {
 			compemail = ema1+"@"+ema2;
 		}
 		
-		String ad = mre.getParameter("jbAddress");
-		System.out.println(mre.getParameter("jbskBd"));
 		int year = Integer.parseInt(mre.getParameter("jbskBd").split("-")[0]);
 		int month = Integer.parseInt(mre.getParameter("jbskBd").split("-")[1]);
 		int day = Integer.parseInt(mre.getParameter("jbskBd").split("-")[2]);
@@ -139,9 +90,9 @@ public class JbskRegHd implements JobSeekerHandler {
 		jbskDto.setJbskGender(Integer.parseInt(mre.getParameter("jbskGender")));
 		jbskDto.setJbskEmail(compemail);
 		jbskDto.setJbskPic(uploadPath);
-		jbskDto.setJbskAdd1(ad.split(" ")[0]);
-		jbskDto.setJbskAdd2(ad.split(" ")[1]);
-		jbskDto.setJbskAdd3(ad.split(" ")[2]);
+		jbskDto.setJbskAdd1(request.getParameter("jbAddress"));
+		jbskDto.setJbskAdd2(request.getParameter("rdAddress"));
+		jbskDto.setJbskAdd3(request.getParameter("zipcode"));
 		jbskDto.setJbskTel(mre.getParameter("jbskTel"));
 		jbskDto.setJbskregdate( new Timestamp( System.currentTimeMillis() ) );
 		jbskDto.setJbskBd(Timestamp.valueOf(loc));
@@ -160,3 +111,4 @@ public class JbskRegHd implements JobSeekerHandler {
 	}
 
 }
+

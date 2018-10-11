@@ -10,10 +10,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="${js}jbskReg2.js"></script>
 	<script src="//code.jquery.com/jquery.min.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script src="./js/jbskReg2.js"></script>
+	<script src="./js/jbskMod.js"></script>
 	<script src="./js/jbskReg.js"></script>
 </head>
 <body onload="inputfocus()">
@@ -88,7 +87,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="jbAddress" id="jbAddress" placeholder="지번주소" readonly value="${jbskDto.getJbskAdd1()}">
+					<input type="text" name="jbAddress" id="jbAddress" placeholder="도 / 시" readonly value="${jbskDto.getJbskAdd1()}">
 					<!-- 정확한 용도를 모르겠으나 주소검색 시 검색창 꺼지게 만들어 줌 -->
 					<!-- 혹시 추후 주소 파싱해오는데 지장 생기면 body 태그 닫히는 곳 까지 내려버려도 무관함 -->
 					<span id="guide" style="color:#999"></span>
@@ -99,7 +98,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" id="rdAddress" placeholder="도로명주소" readonly value="${jbskDto.getJbskAdd2()}">
+					<input type="text" id="rdAddress" name="rdAddress" placeholder="시 / 구" readonly value="${jbskDto.getJbskAdd2()}">
 				</td>
 				<td>
 					
@@ -107,7 +106,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" id="zipcode" placeholder="우편번호" readonly value="${jbskDto.getJbskAdd3()}">
+					<input type="text" id="zipcode" name="zipcode" placeholder="구 / 동" readonly value="${jbskDto.getJbskAdd3()}">
 				</td>
 				<td>
 					
@@ -117,7 +116,7 @@
 			<tr>
 				<th> 이메일 </th>
 				<td>
-					 <input type="text" name="jbskEmail1" maxlength="50">@
+					 <input type="text" name="jbskEmail1" maxlength="50" value="${jbskDto.getJbskEmail()}">@
                        	 <select name="jbskEmail2" id="jbskEmail2">
                         	    <option>naver.com</option>	
                         	    <option>daum.net</option>
@@ -143,7 +142,7 @@
 			<tr>
 				<th> 사진 </th>
 				<td>
-					<input class="input" type="file" name="jbskPic" value="${jbskDto.getJbskPic()}">
+					<input class="input" type="file" name="jbskPic" id="file" value="${jbskDto.getJbskPic()}">
 				</td>
 				<td>
 					<input class="input" type="text" name="jbskPic2" maxlength="15" readonly>
@@ -153,17 +152,17 @@
 			<tr>
 				<th> 정보수신동의 </th>
 				<td>
-					<input type="radio" name="jbskinfotype" value="1">수신안함
-					<input type="radio" name="jbskinfotype" value="2">메일
-					<input type="radio" name="jbskinfotype" value="3">SMS
-					<input type="radio" name="jbskinfotype" value="4">메일, SMS
+					<input type="radio" name="jbskinfotype" value="1" >수신안함
+					<input type="radio" name="jbskinfotype" value="2" >메일
+					<input type="radio" name="jbskinfotype" value="3" >SMS
+					<input type="radio" name="jbskinfotype" value="4" >메일, SMS
 				</td>
 				<td>
 					
 				</td>
 			</tr>
 			<tr>	
-				<th colspan="2">
+				<th colspan="3">
 					<input class="inputbutton" type="submit" value="수정">
 					<input class="inputbutton" type="reset" value="취소" onclick="location='main.do'">
 				</th>

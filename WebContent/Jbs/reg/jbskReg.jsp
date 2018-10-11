@@ -100,7 +100,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="jbAddress" id="jbAddress" placeholder="지번주소" readonly>
+					<input type="text" name="jbAddress" id="jbAddress" placeholder="도 / 시" readonly>
 					<!-- 정확한 용도를 모르겠으나 주소검색 시 검색창 꺼지게 만들어 줌 -->
 					<!-- 혹시 추후 주소 파싱해오는데 지장 생기면 body 태그 닫히는 곳 까지 내려버려도 무관함 -->
 					<span id="guide" style="color:#999"></span>
@@ -111,7 +111,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" id="rdAddress" placeholder="도로명주소" readonly>
+					<input type="text" id="rdAddress" name="rdAddress" placeholder="시 / 구" readonly>
 				</td>
 				<td>
 					
@@ -119,7 +119,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" id="zipcode" placeholder="우편번호" readonly>
+					<input type="text" id="zipcode" name="zipcode" placeholder="구 / 동" readonly>
 				</td>
 				<td>
 					
@@ -131,11 +131,11 @@
 				<td>
 					 <input type="text" name="jbskEmail1" maxlength="50">@
                        	 <select name="jbskEmail2" id="jbskEmail2">
-                        		 <option>naver.com</option>
+                        		<option>naver.com</option>	
                         	    <option>daum.net</option>
                         	    <option>gmail.com</option>
                          	   <option>nate.com</option>
-                         	   <option>직접입력</option>   
+                         	   <option>직접입력</option>    
                         	
                         	   <!--  <option value="1">naver.com</option>
                         	    <option value="2">daum.net</option>
@@ -161,7 +161,7 @@
 			<tr>
 				<th> 사진 </th>
 				<td>
-					<input class="input" type="file" name="jbskPic">
+					<input class="input" type="file" name="jbskPic" id="file">
 				</td>
 				<td>
 					<input class="input" type="text" name="jbskPic2" maxlength="15" readonly>

@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -26,26 +25,11 @@ public class JbskModHd implements JobSeekerHandler {
 	@Resource
 	public JobSeekerDBBean jbskDao;
 	
-	
 	@Override
+	//@RequestMapping("/jbskMod")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
-				
-		JobSeekerDataBean jbskDto = new JobSeekerDataBean();
-		jbskDto.setJbskPasswd( request.getParameter( "jbskPasswd" ) );
+		return null;
 		
-		// 전화번호
-	
-		String jbskTel = request.getParameter( "jbskTel" );
-		jbskDto.setJbskTel(jbskTel);
-
-		jbskDto.setJbskId( (String) request.getSession().getAttribute( "memid" ) ); 
-		JobSeekerDBBean jbskDao = new JobSeekerDBBean();
-		
-		int result = jbskDao.jbskMod( jbskDto );
-		request.setAttribute( "result", result );	
-			
-		System.out.println(jbskTel);
-		return new ModelAndView("/Jbs/jbskView");
 	}
 	
 	@RequestMapping("/jbskMod")
@@ -56,11 +40,11 @@ public class JbskModHd implements JobSeekerHandler {
 			e.printStackTrace();
 		}
 		
+
 		JobSeekerDataBean jbskDto = new JobSeekerDataBean();
-		jbskDto.setJbskPasswd( mre.getParameter( "jbskPasswd" ) );
+		jbskDto.setJbskPasswd( request.getParameter( "jbskPasswd" ) );
 		
-		   
-       // String test = request.getParameter("test"); // jsp text name mapping
+		// String test = request.getParameter("test"); // jsp text name mapping
         MultipartFile mf = mre.getFile("jbskPic"); // jsp file name mapping
         String uploadPath = "";
          
@@ -87,36 +71,32 @@ public class JbskModHd implements JobSeekerHandler {
 		String compemail="";
 		String ema1 = mre.getParameter("jbskEmail1");
 		String ema2 = mre.getParameter("jbskEmail2");
-		System.out.println(ema2);
  		if(ema1.contains("@") || (ema2=="직접입력")) {
 			compemail = mre.getParameter("jbskEmail1");
 		}else {
 			compemail = ema1+"@"+ema2;
 		}
+ 		
+ 		jbskDto.setJbskId( (String) request.getSession().getAttribute( "memid" ) ); 
+		JobSeekerDBBean jbskDao = new JobSeekerDBBean();
 		
-		String ad = mre.getParameter("jbAddress");
-
-		jbskDto.setJbskId(mre.getParameter("jbskId")); 
 		jbskDto.setJbskPasswd(mre.getParameter("jbskPasswd"));
 		jbskDto.setJbskGender(Integer.parseInt(mre.getParameter("jbskGender")));
 		jbskDto.setJbskEmail(compemail);
 		jbskDto.setJbskPic(uploadPath);
-		jbskDto.setJbskAdd1(ad.split(" ")[0]);
-		jbskDto.setJbskAdd2(ad.split(" ")[1]);
-		jbskDto.setJbskAdd3(ad.split(" ")[2]);
+		jbskDto.setJbskAdd1(mre.getParameter("jbAddress"));
+		jbskDto.setJbskAdd2(mre.getParameter("rdAddress"));
+		jbskDto.setJbskAdd3(mre.getParameter("zipcode"));
 		jbskDto.setJbskTel(mre.getParameter("jbskTel"));
 		jbskDto.setJbskinfotype(Integer.parseInt(mre.getParameter("jbskinfotype")));
 		
+		
+		
+		
 		int result = jbskDao.jbskMod( jbskDto );
-		mre.setAttribute( "result", result );
+		request.setAttribute( "result", result );	
 		
-		
-		// TODO Auto-generated method stub
+
 		return new ModelAndView("/Jbs/jbskView");
-		
 	}
-
-	
-	
 }
-

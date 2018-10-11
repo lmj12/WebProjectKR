@@ -5,7 +5,7 @@ function searchPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
+        	
             // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
             var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
@@ -30,10 +30,19 @@ function searchPostcode() {
             }
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('zipcode').value = data.zonecode; //5자리 새우편번호 사용
+           /* document.getElementById('zipcode').value = data.zonecode; //5자리 새우편번호 사용
             document.getElementById('rdAddress').value = fullRoadAddr;
-            document.getElementById('jbAddress').value = data.jibunAddress;
-
+            document.getElementById('jbAddress').value = data.jibunAddress;*/
+            var ad = data.jibunAddress.split(" ");
+            if(ad[0] == '서울' || ad[0] == '대전' || ad[0] == '대구' || ad[0] == '부산' || ad[0] == '울산' || ad[0] == '광주' || ad[0] == '인천' || ad[0] == '세종특별자치시'){
+            	 document.getElementById('zipcode').value = ad[1]
+ 	            document.getElementById('rdAddress').value = ad[0]
+ 	            document.getElementById('jbAddress').value = '빈 칸'
+            } else {
+	            document.getElementById('zipcode').value = ad[2]
+	            document.getElementById('rdAddress').value = ad[1]
+	            document.getElementById('jbAddress').value = ad[0]
+            }
             // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
             if(data.autoRoadAddress) {
                 //예상되는 도로명 주소에 조합형 주소를 추가한다.
