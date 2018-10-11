@@ -2,11 +2,26 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ include file="../setting/setting.jsp" %>
-<script src="${js}recSet.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="${js}time.js"></script>
+<link rel="stylesheet" href="${js}timepicker.css">
+
+<script src="${js}recModSet.js"></script>
 <h2>공고수정페이지</h2>
 <script type="text/javascript">
+var num = 0;
 var cnt = 0;
-
+$( function() {
+    $( "#datepicker" ).datepicker({minDate: 0});
+    $("#timepicker").timepicker();
+  } );
 </script>
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
@@ -19,26 +34,59 @@ var cnt = 0;
 <c:if test="${result eq 1}">
 	<c:redirect url="recList.do?pageNum=${pageNum}"/>
 </c:if>	
-
-<form name="recMod" method="post" action="recMod.do" >
+<body onload="refocus()">
+<form name="recMod" method="post" action="recMod.do" onsubmit="return recheck()">
 <table border="1">
 <input type="hidden" name="jobpId" value="${recDto.jobpId}">
+<input type="hidden" name="recId" value="${recDto.recId}">
 	<tr>
 		<th>공고번호  </th>
-		<td> <input type="text" name="recId" value="${recDto.recId}" readonly> </td>
+		<td> ${recDto.recId} </td>
 	
 		
 		<th> 종료일</th>
-		<td> <input type="datetime-local" name="recEnd">	</td>
+		<td> <p>날짜: <input type="text" name="End" id="datepicker"><br><br>
+			시간 : <input type="text" name="EndTime" id="timepicker"></p></td>
 	</tr>
 	<tr>
-		<tr id="addposx">
+		<tr>
 		<th>공고 직무 </th>
+		<td> 지난 공고의 직무는 다음과 같습니다 : 
+	'
+		<c:forEach var="recruitDto" items="${recruitDto}">
+			<c:choose>
+			  <c:when test="${recruitDto.posId eq 1}">
+			  	팀장
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 2}">
+			   	스캔
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 3}">
+			   	예도
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 4}">
+			   	안내
+			  </c:when>
+			  <c:when test="${recruitDto.posId eq 5}">
+			   	경호
+			  </c:when>
+			  <c:otherwise>
+			   	기타
+			  </c:otherwise> 
+			 </c:choose>
+			 </c:forEach>
+			 <br><br>
+			  직무를 설정해 주셔야 합니다
+			 </td>
+			</tr>
+			<tr id="addposx">
+			<th>공고직무</th>
 		<td> 		
-		<input type="button" value="추가" name="addpos" onclick="return add()"> 
-		<input type="hidden" id="confirm" value="0">	</td>
+		<input type="button" value="추가" name="click" onclick="return adda()"> 
+		<input type="hidden" id="conval" name="conval" value="0">	
+		<input type="hidden" id="id" name='id'>	</td>
 	</tr>
-	</tr>
+	
 	<tr>
 		<th colspan="8">공고내용</th>	
 	
@@ -55,8 +103,10 @@ var cnt = 0;
 		<td colspan="7"> <input type="text" name="jbpBnp" value="${jbpDto.jobpBno}" readonly>	</td>
 	</tr>
 	<tr>
-		<th>링크</th>
-		<td colspan="7">  <input type="url" name="${recDto.recSite}" >	</td>
+		<th>주소</th>
+		<td colspan="7"> <input type="text" name="recSite" id="recSite" placeholder="${recDto.recSite}">					
+					<span id="guide" style="color:#999"></span>
+						<input type="button" value="주소찾기" onclick="searchPostcode()"></td>		
 	</tr>
 	<tr>
     		<th colspan="8">
@@ -69,3 +119,4 @@ var cnt = 0;
 
 </table>
 </form>
+</body>

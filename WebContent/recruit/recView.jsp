@@ -25,7 +25,14 @@
 				},
 				datatype : "text",
 				success : function(data){
-					alert("지원성공했습니다.")
+					if(data == 1){
+						alert("지원성공했습니다.")
+					} else if (data==2){ 
+						alert("이미 지원한 공고입니다.")
+					} else {
+						alert("지원에 실패했습니다. 다시 시도해주세요.")
+					}
+					
 				}, error:function(request,status,error){
 					alert();
 				}
@@ -140,22 +147,21 @@
 				${jbpDto.jobpBno}
 			</td>
 		<tr>
-			<th>링크</th>
+			<th>주소</th>
 			<td align="center">
 				${recDto.getRecSite()}
 			</td>
 		</tr>
 			<tr>
 		<th colspan="4">
-		
 			<c:if test="${sessionScope.memid eq jbpDto.jobpId}">
 				<input class="inputbutton" type="button" value="공고수정"
 					onclick="location='recMod.do?recId=${recDto.recId}&pageNum=${pageNum}'">
 				<input class="inputbutton" type="button" value="공고삭제"
 					onclick="location='recDel.do?recId=${recDto.recId}&pageNum=${pageNum}'">
+				<input type="button" value="지원현황"
+					onclick="location='recCrrView.do?recId=${recDto.recId}'">
 			</c:if>
-		
-			
 			<input class="inputbutton" type="button" value="목록으로"
 				onclick="location='main.do?pageNum=${pageNum}'">
 		</th>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../setting/setting.jsp"%>
+<script src="${js}recSet.js"></script>
 <h2>내 공고 보기 </h2>
 
 <input type="button" value="마이페이지로" onclick="location='mypage.do'">
@@ -10,7 +11,17 @@
 </c:if>
 		
 
-
+<c:if test="${result eq 0}">
+	<script type="text/javascript">
+		<!--
+		alert( modifyerror );
+		//-->
+	</script>		
+	<meta http-equiv="refresh" content="0; url=recMyView.do?pageNum=${pageNum}">
+</c:if>
+<c:if test="${result eq 1}">
+	<c:redirect url="recMyView.do?pageNum=${pageNum}"/>
+</c:if>	
 
 
 
@@ -34,10 +45,10 @@
 		<th>공고상태</th>
 		<td>
 					<c:if test="${article.recStatus eq 0}">
-				    		모집중
+				    		<option value="0" selected>모집중 </option>
 				    </c:if>
 				    <c:if test="${article.recStatus eq 1}">
-				    		모집완료
+				    		<option value="1" selected>모집완료 </option>
 				    </c:if>
 				</td>		
 	</tr>
@@ -95,7 +106,26 @@
 				</td>				
 	</tr>
 	
+	
 </table>
+<form action="recStaCng.do" method="post">
+<input type="hidden" name="recId" value="${article.recId}">
+<table>
+<tr>
+	<th>모집상태 변경 </th>
+	<td>
+	<select name="sta" id="sta">
+		<option name="opt['recId']" value="2" selected>모집중 </option>
+		<option name="opt['recId']" value="1">모집완료</option>
+	</select>
+	</td>
+	<td>
+	<input type="submit" name="cng['recId']" value="변경">
+	<input type="hidden" id="val">
+	</td>
+</tr>
+</table>
+</form>
 <br><br>
 </c:forEach>		
 </c:if>	
