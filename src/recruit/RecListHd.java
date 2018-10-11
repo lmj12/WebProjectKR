@@ -1,5 +1,7 @@
 package recruit;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,10 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import board.BoardDataBean;
 import member.jobprov.JobProvDBBean;
 import member.jobprov.JobProvDataBean;
+import schedule.job.SchJbException;
 
 
 @Controller
@@ -107,5 +114,26 @@ public class RecListHd implements RecruitHandler {
 		// TODO Auto-generated method stub
 		return new ModelAndView("/recruit/recList");
 	}
-
+	
+	@RequestMapping(value = "ajaxAdmRec") 
+	@ResponseBody
+	public String ajaxProcess(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
+		
+		List<RecruitDataBean> rst = recDao.getAdm();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		for(int i=0; i<rst.size(); i++) {
+			rst.get(i).setBoardregTime(sdf.format(rst.get(i).getBoardregdate()));
+		}
+		ObjectMapper mapper = new ObjectMapper(); 
+		
+		String atcs=""; 
+		try { 
+			atcs = mapper.writeValueAsString(rst);
+			
+		} catch (IOException e) { 
+			e.printStackTrace(); 
+		}
+		
+		return atcs;
+	}
 }
