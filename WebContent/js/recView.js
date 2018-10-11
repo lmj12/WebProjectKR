@@ -8,3 +8,4 @@ var elem = document.getElementById('sta') ;
 	
 	var id= document.getElementById('val');
 	id.setAttribute("value", points);
+	

@@ -49,13 +49,11 @@
 </form>
 
 <c:if test="${sessionScope.memType eq 2}">
+	<jsp:include page="recMyView.do" flush="false"/>		
+</c:if>
 
-
-<tr>
-	
-	<jsp:include page="recMyView.do" flush="false"/>	
-		
-</tr>
+<c:if test="${sessionScope.memType eq 1}">
+	<jsp:include page="recCrrMy.do" flush="false"/>
 </c:if>
 
 <br><br>

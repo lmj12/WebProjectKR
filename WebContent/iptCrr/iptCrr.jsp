@@ -184,7 +184,6 @@
 	</table>
 </form>
 
-
+	
 
 <%@ include file="/setting/design_setting_footer.jsp" %>
-	
