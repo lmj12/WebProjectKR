@@ -57,6 +57,9 @@
 			recReadCnt,recStatus,jobpId from KRrecruit order by recStart desc) 
 			order by recStart desc) where r &gt;= #{start} and r &lt;= #{end}
 	</select>
+	<select id="getAdm" resultType="recruit.RecruitDataBean">
+			select r.RECID, p.JOBPCN,r.JOBPID,r.RECSTATUS,r.RECSTART,r.RECEND  from KRrecruit r, KRJOBPROV p where R.JOBPID = p.JOBPID
+	</select>
 	<update id="recEndCng"	parameterType="int">
 			update KRrecruit set recStatus=#{recStatus} where recEnd&gt;=sysdate	
 	</update>
