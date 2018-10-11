@@ -23,6 +23,7 @@
 	
 	/* Remove the jumbotron's default bottom margin */ 
 	 .jumbotron {
+	  height: 30px;
 	  margin-bottom: 0;
 	}
 	
