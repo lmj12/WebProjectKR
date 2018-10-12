@@ -1,8 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/setting/setting.jsp" %>
 <%@ include file="/setting/design_setting_upper.jsp" %>
+<%@ include file="/setting/setting.jsp" %>
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 

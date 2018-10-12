@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
-
 <!DOCTYPE html>
 
 <h4>나의 팀</h4>
