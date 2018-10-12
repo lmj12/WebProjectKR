@@ -5,17 +5,13 @@
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../setting/setting.jsp" %>
+<%@ include file="/setting/setting.jsp" %>
+<%@ include file="/setting/design_setting_upper.jsp" %>
 
-<!DOCTYPE html>
-<html>
-<head>
 	<script src="//code.jquery.com/jquery.min.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script src="./js/jbskMod.js"></script>
-	<script src="./js/jbskReg.js"></script>
-</head>
-<body onload="inputfocus()">
+	<script src="/js/jbskMod.js"></script>
+	<script src="/js/jbskReg.js"></script>
 
 <h2> 구직자 정보 수정 </h2>
 
@@ -169,9 +165,5 @@
 			</tr>
 		</table>	
 	 </form>
-	
-	
-	
 
-	</body>
-</html>
+<%@ include file="/setting/design_setting_footer.jsp" %>

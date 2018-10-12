@@ -34,6 +34,7 @@
     <select id="Board.selectId" resultType="String">
     	select boardId from KRboard
     </select>
+
    	<select id="Board.userSelCnt" parameterType="String" resultType="int">
    		select count(*) from KRboard where boarduserId=${userId}
    	</select>
@@ -48,4 +49,10 @@
    		select * from KRboard where boarduserId=${userId}
    	</select>
     </mapper>
+
+    <select id="getAdm" resultType="board.BoardDataBean">
+   		 select * from KRboard where boardId LIKE '0%' ORDER BY BOARDREGDATE DESC
+   </select>
+</mapper>
+
    

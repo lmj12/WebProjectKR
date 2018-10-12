@@ -128,6 +128,7 @@ public class BoardDBBean {
 		return session.selectOne("Board.boardCnt");
 	}
 
+
 	public int userSelCnt(String userId) {
 		return session.selectOne("Board.userSelCnt", userId);
 	}
@@ -139,4 +140,11 @@ public class BoardDBBean {
 	public List<BoardDataBean> Sel(String userId) {
 		return session.selectList("Board.Sel", userId);
 	}
+
+	
+	public List<BoardDataBean> getAdm() {
+		return session.selectList("Board.getAdm"); 
+	}
+	
+
 }

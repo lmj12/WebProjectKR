@@ -1,7 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../setting/setting.jsp" %>
+<%@ include file="/setting/setting.jsp" %>
+<%@ include file="/setting/design_setting_upper.jsp" %>
 <script src="//code.jquery.com/jquery.min.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
@@ -46,7 +47,6 @@ $( function() {
 <c:if test="${result eq 1}">
 	<c:redirect url="recList.do"/>		
 </c:if>
-<body onload="writefocus()">
 <form name="recwrite" method="post" action="recWrt.do" onsubmit="return writecheck()">
 <table border="1">
 <input type="hidden" name="jobpId" value="${jbpDto.jobpId}">
@@ -98,4 +98,5 @@ $( function() {
 
 </table>
 </form>
-</body>
+
+<%@ include file="/setting/design_setting_footer.jsp" %>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../setting/setting.jsp" %>
+<%@ include file="/setting/design_setting_footer.jsp" %>
+<%@ include file="/setting/setting.jsp" %>
     <h2>회원탈퇴 페이지</h2>
     
 		<c:if test="${result eq 1}">
@@ -13,3 +14,6 @@
 	<th><input type="button" value="메인으로" onclick="main.do"> </th>
 	</tr>
 </table>
+
+<%@ include file="/setting/design_setting_upper.jsp" %>
+<%@ include file="/setting/design_setting_footer.jsp" %>

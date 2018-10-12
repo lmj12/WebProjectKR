@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<h2>나의 공고 확인 페이지</h2>
-<%@ include file="../setting/setting.jsp"%>
+<%@ include file="/setting/setting.jsp"%>
 <script src="${js}recSet.js"></script>
 <script src="${js}recCng.js"></script>
+<h2>나의 공고 확인 페이지</h2>
 <input type="button" value="마이페이지" onclick="location='mypage.do'">
 <c:if test="${sessionScope.memType eq 2}">	
 공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
@@ -248,3 +248,4 @@
 		<a href ="recMyList.do?pageNum=${pageCount}">[▶▶]</a>
 	</c:if>	
 </c:if>
+

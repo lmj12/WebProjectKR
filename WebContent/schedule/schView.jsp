@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../setting/setting.jsp" %>
+<%@ include file="/setting/setting.jsp" %>
+<%@ include file="/setting/design_setting_upper.jsp" %>
 <!DOCTYPE html>
 
 <h2>스케줄 뷰 페이지</h2><br>
@@ -463,3 +464,5 @@ ${sessionScope.memName} 님의 스케줄<br>
 <div id="schJb"></div>
 <br>
 <div id="rst"></div>
+
+<%@ include file="/setting/design_setting_footer.jsp" %>

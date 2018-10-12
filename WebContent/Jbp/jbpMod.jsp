@@ -1,7 +1,8 @@
 <%@page import="member.jobprov.JobProvDataBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../setting/setting.jsp" %>
+<%@ include file="/setting/design_setting_upper.jsp" %>
+<%@ include file="/setting/setting.jsp" %>
 <h2>구인자 정보수정페이지</h2>
 <!DOCTYPE html>
 	<script src="${js}jbpReg.js"></script>
@@ -59,3 +60,5 @@
 	
 </table>
 </form>
+
+<%@ include file="/setting/design_setting_footer.jsp" %>

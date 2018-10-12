@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 public class BoardDataBean {
 	private String boardId;
 	private Timestamp boardregdate;
+	private String boardregTime;
+	private String boardTitle;
 	private String boardContent;
 	private int boardStatus;
 	private int boardParentId;
@@ -50,5 +52,24 @@ public class BoardDataBean {
 	public void setUserId(String userId) {
 		this.boarduserId = userId;
 	}
+	public String getBoardTitle() {
+		return boardTitle;
+	}
+	public void setBoardTitle(String boardTitle) {
+		this.boardTitle = boardTitle;
+	}
+	public String getBoarduserId() {
+		return boarduserId;
+	}
+	public void setBoarduserId(String boarduserId) {
+		this.boarduserId = boarduserId;
+	}
+	public String getBoardregTime() {
+		return boardregTime;
+	}
+	public void setBoardregTime(String boardregTime) {
+		this.boardregTime = boardregTime;
+	}
+	
 	
 }
