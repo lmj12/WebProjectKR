@@ -35,9 +35,8 @@ public class RecListHd implements RecruitHandler {
 		int pageSize = 5;
 		int pageBlock = 2;
 
-		int count = 0;
-		int start = 0;
-		int end = 0;
+		
+		
 		String pageNum = null;
 		int currentPage = 0;
 		int number = 0;
@@ -45,7 +44,10 @@ public class RecListHd implements RecruitHandler {
 		int startPage = 0;
 		int endPage = 0;
 		int pageCount = 0;										
-	
+		int start = 0;
+		int end = 0;
+		
+		int count = 0;
 		count = recDao.recCnt();	
 		
 		
@@ -103,6 +105,7 @@ public class RecListHd implements RecruitHandler {
 				recList.setPoss(poss);
 				articleList.add(recList);
 			}
+			
 			request.setAttribute("articleList", articleList);
 			request.setAttribute("cnt", articles.size());
 			

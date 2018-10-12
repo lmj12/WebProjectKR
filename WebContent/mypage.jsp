@@ -35,9 +35,9 @@
 		} 
 	}
 	function toModify(){
-		if(${sessionScope.memType}==2){
+		if(${sessionScope.memType eq 2}){
 			location.href="jbpView.do"
-		} else if(${sessionScope.memType}==1) {
+		} else if(${sessionScope.memType eq 1}) {
 			location.href="jbskView.do"
 		}
 	}
