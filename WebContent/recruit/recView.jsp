@@ -244,9 +244,7 @@
 		$("#app").html(appstr);
 	}
 	
-	function back(){
-		history.back()
-	}
+	
 	//-->
 </script>
 <h2>공고내용 페이지</h2>
@@ -364,7 +362,7 @@
 					onclick="location='recCrrView.do?recId=${recDto.recId}'">
 			</c:if>
 			<input class="inputbutton" type="button" value="목록으로"
-				onclick="back()">
+				onclick="hBack()">
 		</th>
 	</tr>	
 </table>			

@@ -2,6 +2,7 @@
 // Daum Api 주소 검색 
 
 function searchPostcode() {
+	var string = String(value)
     new daum.Postcode({
         oncomplete: function(data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -51,7 +52,17 @@ function searchPostcode() {
 
             } else if(data.autoJibunAddress) {
                 var expJibunAddr = data.autoJibunAddress;
-                document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                alert(expJibunAddr);
+                var ad2 = expJibunAddr.split(" ");
+                if(ad2[0] == '서울' || ad2[0] == '대전' || ad2[0] == '대구' || ad2[0] == '부산' || ad2[0] == '울산' || ad2[0] == '광주' || ad2[0] == '인천' || ad2[0] == '세종특별자치시'){
+                	 document.getElementById('zipcode').value = ad2[1]
+     	            document.getElementById('rdAddress').value = ad2[0]
+     	            document.getElementById('jbAddress').value = '--'
+                } else {
+    	            document.getElementById('zipcode').value = ad2[2]
+    	            document.getElementById('rdAddress').value = ad2[1]
+    	            document.getElementById('jbAddress').value = ad2[0]
+                }
 
             } else {
                 document.getElementById('guide').innerHTML = '';

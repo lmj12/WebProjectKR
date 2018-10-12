@@ -30,6 +30,7 @@ public class JbpLgnHd implements JobProvHandler {
 			result = 0;
 		} else {
 			result = 1;
+			
 		}
 		int teamId = teamDao.getTeamId(jobpId);
 		
