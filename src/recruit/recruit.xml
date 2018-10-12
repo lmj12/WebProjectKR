@@ -34,7 +34,10 @@
    	</select>
    	
 	<select id="recMyList" resultType="recruit.RecruitDataBean" parameterType="String">
-			select * from KRrecruit where jobpId=#{jobpId}
+			select * from (select * from KRrecruit where jobpId=#{jobpId}) where recStatus=1 or recStatus=0
+	</select>
+	<select id="recMyListFin" resultType="recruit.RecruitDataBean" parameterType="String">
+			select * from (select * from KRrecruit where jobpId=#{jobpId}) where recStatus=2
 	</select>
 	<select id="recGet"  parameterType="int" resultType="recruit.RecruitDataBean">
 		select * from KRrecruit where recId=#{recId}
@@ -64,7 +67,4 @@
 	<insert id="Rec.recPos" parameterType="java.util.Map">
    		insert into KRrecposition values(#{recId}, #{posId}) 
    </insert>
-	<update id="recPosCng" parameterType="java.util.Map">
-		update KRrecposition set posId=#{posId} where recId=#{recId}
-	</update>
   </mapper>

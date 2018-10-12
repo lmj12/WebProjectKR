@@ -1,5 +1,9 @@
 package recruit;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -31,7 +35,11 @@ public class RecViewHd implements RecruitHandler {
 		JobProvDataBean jbpDto= jbpDao.jobpGet(jbpId);
 		request.setAttribute("jbpDto", jbpDto);
 		List<RecruitDataBean> recruitDto = recDao.recPosGet(recId);
-
+		
+		
+		
+		
+		
 		
 		request.setAttribute( "pageNum", pageNum );
 		request.setAttribute( "recDto", recDto );

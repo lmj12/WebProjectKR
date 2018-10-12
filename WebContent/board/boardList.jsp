@@ -8,6 +8,7 @@
 
 <br>
 <input type="button" value="마이페이지" onclick="location='mypage.do'">
+
 <table border="1">
 			
 	<tr>
@@ -68,6 +69,7 @@
 		</c:forEach>	
 	</c:if>
 </table>
+
 <br>
 <c:if test="${count ne 0}">
 	<c:if test="${startPage gt pageBlock}">
