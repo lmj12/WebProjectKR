@@ -8,6 +8,8 @@ public class RecruitDataBean {
 	private Timestamp recEnd;
 	private String reccontent;
 	private String recSite;
+	private String searchSite;
+	private int schId;
 	private int recReadCnt;
 	private int recStatus;
 	private String jobpId;
@@ -109,4 +111,23 @@ public class RecruitDataBean {
 	public void setEtime(String etime) {
 		this.etime = etime;
 	}
+	public String getSearchSite() {
+		return searchSite;
+	}
+	public void setSearchSite(String searchSite) {
+		this.searchSite = searchSite;
+	}
+	public int getSchId() {
+		return schId;
+	}
+	public void setSchId(int schId) {
+		this.schId = schId;
+	}
+	public String getJobpCn() {
+		return jobpCn;
+	}
+	public void setJobpCn(String jobpCn) {
+		this.jobpCn = jobpCn;
+	}
+	
 }

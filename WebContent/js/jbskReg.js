@@ -53,17 +53,6 @@ function searchPostcode() {
             } else if(data.autoJibunAddress) {
                 var expJibunAddr = data.autoJibunAddress;
                 alert(expJibunAddr);
-                var ad2 = expJibunAddr.split(" ");
-                if(ad2[0] == '서울' || ad2[0] == '대전' || ad2[0] == '대구' || ad2[0] == '부산' || ad2[0] == '울산' || ad2[0] == '광주' || ad2[0] == '인천' || ad2[0] == '세종특별자치시'){
-                	 document.getElementById('zipcode').value = ad2[1]
-     	            document.getElementById('rdAddress').value = ad2[0]
-     	            document.getElementById('jbAddress').value = '--'
-                } else {
-    	            document.getElementById('zipcode').value = ad2[2]
-    	            document.getElementById('rdAddress').value = ad2[1]
-    	            document.getElementById('jbAddress').value = ad2[0]
-                }
-
             } else {
                 document.getElementById('guide').innerHTML = '';
             }
