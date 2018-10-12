@@ -92,7 +92,7 @@
 				
 	</tr>
 	<c:if test="${sessionScope.memid eq article.jobpDto.jobpId}">
-	<c:if test="${article.recDto.recStatus ne 2}">
+	<c:if test="${sessionScope.memType eq 2}">
 	<tr>
 		<th>공고상태변경</th>
 				<td onclick="event.cancelBubble = true;">
@@ -118,25 +118,6 @@
 </c:if>	
 	
 <br>
-<c:if test="${count ne 0}">
-	<c:if test="${startPage gt pageBlock}">
-		<a href="recList.do">[◀◀] </a>
-		<a href="recList.do?pageNum=${startPage-pageBlock}">[◀] </a>
-	</c:if>
-	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<c:if test="${i eq currentPage}">
-			<b>[${i}]</b>
-		</c:if>
-		<c:if test="${i ne currentPage}">					
-			<a href="recList.do?pageNum=${i}">[${i}] </a>
-		</c:if>	
-	</c:forEach>
-	<c:if test="${pageCount gt endPage}">
-		<a href ="recList.do?pageNum=${startPage+pageBlock}">[▶]</a>
-		<a href ="recList.do?pageNum=${pageCount}">[▶▶]</a>
-	</c:if>	
-</c:if>
-
 
 
 

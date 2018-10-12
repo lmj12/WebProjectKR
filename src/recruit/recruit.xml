@@ -54,7 +54,7 @@
 			from (select recId,recStart,recEnd,recContent,recSite,
 			recReadCnt,recStatus,jobpId,rownum r from
 			(select recId,recStart,recEnd,recContent,recSite,
-			recReadCnt,recStatus,jobpId from KRrecruit order by recStart desc) 
+			recReadCnt,recStatus,jobpId from KRrecruit where recStatus=1 or recStatus=0 order by recStart desc) 
 			order by recStart desc) where r &gt;= #{start} and r &lt;= #{end}
 	</select>
 	<select id="getAdm" resultType="recruit.RecruitDataBean">

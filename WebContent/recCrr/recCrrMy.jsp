@@ -46,7 +46,7 @@
 				if(con){
 					recCnclConfirm(recId);
 				}
-				
+				location.reload();
 			}, error:function(request,status,error){
 				alert();
 			}
@@ -69,12 +69,15 @@
 			success : function(data){
 				if(data == 1){
 					alert("지원취소했습니다.")
+					location.reload();
 				} else {
 					alert("취소에 실패했습니다. 다시 시도해주세요.")
+					location.reload();
 				}
 				
 			}, error:function(request,status,error){
 				alert();
+				location.reload();
 			}
 		})
 		
@@ -130,7 +133,7 @@
 					기타
 				</td>
 			</c:if>
-			<td>${recCrrDto.recEnd}</td>
+			<td>${recCrrDto.stime}</td>
 			<c:if test="${recCrrDto.recCrrSta == 0}">
 				<td>
 					미열람
@@ -160,21 +163,12 @@
 <h4>완료된 공고</h4>
 <table border='1'>
 	<tr>
-		<th>업체ID</th><th>공고상태</th><th>직무</th><th>공고마감일</th><th>지원상태</th><th>공고보기</th>
+		<th>업체ID</th><th>직무</th><th>공고마감일</th><th>지원상태</th><th>공고보기</th>
 	</tr>
 	<c:forEach var="recCrrDto" items="${recCrrPrevlists}">
 		<tr>
 			<td>${recCrrDto.jobpId}</td>
-			<c:if test="${recCrrDto.recStatus == 0}">
-				<td>
-					모집중
-				</td>
-			</c:if>
-			<c:if test="${recCrrDto.recStatus == 1}">
-				<td>
-					모집완료
-				</td>
-			</c:if>
+			
 			<c:if test="${recCrrDto.posId == 1}">
 				<td>
 					팀장
@@ -205,7 +199,7 @@
 					기타
 				</td>
 			</c:if>
-			<td>${recCrrDto.recEnd}</td>
+			<td>${recCrrDto.stime}</td>
 			<c:if test="${recCrrDto.recCrrSta == 0}">
 				<td>
 					미열람
