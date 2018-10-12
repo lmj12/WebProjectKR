@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../setting/setting.jsp" %>
+<%@ include file="/setting/setting.jsp" %>
+<%@ include file="/setting/design_setting_upper.jsp" %>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>  
 <!DOCTYPE html>
@@ -54,3 +55,5 @@
 		</tr>
 	</table>
 </form>
+
+<%@ include file="/setting/design_setting_footer.jsp" %>

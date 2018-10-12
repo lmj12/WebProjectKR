@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="setting.jsp" %>
 <script src="${js}board.js"></script>
 
@@ -57,3 +58,4 @@
 
 
 
+<%@ include file="/setting/design_setting_footer.jsp" %>

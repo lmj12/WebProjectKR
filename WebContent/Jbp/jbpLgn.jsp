@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ include file="/setting/design_setting_upper.jsp" %>
 <h2>구인자 로그인 처리화면</h2>
 
 <form method="post" action="jbpLgn.do" name="loginform">
@@ -24,5 +24,5 @@
 </form>  
 
 
-
+<%@ include file="/setting/design_setting_footer.jsp" %>
   

@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title> 구직자 팀원 조회 </title>
-	<!-- 추가 사항으로 사용자의 편의를 위해 팀원의 전화번호를 넣을 것인지 고려 -->
-	
-</head>
-<body>
+<%@ include file="/setting/design_setting_upper.jsp" %>
 	
 	<h2> 구직자 팀원 조회 </h2>
 
@@ -86,7 +78,4 @@
 
 	
 	
-	
-
-	</body>
-</html>
+<%@ include file="/setting/design_setting_footer.jsp" %>
