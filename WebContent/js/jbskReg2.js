@@ -255,7 +255,6 @@ function telAuth(){
 		success : function(data){
 			if(data == 200){
 				alert("문자를 발송했습니다.")
-				$("#authNum").val(authNum)
 			} else if(data == 412){
 				alert("핸드폰 번호를 확인해주세요.")
 			} else {

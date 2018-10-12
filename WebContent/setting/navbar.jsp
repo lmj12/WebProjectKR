@@ -37,13 +37,6 @@
 						<li class="nav-item"><a class="nav-link" href="#">팀 스케쥴</a></li>
 						<li class="nav-item"><a class="nav-link" href="boardList.do">신고게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href="iptCrr.do">이력서</a></li>
-						<c:if test="${sessionScope.teamReq eq '1' }">
-							<script type="text/javascript">
-								//<!--
-								alertTeam();
-								//-->
-							</script>
-						</c:if>
 					</c:if>
 					
 					<!--////////////// 구인자의 경우  //////////////-->
