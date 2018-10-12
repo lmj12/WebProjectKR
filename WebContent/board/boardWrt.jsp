@@ -33,7 +33,7 @@
     		<input type="hidden" name="boardParentId" value="${boardParentId}">
     		<input type="hidden" name="boardregdate" value="java.sql.Timestamp">
     		<input type="hidden" name="userId" value="${sessionScope.memid}" readonly>
-    	<table>
+    	<table border="1">
     		<tr>
     			<th colspan="2" align="right">
     				<a href="boardList.do"> 글목록 </a>&nbsp;&nbsp;&nbsp;
@@ -41,19 +41,21 @@
     		</tr>
     <c:if test="${sessionScope.memType ne 3}">
     		<tr>
-    			<th>신고자 </th>
+    			<th>작성자 </th>
     			<td> ${boardDto.getUserId()} </td>
     		</tr>
     </c:if>
     <c:if test="${sessionScope.memType eq 3}">
     		<tr>
-    			<th>신고자 </th>
+    			<th>작성자 </th>
     			<td> ${boardDto.getboardParentId()} </td>
     		</tr>
+    <!-- 	
     		<tr>
     			<th>답변자</th>
     			<td>  ${boardDto.getUserId()}</td>
     		</tr>
+    -->
     </c:if>
     		
     	

@@ -83,7 +83,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="jbAddress" id="jbAddress" placeholder="도 / 시" readonly value="${jbskDto.getJbskAdd1()}">
+					<input type="text" name="jbAddress" id="jbAddress" placeholder="도" readonly value="${jbskDto.getJbskAdd1()}">
 					<!-- 정확한 용도를 모르겠으나 주소검색 시 검색창 꺼지게 만들어 줌 -->
 					<!-- 혹시 추후 주소 파싱해오는데 지장 생기면 body 태그 닫히는 곳 까지 내려버려도 무관함 -->
 					<span id="guide" style="color:#999"></span>
@@ -94,7 +94,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" id="rdAddress" name="rdAddress" placeholder="시 / 구" readonly value="${jbskDto.getJbskAdd2()}">
+					<input type="text" id="rdAddress" name="rdAddress" placeholder="시" readonly value="${jbskDto.getJbskAdd2()}">
 				</td>
 				<td>
 					
@@ -102,7 +102,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" id="zipcode" name="zipcode" placeholder="구 / 동" readonly value="${jbskDto.getJbskAdd3()}">
+					<input type="text" id="zipcode" name="zipcode" placeholder="구" readonly value="${jbskDto.getJbskAdd3()}">
 				</td>
 				<td>
 					
@@ -129,6 +129,7 @@
 				<th> 전화번호 </th>
 				<td>
 					<input class="input" type="text" name="jbskTel" maxlength="15" value="${jbskDto.getJbskTel()}">
+					
 					<input type="button" value="인증">
 				</td>
 				<td>
@@ -138,7 +139,8 @@
 			<tr>
 				<th> 사진 </th>
 				<td>
-					<input class="input" type="file" name="jbskPic" id="file" value="${jbskDto.getJbskPic()}">
+					<input class="input" type="file" name="jbskPic" id="file">
+					${jbskDto.getJbskPic()}
 				</td>
 				<td>
 					<input class="input" type="text" name="jbskPic2" maxlength="15" readonly>
