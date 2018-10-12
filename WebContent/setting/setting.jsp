@@ -19,6 +19,10 @@
 		history.back();
 	} 
 	
+	function hBack(){
+		history.back()
+	}
+	
 	Date.prototype.format = function(f) {
 	    if (!this.valueOf()) return " ";
 	 
@@ -46,8 +50,72 @@
 	String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
 	Number.prototype.zf = function(len){return this.toString().zf(len);};
 
+Map = function(){
+		this.map = new Object();
+	};   
+Map.prototype = {   
+   	put : function(key, value){   
+       	this.map[key] = value;
+	},
+	putMap : function(key, value){
+    		this.map[key] = value.map;
+  		},
+    putMapList : function(key, value){
+     	var list = new Array();
+     	for(var i=0;i<value.length;i++){
+      		list.push(value[i].map);
+    	}
+    	 this.map[key] = list;
+    },
+    get : function(key){   
+        return this.map[key];
+    },
+    containsKey : function(key){    
+     	return key in this.map;
+    },
+    containsValue : function(value){    
+     	for(var prop in this.map){
+      		if(this.map[prop] == value) return true;
+    	 }
+     	return false;
+    },
+    isEmpty : function(key){    
+     	return (this.size() == 0);
+    },
+    clear : function(){   
+     	for(var prop in this.map){
+      		delete this.map[prop];
+     	}
+    },
+    remove : function(key){    
+     	delete this.map[key];
+    },
+    keys : function(){
+        var keys = new Array();
+        for(var prop in this.map){
+            keys.push(prop);
+        }
+        return keys;
+    },
+    values : function(){   
+     	var values = new Array();   
+        for(var prop in this.map){   
+         values.push(this.map[prop]);
+        }   
+        return values;
+    },
+   	size : function() {
+	    var count = 0;
+	    for (var prop in this.map) {
+	      count++;
+    	}
+   	 	return count;
+  	},
+    jsonString: function(){
+     	return JSON.stringify(this.map);    
+    	}
+};
 
-	
 //-->
 </script>
 
