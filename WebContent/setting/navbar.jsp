@@ -48,6 +48,11 @@
 					<c:if test="${sessionScope.memType eq 2}">
 						<li><a href="tocal.do">스케쥴편집</a></li>
 					</c:if>
+					
+					<!--////////////// 관리자의 경우  //////////////-->
+					<c:if test="${sessionScope.memType eq 3}">
+						<li><a href="adminPage.do">관리자페이지</a></li>
+					</c:if>
 				</c:if>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

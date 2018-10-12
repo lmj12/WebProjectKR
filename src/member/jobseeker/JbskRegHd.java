@@ -106,7 +106,7 @@ public class JbskRegHd implements JobSeekerHandler {
 		
 		
 		// TODO Auto-generated method stub
-		return new ModelAndView("register");
+		return new ModelAndView("Jbs/registerJbsk");
 		
 	}
 

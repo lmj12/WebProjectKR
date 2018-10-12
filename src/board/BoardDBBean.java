@@ -142,9 +142,11 @@ public class BoardDBBean {
 	}
 
 	
-	public List<BoardDataBean> getAdm() {
+	public List<BoardDataBean> getAdm() { // 공지 리스트 가져오기
 		return session.selectList("Board.getAdm"); 
 	}
 	
-
+	public List<BoardDataBean> getAdm2() { //신고 리스트 가져오기
+		return session.selectList("Board.getAdm2"); 
+	}
 }
