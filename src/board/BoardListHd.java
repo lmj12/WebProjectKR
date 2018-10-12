@@ -1,5 +1,7 @@
 package board;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import schedule.job.SchJbException;
+import team.TeamDataBean;
 
 
 @Controller
@@ -78,6 +86,29 @@ public class BoardListHd implements BoardHandler {
 		
 		
 		return new ModelAndView("/board/boardList");
+	}
+	
+	@RequestMapping(value = "ajaxAdmBoard") 
+	@ResponseBody
+	public String ajaxProcess(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
+		
+		List<BoardDataBean> rst = boardDao.getAdm();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		for(int i=0; i<rst.size(); i++) {
+			rst.get(i).setBoardregTime(sdf.format(rst.get(i).getBoardregdate()));
+		}
+		ObjectMapper mapper = new ObjectMapper(); 
+		
+		String atcs=""; 
+		try { 
+			atcs = mapper.writeValueAsString(rst);
+			
+		} catch (IOException e) { 
+			e.printStackTrace(); 
+		}
+		
+		return atcs;
+		
 	}
 
 }

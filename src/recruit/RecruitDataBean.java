@@ -12,10 +12,12 @@ public class RecruitDataBean {
 	private int recStatus;
 	private String jobpId;
 	private String jbpBnp;
-	private String jbpCn; // companyName
+	private String jobpCn; // companyName
 	private String posPos;	//직무 포지션
 	private int crrCnt;	//지원자 숫자
 	private int posId;
+	private String stime;
+	private String etime;
 	
 	public int getRecId() {
 		return recId;
@@ -72,10 +74,10 @@ public class RecruitDataBean {
 		this.jbpBnp = jbpBnp;
 	}
 	public String getJbpCn() {
-		return jbpCn;
+		return jobpCn;
 	}
-	public void setJbpCn(String jbpCn) {
-		this.jbpCn = jbpCn;
+	public void setJbpCn(String jobpCn) {
+		this.jobpCn = jobpCn;
 	}
 	public String getPosPos() {
 		return posPos;
@@ -95,9 +97,16 @@ public class RecruitDataBean {
 	public void setPosId(int posId) {
 		this.posId = posId;
 	}
-	
-	
-	
-	
-	
+	public String getStime() {
+		return stime;
+	}
+	public void setStime(String stime) {
+		this.stime = stime;
+	}
+	public String getEtime() {
+		return etime;
+	}
+	public void setEtime(String etime) {
+		this.etime = etime;
+	}
 }

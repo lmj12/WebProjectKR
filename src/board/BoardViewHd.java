@@ -18,7 +18,6 @@ public class BoardViewHd implements BoardHandler {
 		String pageNum = request.getParameter( "pageNum" );
 		String number = request.getParameter( "number" );
 		String boardId = (request.getParameter("boardId"));
-		String boardParentId = request.getParameter("boardParentId");
 		BoardDataBean boardDto = boardDao.boardGet( boardId );
 		
 

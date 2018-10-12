@@ -4,5 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
   <mapper namespace="Adm">
-   
+   	<select id="lgn" parameterType="member.admin.AdminDataBean" resultType="member.admin.AdminDataBean">
+   		select * from KRADMIN where ADMINID = #{adminId} AND ADMINPASSWD = #{adminPasswd}
+   	</select>
   </mapper>

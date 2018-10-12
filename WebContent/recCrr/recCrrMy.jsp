@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <script type="text/javascript">
 	//<!--
+	
 	function toRecruit(recId){
 		location.href="recView.do?recId="+recId+"&pageNum=1"
 

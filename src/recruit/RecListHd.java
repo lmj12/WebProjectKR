@@ -1,5 +1,7 @@
 package recruit;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,10 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import member.jobprov.JobProvDBBean;
 import member.jobprov.JobProvDataBean;
+import schedule.job.SchJbException;
 
 
 @Controller
@@ -83,6 +89,9 @@ public class RecListHd implements RecruitHandler {
 			for(int i=0; i<articles.size(); i++) {
 				RecListDataBean recList = new RecListDataBean();
 				RecruitDataBean recDto = articles.get(i);
+				SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+				recDto.setStime(sf.format(recDto.getRecStart()));
+				recDto.setEtime(sf.format(recDto.getRecEnd()));
 				recList.setRecDto(recDto);
 				
 				int recId = recDto.getRecId();
@@ -107,5 +116,27 @@ public class RecListHd implements RecruitHandler {
 		// TODO Auto-generated method stub
 		return new ModelAndView("/recruit/recList");
 	}
-
+	
+	@RequestMapping(value = "ajaxAdmRec") 
+	@ResponseBody
+	public String ajaxProcess(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
+		
+		List<RecruitDataBean> rst = recDao.getAdm();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		for(int i=0; i<rst.size(); i++) {
+			rst.get(i).setStime(sdf.format(rst.get(i).getRecStart()));
+			rst.get(i).setEtime(sdf.format(rst.get(i).getRecEnd()));
+		}
+		ObjectMapper mapper = new ObjectMapper(); 
+		
+		String recs=""; 
+		try { 
+			recs = mapper.writeValueAsString(rst);
+			
+		} catch (IOException e) { 
+			e.printStackTrace(); 
+		}
+		
+		return recs;
+	}
 }

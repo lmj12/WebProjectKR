@@ -1,5 +1,8 @@
 package reccareer.estimate;
 
+import java.util.List;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class EstListHd implements EstimateHandler {
-
+	@Resource
+	private EstimateDBBean estDao;
 	@Override
 	@RequestMapping("/estList")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws EstException {
-		// TODO Auto-generated method stub
-		return null;
+		int recId = Integer.parseInt(request.getParameter("recId"));
+		List<EstimateDataBean> lists = estDao.estList(recId);
+		request.setAttribute("lists", lists);
+		return new ModelAndView("estimate/estimateList");
 	}
 
 }
