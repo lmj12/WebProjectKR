@@ -30,7 +30,7 @@
 				
 				<c:if test="${sessionScope.memid ne null }">
 					<li><a href="mypage.do">마이페이지</a></li>
-					<c:if test="${sessionScope.teamId ne 0 }">
+					<c:if test="${(sessionScope.teamId eq 1) or (sessionScope.teamId eq 2) }">
 						<li> <a href="teamList.do">팀</a></li>
 						<li> <a href="#">팀 스케쥴</a></li>
 					</c:if>
