@@ -110,5 +110,28 @@ public class BoardListHd implements BoardHandler {
 		return atcs;
 		
 	}
+	
+	@RequestMapping(value = "ajaxAdmBoard2") 
+	@ResponseBody
+	public String ajaxProcess2(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
+		
+		List<BoardDataBean> rst = boardDao.getAdm2();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		for(int i=0; i<rst.size(); i++) {
+			rst.get(i).setBoardregTime(sdf.format(rst.get(i).getBoardregdate()));
+		}
+		ObjectMapper mapper = new ObjectMapper(); 
+		
+		String sin=""; 
+		try { 
+			sin = mapper.writeValueAsString(rst);
+			
+		} catch (IOException e) { 
+			e.printStackTrace(); 
+		}
+		
+		return sin;
+		
+	}
 
 }
