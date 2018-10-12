@@ -5,7 +5,7 @@
 
   <mapper namespace="Est">
 	<insert id="wrt" parameterType="reccareer.estimate.EstimateDataBean">
-	  	insert into KRestimate values(KRestimate_seq.nextVal, #{performance}, #{ontime}, #{attitude}, #{estDate}, #{recCrrId})
+	  	insert into KRestimate values(KRestimate_seq.nextVal, #{performance}, #{ontime}, #{attitude}, #{recCrrId})
 	</insert>
 	<select id="get" resultType="reccareer.estimate.EstimateDataBean" parameterType="int">
    		select * from KRestimate where estId = #{estId}
@@ -17,5 +17,8 @@
    	<select id="jbsklist" resultType="reccareer.estimate.EstimateDataBean" parameterType="String">
    		select e.ESTID, e.PERFORMANCE, e.ONTIME, e.ATTITUDE, e.ESTDATE, e.RECCRRID, j.JBSKNAME, j.JBSKID from KRestimate e, KRReccareer c, KRresume r,KRJOBSEEKER j 
    		where e.RECCRRID = c.RECCRRID AND c.RSMID = r.RSMID	AND r.JBSKID = j.JBSKID	AND j.jbskId = #{jbskId}
+   	</select>
+   	<select id="estList" resultType="reccareer.estimate.EstimateDataBean" parameterType="int">
+   		select c.* ,e.ESTID, j.JBSKNAME, j.JBSKID, j.JBSKGENDER, j.JBSKPIC from KRRECCAREER c ,  KRJOBSEEKER j, KRESTIMATE e where c.reccrrid = e.reccrrid(+) AND c.JBSKID = j.JBSKID AND c.RECID = #{recId}
    	</select>
   </mapper>

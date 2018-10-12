@@ -20,6 +20,11 @@ private SqlSession session = SqlMapClient.getSession();
 		session.clearCache();
 		return session.selectOne("Est.get", estId); 
 	}
+	public List<EstimateDataBean> estList(int recId) { // TODO: 조인을 4개 거쳐해서 확인이 반드시 필요.
+		session.flushStatements();
+		session.clearCache();
+		return session.selectList("Est.estList", recId); 
+	}
 	
 	public EstimateDataBean estGetById(EstimateDataBean estDto) { // TODO: 조인을 4개 거쳐해서 확인이 반드시 필요.
 		session.flushStatements();
