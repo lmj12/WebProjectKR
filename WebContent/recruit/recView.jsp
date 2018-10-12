@@ -353,6 +353,7 @@
 </c:if>
 			<tr>
 		<th colspan="4">
+		<c:if test="${sessionScope.memType eq 2}">
 			<c:if test="${sessionScope.memid eq jbpDto.jobpId}">
 				<input class="inputbutton" type="button" value="공고수정"
 					onclick="location='recMod.do?recId=${recDto.recId}&pageNum=${pageNum}'">
@@ -361,6 +362,7 @@
 				<input type="button" value="지원현황"
 					onclick="location='recCrrView.do?recId=${recDto.recId}'">
 			</c:if>
+		</c:if>
 			<input class="inputbutton" type="button" value="목록으로"
 				onclick="back()">
 		</th>
