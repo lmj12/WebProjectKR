@@ -1,5 +1,6 @@
 package reccareer;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -21,8 +22,22 @@ public class RecCrrMyViewHd implements RecruitCareerHandler {
 		List<RecCrrDataBean> recCrrlists = recCrrDao.recCrrMyList(jbskId);
 		request.setAttribute("recCrrlists", recCrrlists);
 		
+		for(int i=0; i<recCrrlists.size(); i++) {
+			RecCrrDataBean recCrrDto = recCrrlists.get(i);
+			SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+			recCrrDto.setStime(sf.format(recCrrDto.getRecEnd()));
+		}
+		
+		
 		List<RecCrrDataBean> recCrrPrevlists = recCrrDao.recCrrMyPrevList(jbskId);
 		request.setAttribute("recCrrPrevlists", recCrrPrevlists);
+		
+		for(int i=0; i<recCrrPrevlists.size(); i++) {
+			RecCrrDataBean recCrrDto = recCrrPrevlists.get(i);
+			SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+			recCrrDto.setStime(sf.format(recCrrDto.getRecEnd()));
+		}
+		
 		
 		return new ModelAndView("/recCrr/recCrrMy");
 	}

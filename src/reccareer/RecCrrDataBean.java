@@ -22,7 +22,14 @@ public class RecCrrDataBean {
 	private Timestamp recEnd;
 	private String jobpId;
 	private int recStatus;
+	private String stime;
 	
+	public String getStime() {
+		return stime;
+	}
+	public void setStime(String stime) {
+		this.stime = stime;
+	}
 	public int getRecCrrId() {
 		return recCrrId;
 	}
