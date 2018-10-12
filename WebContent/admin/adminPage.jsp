@@ -67,7 +67,7 @@
 					var str = ''
 					str = "<table border='1'><tr><th>업체명</th><th>작성자</th><th>시작일</th><th>종료일</th><th>상태</th></tr>"
 					for (var i=0; i<recs.length; i++){	
-						str += "<tr onclick='toRecruit("+recs[i].recId+")'><td>"+recs[i].jobpCn+"</td><td>"+recs[i].jobpId+"</td><td>"+recs[i].stime+"</td><td>"+recs[i].etime+"</td>"
+						str += "<tr><td>"+recs[i].jobpCn+"</td><td>"+recs[i].jobpId+"</td><td>"+recs[i].stime+"</td><td>"+recs[i].etime+"</td>"
 						if(recs[i].recStatus==0){
 							str += "<td>모집중</td></tr>"
 						} else if(recs[i].recStatus==1){
@@ -84,9 +84,9 @@
 		})
 	}
 		
-	function toRecruit(recId){
-			alert(recId);
-	}
+	//function toRecruit(recId){
+	//		alert(recId);
+	//}
 		
 	
 	function singo(){

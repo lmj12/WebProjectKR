@@ -37,7 +37,7 @@ function searchPostcode() {
             if(ad[0] == '서울' || ad[0] == '대전' || ad[0] == '대구' || ad[0] == '부산' || ad[0] == '울산' || ad[0] == '광주' || ad[0] == '인천' || ad[0] == '세종특별자치시'){
             	 document.getElementById('zipcode').value = ad[1]
  	            document.getElementById('rdAddress').value = ad[0]
- 	            document.getElementById('jbAddress').value = '빈 칸'
+ 	            document.getElementById('jbAddress').value = '--'
             } else {
 	            document.getElementById('zipcode').value = ad[2]
 	            document.getElementById('rdAddress').value = ad[1]
