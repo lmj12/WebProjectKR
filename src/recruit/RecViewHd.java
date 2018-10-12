@@ -35,7 +35,9 @@ public class RecViewHd implements RecruitHandler {
 		JobProvDataBean jbpDto= jbpDao.jobpGet(jbpId);
 		request.setAttribute("jbpDto", jbpDto);
 		List<RecruitDataBean> recruitDto = recDao.recPosGet(recId);
-		
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+		recDto.setStime(sf.format(recDto.getRecStart()));
+		recDto.setEtime(sf.format(recDto.getRecEnd()));
 		
 		
 		

@@ -65,9 +65,10 @@ public class BoardWrtHd implements BoardHandler {
 			
 			
 			boardDto.setBoardParentId(Integer.parseInt(request.getParameter("boardParentId")));
-			
-			
+			String userId = (String) request.getSession().getAttribute("memid");
+		
 			boardDto.setUserId(request.getParameter("userId"));
+			System.out.println(request.getParameter("userId"));
 			boardDto.setBoardregdate( new Timestamp( System.currentTimeMillis() ));
 			
 			

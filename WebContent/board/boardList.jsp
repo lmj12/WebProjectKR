@@ -41,18 +41,16 @@
 	<c:if test="${count ne 0}">
 		<c:forEach var="article" items="${articles}">	
 		
-			<tr>
+			<tr style="cursor:pointer;" onClick="location.href='boardView.do?boardId=${article.boardId}&boardParentId=${article.boardParentId}&pageNum=${pageNum}&number=${number+1}'">
 				<td align="center">
 					${article.boardParentId}
 					<c:set var="number" value="${number-1}"/>
 				</td>			
-				<td>						
-					<a href ="boardView.do?boardId=${article.boardId}&boardParentId=${article.boardParentId}&pageNum=${pageNum}&number=${number+1}">
-						${article.userId}
-					</a>					
+				<td>							
+					${article.boarduserId}
 				<td align="center">
 					
-					${article.boardregdate }
+					${article.stime }
 				</td>								
 								
 					

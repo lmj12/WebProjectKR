@@ -2,6 +2,8 @@ package board;
 
 import java.sql.Timestamp;
 
+
+
 public class BoardDataBean {
 	private String boardId;
 	private Timestamp boardregdate;
@@ -11,9 +13,9 @@ public class BoardDataBean {
 	private int boardStatus;
 	private int boardParentId;
 	private String boarduserId;
-	private int rowNum;
+	private String stime;
 	
-	
+
 	
 	public String getBoardId() {
 		return boardId;
@@ -70,6 +72,13 @@ public class BoardDataBean {
 	public void setBoardregTime(String boardregTime) {
 		this.boardregTime = boardregTime;
 	}
+	public String getStime() {
+		return stime;
+	}
+	public void setStime(String stime) {
+		this.stime = stime;
+	}
+
 	
 	
 }
