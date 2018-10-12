@@ -11,8 +11,7 @@
 		<script type="text/javascript">
 			//<!--
 			// TODO : 나중에 알림메시지 수정필요
-			erroralert( "아이디 또는 비밀번호를 확인하세요" );
-			history.back();
+			errorback( "로그인에 실패했습니다. 아이디나 패스워드를 확인해 주세요" );
 			//-->
 		</script>
 		
@@ -25,5 +24,5 @@
 		${sessionScope.memName = jobpCn}
 		${sessionScope.memType = memtype}
 		${sessionScope.teamId = teamId}
-		<c:redirect url="main.do"/>
+		<c:redirect url="mypage.do"/>
 	</c:if>

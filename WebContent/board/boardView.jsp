@@ -36,7 +36,7 @@
 	<tr>		
 		<th> 글쓴 날짜 </th>
 		<td align="center">
-			${boardDto.boardregdate}	
+			${boardDto.stime}	
 		</td>
 	</tr>	
 	

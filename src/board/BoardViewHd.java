@@ -1,5 +1,7 @@
 package board;
 
+import java.text.SimpleDateFormat;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +21,8 @@ public class BoardViewHd implements BoardHandler {
 		String number = request.getParameter( "number" );
 		String boardId = (request.getParameter("boardId"));
 		BoardDataBean boardDto = boardDao.boardGet( boardId );
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+		boardDto.setStime(sf.format(boardDto.getBoardregdate()));
 		
 
 		request.setAttribute( "number", number );

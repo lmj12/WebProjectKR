@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-  <mapper namespace="Board">
+<mapper namespace="Board">
    <delete id="Board.boardDel" parameterType="String">
    		delete from KRboard where boardId=#{boardId}
    </delete>
@@ -18,7 +18,7 @@
 		) where r &gt;= #{start} and r &lt;= #{end} 
    </select>
    <select id="Board.boardCnt" resultType="int">
-   		select count(*) from KRboard
+   		select count(*) from KRboard boarduserId=#{boarduserId}
    </select>
    <update id="Board.boardMod" parameterType="board.BoardDataBean">
    		update KRboard set boardContent=#{boardContent} where boardId=#{boardId}
@@ -34,6 +34,20 @@
     <select id="Board.selectId" resultType="String">
     	select boardId from KRboard
     </select>
+
+   	<select id="Board.userSelCnt" parameterType="String" resultType="int">
+   		select count(*) from KRboard where boarduserId=#{userId}
+   	</select>
+   	<select id="Board.userSel" parameterType="java.util.Map" resultType="board.BoardDataBean">
+   		select boardId, boardContent, boardStatus, boardParentId, boarduserid, boardregdate,r 
+		from (select boardId, boardContent, boardStatus, boardParentId, boarduserid, boardregdate,rowNum r from
+		(select boardId, boardContent, boardStatus, boardParentId, boarduserid, boardregdate
+		 from KRboard where boarduserId=#{boarduserId}) 
+		) where r &gt;= #{start} and r &lt;= #{end} 
+   	</select>
+   	<select id="Board.Sel" parameterType="String" resultType="board.BoardDataBean">
+   		select * from KRboard where boarduserId=#{boarduserId}
+   	</select>
     <select id="getAdm" resultType="board.BoardDataBean">
    		 select * from KRboard where boardId LIKE '0%' ORDER BY BOARDREGDATE DESC
    </select>
@@ -41,4 +55,7 @@
    		 select * from KRboard where boardId LIKE '%1' ORDER BY BOARDREGDATE DESC
    </select>
 </mapper>
+
+
+
    
