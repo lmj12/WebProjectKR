@@ -4,6 +4,7 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <!DOCTYPE html>
 <script src="./js/jbpReg.js"></script>
+<script src="./js/jbpSMS.js"></script>
 <h2>구인자 회원가입 페이지</h2>
 <body onload="inputfocus()">
 <form name="inputform" action="jbpReg.do" method="post" onsubmit="return inputcheck()">

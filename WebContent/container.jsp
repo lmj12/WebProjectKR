@@ -1,17 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
-<c:if test="${sessionScope.memType eq 2}">
-	<div>
-		<jsp:include page="recMyView.do" flush="false"/>
-	</div>
-</c:if>
 
-
-<!-- <div class="container">    
+<div class="container">    
   <div class="row">
     <div class="col-sm-4">
       <div class="panel panel-primary">
@@ -61,4 +52,4 @@
       </div>
     </div>
   </div>
-</div><br><br> -->
+</div><br><br>
