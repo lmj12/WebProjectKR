@@ -47,6 +47,11 @@ public class RecWrtHd implements RecruitHandler {
 		
 		if(request.getParameter("write")== null) {
 			//제목글인 경우
+			try {//스케줄에서 넘어온 경우.
+				int schId = Integer.parseInt(request.getParameter("schId"));
+			} catch (NumberFormatException e){
+				
+			}
 			int recId=0;		
 			
 			int recStatus = 0; //공고상태
@@ -66,6 +71,12 @@ public class RecWrtHd implements RecruitHandler {
 					
 			return new ModelAndView("/recruit/recWrt");
 		}else {
+			try {//스케줄에서 넘어온 경우.
+				int schId = Integer.parseInt(request.getParameter("schId"));
+			} catch (NumberFormatException e){
+				
+			}
+			
 			String jobpId = (String) request.getSession().getAttribute("memid");
 			JobProvDataBean jbpDto = jbpDao.jobpGet(jobpId);
 		    request.setAttribute("jbpDto", jbpDto);
@@ -75,10 +86,11 @@ public class RecWrtHd implements RecruitHandler {
 			RecruitDataBean recruitDto = new RecruitDataBean();
 			
 			recruitDto.setRecSite(request.getParameter("recSite"));
-			String searchSite = "";
 			String [] ad = request.getParameter("recSite").split(" ");
 			if(ad[0].equals("서울") || ad[0].equals("대전") || ad[0].equals("대구") || ad[0].equals("부산") || ad[0].equals("울산") || ad[0].equals("광주") || ad[0].equals("인천") || ad[0].equals("세종특별자치시")){
-			
+				recruitDto.setSearchSite(ad[1]);
+			} else {
+				recruitDto.setSearchSite(ad[2]);
 			}
 			
 			
