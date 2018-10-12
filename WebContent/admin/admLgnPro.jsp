@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<h2>로그인pro</h2>
- 
 <%@ include file="../setting/setting.jsp" %>
 
 <%	// 로그인실패 	%> 
-	<c:if test="${result eq 0}">
+	<c:if test="${rst eq 0}">
 		<script type="text/javascript">
 			//<!--
 			errorback( "로그인에 실패했습니다. 아이디나 패스워드를 확인해 주세요" );
@@ -16,11 +13,8 @@
 
 	
 <%	// 아이디 있다 / 비밀번호다 같다 %>
-	<c:if test="${result eq 1}">
-		${sessionScope.memid = jbskId}
-		${sessionScope.memName = jbskName}
+	<c:if test="${rst eq 1}">
+		${sessionScope.memid = admId}
 		${sessionScope.memType = memtype}
-		${sessionScope.teamId = teamId}
-		${sessionScope.teamReq = teamReq}
-		<c:redirect url="main.do"/>
+		<c:redirect url="adminPage.do"/>
 	</c:if>

@@ -127,4 +127,9 @@ public class BoardDBBean {
 	public int boardCnt() {
 		return session.selectOne("Board.boardCnt");
 	}
+	
+	public List<BoardDataBean> getAdm() {
+		return session.selectList("Board.getAdm"); 
+	}
+	
 }
