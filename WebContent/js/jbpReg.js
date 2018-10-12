@@ -130,8 +130,7 @@ $(document).ready(
 		);
 	}
 );
-
-
+	
 
 
 
@@ -244,3 +243,5 @@ function inputcheck(){
 	}
 	
 }
+
+
