@@ -24,5 +24,5 @@
 		${sessionScope.memName = jobpCn}
 		${sessionScope.memType = memtype}
 		${sessionScope.teamId = teamId}
-		<c:redirect url="main.do"/>
+		<c:redirect url="mypage.do"/>
 	</c:if>
