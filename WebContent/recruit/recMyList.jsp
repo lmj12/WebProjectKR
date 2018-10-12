@@ -4,7 +4,6 @@
 <script src="${js}recSet.js"></script>
 <script src="${js}recCng.js"></script>
 <h2>나의 공고 확인 페이지</h2>
-<input type="button" value="마이페이지" onclick="location='mypage.do'">
 <c:if test="${sessionScope.memType eq 2}">	
 공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
 </c:if>
@@ -37,215 +36,218 @@
 </c:if>	
 
 
-
-<form method="post" action="recMyView.do">
-<input type="hidden" name="recId" value="${article.recDto.recId}">
-<table border="1">
-				
-	<tr>
-		<th style="width : 15%" colspan="7" align="left">
-		${sessionScope.memid}님의 공고확인페이지입니다. 
-		</th>
-	
-		
-	</tr>
-	
-	<tr>
-		<th style="width : 3%">	 공고번호</th>
-		<th style="width : 4%">	 공고상태</th>
-		<th style="width : 8%"> 직무 </th>
-		
-		<th style="width : 8%"> 시작일 </th>
-		<th style="width : 8%"> 종료일 </th>
-		<th style="width : 3%">	 조회수</th>
-		<th style="width : 3%">	 공고상태 변경</th>
-	</tr>
-<c:if test="${count eq 0}">	
+<div class="container">
+	<form method="post" action="recMyView.do">
+	<input type="hidden" name="recId" value="${article.recDto.recId}">
+	<table border="1">
+					
 		<tr>
-			<td colspan="6" align="center">
-				공고가 없습니다
-			</td>
+			<th style="width : 15%" colspan="7" align="left">
+			${sessionScope.memid}님의 진행중인 공고 목록입니다. 
+			</th>
+		
+			
 		</tr>
-	</c:if>
-	<c:forEach var="article" items="${articleList}">
-	<c:if test="${count ne 0}">
 		
-
-			<tr style="cursor:pointer;" onClick="location.href='recView.do?recId=${article.recDto.recId}'">
-				<td align="center">
-					${article.recDto.recId}							
-				</td>			
-				<td id="con">						
-					<c:if test="${article.recDto.recStatus eq 0}">
-				    		모집중
-				    </c:if>
-				    <c:if test="${article.recDto.recStatus eq 1}">
-				    		모집완료
-				    </c:if>
-				    <c:if test="${article.recDto.recStatus eq 2}">
-				    		완료
-				    </c:if>	
-				<td align="center">
-				<c:forEach var="recruitDto" items="${article.poss}">
-			<c:choose>
-			  <c:when test="${recruitDto.posId eq 1}">
-			  	팀장
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 2}">
-			   	스캔
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 3}">
-			   	예도
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 4}">
-			   	안내
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 5}">
-			   	경호
-			  </c:when>
-			  <c:otherwise>
-			   	기타
-			  </c:otherwise> 
-			 </c:choose>
-			 </c:forEach>			 
-				</td>		
-						
-				<td align="center">
-					${article.recDto.stime}
-				</td>
-				<td align="center">
-					${article.recDto.etime}
-				</td>	
-			
-				<td align="center">
-					${article.recDto.recReadCnt}	
-				</td>	
-				<td onclick="event.cancelBubble = true;">
-				
-				<select name="sta" id="sta">
-					<option value="0" selected>모집중 </option>
-					<option value="1">모집완료</option>
-					<option value="2">완료</option>
-				</select>	
-				
-				<input type="button" name="cng" value="변경" onclick="recCng(${article.recDto.recId})">
-				<input type="hidden" id="val" name="val">
-			
-				</td>			
-			</tr>
-		
-	</c:if>
-	</c:forEach>	
-</table>
-</form>
-<br><br>
-<form method="post" action="recMyView.do">
-<input type="hidden" name="recId" value="${article.recDto.recId}">
-<table border="1">
-				
-	<tr>
-		<th style="width : 15%" colspan="7" align="left">
-		${sessionScope.memid}님의 완료된 공고확인페이지입니다. 
-		</th>
-	
-		
-	</tr>
-	
-	<tr>
-		<th style="width : 3%">	 공고번호</th>
-		<th style="width : 4%">	 공고상태</th>
-		<th style="width : 8%"> 직무 </th>
-		
-		<th style="width : 8%"> 시작일 </th>
-		<th style="width : 8%"> 종료일 </th>
-		<th style="width : 3%">	 조회수</th>
-		
-	</tr>
-<c:if test="${count eq 0}">	
 		<tr>
-			<td colspan="6" align="center">
-				공고가 없습니다
-			</td>
-		</tr>
-	</c:if>
-	<c:forEach var="article" items="${twoList}">
-	<c:if test="${count ne 0}">
-		
-
-			<tr style="cursor:pointer;" onClick="location.href='recView.do?recId=${article.recDto.recId}'">
-				<td align="center">
-					${article.recDto.recId}							
-				</td>			
-				<td id="con">						
-					<c:if test="${article.recDto.recStatus eq 0}">
-				    		모집중
-				    </c:if>
-				    <c:if test="${article.recDto.recStatus eq 1}">
-				    		모집완료
-				    </c:if>
-				    <c:if test="${article.recDto.recStatus eq 2}">
-				    		완료
-				    </c:if>	
-				<td align="center">
-				<c:forEach var="recruitDto" items="${article.poss}">
-			<c:choose>
-			  <c:when test="${recruitDto.posId eq 1}">
-			  	팀장
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 2}">
-			   	스캔
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 3}">
-			   	예도
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 4}">
-			   	안내
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 5}">
-			   	경호
-			  </c:when>
-			  <c:otherwise>
-			   	기타
-			  </c:otherwise> 
-			 </c:choose>
-			 </c:forEach>			 
-				</td>		
-						
-				<td align="center">
-					${article.recDto.stime}
-				</td>
-				<td align="center">
-					${article.recDto.etime}
-				</td>	
+			<th style="width : 3%">	 공고번호</th>
+			<th style="width : 4%">	 공고상태</th>
+			<th style="width : 8%"> 직무 </th>
 			
-				<td align="center">
-					${article.recDto.recReadCnt}	
-				</td>	
-				
+			<th style="width : 8%"> 시작일 </th>
+			<th style="width : 8%"> 종료일 </th>
+			<th style="width : 3%">	 조회수</th>
+			<th style="width : 3%">	 공고상태 변경</th>
+		</tr>
+	<c:if test="${count eq 0}">	
+			<tr>
+				<td colspan="6" align="center">
+					공고가 없습니다
+				</td>
 			</tr>
-		
-	</c:if>
-	</c:forEach>	
-</table>
-</form>
-
-<br>
-<c:if test="${count ne 0}">
-	<c:if test="${startPage gt pageBlock}">
-		<a href="recMyList.do">[◀◀] </a>
-		<a href="recMyList.do?pageNum=${startPage-pageBlock}">[◀] </a>
-	</c:if>
-	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<c:if test="${i eq currentPage}">
-			<b>[${i}]</b>
 		</c:if>
-		<c:if test="${i ne currentPage}">					
-			<a href="recMyList.do?pageNum=${i}">[${i}] </a>
+		<c:forEach var="article" items="${articleList}">
+		<c:if test="${count ne 0}">
+			
+	
+				<tr style="cursor:pointer;" onClick="location.href='recView.do?recId=${article.recDto.recId}'">
+					<td align="center">
+						${article.recDto.recId}							
+					</td>			
+					<td id="con">						
+						<c:if test="${article.recDto.recStatus eq 0}">
+					    		모집중
+					    </c:if>
+					    <c:if test="${article.recDto.recStatus eq 1}">
+					    		모집완료
+					    </c:if>
+					    <c:if test="${article.recDto.recStatus eq 2}">
+					    		완료
+					    </c:if>	
+					<td align="center">
+					<c:forEach var="recruitDto" items="${article.poss}">
+				<c:choose>
+				  <c:when test="${recruitDto.posId eq 1}">
+				  	팀장
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 2}">
+				   	스캔
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 3}">
+				   	예도
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 4}">
+				   	안내
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 5}">
+				   	경호
+				  </c:when>
+				  <c:otherwise>
+				   	기타
+				  </c:otherwise> 
+				 </c:choose>
+				 </c:forEach>			 
+					</td>		
+							
+					<td align="center">
+						${article.recDto.stime}
+					</td>
+					<td align="center">
+						${article.recDto.etime}
+					</td>	
+				
+					<td align="center">
+						${article.recDto.recReadCnt}	
+					</td>	
+					<td onclick="event.cancelBubble = true;">
+					
+					<select name="sta" id="sta">
+						<option value="0" selected>모집중 </option>
+						<option value="1">모집완료</option>
+						<option value="2">완료</option>
+					</select>	
+					
+					<input type="button" name="cng" value="변경" onclick="recCng(${article.recDto.recId})">
+					<input type="hidden" id="val" name="val">
+				
+					</td>			
+				</tr>
+			
+		</c:if>
+		</c:forEach>	
+	</table>
+	</form>
+</div>
+<br><br>
+<div class="container">
+	<form method="post" action="recMyView.do">
+	<input type="hidden" name="recId" value="${article.recDto.recId}">
+	<table border="1">
+					
+		<tr>
+			<th style="width : 15%" colspan="7" align="left">
+			${sessionScope.memid}님의 완료된 공고 목록입니다. 
+			</th>
+		
+			
+		</tr>
+		
+		<tr>
+			<th style="width : 3%">	 공고번호</th>
+			<th style="width : 4%">	 공고상태</th>
+			<th style="width : 8%"> 직무 </th>
+			
+			<th style="width : 8%"> 시작일 </th>
+			<th style="width : 8%"> 종료일 </th>
+			<th style="width : 3%">	 조회수</th>
+			
+		</tr>
+	<c:if test="${count eq 0}">	
+			<tr>
+				<td colspan="6" align="center">
+					공고가 없습니다
+				</td>
+			</tr>
+		</c:if>
+		<c:forEach var="article" items="${twoList}">
+		<c:if test="${count ne 0}">
+			
+	
+				<tr style="cursor:pointer;" onClick="location.href='recView.do?recId=${article.recDto.recId}'">
+					<td align="center">
+						${article.recDto.recId}							
+					</td>			
+					<td id="con">						
+						<c:if test="${article.recDto.recStatus eq 0}">
+					    		모집중
+					    </c:if>
+					    <c:if test="${article.recDto.recStatus eq 1}">
+					    		모집완료
+					    </c:if>
+					    <c:if test="${article.recDto.recStatus eq 2}">
+					    		완료
+					    </c:if>	
+					<td align="center">
+					<c:forEach var="recruitDto" items="${article.poss}">
+				<c:choose>
+				  <c:when test="${recruitDto.posId eq 1}">
+				  	팀장
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 2}">
+				   	스캔
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 3}">
+				   	예도
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 4}">
+				   	안내
+				  </c:when>
+				  <c:when test="${recruitDto.posId eq 5}">
+				   	경호
+				  </c:when>
+				  <c:otherwise>
+				   	기타
+				  </c:otherwise> 
+				 </c:choose>
+				 </c:forEach>			 
+					</td>		
+							
+					<td align="center">
+						${article.recDto.stime}
+					</td>
+					<td align="center">
+						${article.recDto.etime}
+					</td>	
+				
+					<td align="center">
+						${article.recDto.recReadCnt}	
+					</td>	
+					
+				</tr>
+			
+		</c:if>
+		</c:forEach>	
+	</table>
+	</form>
+</div>
+<div class="container">
+	<br>
+	<c:if test="${count ne 0}">
+		<c:if test="${startPage gt pageBlock}">
+			<a href="recMyList.do">[◀◀] </a>
+			<a href="recMyList.do?pageNum=${startPage-pageBlock}">[◀] </a>
+		</c:if>
+		<c:forEach var="i" begin="${startPage}" end="${endPage}">
+			<c:if test="${i eq currentPage}">
+				<b>[${i}]</b>
+			</c:if>
+			<c:if test="${i ne currentPage}">					
+				<a href="recMyList.do?pageNum=${i}">[${i}] </a>
+			</c:if>	
+		</c:forEach>
+		<c:if test="${pageCount gt endPage}">
+			<a href ="recMyList.do?pageNum=${startPage+pageBlock}">[▶]</a>
+			<a href ="recMyList.do?pageNum=${pageCount}">[▶▶]</a>
 		</c:if>	
-	</c:forEach>
-	<c:if test="${pageCount gt endPage}">
-		<a href ="recMyList.do?pageNum=${startPage+pageBlock}">[▶]</a>
-		<a href ="recMyList.do?pageNum=${pageCount}">[▶▶]</a>
-	</c:if>	
-</c:if>
-
+	</c:if>
+</div>
