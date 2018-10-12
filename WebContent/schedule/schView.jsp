@@ -3,7 +3,43 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
 <!DOCTYPE html>
-
+<style>
+	/* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+    
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; /* Could be more or less, depending on screen size */                          
+        }
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
 <h2>스케줄 뷰 페이지</h2><br>
 <script type="text/javascript">
 	var jobpId = sessionStorage.getItem("jobpId");
@@ -23,9 +59,14 @@
 	//<!--
 	$(document).ready(
 		function(){
-			
 			makeTable();
+			schJb();
 			
+			window.onclick = function(event) {
+		        if (event.target == modal) {
+		            modal.style.display = "none";
+		        }
+		    }
 		}
 	)
 	
@@ -39,8 +80,8 @@
 			schstr += 	"<tr><th>"+(shour-1)+":00</th><td></td></tr>"
 			schstr += 	"<tr><th>"+(shour-1)+":30</th><td></td></tr>"
 		for (var i=shour; i<=ehour; i++ ){
-			schstr +=	"<tr><th>"+i+":00</th><td class='sch' onclick='schJb()'>스케줄있음</td></tr>"
-			schstr +=	"<tr><th>"+i+":30</th><td class='sch' onclick='schJb()'>스케줄있음</td></tr>"
+			schstr +=	"<tr><th>"+i+":00</th><td class='sch' onclick='viewModal()'>스케줄있음</td></tr>"
+			schstr +=	"<tr><th>"+i+":30</th><td class='sch' onclick='viewModal()'>스케줄있음</td></tr>"
 		}
 		schstr += 	"<tr><th>"+(ehour+1)+":00</th><td></td></tr>"
 		schstr += 	"<tr><th>"+(ehour+1)+":30</th><td></td></tr>"
@@ -49,6 +90,12 @@
 		}
 		document.getElementById("t").innerHTML = schstr;
 	}
+	function viewModal(){
+		var schJb = document.getElementById('myModal');
+		modal.style.display = "block";
+	}
+	
+
 	
 	function schMod(schId){
 		var form = document.createElement("form");
@@ -273,7 +320,7 @@
 			success : function(data){
 				var list = $.parseJSON(data);
 				var max = 0;
-				var schjbstr='';
+				var schjbstr='<div class="modal-content">';
 				for(var i=0; i<list.length; i++){	//홀개수 찾기위한 반복문
 					if(list[i].hallNum > max){
 						max = list[i].hallNum;
@@ -382,9 +429,10 @@
 							}
 							schjbstr += "<tr><th colspan='3'><input type='button' value='필요인원추가' onclick='schjbInsert("+(i+1)+",this)'><input type='button' value='홀 삭제' onclick='delHall("+(i+1)+")'></th></tr>"
 						}
-					schjbstr += "</table><br>"
+					schjbstr += "</table></div><br>"
 					}
 				}
+				schjbstr += "</div>"
 				document.getElementById("schJb").innerHTML = schjbstr;
 			}, error:function(request,status,error){
 			    alert("오류! 오류!");
@@ -461,7 +509,8 @@ ${sessionScope.memName} 님의 스케줄<br>
 
 <div id="t"></div>
 <br>
-<div id="schJb"></div>
+<div id="schJb" class="modal">
+</div>
 <br>
 <div id="rst"></div>
 

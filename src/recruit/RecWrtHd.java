@@ -47,6 +47,11 @@ public class RecWrtHd implements RecruitHandler {
 		
 		if(request.getParameter("write")== null) {
 			//제목글인 경우
+			try {//스케줄에서 넘어온 경우.
+				int schId = Integer.parseInt(request.getParameter("schId"));
+			} catch (NumberFormatException e){
+				
+			}
 			int recId=0;		
 			
 			int recStatus = 0; //공고상태
@@ -66,6 +71,12 @@ public class RecWrtHd implements RecruitHandler {
 					
 			return new ModelAndView("/recruit/recWrt");
 		}else {
+			try {//스케줄에서 넘어온 경우.
+				int schId = Integer.parseInt(request.getParameter("schId"));
+			} catch (NumberFormatException e){
+				
+			}
+			
 			String jobpId = (String) request.getSession().getAttribute("memid");
 			JobProvDataBean jbpDto = jbpDao.jobpGet(jobpId);
 		    request.setAttribute("jbpDto", jbpDto);
@@ -75,6 +86,13 @@ public class RecWrtHd implements RecruitHandler {
 			RecruitDataBean recruitDto = new RecruitDataBean();
 			
 			recruitDto.setRecSite(request.getParameter("recSite"));
+			String [] ad = request.getParameter("recSite").split(" ");
+			if(ad[0].equals("서울") || ad[0].equals("대전") || ad[0].equals("대구") || ad[0].equals("부산") || ad[0].equals("울산") || ad[0].equals("광주") || ad[0].equals("인천") || ad[0].equals("세종특별자치시")){
+				recruitDto.setSearchSite(ad[1]);
+			} else {
+				recruitDto.setSearchSite(ad[2]);
+			}
+			
 			
 			recruitDto.setJobpId(request.getParameter("jobpId"));
 			recruitDto.setRecStatus(0);
@@ -82,40 +100,6 @@ public class RecWrtHd implements RecruitHandler {
 			recruitDto.setReccontent(request.getParameter("reccontent"));
 			
 			
-			 
-			/*recruitDto.setRecStart( new Timestamp( System.currentTimeMillis() ));
-	        Timestamp sysdate = new Timestamp( System.currentTimeMillis() );
-	        String input = request.getParameter("recEnd").replace('T', ' ');
-	       
-	        java.util.Date date;
-			try {				
-				 date = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(input);
-				 Calendar cal = Calendar.getInstance();
-			       cal.setTime(date);
-			       cal.add(Calendar.SECOND, 10);
-			       Date caltodate = cal.getTime();
-			      
-				Timestamp timestamp = new Timestamp(caltodate.getTime());
-			
-				if(timestamp.before(sysdate)) {
-					response.setContentType("text/html; charset=UTF-8");
-					PrintWriter out;
-					try {
-						out = response.getWriter();
-						out.println("<script>alert('이미 지난 날짜입니다.');return false;'");
-						out.flush();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-				}
-				recruitDto.setRecEnd(timestamp);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		       		*/
 	        recruitDto.setRecStart( new Timestamp( System.currentTimeMillis() ));
 	       
 	       
@@ -124,25 +108,19 @@ public class RecWrtHd implements RecruitHandler {
 					
 			String time = (endStr + ' ' +endTime);
 			String real = "MM/dd/yyyy hh:mm";
-			
-			
-			
+
 			SimpleDateFormat endtm = new SimpleDateFormat(real);
 			Date timeD;
 			
 			try {
 				
 				timeD = endtm.parse(time);				
-				
 				Timestamp endDate = new Timestamp(timeD.getTime());
-				
 				recruitDto.setRecEnd(endDate);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			
-			
-			
+
 			int result = recDao.recWrt( recruitDto );
 			if (result==1) {
 				

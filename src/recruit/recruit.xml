@@ -49,10 +49,10 @@
    		select * from KRrecposition where recId=#{recId}
    </select>
 	<select id="recList" resultType="recruit.RecruitDataBean" parameterType="java.util.Map">
-			select recId,recStart,recEnd,recContent,recSite,
-			recReadCnt,recStatus,jobpId,r 
-			from (select recId,recStart,recEnd,recContent,recSite,
-			recReadCnt,recStatus,jobpId,rownum r from
+			select recId,recStart,recEnd,recContent,recSite,SEARCHSITE,
+			recReadCnt,recStatus,jobpId,SCHID,r 
+			from (select recId,recStart,recEnd,recContent,recSite,SEARCHSITE,
+			recReadCnt,recStatus,jobpId,SCHID,rownum r from
 			(select recId,recStart,recEnd,recContent,recSite,
 			recReadCnt,recStatus,jobpId from KRrecruit where recStatus=1 or recStatus=0 order by recStart desc) 
 			order by recStart desc) where r &gt;= #{start} and r &lt;= #{end}
@@ -64,8 +64,8 @@
 			update KRrecruit set recStatus=#{recStatus} where recEnd&gt;=sysdate	
 	</update>
 	<insert id="recWrt" parameterType="recruit.RecruitDataBean">
-		insert into KRrecruit values( KRrecruit_seq.nextval, #{recStart}, #{recEnd}, #{reccontent}, #{recSite},
-		 #{recReadCnt}, #{recStatus}, #{jobpId})
+		insert into KRrecruit values( KRrecruit_seq.nextval, #{recStart}, #{recEnd}, #{reccontent}, #{recSite}, #{SEARCHSITE},
+		 #{recReadCnt}, #{recStatus}, #{jobpId}, #{SCHID})
 	</insert>
 	<insert id="Rec.recPos" parameterType="java.util.Map">
    		insert into KRrecposition values(#{recId}, #{posId}) 

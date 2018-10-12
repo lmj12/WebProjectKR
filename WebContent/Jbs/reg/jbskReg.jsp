@@ -1,4 +1,4 @@
-<%@page import="java.net.URLEncoder"%>
+﻿<%@page import="java.net.URLEncoder"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="java.io.File"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
@@ -7,10 +7,13 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
-
-
 <!DOCTYPE html>
 <html>
+<script type="text/javascript">
+	//<!--
+	var authNum = 0;
+	//-->
+</script>
 <head>
 	<meta charset="UTF-8">
 	<title> 구직자 회원가입 </title>
@@ -150,13 +153,22 @@
 				</td>
             </tr>
 			<tr>
-				<th> 전화번호 </th>
+				<th> 휴대전화 </th>
 				<td>
-					<input class="input" type="text" name="jbskTel" maxlength="15">
-					<input type="button" value="인증">
+					<input class="input" type="text" name="jbskTel" id="jbskTel" maxlength="15">
+					<input type="button" value="문자발송" onclick="telAuth()">
 				</td>
 				<td>
 					<input class="telresult" type="text" maxlength="15" readonly>
+				</td>
+			</tr>
+			<tr>
+				<th>인증번호 입력</th>
+				<td>
+					<input type="number" id="authNumCk" maxlength="10" placeholder="인증번호를 입력해주세요.">
+					<input type="hidden" id="authCk" value="0">
+					<input type="hidden" id="authNum" value="0">
+					<input type="button" value="인증번호확인" onclick="authCheck()">
 				</td>
 			</tr>
 			<tr>
