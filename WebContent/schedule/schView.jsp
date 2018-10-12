@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/setting/setting.jsp" %>
 <%@ include file="/setting/design_setting_upper.jsp" %>
+<%@ include file="/setting/setting.jsp" %>
 <!DOCTYPE html>
 <style>
 	/* The Modal (background) */
@@ -61,12 +61,8 @@
 		function(){
 			makeTable();
 			schJb();
-			
-			window.onclick = function(event) {
-		        if (event.target == modal) {
-		            modal.style.display = "none";
-		        }
-		    }
+			setInterval("schJb()",3000);
+
 		}
 	)
 	
@@ -90,12 +86,18 @@
 		}
 		document.getElementById("t").innerHTML = schstr;
 	}
+	
 	function viewModal(){
-		var schJb = document.getElementById('myModal');
-		modal.style.display = "block";
+		var schJb = document.getElementById('schJb');
+		schJb.style.display = "block";
 	}
 	
-
+	window.onclick = function(event) {
+		var schJb = document.getElementById('schJb');
+        if (event.target == schJb) {
+        	schJb.style.display = "none";
+        }
+    }
 	
 	function schMod(schId){
 		var form = document.createElement("form");
