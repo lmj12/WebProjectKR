@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
+<%@ include file="/setting/setting.jsp" %>
 <h2>구직자 정보수정 뷰</h2>
 
 <%
