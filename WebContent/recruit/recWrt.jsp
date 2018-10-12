@@ -34,7 +34,7 @@ $( function() {
 	</script>
 </c:if>
 <c:if test="${rst eq 1}">
-	<c:redirect url="recList.do"/>		
+	<c:redirect url="mypage.do"/>		
 </c:if>
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
@@ -45,7 +45,7 @@ $( function() {
 	</script>
 </c:if>
 <c:if test="${result eq 1}">
-	<c:redirect url="recList.do"/>		
+	<c:redirect url="mypage.do"/>		
 </c:if>
 <form name="recwrite" method="post" action="recWrt.do" onsubmit="return writecheck()">
 <table border="1">
