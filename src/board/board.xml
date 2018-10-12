@@ -34,6 +34,18 @@
     <select id="Board.selectId" resultType="String">
     	select boardId from KRboard
     </select>
-   
+   	<select id="Board.userSelCnt" parameterType="String" resultType="int">
+   		select count(*) from KRboard where boarduserId=${userId}
+   	</select>
+   	<select id="Board.userSel" parameterType="String" resultType="board.BoardDataBean">
+   		select boardId, boardContent, boardStatus, boardParentId, boarduserid, boardregdate,r 
+		from (select boardId, boardContent, boardStatus, boardParentId, boarduserid, boardregdate,rowNum r from
+		(select boardId, boardContent, boardStatus, boardParentId, boarduserid, boardregdate
+		 from KRboard where boarduserId=${userId}) 
+		) where r &gt;= #{start} and r &lt;= #{end} 
+   	</select>
+   	<select id="Board.Sel" parameterType="String" resultType="board.BoardDataBean">
+   		select * from KRboard where boarduserId=${userId}
+   	</select>
     </mapper>
    

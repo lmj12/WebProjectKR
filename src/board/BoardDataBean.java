@@ -9,6 +9,9 @@ public class BoardDataBean {
 	private int boardStatus;
 	private int boardParentId;
 	private String boarduserId;
+	private int rowNum;
+	
+	
 	
 	public String getBoardId() {
 		return boardId;

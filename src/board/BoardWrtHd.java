@@ -44,7 +44,7 @@ public class BoardWrtHd implements BoardHandler {
 			request.setAttribute("boardId", boardId);
 			request.setAttribute("boardContent", boardContent);
 			request.setAttribute("boardParentId", boardParentId);
-			System.out.println(request.getParameter("boardId")+"+");
+			
 			BoardDataBean boardDto = new BoardDataBean();
 			boardDto.setUserId((String) request.getSession().getAttribute( "memid" ));
 			boardDto.setBoardStatus(1);

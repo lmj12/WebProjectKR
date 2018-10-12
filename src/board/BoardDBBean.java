@@ -127,4 +127,16 @@ public class BoardDBBean {
 	public int boardCnt() {
 		return session.selectOne("Board.boardCnt");
 	}
+
+	public int userSelCnt(String userId) {
+		return session.selectOne("Board.userSelCnt", userId);
+	}
+
+	public List<BoardDataBean> userSel(Map<String, Map<String, Integer>> hash) {
+		return session.selectList("Board.userSel", hash);
+	}
+
+	public List<BoardDataBean> Sel(String userId) {
+		return session.selectList("Board.Sel", userId);
+	}
 }
