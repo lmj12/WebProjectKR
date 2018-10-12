@@ -30,7 +30,10 @@
 				
 				<c:if test="${sessionScope.memid ne null }">
 					<li><a href="mypage.do">마이페이지</a></li>
-					
+					<c:if test="${sessionScope.teamId ne 0 }">
+						<li> <a href="teamList.do">팀</a></li>
+						<li> <a href="#">팀 스케쥴</a></li>
+					</c:if>
 					<!--////////////// 구직자의 경우  //////////////-->
 					<c:if test="${sessionScope.memType eq 1}">
 						<li><a href="boardList.do">신고게시판</a></li>
