@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/setting.jsp"%>
 <!DOCTYPE html>
+<!-- 구직자 페이지 -->
 <script type="text/javascript">
 	//<!--
 	
