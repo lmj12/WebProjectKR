@@ -13,9 +13,7 @@
 	var et = new Date(recEnd).format("yyyy/MM/dd hh:mm");;
 
 	$(document).ready(function(){
-	   	appTable();
-	   	$("#st").text(st);
-	   	$("#et").text(et);	
+	   	appTable();	   
 	});
 
 	function recApply() {
@@ -294,11 +292,11 @@
 				</td>
 		<tr>
 			<th>시작일</th>
-			<td id='st'></td>
+			<td>${recDto.stime}</td>
 		</tr>
 		<tr>
 			<th>종료일</th>
-			<td id='et'></td>
+			<td>${recDto.etime}</td>
 		</tr>
 		<tr>
 			<th>공고상태</th>

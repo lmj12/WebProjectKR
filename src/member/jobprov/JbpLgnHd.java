@@ -30,10 +30,12 @@ public class JbpLgnHd implements JobProvHandler {
 			result = 0;
 		} else {
 			result = 1;
+			int teamId = teamDao.getTeamId(jobpId);
+			request.setAttribute("teamId", teamId);
 		}
-		int teamId = teamDao.getTeamId(jobpId);
 		
-		request.setAttribute("teamId", teamId);
+		
+		
 		request.setAttribute( "result", result );
 		request.setAttribute( "jobpId", jobpId);
 		request.setAttribute("jobpCn", jobpcn);

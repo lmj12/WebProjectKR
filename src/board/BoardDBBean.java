@@ -121,12 +121,26 @@ public class BoardDBBean {
 		return session.selectOne("Board.boardGet", boardId);// 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
-	public List<BoardDataBean> boardList(Map<String, Integer> map) {// 임시매개변수. 필요시 변경할것.
+	public List<BoardDataBean> boardList(Map<String, Object> map) {// 임시매개변수. 필요시 변경할것.
 		return session.selectList("Board.boardList", map); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	public int boardCnt() {
 		return session.selectOne("Board.boardCnt");
 	}
+
+
+	public int userSelCnt(String boarduserId) {
+		return session.selectOne("Board.userSelCnt", boarduserId);
+	}
+
+	public List<BoardDataBean> userSel(Map<String, Object> map) {
+		return session.selectList("Board.userSel", map);
+	}
+
+	public List<BoardDataBean> Sel(String userId) {
+		return session.selectList("Board.Sel", userId);
+	}
+
 	
 	public List<BoardDataBean> getAdm() { // 공지 리스트 가져오기
 		return session.selectList("Board.getAdm"); 

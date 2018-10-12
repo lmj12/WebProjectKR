@@ -41,8 +41,9 @@ public class BoardListHd implements BoardHandler {
 		int startPage = 0;
 		int endPage = 0;
 		int pageCount = 0;										
-	
-		count = boardDao.boardCnt();	
+		
+		String userId = (String) request.getSession().getAttribute("memid");
+		count = boardDao.userSelCnt(userId);	
 		
 		
 		
@@ -76,10 +77,16 @@ public class BoardListHd implements BoardHandler {
 		request.setAttribute( "pageBlock", pageBlock );
 		request.setAttribute("boardId", boardId);
 		if( count > 0 ) {
-			Map <String, Integer> map = new HashMap<String, Integer>();
+			Map <String, Object> map = new HashMap<String, Object>();
 			map.put("start", start);
 			map.put("end", end);
-			List <BoardDataBean> articles = boardDao.boardList( map );
+			map.put("boarduserId", userId);
+			List <BoardDataBean> articles = boardDao.userSel( map );
+			for(int i=0; i<articles.size(); i++) {
+			BoardDataBean boardDto = articles.get(i);
+			SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+			boardDto.setStime(sf.format(boardDto.getBoardregdate()));
+			}
 			request.setAttribute( "articles", articles );
 		}
 		
