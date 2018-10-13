@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import team.TeamDBBean;
 @Controller
 public class JbpLgnHd implements JobProvHandler {
+	// FIXME : MemberLoginHd 에서 대신 처리
 	@Resource
 	private JobProvDBBean jbpDao;
 	@Resource

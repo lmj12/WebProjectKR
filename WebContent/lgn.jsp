@@ -14,20 +14,20 @@
 	                            <h3 class="mb-0">로그인</h3>
 	                        </div>
 	                        <div class="card-body">
-	                            <form class="form" role="form" action="" autocomplete="off" id="formLogin" novalidate="" method="POST">
+	                            <form class="form" role="form" action="memberLogin.do" autocomplete="off" id="formLogin" novalidate="" method="GET">
 	                            	  <div class="custom-controls-stacked d-block my-3">
 									    <label class="custom-control custom-radio">
-									      <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input" required>
-									      <span class="custom-control-indicator"></span>
-									      <span class="custom-control-description">구인자</span>
-									    </label>
-									    <label class="custom-control custom-radio">
-									      <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input" required>
+									      <input id="radioStacked2" name="radio-stacked" value="jbsk" type="radio" class="custom-control-input" required>
 									      <span class="custom-control-indicator"></span>
 									      <span class="custom-control-description">구직자</span>
 									    </label>
 									    <label class="custom-control custom-radio">
-									      <input id="radioStacked3" name="radio-stacked" type="radio" class="custom-control-input" disabled required>
+									      <input id="radioStacked1" name="radio-stacked" value="jbp" type="radio" class="custom-control-input" required>
+									      <span class="custom-control-indicator"></span>
+									      <span class="custom-control-description">구인자</span>
+									    </label>
+									    <label class="custom-control custom-radio">
+									      <input id="radioStacked3" name="radio-stacked" value="adm" type="radio" class="custom-control-input" disabled required>
 									      <span class="custom-control-indicator"></span>
 									      <span class="custom-control-description">관리자</span>
 									    </label>
