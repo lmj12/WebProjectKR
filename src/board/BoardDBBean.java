@@ -15,7 +15,37 @@ public class BoardDBBean {
 	private SqlSession session = SqlMapClient.getSession();
 	
 	public int notWrt(BoardDataBean boardDto) {
-		return session.insert("Board.notWrt", boardDto);		
+	
+		String boardId = boardDto.getBoardId();
+		
+		int st3 =0;
+		boardId = boardDto.getBoardId();
+		//System.out.println(boardId + "-");
+				
+		List<String>rst1 = session.selectList("Board.selId");
+		
+		if(rst1.size()==1){
+			String rst11 = session.selectOne("Board.selectId");
+			st3 = Integer.parseInt(rst11.toString().split("_")[1]);
+		}else {					
+			for(int i=0; i< rst1.size() ; i++) {								
+				 if(Integer.parseInt(rst1.get(i).toString().split("_")[0])==0){
+					st3 = Integer.parseInt(rst1.get(i).toString().split("_")[1]);
+				}else {
+					rst1.remove(rst1.get(i));
+				}
+				
+			}//int i			
+
+		}
+		st3=st3+1;
+		boardId = 0 + "_" + st3;
+		boardDto.setBoardId(boardId);
+		//boardDto.setBoardParentId(boardParentId);
+		rst1.removeAll(rst1);
+		boardDto.setBoardParentId(0);		
+	
+		return session.insert("Board.notWrt", boardDto);	
 	}
 	
 	public int boardWrt(BoardDataBean boardDto) { // 임시매개변수. 필요시 변경할것.
@@ -160,5 +190,13 @@ public class BoardDBBean {
 
 	public List<BoardDataBean> notGet() {
 		return session.selectList("Board.notGet");
+	}
+
+	public int Mod(BoardDataBean boardD) {
+		return session.update("Board.Mod", boardD);
+	}
+
+	public BoardDataBean boardNotGet(String boardId) {
+		return session.selectOne("Board.boardNotGet", boardId);
 	}
 }

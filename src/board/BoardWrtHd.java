@@ -106,26 +106,26 @@ public class BoardWrtHd implements BoardHandler {
 				return new ModelAndView("/board/notWrt");
 			}else {
 				BoardDataBean boardDto = new BoardDataBean();
-				
+				boardDto.setBoardTitle(request.getParameter("boardtitle"));
 				boardDto.setBoardId(request.getParameter("boardId"));
 				boardDto.setBoardContent(request.getParameter("boardContent"));
-				System.out.println(request.getParameter("boardId")+"/");
+			
 				boardDto.setBoardStatus(1);
 				
-				boardDto.setBoardParentId(Integer.parseInt(request.getParameter("boardParentId")));
+				boardDto.setBoardParentId(0);
 				String userId = (String) request.getSession().getAttribute("memid");
 			
 				boardDto.setUserId(request.getParameter("userId"));
-				System.out.println(request.getParameter("userId"));
+				
 				boardDto.setBoardregdate( new Timestamp( System.currentTimeMillis() ));
 				
 				
 			
 				BoardDBBean boardDao = new BoardDBBean();
 				
-				//int result = boardDao.boardWrt( boardDto );
+				int result = boardDao.notWrt( boardDto );
 
-				//request.setAttribute( "result", result );
+				request.setAttribute( "result", result );
 				
 				return new ModelAndView("/board/notWrt");
 			}

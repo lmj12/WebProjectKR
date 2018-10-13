@@ -30,16 +30,18 @@ public class BoardViewHd implements BoardHandler {
 						
 		return new ModelAndView("/board/boardView");
 	}
-	
+	@Resource
+	public BoardDBBean boardD;
 	@RequestMapping("/notView")
 	public ModelAndView process1(HttpServletRequest request, HttpServletResponse response) throws BoardException {
 		String boardId = (request.getParameter("boardId"));
-		BoardDataBean boardDto = boardDao.boardGet( boardId );
+		BoardDataBean boardDto =boardD.boardNotGet( boardId );
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
 		boardDto.setStime(sf.format(boardDto.getBoardregdate()));
 		
 		String num = boardId.split("_")[1];			
 		boardDto.setNum(num);
+		
 		request.setAttribute( "boardDto", boardDto );
 		return new ModelAndView("/board/notView");		
 	}

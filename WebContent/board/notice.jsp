@@ -5,10 +5,11 @@
 <h2>공지사항 페이지</h2>
 
 <table border="1">
+
 <c:if test="${sessionScope.memType eq 3}">
 	<tr>
 		<th>공지작성</th>
-		<td><input type="button" onclick="location='notWrt.do'"></td>
+		<td><input type="button" value="공지작성" onclick="location='notWrt.do'"></td>
 	</tr>
 </c:if>
 	<tr>
@@ -18,8 +19,9 @@
 	</tr>
 	<c:forEach var="article" items="${articles}">	
 	<tr style="cursor:pointer;" onClick="location.href='notView.do?boardId=${article.boardId}'">
+		<input type="hidden" value="${article.boardId}">
 		<td>${article.num }	</td>
-		<td>${article.boardtitle}	</td>
+		<td>${article.boardTitle}	</td>
 		<td>${article.stime}	</td>
 	</tr>
 	</c:forEach>

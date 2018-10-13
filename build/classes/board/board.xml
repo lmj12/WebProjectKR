@@ -10,6 +10,9 @@
    <select id="notGet" resultType="board.BoardDataBean">
    		select * from KRboard where boardid like '0%' order by boardid desc
    </select>
+   <select id="boardNotGet" parameterType="String" resultType="board.BoardDataBean">
+   		select * from (select * from KRboard where boardId like '0%') where boardid=#{boardId}
+   </select>
    <select id="boardGetFin" parameterType="java.util.Map" resultType="board.BoardDataBean">
    		select * from KRboard where boardparentId in (select boardparentid from KRboard where boarduserid=#{boarduserId})
    		order by boardparentid desc, boardstatus desc 
@@ -30,10 +33,17 @@
    <update id="Board.boardMod" parameterType="board.BoardDataBean">
    		update KRboard set boardContent=#{boardContent} where boardId=#{boardId}
    </update>
+   <update id="Board.Mod" parameterType="board.BoardDataBean">
+   		update KRboard set boardTitle=#{boardTitle, jdbcType=VARCHAR}, boardContent=#{boardContent} where boardId=#{boardId}
+   </update>
    <insert id="Board.boardWrt" parameterType="board.BoardDataBean">
    		insert into KRboard(boardId, boardContent, boardStatus, boardParentId, boarduserId, boardregdate)
         values(#{boardId}, #{boardContent}, #{boardStatus}, #{boardParentId}, #{userId},
          #{boardregdate} )
+   </insert>
+   <insert id="Board.notWrt" parameterType="board.BoardDataBean">
+   		insert into KRboard values(#{boardId},#{boardTitle},#{boardContent},
+				#{boardStatus}, #{boardParentId}, #{boarduserId},#{boardregdate})
    </insert>
    <select id="Board.selectMax" resultType="int">
         select max( boardParentId ) from KRboard
@@ -41,7 +51,9 @@
     <select id="Board.selectId" resultType="String">
     	select boardId from KRboard
     </select>
-
+	 <select id="Board.selId" resultType="String">
+    	select boardId from ( select * from KRboard where boardId LIKE '0%')
+    </select>
    	<select id="Board.userSelCnt" parameterType="String" resultType="int">
    		select count(*) from KRboard where boarduserId=#{userId}
    	</select>

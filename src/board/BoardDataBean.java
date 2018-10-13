@@ -15,15 +15,7 @@ public class BoardDataBean {
 	private String boarduserId;
 	private String stime;
 	private String num;
-	private String boardtitle;
-	
-	
-	public String getBoardtitle() {
-		return boardtitle;
-	}
-	public void setBoardtitle(String boardtitle) {
-		this.boardtitle = boardtitle;
-	}
+		
 	public String getNum() {
 		return num;
 	}
