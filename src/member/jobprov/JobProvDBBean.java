@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import board.BoardDataBean;
 import mybatis.SqlMapClient;
 
 public class JobProvDBBean {
