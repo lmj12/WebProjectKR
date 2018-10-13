@@ -405,7 +405,7 @@
 						        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
 						        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
 						        	   } else{	// 지원자가 없다면
-						        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+						        		schjbstr += "<td><input type='text' value='공고작성하기' onclick='toRecruit()' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
 						        	   }
 							           cnt++;
 						          } else if(hlist[j].posId == 2){	//스캔의 경우
@@ -414,7 +414,7 @@
 						        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
 						        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
 						        	   } else{	// 지원자가 없다면
-						        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+						        		schjbstr += "<td><input type='text' value='공고작성하기' onclick='toRecruit()' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
 						        	   }
 						        	   cnt++;
 						          } else if(hlist[j].posId == 3){	//예도의 경우
@@ -423,7 +423,7 @@
 						        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
 						        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
 						        	   } else{	// 지원자가 없다면
-						        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+						        		schjbstr += "<td><input type='text' value='공고작성하기' onclick='toRecruit()' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
 						        	   }
 						        	   cnt++;
 						          } else if(hlist[j].posId == 4){	//안내
@@ -432,7 +432,7 @@
 						        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
 						        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
 						        	   } else{	// 지원자가 없다면
-						        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+						        		schjbstr += "<td><input type='text' value='공고작성하기' onclick='toRecruit()' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
 						        	   }
 						        	   cnt++;
 						          } else if(hlist[j].posId == 5){	//경호
@@ -441,7 +441,7 @@
 						        	   if(hlist[j].jbskId){ //지원자가 이미 있다면
 						        	   	schjbstr += "<td><input type='text' value='"+hlist[j].jbskName+"("+hlist[j].jbskId+")' onclick='schjbCncl(this,"+hlist[j].schjbId+")' readonly>";
 						        	   } else{	// 지원자가 없다면
-						        		schjbstr += "<td><input type='text' value='지원하기' onclick='schjbApply(this,"+hlist[j].schjbId+")' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
+						        		schjbstr += "<td><input type='text' value='공고작성하기' onclick='toRecruit()' readonly><input type='button' value='수정' onclick='schjbMod("+cnt+","+hlist[j].schjbId+")'><input type='button' value='삭제' onclick='schjbDel("+hlist[j].schjbId+")'></td></tr>";
 						        	   }
 						        	   cnt++;
 						          } 
@@ -458,6 +458,52 @@
 			}
 		})
     	
+	}
+	function toRecruit(){
+		if(confirm("공고작성 페이지로 이동하시겠습니까?")){
+			$.ajax({
+		    	method : "POST",
+		    	url : "ajaxSchJbRec.do",
+		    	cache : false,
+				async : false,
+				data : {
+					schId : schId
+				},
+				datatype : "json",
+				success : function(data){
+					var list = $.parseJSON(data);
+					var form = document.createElement("form");
+			      	form.setAttribute("method", "post");
+			      	form.setAttribute("action", "schRec.do");
+			      	
+				    var schIdF = document.createElement("input");
+				    schIdF.setAttribute("type", "hidden");
+				    schIdF.setAttribute("name", "schId");
+				    schIdF.setAttribute("value", schId);
+				    
+				    var srtime = st.getTime()
+				    var stF = document.createElement("input");
+				    stF.setAttribute("type", "hidden");
+				    stF.setAttribute("name", "st");
+				    stF.setAttribute("value", srtime);
+				    
+				    var posF = document.createElement("input");
+				    posF.setAttribute("type", "hidden");
+				    posF.setAttribute("name", "pos");
+				    posF.setAttribute("value", list);
+				    
+				    
+				    
+				    form.appendChild(schIdF);
+				    form.appendChild(stF);
+				    form.appendChild(posF);
+				    document.body.appendChild(form);
+				    form.submit();
+				}, error:function(request,status,error){
+				    alert("오류! 오류!");
+				}
+			})
+		}
 	}
 	
 	function schPrev(){

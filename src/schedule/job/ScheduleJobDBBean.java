@@ -55,4 +55,10 @@ public class ScheduleJobDBBean {
 		session.clearCache();
 		return session.selectList("SchJb.list", schId);
 	}
+	
+	public List<Integer> schJbRec(int schId){
+		session.flushStatements();
+		session.clearCache();
+		return session.selectList("SchJb.rec", schId);
+	}
 }
