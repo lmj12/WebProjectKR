@@ -23,6 +23,33 @@
 		}
 		
 	}
+	
+	function jbskGet() {
+		var jbskId = $("#jbskId").val();
+		$.ajax({
+		    method : "POST",
+		    url : "ajaxJbskGet.do",
+	    	cache : false,
+			async : false,
+			data : {
+				jbskId : jbskId,
+			},
+			datatype : "json",
+			success : function(data){
+				var user = $.parseJSON(data);
+				if(data){
+					var str = ''
+					str = "<table><tr><th>ID</th><th>이름</th><th>요청 보내기</th></tr>"
+					str += "<tr><td>"+user.jbskId+"</td><td>"+user.jbskName+"</td><td><input type='button' onclick='teamReq()'></td></tr></table>"
+					$("#rst").html(str);
+				} else {
+					$("#rst").text("검색 결과가 없습니다. 아이디를 다시 확인해 주세요.")
+				}
+			}
+		})
+		
+	}
+	
 	function gongji(){
 		$.ajax({
 		    method : "POST",
@@ -107,10 +134,12 @@
 		})
 	}
 	
-	function member(){
-		
-	}
 	//-->
+	
+	function member(){
+		<input type="text" id="jbskId" > <input type="button" value="검색" onclick="jbskGet()">
+	}
+
 	
 		
 	function toArticle(boardId,boardId2){
