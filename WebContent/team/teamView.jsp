@@ -52,7 +52,7 @@
 		tabstr +=	"</tr>"
 		for(var i=0; i<list.length; i++ ){
 			tabstr += "<tr><td id='t"+i+"'>"+list[i].jbskId+"</td><td>"+list[i].jbskName+"</td>"
-			if(list[i].gender == 1){
+			if(list[i].gender =='1'){
 				tabstr += "<td>남</td>"
 			} else {
 				tabstr += "<td>여</td>"

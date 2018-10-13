@@ -7,10 +7,10 @@
 	//<!--
 	
 	var recStart = '${recDto.recStart}';
-	var st = new Date(recStart).format("yyyy/MM/dd hh:mm");
+	var st = new Date(recStart).format("yyyy/MM/dd HH:mm");
 	
 	var recEnd = '${recDto.recEnd}';
-	var et = new Date(recEnd).format("yyyy/MM/dd hh:mm");;
+	var et = new Date(recEnd).format("yyyy/MM/dd HH:mm");;
 
 	$(document).ready(function(){
 	   	appTable();	   

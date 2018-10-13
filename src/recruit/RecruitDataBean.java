@@ -9,7 +9,7 @@ public class RecruitDataBean {
 	private String reccontent;
 	private String recSite;
 	private String searchSite;
-	private int schId;
+	private int schId = 0;
 	private int recReadCnt;
 	private int recStatus;
 	private String jobpId;

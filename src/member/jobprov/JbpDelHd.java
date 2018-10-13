@@ -6,7 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import member.jobseeker.JobSeekerException;
 @Controller
 public class JbpDelHd implements JobProvHandler {
 	@Resource
@@ -23,6 +26,13 @@ public class JbpDelHd implements JobProvHandler {
 		
 		// TODO Auto-generated method stub
 		return new ModelAndView("Jbp/jbpDel");
+	}
+	
+	@RequestMapping(value = "ajaxjobpDelinADM") 
+	@ResponseBody
+	public int ajaxProcess(HttpServletRequest request, HttpServletResponse response) throws JbpException {
+		String jobpId = request.getParameter("jobpId");
+		return jbpDao.jobpDel( jobpId );
 	}
 
 }

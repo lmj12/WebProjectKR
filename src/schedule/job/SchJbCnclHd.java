@@ -30,8 +30,7 @@ public class SchJbCnclHd implements ScheduelJobHandler {
 		Map<String, Object> map = new HashMap<String , Object>();
 		map.put("schjbId", schjbId);
 		map.put("jbskId", jbskId);
-		schjbDao.schJbCncl(map);
-		return schjbId;
+		return schjbDao.schJbCncl(map);
 	}
 
 }

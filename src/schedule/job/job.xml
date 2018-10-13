@@ -10,6 +10,12 @@
    <select id="list" resultType="schedule.job.ScdJbDataBean" parameterType="int">
    		select j.SCHJBID, j.SCHID, j.POSID, j.HALLNUM, j.JBSKID, s.JBSKNAME from KRschjob j, krjobseeker s where SCHID = #{schId} And j.jbskid = s.JBSKID(+)
    </select>
+    <select id="ck" resultType="int" parameterType="java.util.Map">
+   		select count(*) from KRschjob where SCHID = #{schId} AND JBSKID = #{jbskId}
+   </select>
+   <select id="rec" resultType="int" parameterType="int">
+   		select POSID from KRschjob where SCHID = #{schId} AND JBSKID IS NULL
+   </select>
    <update id="apply" parameterType="java.util.Map">
    		update KRschjob set JBSKID = #{jbskId} where SCHJBID = #{schjbId}
    </update>

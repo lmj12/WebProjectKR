@@ -10,8 +10,8 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script src="${js}time.js"></script>
-<link rel="stylesheet" href="${js}timepicker.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>  
 
 <script src="${js}recModSet.js"></script>
 <h2>공고수정페이지</h2>
@@ -20,7 +20,7 @@ var num = 0;
 var cnt = 0;
 $( function() {
     $( "#datepicker" ).datepicker({minDate: 0});
-    $("#timepicker").timepicker();
+    $("#timepicker").timepicker({'timeFormat': 'HH:mm'});
   } );
 </script>
 <c:if test="${result eq 0}">
