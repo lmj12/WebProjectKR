@@ -71,5 +71,10 @@ public class ScheduleDBBean {
 		return session.selectList("Sch.cal", map); 
 	}
 	
+	public String getJbpId(String jbskId) {
+		session.flushStatements();
+		session.clearCache();
+		return session.selectOne("Sch.getJbpId", jbskId); 
+	}
 	
 }

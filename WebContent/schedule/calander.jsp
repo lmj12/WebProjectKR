@@ -11,6 +11,11 @@
 	var lastday;
 	var memType = '${sessionScope.memType}'
 	var memId = '${sessionScope.memid}'
+	if(memType==1){
+		var calJbpId = '${sessionScope.jobpId}'
+		alert(calJbpId)
+	}
+	
 	$(document).ready(
 		function(){
 			calendar();

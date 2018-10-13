@@ -61,7 +61,7 @@
 		function(){
 			makeTable();
 			schJb();
-			setInterval("schJb()",3000);
+			setInterval("schJb()",30000);
 
 		}
 	)
@@ -149,13 +149,19 @@
 				async : false,
 				data : {
 					schjbId : schjbId,
+					schId : schId,
 					jbskId : jbskId,
 				},
 				datatype : "text",
 				success : function(data){	// TODO : 	반환하는거 확인 아직 못함
-					object.setAttribute("value",jbskName+"("+jbskId+")");
-					object.setAttribute("onclick", "onclick='schjbCncl(this,"+schjbId+")'");
-					alert("성공");
+					if(data==1){
+						alert("성공");
+						schJb();
+					} else if (data==0){
+						alert("지원에 실패했습니다. 잠시 후 다시 시도해주세요.")
+					} else if (data==2){
+						alert("한번에 한 직무만 지원할 수 있습니다.")
+					}
 				},	error:function(request,status,error){
 				    $("#rst").text("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				}
@@ -166,9 +172,11 @@
 	}
 	
 	function schjbCncl(object, schjbId){
+		
 		if(memType==1){
+			
 			var apId = object.value.split("(");	//아이디+)형태로 반환
-			if( (jbskId+")") == apId){	//	지원자 id랑 세션id가 일치하면
+			if( (jbskId+")") == apId[1]){	//	지원자 id랑 세션id가 일치하면
 				$.ajax({
 				    method : "POST",
 				    url : "ajaxSchJbCncl.do",
@@ -180,9 +188,14 @@
 					},
 					datatype : "text",
 					success : function(data){	// TODO : 	반환하는거 확인 아직 못함
-						object.setAttribute("value","지원하기");
-						object.setAttribute("onclick", "onclick='schjbApply(this,"+schjbId+")'");
-						alert("성공");
+						if(data==1){
+							alert("성공");
+							schJb();
+						} else if (data==0){
+							alert("취소에 실패했습니다 잠시 후 다시 시도해주세요.")
+						} else if (data==2){
+							alert("지원하지 않은 직무입니다.")
+						}
 					},	error:function(request,status,error){
 					    $("#rst").text("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					}
@@ -264,28 +277,32 @@
 		})
 	}
 	function makeHall(hallNum){
-		var hallNum = hallNum+1;
-		$.ajax({
-	    	method : "POST",
-	    	url : "ajaxSchHallWrt.do",
-	    	cache : false,
-			async : false,
-			data : {
-				hallNum : hallNum,
-				schId : schId
-			},
-			datatype : "text",
-			success : function(data){
-				if(data==1){
-					alert("홀추가완료");
-					schJb();
-				} else {
-					alert("홀추가실패");
+		if(memType==2){
+			var hallNum = hallNum+1;
+			$.ajax({
+		    	method : "POST",
+		    	url : "ajaxSchHallWrt.do",
+		    	cache : false,
+				async : false,
+				data : {
+					hallNum : hallNum,
+					schId : schId
+				},
+				datatype : "text",
+				success : function(data){
+					if(data==1){
+						alert("홀추가완료");
+						schJb();
+					} else {
+						alert("홀추가실패");
+					}
+				}, error:function(request,status,error){
+				    alert("schJb 홀추가 오류!");
 				}
-			}, error:function(request,status,error){
-			    alert("schJb 홀추가 오류!");
-			}
-		})
+			})
+		} else {
+			alert("권한이 없습니다.")
+		}
 		
 	}
 	

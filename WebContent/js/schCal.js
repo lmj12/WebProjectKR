@@ -144,7 +144,12 @@
              alert("스케줄은 구인자회원만이 만들 수 있습니다.")
           }
        } else {
-          location.href="schView.do?year="+year+"&month="+month+"&date="+date+"&day="+day+"&memId="+memId
+    	   alert(memType)
+    	   if(memType==2){
+    		   location.href="schView.do?year="+year+"&month="+month+"&date="+date+"&day="+day+"&memId="+memId
+    	   } else if(memType==1){
+	           location.href="schView.do?year="+year+"&month="+month+"&date="+date+"&day="+day+"&memId="+calJbpId
+    	   }
        }
     }
     

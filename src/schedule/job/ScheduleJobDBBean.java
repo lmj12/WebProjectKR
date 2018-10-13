@@ -10,16 +10,16 @@ import mybatis.SqlMapClient;
 public class ScheduleJobDBBean {
 	private SqlSession session = SqlMapClient.getSession();
 	
-	public int schJbWrt(ScdJbDataBean schJbDto) { // 임시매개변수. 필요시 변경할것.
+	public int schJbWrt(ScdJbDataBean schJbDto) { 
 		session.flushStatements();
 		session.clearCache();
-		return session.insert("SchJb.wrt", schJbDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		return session.insert("SchJb.wrt", schJbDto); 
 	}
 	
-	public int schJbMod(ScdJbDataBean schJbDto) { // 임시매개변수. 필요시 변경할것.
+	public int schJbMod(ScdJbDataBean schJbDto) { 
 		session.flushStatements();
 		session.clearCache();
-		return session.update("SchJb.mod",schJbDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		return session.update("SchJb.mod",schJbDto); 
 	}
 	public int schJbDelHall(ScdJbDataBean schJbDto) {
 		session.flushStatements();
@@ -27,28 +27,27 @@ public class ScheduleJobDBBean {
 		return session.delete("SchJb.hallDel",schJbDto);
 	}
 	
-	public int schJbDel(int schJbId) { // 임시매개변수. 필요시 변경할것.
+	public int schJbDel(int schJbId) { 
 		session.flushStatements();
 		session.clearCache();
-		return session.delete("SchJb.del",schJbId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		return session.delete("SchJb.del",schJbId); 
+	}
+
+	public int schJbCk(Map<String, Object> map) {
+		session.flushStatements();
+		session.clearCache();
+		return session.selectOne("SchJb.ck", map); 
+	}
+	public int schJbApply(Map<String, Object> map) { 
+		session.flushStatements();
+		session.clearCache();
+		return session.update("SchJb.apply", map); 
 	}
 	
-	public ScdJbDataBean schJbGet(int schJbId) { // 임시매개변수. 필요시 변경할것.
+	public int schJbCncl(Map<String, Object> map) {
 		session.flushStatements();
 		session.clearCache();
-		return null; // 에러막기위한 임시 리턴. 필요없으면 지울것.
-	}
-	
-	public int schJbApply(Map<String, Object> map) { // 임시매개변수. 필요시 변경할것. 여기는 DataBean으로 받는게 좋을지도 모름.
-		session.flushStatements();
-		session.clearCache();
-		return session.update("SchJb.apply", map); // 에러막기위한 임시 리턴. 필요없으면 지울것.
-	}
-	
-	public int schJbCncl(Map<String, Object> map) { // 임시매개변수. 필요시 변경할것.
-		session.flushStatements();
-		session.clearCache();
-		return session.update("SchJb.cncl", map); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+		return session.update("SchJb.cncl", map); 
 	}
 	
 	public List<ScdJbDataBean> schJbList(int schId){

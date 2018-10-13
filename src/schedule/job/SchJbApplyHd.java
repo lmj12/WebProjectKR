@@ -27,12 +27,18 @@ public class SchJbApplyHd implements ScheduelJobHandler {
 	@ResponseBody
 	public int ajaxProcess(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
 		int schjbId = Integer.parseInt(request.getParameter("schjbId"));
+		int schId = Integer.parseInt(request.getParameter("schId"));
 		String jbskId = request.getParameter("jbskId");
 		Map<String, Object> map = new HashMap<String , Object>();
-		map.put("schjbId", schjbId);
+		map.put("schId", schId);
 		map.put("jbskId", jbskId);
-		schjbDao.schJbApply(map);
-		return schjbId;
+		int cnt = schjbDao.schJbCk(map);
+		if (cnt == 0) {
+			map.put("schjbId", schjbId);
+			return schjbDao.schJbApply(map);
+		} else {
+			return 2;
+		}
 	}
 
 }
