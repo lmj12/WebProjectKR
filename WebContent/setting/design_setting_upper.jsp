@@ -92,6 +92,17 @@
 	    color: #fff;
 	}
 </style>
+<style media="screen">
+ body { background-color:#fafafa; font-family:'Roboto';}
+ h1 { margin-bottom:50px;}
+   .text-center{
+     text-align: center;
+     font-weight: bold;
+   }
+   #message{
+     display: none;
+   }
+ </style>
 </head>
 
 <%@ include file="navbar.jsp" %>
