@@ -14,6 +14,10 @@ import mybatis.SqlMapClient;
 public class BoardDBBean {
 	private SqlSession session = SqlMapClient.getSession();
 	
+	public int notWrt(BoardDataBean boardDto) {
+		return session.insert("Board.notWrt", boardDto);		
+	}
+	
 	public int boardWrt(BoardDataBean boardDto) { // 임시매개변수. 필요시 변경할것.
 	   // List<String> rst = new ArrayList<String>();
 	   // String rst[]= null;
@@ -152,5 +156,9 @@ public class BoardDBBean {
 
 	public List<BoardDataBean> boardGetFin(Map<String, Object> map) {
 		return session.selectList("Board.boardGetFin", map);
+	}
+
+	public List<BoardDataBean> notGet() {
+		return session.selectList("Board.notGet");
 	}
 }

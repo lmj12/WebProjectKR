@@ -14,9 +14,22 @@ public class BoardDataBean {
 	private int boardParentId;
 	private String boarduserId;
 	private String stime;
+	private String num;
+	private String boardtitle;
 	
-
 	
+	public String getBoardtitle() {
+		return boardtitle;
+	}
+	public void setBoardtitle(String boardtitle) {
+		this.boardtitle = boardtitle;
+	}
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
 	public String getBoardId() {
 		return boardId;
 	}

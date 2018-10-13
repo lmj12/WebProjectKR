@@ -82,9 +82,57 @@ public class BoardWrtHd implements BoardHandler {
 			
 			return new ModelAndView("/board/boardWrt");
 		}
-		
+	}
+	
+		@RequestMapping("/notWrt")
+		public ModelAndView process1(HttpServletRequest request, HttpServletResponse response) throws BoardException {
+			try {
+				request.setCharacterEncoding("utf-8");
+			} catch ( UnsupportedEncodingException e ) {
+				e.printStackTrace();
+			}
+			if(request.getParameter("write")== null) {
+				String boardId = 0 + "_" +1;	//제목글 0 / 답변글 !0
+				int boardParentId = 0;
+				String boardContent = null;
+				request.setAttribute("boardId", boardId);
+				request.setAttribute("boardContent", boardContent);
+				request.setAttribute("boardParentId", boardParentId);
+				
+				BoardDataBean boardDto = new BoardDataBean();
+				boardDto.setUserId((String) request.getSession().getAttribute( "memid" ));
+				boardDto.setBoardStatus(1);
+				request.setAttribute("boardDto", boardDto);
+				return new ModelAndView("/board/notWrt");
+			}else {
+				BoardDataBean boardDto = new BoardDataBean();
+				
+				boardDto.setBoardId(request.getParameter("boardId"));
+				boardDto.setBoardContent(request.getParameter("boardContent"));
+				System.out.println(request.getParameter("boardId")+"/");
+				boardDto.setBoardStatus(1);
+				
+				boardDto.setBoardParentId(Integer.parseInt(request.getParameter("boardParentId")));
+				String userId = (String) request.getSession().getAttribute("memid");
+			
+				boardDto.setUserId(request.getParameter("userId"));
+				System.out.println(request.getParameter("userId"));
+				boardDto.setBoardregdate( new Timestamp( System.currentTimeMillis() ));
+				
+				
+			
+				BoardDBBean boardDao = new BoardDBBean();
+				
+				//int result = boardDao.boardWrt( boardDto );
+
+				//request.setAttribute( "result", result );
+				
+				return new ModelAndView("/board/notWrt");
+			}
+		}
+			
 		
 	
-	}
+	
 }
 		

@@ -16,6 +16,9 @@
 	    <div class="collapse navbar-collapse" id="collapsingNavbar">
 	
 	        <ul class="nav navbar-nav ml-auto">
+	        	<li class="nav-item">
+		                <a class="nav-link" href="notice.do">공지사항</a>
+		        </li>
 	        	<c:if test="${sessionScope.memid eq null }">
 	        	<!--////////////// 로그인 전 //////////////-->
 		            <li class="nav-item">
@@ -34,10 +37,6 @@
 					</c:if>
 					<!--////////////// 구직자의 경우  //////////////-->
 					<c:if test="${sessionScope.memType eq 1}">
-
-						<li><a href="boardList.do">신고게시판</a></li>
-						<li><a href="iptCrr.do">이력서</a></li>
-
 						<li class="nav-item"><a class="nav-link" href="#">팀 스케쥴</a></li>
 						<li class="nav-item"><a class="nav-link" href="boardList.do">신고게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href="iptCrr.do">이력서</a></li>
