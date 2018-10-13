@@ -20,6 +20,7 @@
 	)
 	//-->
 </script>
+<body>
 <div class="container">
 	<div id="cal" class="table-responsive">
 		<div id="date"></div>
