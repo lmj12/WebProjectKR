@@ -104,7 +104,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="jbAddress" id="jbAddress" placeholder="도 / 시" readonly>
+					<input type="text" name="jbAddress" id="jbAddress" placeholder="도" readonly>
 					<!-- 정확한 용도를 모르겠으나 주소검색 시 검색창 꺼지게 만들어 줌 -->
 					<!-- 혹시 추후 주소 파싱해오는데 지장 생기면 body 태그 닫히는 곳 까지 내려버려도 무관함 -->
 					<span id="guide" style="color:#999"></span>
@@ -115,7 +115,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" id="rdAddress" name="rdAddress" placeholder="시 / 구" readonly>
+					<input type="text" id="rdAddress" name="rdAddress" placeholder="시" readonly>
 				</td>
 				<td>
 					
@@ -123,7 +123,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" id="zipcode" name="zipcode" placeholder="구 / 동" readonly>
+					<input type="text" id="zipcode" name="zipcode" placeholder="구" readonly>
 				</td>
 				<td>
 					

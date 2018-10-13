@@ -18,11 +18,68 @@
 			gonggo();
 		}else if(pageSlt == 3){
 			singo();
-		}else if(pageSlt ==4){ // 회원관리
-			member();
+		}else if(pageSlt ==4){ // 구직자 회원 정렬
+			jbskGet2();
+		}else if(pageSlt ==5){ // 구인자 회원 정렬
+			jobpGet2();
 		}
 		
 	}
+	
+	function jbskGet2() {
+		var jbskId = $("#jbskId").val();
+		$.ajax({
+		    method : "POST",
+		    url : "ajaxJbskGet.do",
+	    	cache : false,
+			async : false,
+			datatype : "json",
+			success : function(data){
+				var user = $.parseJSON(data);
+					if(data){
+						var str = ''
+						str = "<table border='1'><tr><th>아이디</th><th>패스워드</th><th>등록일</th><th>이름</th><th>성별</th><th>생일</th><th>주소1</th><th>주소2</th><th>주소3</th><th>이메일</th><th>전화</th><th>정보수신</th></tr>"
+						for (var i=0; i<user.length; i++){	
+							str += "<tr onclick='toRecruit("+user[i].jbskId+")'><td>"+user[i].jbskId+"</td><td>"+user[i].jbskPasswd+"</td><td>"+user[i].jbskregdate+"</td><td>"+user[i].jbskName+"</td><td>"+user[i].jbskGender+"</td><td>"+user[i].jbskBd+"</td><td>"+user[i].jbskAdd1+"</td><td>"+user[i].jbskAdd2+"</td><td>"+user[i].jbskAdd3+"</td><td>"+user[i].jbskEmail+"</td><td>"+user[i].jbskTel+"</td><td>"+user[i].jbskinfotype+"</td><tr>"
+						}
+						str += "</table>"
+						$("#rst").html(str);
+					} else {
+						$("#rst").html("검색결과가 없습니다.");
+					}
+				}
+			
+		})
+		
+	}
+	
+	function jobpGet2() {
+		var jobpId = $("#jobpId").val();
+		$.ajax({
+		    method : "POST",
+		    url : "ajaxJobpGet.do",
+	    	cache : false,
+			async : false,
+			datatype : "json",
+			success : function(data){
+				var user = $.parseJSON(data);
+					if(data){
+						var str = ''
+						str = "<table border='1'><tr><th>아이디</th><th>패스워드</th><th>등록일</th><th>업체명</th><th>사업자번호</th><th>전화번호</th></tr>"
+						for (var i=0; i<user.length; i++){	
+							str += "<tr onclick='toRecruit("+user[i].jobpCn+")'><td>"+user[i].jobpId+"</td><td>"+user[i].jobpPasswd+"</td><td>"+user[i].jobpRegdate+"</td><td>"+user[i].jobpCn+"</td><td>"+user[i].jobpBno+"</td><td>"+user[i].jobpTel+"</td><tr>"
+						}
+						str += "</table>"
+						$("#rst").html(str);
+					} else {
+						$("#rst").html("검색결과가 없습니다.");
+					}
+				}
+			
+		})
+		
+	}
+	
 	function gongji(){
 		$.ajax({
 		    method : "POST",
@@ -107,10 +164,10 @@
 		})
 	}
 	
-	function member(){
-		
-	}
 	//-->
+	
+	
+
 	
 		
 	function toArticle(boardId,boardId2){
@@ -129,7 +186,8 @@
 	<option value="1">공지관리</option>
 	<option value="2">공고관리</option>
 	<option value="3">신고관리</option>
-	<option value="4">회원관리</option>
+	<option value="4">구직자관리</option>
+	<option value="5">구인자관리</option>
 </select>
 
 <input type="button" value="조회" onclick="getAdminPage()">

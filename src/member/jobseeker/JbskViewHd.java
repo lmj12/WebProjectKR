@@ -2,6 +2,7 @@ package member.jobseeker;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import member.jobseeker.JobSeekerException;
 import schedule.job.SchJbException;
+import member.jobprov.JobProvDataBean;
 import member.jobseeker.JobSeekerDBBean;
 import member.jobseeker.JobSeekerDataBean;
 
@@ -41,22 +43,19 @@ public class JbskViewHd implements JobSeekerHandler {
 	@RequestMapping(value = "ajaxJbskGet") 
 	@ResponseBody
 	public String ajaxProcess(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
-		String jbskId =  request.getParameter("jbskId");
-		JobSeekerDataBean jbskDto = jbskDao.jbskGet(jbskId);
-		
+		List<JobSeekerDataBean> rst = jbskDao.jbskGet2();
 		
 		ObjectMapper mapper = new ObjectMapper(); 
 		
-		String jbsk=""; 
+		String sin=""; 
 		try { 
-			jbsk = mapper.writeValueAsString(jbskDto);
+			sin = mapper.writeValueAsString(rst);
 			
 		} catch (IOException e) { 
 			e.printStackTrace(); 
 		}
 		
-		return jbsk;
+		return sin;
 	}
-
-
+	
 }

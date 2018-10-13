@@ -1,5 +1,7 @@
 package member.jobseeker;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import member.jobprov.JobProvDataBean;
@@ -40,4 +42,8 @@ public class JobSeekerDBBean {
    public int jbskDel(String jbskId) { // 임시매개변수. 필요시 변경할것.
       return session.delete("Jbs.jbskDel", jbskId);   // 에러막기위한 임시 리턴. 필요없으면 지울것.
    }
+   
+   public List<JobSeekerDataBean> jbskGet2() { // 구직자  리스트 가져오기
+		return session.selectList("Jbs.jbskGet2"); 
+	}
 }
