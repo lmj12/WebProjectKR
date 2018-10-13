@@ -31,9 +31,9 @@ function searchPostcode() {
             }
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('place').value = data.zonecode; //5자리 새우편번호 사용
-            document.getElementById('place').value = fullRoadAddr;
-            document.getElementById('place').value = data.jibunAddress;
+            var jibun = data.jibunAddress.split(" ");
+            var jibunAdd = jibun[0] +" "+jibun[1] + " " +  jibun[2];
+            document.getElementById('place').value = jibunAdd;
 
             // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
             if(data.autoRoadAddress) {
@@ -62,43 +62,37 @@ function result(){
 
 </script>
 <h2>이력서 검색 페이지</h2>
-<form name="inputform" id="inputform" onsubmit="result()">
-	<tr>
-		<th> <input type="text" name="rsmsearch"> </th>
-		<td> <input type="button" value="검색"> </td>
-	</tr>
-	<br><br>
+
+<table border="1">
 	<tr>
 		<th>성별</th>
-		<td> <input type="radio" name="gender" value="1">남자</td>
-		<td> <input type="radio" name="gender" value="2">여자</td>
-		<td> 
+		<td> <input type="radio" name="gender" value="1">남자<input type="radio" name="gender" value="2">여자</td>
 	</tr>
-	<br><br>
 	<tr>	
 		<th>직무</th>
-		<td> <input type="checkbox" name="pos" value="1">팀장</td>
-		<td> <input type="checkbox" name="pos" value="2">스캔</td>
-		<td> <input type="checkbox" name="pos" value="3">예도</td>
-		<td> <input type="checkbox" name="pos" value="4">안내</td>
-		<td> <input type="checkbox" name="pos" value="5">경호</td>
-		<td> <input type="checkbox" name="pos" value="6">기타</td>
+		<td> 
+			<input type="checkbox" name="pos" value="1">팀장
+			<input type="checkbox" name="pos" value="2">스캔
+			<input type="checkbox" name="pos" value="3">예도
+			<input type="checkbox" name="pos" value="4">안내
+			<input type="checkbox" name="pos" value="5">경호
+			<input type="checkbox" name="pos" value="6">기타
+		</td>
 	</tr>
-	<br><br>
+
 	<tr>
-		<th>지역</th> &nbsp;
+		<th>지역</th>
 		<td><input type="text" name="place" id="place" placeholder="주소" readonly>					
 					<span id="guide" style="color:#999"></span>
 						<input type="button" value="주소찾기" onclick="searchPostcode()">
 						<input type="hidden" value="1" id="con">
 		</td>				
 	</tr>
-	<br><br>
-	<tr align="center">
-		<td> <input type="submit" value="확인"></td>
-		<td> <input type="reset" value="취소"> </td>
+	<tr>
+		<th colspan='2'><input type="button" value="검색"></th>
 	</tr>
-</form>	
+</table>
+
 	<br><br>	
 	
 	
@@ -122,7 +116,8 @@ function result(){
 		</tr>
 		<tr id="see">
 			<td id="name">	</td>
-			<td id="gg">	</td>
+			<td id="gen">	</td>
+			<td id="age">	</td>
 			<td id="tel">	</td>
 			<td id="adr">	</td>
 			<td id="teamh">	</td>	
