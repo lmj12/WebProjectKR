@@ -12,6 +12,7 @@ import member.jobprov.JobProvDataBean;
 
 @Controller
 public class AdminLgnHd implements AdminHandler {
+	// FIXME : MemberLoginHd 에서 대신 처리
 	@Resource
 	AdminDBBean admDao;
 	@Override

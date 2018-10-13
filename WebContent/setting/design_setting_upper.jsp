@@ -59,7 +59,6 @@
 	});
 //-->
 </script>
-<link rel="stylesheet" href="/bootstrap/theme.css">
 <style>
 	header {
 	    height: 220px;
