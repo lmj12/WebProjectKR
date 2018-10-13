@@ -40,7 +40,7 @@
 	            case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2);
 	            case "mm": return d.getMinutes().zf(2);
 	            case "ss": return d.getSeconds().zf(2);
-	            case "a/p": return d.getHours() < 12 ? "오전" : "오후";
+	            case "a/p": return d.getHours() < 12 ? "am" : "pm";
 	            default: return $1;
 	        }
 	    });

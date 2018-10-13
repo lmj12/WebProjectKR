@@ -43,8 +43,7 @@ public class RecWrtHd implements RecruitHandler {
 				int schId = Integer.parseInt(request.getParameter("schId"));
 			} catch (NumberFormatException e){
 				
-			}
-			int recId=0;		
+			}		
 			
 			int recStatus = 0; //공고상태
 			String reccontent = null;			
@@ -53,18 +52,13 @@ public class RecWrtHd implements RecruitHandler {
 		    JobProvDataBean jbpDto = jbpDao.jobpGet(jobpId);
 		    request.setAttribute("jbpDto", jbpDto);
 			request.setAttribute("jobpId", jobpId);
-			
-			
-			RecruitDataBean recDto = new RecruitDataBean();				
-			request.setAttribute("recStatus", recStatus);
-			request.setAttribute("reccontent", reccontent);
-			
-			request.setAttribute("recDto", recDto);			
 					
 			return new ModelAndView("/recruit/recWrt");
 		}else {
+			RecruitDataBean recruitDto = new RecruitDataBean();
 			try {//스케줄에서 넘어온 경우.
 				int schId = Integer.parseInt(request.getParameter("schId"));
+				recruitDto.setSchId(schId);
 			} catch (NumberFormatException e){
 				
 			}
@@ -75,14 +69,14 @@ public class RecWrtHd implements RecruitHandler {
 			request.setAttribute("jobpId", jobpId);
 			
 			
-			RecruitDataBean recruitDto = new RecruitDataBean();
+		
 			
 			recruitDto.setRecSite(request.getParameter("recSite"));
 			String [] ad = request.getParameter("recSite").split(" ");
 			if(ad[0].equals("서울") || ad[0].equals("대전") || ad[0].equals("대구") || ad[0].equals("부산") || ad[0].equals("울산") || ad[0].equals("광주") || ad[0].equals("인천") || ad[0].equals("세종특별자치시")){
 				recruitDto.setSearchSite(ad[0] +" " +  ad[1]);
 			} else {
-				recruitDto.setSearchSite(ad[0] +" "+ ad[2]);
+				recruitDto.setSearchSite(ad[1] +" "+ ad[2]);
 			}
 			
 			
@@ -97,10 +91,9 @@ public class RecWrtHd implements RecruitHandler {
 	       
 	        String endStr = request.getParameter("recEnd");
 			String endTime = request.getParameter("recEndTime");
-					
 			String time = (endStr + ' ' +endTime);
-			String real = "MM/dd/yyyy hh:mm";
-
+			String real = "MM/dd/yyyy HH:mm";
+			
 			SimpleDateFormat endtm = new SimpleDateFormat(real);
 			Date timeD;
 			
@@ -108,6 +101,7 @@ public class RecWrtHd implements RecruitHandler {
 				
 				timeD = endtm.parse(time);				
 				Timestamp endDate = new Timestamp(timeD.getTime());
+				System.out.println(endDate);
 				recruitDto.setRecEnd(endDate);
 			} catch (ParseException e) {
 				e.printStackTrace();

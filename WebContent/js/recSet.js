@@ -174,8 +174,7 @@ function add(){
 	++cnt;
 	var addposx = document.getElementById("addposx");
 	var tr = document.createElement("tr");
-
-	tr.innerHTML = "<select name='posPos'>"
+	tr.innerHTML = "<select id='s"+cnt+"' name='posPos'>"
 		+ 	"<option value='1' selected>팀장</option>"	
 		+	"<option value='2'>스캔</option>"	
 		+	"<option value='3'>예도</option>"	

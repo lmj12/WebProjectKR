@@ -9,7 +9,7 @@ public class RecruitDataBean {
 	private String reccontent;
 	private String recSite;
 	private String searchSite;
-	private String schId = "";
+	private int schId = 0;
 	private int recReadCnt;
 	private int recStatus;
 	private String jobpId;
@@ -117,10 +117,10 @@ public class RecruitDataBean {
 	public void setSearchSite(String searchSite) {
 		this.searchSite = searchSite;
 	}
-	public String getSchId() {
+	public int getSchId() {
 		return schId;
 	}
-	public void setSchId(String schId) {
+	public void setSchId(int schId) {
 		this.schId = schId;
 	}
 	public String getJobpCn() {
