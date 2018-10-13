@@ -122,6 +122,7 @@
 		})
 	}
 	
+	
 	function gonggo(){
 		$.ajax({
 		    method : "POST",
@@ -245,7 +246,7 @@
 	}
 	
 	function noticeWrt(){
-		location.replace("");//TODO: 공지쓰는 페이지로 이동
+		location.replace("notWrt.do");//TODO: 공지쓰는 페이지로 이동
 	}
 	
 </script>

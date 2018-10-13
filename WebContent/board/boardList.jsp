@@ -70,22 +70,5 @@
 </table>
 
 <br>
-<c:if test="${count ne 0}">
-	<c:if test="${startPage gt pageBlock}">
-		<a href="boardList.do">[◀◀] </a>
-		<a href="boardList.do?pageNum=${startPage-pageBlock}">[◀] </a>
-	</c:if>
-	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<c:if test="${i eq currentPage}">
-			<b>[${i}]</b>
-		</c:if>
-		<c:if test="${i ne currentPage}">					
-			<a href="boardList.do?pageNum=${i}">[${i}] </a>
-		</c:if>	
-	</c:forEach>
-	<c:if test="${pageCount gt endPage}">
-		<a href ="boardList.do?pageNum=${startPage+pageBlock}">[▶]</a>
-		<a href ="boardList.do?pageNum=${pageCount}">[▶▶]</a>
-	</c:if>	
-</c:if>
+
 <%@ include file="/setting/design_setting_footer.jsp" %>

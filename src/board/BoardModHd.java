@@ -65,8 +65,45 @@ public class BoardModHd implements BoardHandler {
 			return new ModelAndView("/board/boardMod");
 			
 		}
-		
-		
+	}
+	
+	
+		@Resource
+		public BoardDBBean boardD;
+		@RequestMapping("/notMod")
+		public ModelAndView process1(HttpServletRequest request, HttpServletResponse response) throws BoardException {
+			try {
+				request.setCharacterEncoding( "utf-8" );
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			if(request.getParameter("modify")==null) {
+				String boardId = ( request.getParameter( "boardId" ) );
+				BoardDataBean boardDto =boardD.boardNotGet( boardId );
+				request.setAttribute( "boardDto", boardDto );
+				
+				return new ModelAndView("/board/notMod");
+				
+			}else {			
+				
+				BoardDataBean boardDto = new BoardDataBean();
+				boardDto.setBoardContent(request.getParameter("boardContent"));
+				
+				boardDto.setBoardId((request.getParameter("boardId")));
+				//boardDto.setBoardParentId(Integer.parseInt(request.getParameter("boardParentId")));
+				//boardDto.setBoardregdate( new Timestamp( System.currentTimeMillis() ));
+				//boardDto.setBoardStatus(Integer.parseInt(request.getParameter("boardStatus")));
+				//boardDto.setUserId(request.getParameter("userId"));
+				String boardTitle = request.getParameter("boardtitle");
+				
+				boardDto.setBoardTitle(boardTitle);
+				int result = boardD.Mod( boardDto );	
+			
+				request.setAttribute( "result", result );
+				
+				return new ModelAndView("/board/notMod");
+				
+			}
 		
 		
 		
