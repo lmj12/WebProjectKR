@@ -94,7 +94,7 @@ public class RecMyViewHd implements RecruitHandler {
 			for(int i=0; i<articles.size(); i++) {
 				RecListDataBean recList = new RecListDataBean();
 				RecruitDataBean recDto = articles.get(i);
-				SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+				SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 				recDto.setStime(sf.format(recDto.getRecStart()));
 				recDto.setEtime(sf.format(recDto.getRecEnd()));
 				recList.setRecDto(recDto);

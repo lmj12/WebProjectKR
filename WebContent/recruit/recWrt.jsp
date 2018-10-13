@@ -15,14 +15,15 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script src="${js}time.js"></script>
-<link rel="stylesheet" href="${js}timepicker.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>  
 <script src="${js}recSet.js"></script>
 <h2>공고 등록페이지</h2>
 <script type="text/javascript">
 var cnt = 0;
 $( function() {
     $( "#datepicker" ).datepicker({minDate: 0});
-    $("#timepicker").timepicker();
+    $("#timepicker").timepicker({'timeFormat': 'HH:mm'});
   } );
 </script>
 <c:if test="${rst eq 0}">
@@ -47,10 +48,10 @@ $( function() {
 <c:if test="${result eq 1}">
 	<c:redirect url="mypage.do"/>		
 </c:if>
-<form name="recwrite" method="post" action="recWrt.do" onsubmit="return writecheck()">
+<form name="recwrite" method="post" action="recWrt.do" autocomplete="off" onsubmit="return writecheck()">
 <table border="1">
 <input type="hidden" name="jobpId" value="${jbpDto.jobpId}">
-<input type="hidden" name="recId" value="${recId}">
+
 	<tr>
 			
 		<th> 종료일</th>
