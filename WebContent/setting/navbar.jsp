@@ -8,6 +8,19 @@
 <header class="text-center p-5">
 	    Top header
 	</header>
+	
+<script type="text/javascript">
+	//<!--
+	function memCheck(){
+		var teamId = ${sessionScope.teamId}
+		if(teamId == 0 ){
+			alert("팀에 가입하고 있지 않습니다. 팀에 가입 후 이용해주세요.")
+		} else {
+			location.replace("tocal.do");
+		}
+	}
+	//-->
+</script>
 	<nav class="navbar navbar-expand-sm navbar-light" data-toggle="affix">
 	     <a class="navbar-brand" href="main.do">KR_WebProject[기린반]</a>
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
@@ -34,16 +47,9 @@
 					</c:if>
 					<!--////////////// 구직자의 경우  //////////////-->
 					<c:if test="${sessionScope.memType eq 1}">
-						<li class="nav-item"><a class="nav-link" href="#">팀 스케쥴</a></li>
+						<li class="nav-item"><a class="nav-link" onclick="memCheck()">팀 스케쥴</a></li>
 						<li class="nav-item"><a class="nav-link" href="boardList.do">신고게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href="iptCrr.do">이력서</a></li>
-						<c:if test="${sessionScope.teamReq eq '1' }">
-							<script type="text/javascript">
-								//<!--
-								alertTeam();
-								//-->
-							</script>
-						</c:if>
 					</c:if>
 					
 					<!--////////////// 구인자의 경우  //////////////-->

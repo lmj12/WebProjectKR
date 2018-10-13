@@ -71,8 +71,8 @@ public class SchCalanderHd implements ScheduleHandler {
 			if(memType==2) {	
 				map.put("jobpId", request.getParameter("memId"));
 			} else if (memType==1) {
-				String jbskId = request.getParameter("memId");
-				//TODO : 팀 만들어진걸로 팀의 주인인 jbpId를 가져오는걸 해야함.
+				String jobpId = (String) request.getSession().getAttribute("jobpId");
+				map.put("jobpId", jobpId);
 			}
 			
 			
