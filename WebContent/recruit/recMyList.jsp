@@ -230,24 +230,6 @@
 	</table>
 	</form>
 </div>
-<div class="container">
-	<br>
-	<c:if test="${count ne 0}">
-		<c:if test="${startPage gt pageBlock}">
-			<a href="recMyList.do">[◀◀] </a>
-			<a href="recMyList.do?pageNum=${startPage-pageBlock}">[◀] </a>
-		</c:if>
-		<c:forEach var="i" begin="${startPage}" end="${endPage}">
-			<c:if test="${i eq currentPage}">
-				<b>[${i}]</b>
-			</c:if>
-			<c:if test="${i ne currentPage}">					
-				<a href="recMyList.do?pageNum=${i}">[${i}] </a>
-			</c:if>	
-		</c:forEach>
-		<c:if test="${pageCount gt endPage}">
-			<a href ="recMyList.do?pageNum=${startPage+pageBlock}">[▶]</a>
-			<a href ="recMyList.do?pageNum=${pageCount}">[▶▶]</a>
-		</c:if>	
-	</c:if>
+<div class="container">	<br>
+	
 </div>

@@ -76,23 +76,40 @@ public class BoardListHd implements BoardHandler {
 		request.setAttribute( "pageCount", pageCount );
 		request.setAttribute( "pageBlock", pageBlock );
 		request.setAttribute("boardId", boardId);
-		if( count > 0 ) {
+		if( count > 0 ) {			
 			Map <String, Object> map = new HashMap<String, Object>();
 			map.put("start", start);
 			map.put("end", end);
 			map.put("boarduserId", userId);
-			List <BoardDataBean> articles = boardDao.userSel( map );
+			List<BoardDataBean> articles = boardDao.boardGetFin(map);
 			for(int i=0; i<articles.size(); i++) {
 			BoardDataBean boardDto = articles.get(i);
 			SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
 			boardDto.setStime(sf.format(boardDto.getBoardregdate()));
 			}
 			request.setAttribute( "articles", articles );
+			
+		
 		}
 		
 		
 		
 		return new ModelAndView("/board/boardList");
+	}
+	
+	@RequestMapping("/notice")
+	public ModelAndView process1(HttpServletRequest request, HttpServletResponse response) throws BoardException {
+		List<BoardDataBean> articles = boardDao.notGet();
+		for(int i=0; i<articles.size(); i++) {
+			BoardDataBean boardDto = articles.get(i);
+			SimpleDateFormat sd = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+			boardDto.setStime(sd.format(boardDto.getBoardregdate()));
+			String id = boardDto.getBoardId();
+			String num = id.split("_")[1];			
+			boardDto.setNum(num);
+		}
+		request.setAttribute("articles", articles);
+		return new ModelAndView("/board/notice");
 	}
 	
 	@RequestMapping(value = "ajaxAdmBoard") 

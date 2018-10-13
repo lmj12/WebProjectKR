@@ -47,6 +47,30 @@
 
 <c:if test="${sessionScope.memType eq 1}">
 	<jsp:include page="recCrrMy.do" flush="false"/>
+	<c:if test="${sessionScope.teamReq eq '1' }">
+		<script type="text/javascript">
+			//<!--
+			alertTeam();
+			//-->
+		</script>
+	</c:if>
 </c:if>
+
+<script type="text/javascript">
+	//<!--
+	function alertTeam(){
+		if(confirm("팀 가입 요청이 있습니다. 확인하시겠습니까?")){
+			location.href="teamReqCk.do"
+		} 
+	}
+	function toModify(){
+		if(${sessionScope.memType eq 2}){
+			location.href="jbpView.do"
+		} else if(${sessionScope.memType eq 1}) {
+			location.href="jbskView.do"
+		}
+	} 
+	//-->
+</script>
 
 <%@ include file="/setting/design_setting_footer.jsp" %>

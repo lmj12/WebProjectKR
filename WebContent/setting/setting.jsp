@@ -19,6 +19,7 @@
 		history.back();
 	} 
 	
+
 	function hBack(){
 		history.back()
 	}
