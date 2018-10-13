@@ -20,6 +20,7 @@ import member.jobseeker.JobSeekerDBBean;
 
 @Controller
 public class JbskLgnHd implements JobSeekerHandler {
+	// FIXME : MemberLoginHd 에서 대신 처리
 	@Resource
 	public JobSeekerDBBean jbskDao;
 	@Resource
@@ -60,7 +61,6 @@ public class JbskLgnHd implements JobSeekerHandler {
 		request.setAttribute("jbskName", jbskName);
 		request.setAttribute("memtype", 1);  // 구직자 : 1, 구인자 : 2 , 관리자 :3 
 
-		// TODO Auto-generated method stub
 		return new ModelAndView("/Jbs/jbskLgnPro");
 	
 	}

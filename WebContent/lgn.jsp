@@ -3,53 +3,87 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
 
-<script type="text/javascript">
-   //<!--
-   $(document).ready(
-      function(){
-    	  $("#lgType").on(
-    		"mouseup",
-    		function(){
-    			var ck = $("#lgType option:selected").val();
-    			if (ck == 1){
-    				$("#lgnform").attr("action","jbpLgn.do");
-    			} else if (ck==2){
-    				$("#lgnform").attr("action","jbskLgn.do");
-    			} else {
-    				$("#lgnform").attr("action","admLgn.do");
-    			}
-    		}
-    	  )
-      }
-   )
-   //-->
-</script>
-<h2>로그인</h2>
-<select id="lgType">
-	<option value="1">구인자</option>
-	<option value="2">구직자</option>
-	<option value="3">관리자</option>
-</select>
-<form method="post" action="jbpLgn.do" name="loginform" id="lgnform">
-<table border="1">
-	<tr>
-		<th>아이디</th>
-		<td><input type="text" name="id" autofocus placeholder="필수입력"></td>
-	</tr>
-	<tr>
-		<th>비밀번호</th>
-		<td><input type="password" name="passwd" placeholder="필수입력"></td>
-	</tr>
+	<div class="container py-5">
+	    <div class="row">
+	        <div class="col-md-12">
+	            <div class="row">
+	                <div class="col-md-6 mx-auto">
+	                    <!-- form card login -->
+	                    <div class="card rounded-0">
+	                        <div class="card-header">
+	                            <h3 class="mb-0">로그인</h3>
+	                        </div>
+	                        <div class="card-body">
+	                            <form class="form" role="form" action="memberLogin.do" autocomplete="off" id="formLogin" novalidate="" method="GET">
+	                            	  <div class="custom-controls-stacked d-block my-3">
+									    <label class="custom-control custom-radio">
+									      <input id="radioStacked2" name="radio-stacked" value="jbsk" type="radio" class="custom-control-input" required>
+									      <span class="custom-control-indicator"></span>
+									      <span class="custom-control-description">구직자</span>
+									    </label>
+									    <label class="custom-control custom-radio">
+									      <input id="radioStacked1" name="radio-stacked" value="jbp" type="radio" class="custom-control-input" required>
+									      <span class="custom-control-indicator"></span>
+									      <span class="custom-control-description">구인자</span>
+									    </label>
+									    <label class="custom-control custom-radio">
+									      <input id="radioStacked3" name="radio-stacked" value="adm" type="radio" class="custom-control-input" disabled required>
+									      <span class="custom-control-indicator"></span>
+									      <span class="custom-control-description">관리자</span>
+									    </label>
+									  </div>
+	                                <div class="form-group">
+	                                    <label for="uname1">아이디</label>
+	                                    <input type="text" name="id" class="form-control form-control-lg rounded-0" name="uname1" id="uname1" required="">
+	                                    <div class="invalid-feedback">아이디를 입력해주세요</div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label>비밀번호</label>
+	                                    <input type="password" name="passwd" class="form-control form-control-lg rounded-0" id="pwd1" required="" autocomplete="new-password">
+	                                    <div class="invalid-feedback">패스워드를 입력해주세요</div>
+	                                </div>
+	                                <div>
+	                                    <label class="custom-control custom-checkbox">
+	                                      <input type="checkbox" class="custom-control-input">
+	                                      <span class="custom-control-indicator"></span>
+	                                      <span class="custom-control-description small text-dark">Remember me !!</span>
+	                                    </label>
+	                                </div>
+	                                <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
+	                            </form>
+	                        </div>
+	                        <!--/card-block-->
+	                    </div>
+	                    <!-- /form card login -->
 	
-	<tr>
-		<th colspan="2">
-			<input type="submit" value="로그인">
-			<input type="reset" value="취소" onclick="location='main.do'">			
-		</th>
-	</tr>	
-</table>
-</form>  
+	                </div>
+	
+	
+	            </div>
+	            <!--/row-->
+	
+	        </div>
+	        <!--/col-->
+	    </div>
+	    <!--/row-->
+	</div>
+	<!--/container-->
 
+<script type="text/javascript">
+//<!--
+  $("#btnLogin").click(function(event) {
 
+    //Fetch form to apply custom Bootstrap validation
+    var form = $("#formLogin")
 
+    if (form[0].checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    
+    form.addClass('was-validated');
+  });
+
+//-->
+</script>
 <%@ include file="/setting/design_setting_footer.jsp" %>

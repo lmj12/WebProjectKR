@@ -19,6 +19,7 @@
                   
    <context:component-scan base-package="iptcareer"/>
    <context:component-scan base-package="board"/>
+   <context:component-scan base-package="member"/>
    <context:component-scan base-package="member.admin"/>
    <context:component-scan base-package="member.jobprov"/>
    <context:component-scan base-package="member.jobseeker"/>

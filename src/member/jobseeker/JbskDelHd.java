@@ -1,14 +1,21 @@
 package member.jobseeker;
 
+import java.io.IOException;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import member.jobseeker.JobSeekerException;
+import schedule.job.SchJbException;
 import member.jobprov.JobProvDBBean;
 import member.jobseeker.JobSeekerDBBean;
 
@@ -29,5 +36,12 @@ public class JbskDelHd implements JobSeekerHandler {
 		
 		// TODO Auto-generated method stub
 		return new ModelAndView("Jbs/jbskDel");
+	}
+	
+	@RequestMapping(value = "ajaxjbskDelinADM") 
+	@ResponseBody
+	public int ajaxProcess(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
+		String jbskId = request.getParameter("jbskId");
+		return jbskDao.jbskDel( jbskId );
 	}
 }
