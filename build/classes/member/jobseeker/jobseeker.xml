@@ -19,4 +19,7 @@
    <update id="jbskMod" parameterType="member.jobseeker.JobSeekerDataBean">
       update KRjobseeker set jbskPasswd=#{jbskPasswd},jbskGender=#{jbskGender},jbskAdd1=#{jbskAdd1},jbskAdd2=#{jbskAdd2},jbskAdd3=#{jbskAdd3},jbskEmail=#{jbskEmail},jbskTel=#{jbskTel}, jbskPic=#{jbskPic},jbskinfotype=#{jbskinfotype} where jbskId=#{jbskId}
    </update>
+   <select id="jbskGet2"  resultType="member.jobseeker.JobSeekerDataBean">
+      select * from KRjobseeker ORDER BY JBSKREGDATE ASC
+   </select>
   </mapper>
