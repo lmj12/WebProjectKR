@@ -40,7 +40,7 @@
 	            case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2);
 	            case "mm": return d.getMinutes().zf(2);
 	            case "ss": return d.getSeconds().zf(2);
-	            case "a/p": return d.getHours() < 12 ? "오전" : "오후";
+	            case "a/p": return d.getHours() < 12 ? "am" : "pm";
 	            default: return $1;
 	        }
 	    });
@@ -124,5 +124,4 @@ Map.prototype = {
 
 <%-- js 폴더 경로 --%>
 <c:set var="js" value="/KR_WebProject/js/"/>
- 	<!-- jQuery 파일 -->
 	<script src="${js}jquery-3.3.1.js"></script>

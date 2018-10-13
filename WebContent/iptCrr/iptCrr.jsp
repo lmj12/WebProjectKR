@@ -20,6 +20,7 @@
 	<meta http-equiv="refresh" content="0; url=main.do">
 </c:if>
 
+
 <div class="container">
 <h2> 이력서제작 및 경력입력 </h2>
 										<!-- 기본 이력서 정보 -->
@@ -39,7 +40,7 @@
 			</tr>
 			<tr>
 				<td>성별</td>			<!-- jbskGender -->
-				<td><input type="text" name="jbskGender" value="${jbskDto.jbskGender}" readonly></td>
+				<td><input type="text" name="jbskGender" id="jbskGender" value="${jbskDto.jbskGender}" readonly></td>
 				<td>연락처</td>		<!-- jbskTel -->
 				<td><input type="text" name="jbskTel" value="${jbskDto.jbskTel}" readonly></td>
 			</tr>
@@ -185,5 +186,23 @@
 		</div>
 	</div>
 </div>
+
+<c:if test="${jbskDto.jbskGender eq 1}"> 
+	<script type="text/javascript">
+	//<!--
+		var a = "남성";
+		document.getElementById("jbskGender").value = a; 
+	//-->
+	</script>
+</c:if>
+
+<c:if test="${jbskDto.jbskGender eq 2}"> 
+	<script type="text/javascript">
+	//<!--
+		var a = "여성";
+		document.getElementById("jbskGender").value = a; 
+	//-->
+	</script>
+</c:if>
 
 <%@ include file="/setting/design_setting_footer.jsp" %>

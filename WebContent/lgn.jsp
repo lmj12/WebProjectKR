@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp"%>
 <%@ include file="/setting/setting.jsp"%>
@@ -26,7 +26,7 @@
 											<span class="custom-control-indicator"></span> 
 											<span class="custom-control-description">구인자</span>
 										</label> <label class="custom-control custom-radio"> 
-										<input id="radioStacked3" name="radio-stacked" value="adm" type="radio" class="custom-control-input" disabled required>
+									      <input id="radioStacked3" name="radio-stacked" value="adm" type="radio" class="custom-control-input" required>
 											<span class="custom-control-indicator"></span> 
 											<span class="custom-control-description">관리자</span>
 										</label>

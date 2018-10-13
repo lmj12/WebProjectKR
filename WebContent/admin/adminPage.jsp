@@ -26,6 +26,7 @@
 		
 	}
 	
+	
 	function jbskGet2() {
 		var jbskId = $("#jbskId").val();
 		$.ajax({
@@ -38,9 +39,26 @@
 				var user = $.parseJSON(data);
 					if(data){
 						var str = ''
-						str = "<table border='1'><tr><th>아이디</th><th>패스워드</th><th>등록일</th><th>이름</th><th>성별</th><th>생일</th><th>주소1</th><th>주소2</th><th>주소3</th><th>이메일</th><th>전화</th><th>정보수신</th></tr>"
+						str = "<table border='1'><tr><th>아이디</th><th>패스워드</th><th>등록일</th><th>이름</th><th>성별</th><th>생년월일</th><th>주소1</th><th>주소2</th><th>주소3</th><th>이메일</th><th>전화</th><th>정보수신유형</th><th>회원삭제</th></tr>"
 						for (var i=0; i<user.length; i++){	
-							str += "<tr onclick='toRecruit("+user[i].jbskId+")'><td>"+user[i].jbskId+"</td><td>"+user[i].jbskPasswd+"</td><td>"+user[i].jbskregdate+"</td><td>"+user[i].jbskName+"</td><td>"+user[i].jbskGender+"</td><td>"+user[i].jbskBd+"</td><td>"+user[i].jbskAdd1+"</td><td>"+user[i].jbskAdd2+"</td><td>"+user[i].jbskAdd3+"</td><td>"+user[i].jbskEmail+"</td><td>"+user[i].jbskTel+"</td><td>"+user[i].jbskinfotype+"</td><tr>"
+							
+							if(user[i].jbskGender == 1){	// int 유형으로 받는 성별과 정보수신유형을 알맞은 값으로 변환
+								user[i].jbskGender = "남성";
+							}else{
+								user[i].jbskGender = "여성";
+							}
+							
+							if(user[i].jbskinfotype == 1){
+								user[i].jbskinfotype = "수신 안함";
+							}else if(user[i].jbskinfotype == 2){
+								user[i].jbskinfotype = "메일";
+							}else if(user[i].jbskinfotype == 3){
+								user[i].jbskinfotype = "SMS";
+							}else {
+								user[i].jbskinfotype = "메일, SMS";
+							}
+							
+							str += "<tr><input type='hidden' id='js"+i+"' value='"+user[i].jbskId+"'><td>"+user[i].jbskId+"</td><td>"+user[i].jbskPasswd+"</td><td>"+user[i].jbskregdate+"</td><td>"+user[i].jbskName+"</td><td>"+user[i].jbskGender+"</td><td>"+user[i].jbskBd+"</td><td>"+user[i].jbskAdd1+"</td><td>"+user[i].jbskAdd2+"</td><td>"+user[i].jbskAdd3+"</td><td>"+user[i].jbskEmail+"</td><td>"+user[i].jbskTel+"</td><td>"+user[i].jbskinfotype+"</td><td><input type='button' value='회원삭제' onclick='jbskDELinADM("+i+")'></td><tr>"
 						}
 						str += "</table>"
 						$("#rst").html(str);
@@ -65,9 +83,9 @@
 				var user = $.parseJSON(data);
 					if(data){
 						var str = ''
-						str = "<table border='1'><tr><th>아이디</th><th>패스워드</th><th>등록일</th><th>업체명</th><th>사업자번호</th><th>전화번호</th></tr>"
+						str = "<table border='1'><tr><th>아이디</th><th>패스워드</th><th>등록일</th><th>업체명</th><th>사업자번호</th><th>전화번호</th><th>회원삭제</th></tr>"
 						for (var i=0; i<user.length; i++){	
-							str += "<tr onclick='toRecruit("+user[i].jobpCn+")'><td>"+user[i].jobpId+"</td><td>"+user[i].jobpPasswd+"</td><td>"+user[i].jobpRegdate+"</td><td>"+user[i].jobpCn+"</td><td>"+user[i].jobpBno+"</td><td>"+user[i].jobpTel+"</td><tr>"
+							str += "<tr><input type='hidden' id='jp"+i+"' value='"+user[i].jobpId+"'><td>"+user[i].jobpId+"</td><td>"+user[i].jobpPasswd+"</td><td>"+user[i].jobpRegdate+"</td><td>"+user[i].jobpCn+"</td><td>"+user[i].jobpBno+"</td><td>"+user[i].jobpTel+"</td><td><input type='button' value='회원삭제' onclick='jobpDELinADM("+i+")'></td><tr>"
 						}
 						str += "</table>"
 						$("#rst").html(str);
@@ -137,6 +155,55 @@
 	function toRecruit(recId){
 		location.replace("recView.do?recId="+recId+"&pageNum=1")
 	}
+	
+	function jbskDELinADM(i){
+		var jbskId = $("#js"+i).val()
+		$.ajax({
+		    method : "POST",
+		    url : "ajaxjbskDelinADM.do",
+	    	cache : false,
+			async : false,
+			data : {
+				jbskId : jbskId
+			},
+			datatype : "text",
+			success : function(data){
+				if(data==1){
+					alert("삭제완료")
+					jbskGet2();
+				} else {
+					alert("삭제에 실패했습니다. 잠시 후 다시 시도해주세요.")
+				}
+			}, error:function(request,status,error){
+    		    alert("서버와 연결이 좋지 않습니다. 잠시 후 다시 시도해주세요.")
+    		}
+		})
+	}
+	
+	function jobpDELinADM(i){
+		var jobpId = $("#jp"+i).val()
+		$.ajax({
+		    method : "POST",
+		    url : "ajaxjobpDelinADM.do",
+	    	cache : false,
+			async : false,
+			data : {
+				jobpId : jobpId
+			},
+			datatype : "text",
+			success : function(data){
+				if(data==1){
+					alert("삭제완료")
+					jobpGet2();
+				} else {
+					alert("삭제에 실패했습니다. 잠시 후 다시 시도해주세요.")
+				}
+			}, error:function(request,status,error){
+    		    alert("서버와 연결이 좋지 않습니다. 잠시 후 다시 시도해주세요.")
+    		}
+		})
+		
+	}
 		
 	
 	function singo(){
@@ -160,7 +227,9 @@
 				} else {
 					$("#rst").text("검색 결과가 없습니다.")
 				}
-			}
+			}, error:function(request,status,error){
+    		    alert("서버와 연결이 좋지 않습니다. 잠시 후 다시 시도해주세요.")
+    		}
 		})
 	}
 	

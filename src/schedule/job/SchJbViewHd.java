@@ -41,5 +41,23 @@ public class SchJbViewHd implements ScheduelJobHandler {
 	
 		return schjbs;
 	}
+	
+	@RequestMapping(value = "ajaxSchJbRec", produces="application/json") 
+	@ResponseBody
+	public String ajaxProcess2(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
+		int schId = Integer.parseInt(request.getParameter("schId"));
+		
+		List<Integer> rst = schjbDao.schJbRec(schId);
+		ObjectMapper mapper = new ObjectMapper(); 
+		String schjbs=""; 
+		try { 
+			schjbs = mapper.writeValueAsString(rst);
+			
+		} catch (IOException e) { 
+			e.printStackTrace(); 
+		}
+	
+		return schjbs;
+	}
 
 }

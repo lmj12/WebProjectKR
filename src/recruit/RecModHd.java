@@ -66,7 +66,7 @@ public class RecModHd implements RecruitHandler {
 					
 			
 			String time = (endStr + ' ' +endTime);
-			String real = "MM/dd/yyyy hh:mm";
+			String real = "MM/dd/yyyy HH:mm";
 			
 			
 			

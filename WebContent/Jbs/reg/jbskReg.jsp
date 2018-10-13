@@ -168,7 +168,6 @@
 				<td>
 					<input type="number" id="authNumCk" maxlength="10" placeholder="인증번호를 입력해주세요.">
 					<input type="hidden" id="authCk" value="0">
-					<input type="hidden" id="authNum" value="0">
 					<input type="button" value="인증번호확인" onclick="authCheck()">
 				</td>
 			</tr>

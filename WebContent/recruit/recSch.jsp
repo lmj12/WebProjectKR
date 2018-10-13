@@ -15,28 +15,30 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script src="${js}time.js"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>  
+<link rel="stylesheet" href="${js}timepicker.css">
 <script src="${js}recSet.js"></script>
 <h2>공고 등록페이지</h2>
 <script type="text/javascript">
-var cnt = 0;
-$( function() {
-    $( "#datepicker" ).datepicker({minDate: 0});
-    $("#timepicker").timepicker({'timeFormat': 'HH:mm'});
-  } );
-</script>
-<c:if test="${rst eq 0}">
-	<script type="text/javascript">
+	var pos = '${pos}';
+	var st = ${st}
+	var cnt = 0 ;
+	$(document).ready(function(){
+		makeRec();
+	})
 	
-		<!--
-		erroralert('inserterror');
-		//-->
-	</script>
-</c:if>
-<c:if test="${rst eq 1}">
-	<c:redirect url="mypage.do"/>		
-</c:if>
+	function makeRec(){
+		var sday = new Date(st).format("dd/MM/yyyy");
+		var stime = new Date(st).format("hh:mma/p")
+		$("#date").val(sday)
+		$("#time").val(stime)
+		var posList = pos.split(",");
+		for (var i =0; i<posList.length; i++){
+			add()
+			$("#s"+(i+1)).val(posList[i]).prop("selected", true);
+		}
+	}
+	
+</script>
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
 	
@@ -51,12 +53,10 @@ $( function() {
 <form name="recwrite" method="post" action="recWrt.do" autocomplete="off" onsubmit="return writecheck()">
 <table border="1">
 <input type="hidden" name="jobpId" value="${jbpDto.jobpId}">
-
 	<tr>
-			
 		<th> 종료일</th>
-		<td><p>날짜: <input type="text" name="recEnd" id="datepicker"><br><br>
-			시간 : <input type="text" name="recEndTime" id="timepicker"></p></td>           
+		<td><p>날짜: <input type="text" name="recEnd" id="date" readonly><br><br>
+			시간 : <input type="text" name="recEndTime" id="time" readonly></p></td>           
 	</tr>
 	
 	
