@@ -52,7 +52,6 @@ function searchPostcode() {
             } else if(data.autoJibunAddress) {
                 var expJibunAddr = data.autoJibunAddress;
                 document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-
             } else {
                 document.getElementById('guide').innerHTML = '';
             }

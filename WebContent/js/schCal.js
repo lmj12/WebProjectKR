@@ -1,20 +1,20 @@
-	
+   
 
-	function calendar(tYear,tMonth){ //달력 함수  
-	    var nowDate = new Date();               //오늘 날짜 객체 선언  
-	    var nYear = nowDate.getFullYear();      //오늘의 년도  
-	    var nMonth = nowDate.getMonth() ;       //오늘의 월 ※ 0월부터 시작  
-	    var nDate = nowDate.getDate();           //오늘의 날  
-	    var nNumday = nowDate.getDay();         //오늘의 요일 0=일요일...6=토요일  
-	    var endDay=new Array(31,28,31,30,31,30,31,31,30,31,30,31);      //각달의 마지막 날짜  
-	    var dayName=new Array("일", "월", "화", "수", "목", "금", "토"); // 숫자 요일을 문자 요일 바꿀 함수  
-	    var col=0;  //나중에 앞뒤 빈 날짜칸 계산   
-	    if (tYear==null) {
-	    	tYear=nYear;
-	    } 
-	    if (tMonth==null){
-	    	tMonth=nMonth;
-	    }
+   function calendar(tYear,tMonth){ //달력 함수  
+       var nowDate = new Date();               //오늘 날짜 객체 선언  
+       var nYear = nowDate.getFullYear();      //오늘의 년도  
+       var nMonth = nowDate.getMonth() ;       //오늘의 월 ※ 0월부터 시작  
+       var nDate = nowDate.getDate();           //오늘의 날  
+       var nNumday = nowDate.getDay();         //오늘의 요일 0=일요일...6=토요일  
+       var endDay=new Array(31,28,31,30,31,30,31,31,30,31,30,31);      //각달의 마지막 날짜  
+       var dayName=new Array("일", "월", "화", "수", "목", "금", "토"); // 숫자 요일을 문자 요일 바꿀 함수  
+       var col=0;  //나중에 앞뒤 빈 날짜칸 계산   
+       if (tYear==null) {
+          tYear=nYear;
+       } 
+       if (tMonth==null){
+          tMonth=nMonth;
+       }
         eDate= new Date();       // 변경된 날짜 객체 선언  
         eDate.setFullYear(tYear);// 변경된 년도 세팅  
         year = eDate.getFullYear();
@@ -63,7 +63,7 @@
   
             if(col==7){     //7칸을 만들면 줄 바꾸어 새 줄을 만들고 다시 첫 칸부터 시작  
                 calendarStr +="</TR><TR align=center>"  
-				col=0;  
+            col=0;  
             }  
         }     
   
@@ -74,8 +74,8 @@
   
         calendarStr +="</TR></TABLE>"  
         document.getElementById('calcal').innerHTML = calendarStr  
-	}  
-	
+   }  
+   
     function onMouse(td){  
         td.style.backgroundColor = "#dfdfdf";  
         td.style.color="#000099"  
@@ -94,57 +94,57 @@
     }  
     
     function getSchedule(){
-    	$.ajaxSetup({cache:false}); 
-    	$.ajax({
-    		method : "POST",
-    		url : "ajaxCalander.do",
-    		cache : false,
-    		async : false,
-    		data : {
-    			year : year,
-    			month : month,
-    			memId : memId,
-    			memType : memType
-    		},
-    		datatype : "json",
-    		success : function(data){	//TODO : 30으로 되어있는거 enddate로 바꿔야함.
-    			var list = $.parseJSON(data);
-    			sessionStorage.setItem("jobpId", list[0].jobpId);
-    			for (var i=1; i<=30; i++){
-    				$("#"+i).text(i);
-    			}
-    			
-    			for (var i=0; i<list.length; i++){
-    				var date = new Date(list[i].schstartTime)
-    				var day = date.getDate()
-    				$("#"+day).text("스케줄있음");
-    			}
-    		}, error:function(request,status,error){
-    		    $("#rst").text("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-    		}
-    	})
+       $.ajaxSetup({cache:false}); 
+       $.ajax({
+          method : "POST",
+          url : "ajaxCalander.do",
+          cache : false,
+          async : false,
+          data : {
+             year : year,
+             month : month,
+             memId : memId,
+             memType : memType
+          },
+          datatype : "json",
+          success : function(data){   //TODO : 30으로 되어있는거 enddate로 바꿔야함.
+             var list = $.parseJSON(data);
+             sessionStorage.setItem("jobpId", list[0].jobpId);
+             for (var i=1; i<=30; i++){
+                $("#"+i).text(i);
+             }
+             
+             for (var i=0; i<list.length; i++){
+                var date = new Date(list[i].schstartTime)
+                var day = date.getDate()
+                $("#"+day).text("스케줄있음");
+             }
+          }, error:function(request,status,error){
+              $("#rst").text("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+          }
+       })
  
     }
 
 
     function datePicker(year, month, date, day){
-    	var len = $("#"+date).eq(0).text().length
-    	if (len<3){
-    		if(memType==2){
-	    		var now = new Date()-86400000;//오늘 날자에서 하루 뺀 날자로 설정.
-	    		var pick =  (month+1) + "/" + date + "/"+ year;
-	    		var pickday = new Date(pick);
-	    		
-	    		if(pickday > now){
-	    			location.href="schCalander.do?year="+year+"&month="+month+"&date="+date+"&day="+day
-	    		} else {
-	    			alert("이미 지난 날자입니다.");
-	    		}
-    		} else {
-    			alert("스케줄은 구인자회원만이 만들 수 있습니다.")
-    		}
-    	} else {
-    		location.href="schView.do?year="+year+"&month="+month+"&date="+date+"&day="+day+"&memId="+memId
-    	}
+       var len = $("#"+date).eq(0).text().length
+       if (len<3){
+          if(memType==2){
+             var now = new Date()-86400000;//오늘 날자에서 하루 뺀 날자로 설정.
+             var pick =  (month+1) + "/" + date + "/"+ year;
+             var pickday = new Date(pick);
+             
+             if(pickday > now){
+                location.href="schCalander.do?year="+year+"&month="+month+"&date="+date+"&day="+day
+             } else {
+                alert("이미 지난 날자입니다.");
+             }
+          } else {
+             alert("스케줄은 구인자회원만이 만들 수 있습니다.")
+          }
+       } else {
+          location.href="schView.do?year="+year+"&month="+month+"&date="+date+"&day="+day+"&memId="+memId
+       }
     }
     

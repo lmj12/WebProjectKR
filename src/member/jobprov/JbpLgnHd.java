@@ -34,8 +34,6 @@ public class JbpLgnHd implements JobProvHandler {
 			request.setAttribute("teamId", teamId);
 		}
 		
-		
-		
 		request.setAttribute( "result", result );
 		request.setAttribute( "jobpId", jobpId);
 		request.setAttribute("jobpCn", jobpcn);

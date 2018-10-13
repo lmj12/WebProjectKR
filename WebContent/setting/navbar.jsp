@@ -5,92 +5,70 @@
 	request.setCharacterEncoding("UTF-8");
 %>
 
-
-<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="97">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#myNavbar">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Logo</a>
-		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li class="active"><a class="navbar-brand" href="#">KR_WebProject</a></li>
-				<!--////////////// 로그인 전 //////////////-->
-
-				<c:if test="${sessionScope.memid eq null }">
-					<li><a href="register.do">회원가입</a></li>
-					<li><a href="Lgn.do">로그인</a></li>
-				</c:if>
-
-				<!--////////////// 로그인 후 //////////////-->
+<header class="text-center p-5">
+	    Top header
+	</header>
+	<nav class="navbar navbar-expand-sm navbar-light" data-toggle="affix">
+	     <a class="navbar-brand" href="main.do">KR_WebProject[기린반]</a>
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+	        ☰
+	    </button>
+	    <div class="collapse navbar-collapse" id="collapsingNavbar">
+	
+	        <ul class="nav navbar-nav ml-auto">
+	        	<c:if test="${sessionScope.memid eq null }">
+	        	<!--////////////// 로그인 전 //////////////-->
+		            <li class="nav-item">
+		                <a class="nav-link" href="register.do">회원가입</a>
+		            </li>
+		            <li class="nav-item">
+		                <a class="nav-link" href="Lgn.do">로그인</a>
+		            </li>
+	            </c:if>
+	            <!--////////////// 로그인 후 //////////////-->
 				
 				<c:if test="${sessionScope.memid ne null }">
-					<li><a href="mypage.do">마이페이지</a></li>
+					<li class="nav-item"><a class="nav-link" href="mypage.do">마이페이지</a></li>
 					<c:if test="${(sessionScope.teamId eq 1) or (sessionScope.teamId eq 2) }">
-						<li> <a href="teamList.do">팀</a></li>
-						<li> <a href="#">팀 스케쥴</a></li>
+						<li class="nav-item"> <a class="nav-link" href="teamList.do">팀</a></li>
 					</c:if>
 					<!--////////////// 구직자의 경우  //////////////-->
 					<c:if test="${sessionScope.memType eq 1}">
+
 						<li><a href="boardList.do">신고게시판</a></li>
 						<li><a href="iptCrr.do">이력서</a></li>
+
+						<li class="nav-item"><a class="nav-link" href="#">팀 스케쥴</a></li>
+						<li class="nav-item"><a class="nav-link" href="boardList.do">신고게시판</a></li>
+						<li class="nav-item"><a class="nav-link" href="iptCrr.do">이력서</a></li>
+						<c:if test="${sessionScope.teamReq eq '1' }">
+							<script type="text/javascript">
+								//<!--
+								alertTeam();
+								//-->
+							</script>
+						</c:if>
+
 					</c:if>
 					
 					<!--////////////// 구인자의 경우  //////////////-->
 					<c:if test="${sessionScope.memType eq 2}">
-						<li><a href="tocal.do">스케쥴편집</a></li>
+						<li class="nav-item"><a class="nav-link" href="tocal.do">스케쥴편집</a></li>
 					</c:if>
 					
 					<!--////////////// 관리자의 경우  //////////////-->
 					<c:if test="${sessionScope.memType eq 3}">
-						<li><a href="adminPage.do">관리자페이지</a></li>
+						<li class="nav-item"><a class="nav-link" href="adminPage.do">관리자페이지</a></li>
 					</c:if>
 				</c:if>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="main.do"><span
-						class="glyphicon glyphicon glyphicon-home"></span> Main</a></li>
+				<li class="nav-item"><a class="nav-link" href="main.do">
+					<span class="glyphicon glyphicon-home"></span> Main</a></li>
 				<c:if test="${sessionScope.memid ne null}">
-					<li>
-						<a href="logout.do"><span class="glyphicon glyphicon glyphicon-log-out"></span>Logout</a>
+					<li class="nav-item">
+						<a class="nav-link" href="logout.do">
+							<span class="glyphicon glyphicon-log-out"></span>Logout</a>
 					</li>
 				</c:if>
 			</ul>
-		</div>
-	</div>
-</nav>
-
-<script type="text/javascript">
-	//<!--
-	
-	// 필터, 추가 기능용
-	$(document).ready(function(){
-		$("#myInput").on("keyup", function() {
-			var value = $(this).val().toLowerCase();
-			$("#myDIV *").filter(function() {
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-			});
-		});
-	});
-	
-	function alertTeam(){
-		if(confirm("팀 가입 요청이 있습니다. 확인하시겠습니까?")){
-			location.href="teamReqCk.do"
-		} 
-	}
-	function toModify(){
-		var memType = ${sessionScope.memType};
-		if(memType == 2){
-			location.href="jbpView.do"
-		} else if(memType == 1) {
-			location.href="jbskView.do"
-		}
-	}
-	//-->
-</script>
-
-
+	    </div>
+	</nav>

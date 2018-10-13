@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/setting/setting.jsp"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
+<%@ include file="/setting/setting.jsp"%>
 <script src="${js}recCng.js"></script>
 <script type="text/javascript">
 	//<!--
@@ -242,6 +242,7 @@
 		$("#app").html(appstr);
 	}
 	
+
 	//-->
 </script>
 <h2>공고내용 페이지</h2>
@@ -361,7 +362,7 @@
 			</c:if>
 		</c:if>
 			<input class="inputbutton" type="button" value="목록으로"
-				onclick="back()">
+				onclick="hBack()">
 		</th>
 	</tr>	
 </table>			
