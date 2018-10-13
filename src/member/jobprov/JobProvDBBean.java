@@ -2,8 +2,11 @@ package member.jobprov;
 
 
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
+import board.BoardDataBean;
 import mybatis.SqlMapClient;
 
 public class JobProvDBBean {
@@ -41,5 +44,9 @@ private SqlSession session = SqlMapClient.getSession();
 	public int jobpDel(String jbpId) { // 임시매개변수. 필요시 변경할것.
 		return session.delete("Jbp.jobpDel", jbpId);			
 		// 에러막기위한 임시 리턴. 필요없으면 지울것.
+	}
+	
+	public List<JobProvDataBean> jobpGet2() { // 구인자 리스트 가져오기
+		return session.selectList("Jbp.jobpGet2"); 
 	}
 }

@@ -19,4 +19,7 @@
 	<update id="jobpMod" parameterType="member.jobprov.JobProvDataBean">
 		update KRjobprov set jobpPasswd='${jobpPasswd}', jobpTel='${jobpTel}' where jobpId='${jobpId}'
 	</update>
+	<select id="jobpGet2" resultType="member.jobprov.JobProvDataBean">
+		select * from KRjobprov ORDER BY JOBPREGDATE ASC
+	</select>
   </mapper>
