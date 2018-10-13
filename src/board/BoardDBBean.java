@@ -149,4 +149,8 @@ public class BoardDBBean {
 	public List<BoardDataBean> getAdm2() { //신고 리스트 가져오기
 		return session.selectList("Board.getAdm2"); 
 	}
+
+	public List<BoardDataBean> boardGetFin(Map<String, Object> map) {
+		return session.selectList("Board.boardGetFin", map);
+	}
 }

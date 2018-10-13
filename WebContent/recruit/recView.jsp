@@ -242,9 +242,6 @@
 		$("#app").html(appstr);
 	}
 	
-	function back(){
-		history.back()
-	}
 	//-->
 </script>
 <h2>공고내용 페이지</h2>
@@ -369,8 +366,8 @@
 	</tr>	
 </table>			
 <br>
-	
-	
+<c:if test="${sessionScope.memType eq 1}">
+<c:if test="${recDto.recStatus ne 2}">	
 <table border='1'>
 	<tr>
 		<th colspan='4' id="app">
@@ -383,5 +380,6 @@
 		</th>
 	</tr>
 </table>
-
+</c:if>
+</c:if>
 <%@ include file="/setting/design_setting_footer.jsp" %>

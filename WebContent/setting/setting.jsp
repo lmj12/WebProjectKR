@@ -19,6 +19,10 @@
 		history.back();
 	} 
 	
+	function back(){
+		history.back()
+	}
+	
 	Date.prototype.format = function(f) {
 	    if (!this.valueOf()) return " ";
 	 

@@ -25,6 +25,13 @@
 
 <c:if test="${sessionScope.memType eq 1}">
 	<jsp:include page="recCrrMy.do" flush="false"/>
+	<c:if test="${sessionScope.teamReq eq '1' }">
+		<script type="text/javascript">
+			//<!--
+			alertTeam();
+			//-->
+		</script>
+	</c:if>
 </c:if>
 
 <script type="text/javascript">
@@ -40,7 +47,7 @@
 		} else if(${sessionScope.memType eq 1}) {
 			location.href="jbskView.do"
 		}
-	}
+	} 
 	//-->
 </script>
 

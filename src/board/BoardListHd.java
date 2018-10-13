@@ -77,17 +77,25 @@ public class BoardListHd implements BoardHandler {
 		request.setAttribute( "pageBlock", pageBlock );
 		request.setAttribute("boardId", boardId);
 		if( count > 0 ) {
+			/*Map <String, Object> map = new HashMap<String, Object>();
+			map.put("start", start);
+			map.put("end", end);
+			map.put("boarduserId", userId);
+			List <BoardDataBean> articles = boardDao.userSel( map );*/
+			
 			Map <String, Object> map = new HashMap<String, Object>();
 			map.put("start", start);
 			map.put("end", end);
 			map.put("boarduserId", userId);
-			List <BoardDataBean> articles = boardDao.userSel( map );
+			List<BoardDataBean> articles = boardDao.boardGetFin(map);
 			for(int i=0; i<articles.size(); i++) {
 			BoardDataBean boardDto = articles.get(i);
 			SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
 			boardDto.setStime(sf.format(boardDto.getBoardregdate()));
 			}
 			request.setAttribute( "articles", articles );
+			
+		
 		}
 		
 		

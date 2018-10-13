@@ -135,7 +135,7 @@
 			success : function(data){
 				var rl = $.parseJSON(data);
 				if(rl[0]){
-					var reqstr = "<h4>승인대기중인 구직자</h4><table border='1'><tr><th>ID</th><th>이름</th><th>취소하기</th></tr>"
+					var reqstr = "<table border='1'><tr><th>ID</th><th>이름</th><th>취소하기</th></tr>"
 					for(var i=0; i<rl.length; i++){
 						reqstr += "<tr><td id='r"+i+"'>"+rl[i].jbskId+"</td><td>"+rl[i].jbskName+"</td><td><input type='button' value='취소' onclick='teamExit(this)'></tr>"
 					}

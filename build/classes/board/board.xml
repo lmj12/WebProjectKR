@@ -7,6 +7,10 @@
    <delete id="Board.boardDel" parameterType="String">
    		delete from KRboard where boardId=#{boardId}
    </delete>
+   <select id="boardGetFin" parameterType="java.util.Map" resultType="board.BoardDataBean">
+   		select * from KRboard where boardparentId in (select boardparentid from KRboard where boarduserid=#{boarduserId})
+   		order by boardparentid desc, boardstatus desc 
+   </select>
    <select id="Board.boardGet" parameterType="String" resultType="board.BoardDataBean">
    		select * from KRboard where boardId=#{boardId}
    </select>
