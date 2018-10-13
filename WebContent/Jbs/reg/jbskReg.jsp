@@ -7,6 +7,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
+<script src="${js}svd.js"></script>
 <!DOCTYPE html>
 <html>
 <script type="text/javascript">
@@ -201,6 +202,8 @@
 			</tr>
 		</table>	
 	</form>
+	
+	
 	
 	
 	
