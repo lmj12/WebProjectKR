@@ -33,7 +33,7 @@ function searchPostcode() {
             document.getElementById('recSite').value = data.zonecode; //5자리 새우편번호 사용
             document.getElementById('recSite').value = fullRoadAddr;
             document.getElementById('recSite').value = data.jibunAddress;
-
+            document.getElementById('ok').value = 1;
             // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
             if(data.autoRoadAddress) {
                 //예상되는 도로명 주소에 조합형 주소를 추가한다.
@@ -143,6 +143,10 @@ function writecheck(){
 		return false;
 	}else if(!recwrite.recEndTime.value){
 		alert("시간을 입력해주세요");
+		return false;
+	}else if(recwrite.ok.value ==0){
+		erroralert("주소찾기 버튼을 눌러주세요");
+		recwrite.ok.focus();
 		return false;
 	}
 	var elem = document.getElementsByName('posPos') ;

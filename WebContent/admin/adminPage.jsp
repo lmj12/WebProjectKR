@@ -113,7 +113,7 @@
 					for (var i=0; i<articles.length; i++){
 						str += "<tr onclick='toArticle("+articles[i].boardId+")'><td>"+articles[i].boardTitle+"</td><td>"+articles[i].boarduserId+"</td><td>"+articles[i].boardregTime+"</td></tr>"
 					}
-					str += "<tr><th colspan='3'><input type='button' value='글 작성' onclick='noticeWrt()'></th></tr></table>"
+					str += "<tr><th colspan='3'><input type='button' value='글 작성' onclick='noticeWrt()'><input type='button' value='글 목록' onclick='notice()'></th></tr></table>"
 					$("#rst").html(str);
 				} else {
 					$("#rst").text("검색 결과가 없습니다. 아이디를 다시 확인해 주세요.")
@@ -243,6 +243,10 @@
 	function toArticle(boardId,boardId2){
 		var bdId = boardId + "_" + boardId2
 		location.replace("boardView.do?boardId="+bdId+"&pageNum=1&number=1")
+	}
+	
+	function notice(){
+		location.replace("notice.do");
 	}
 	
 	function noticeWrt(){

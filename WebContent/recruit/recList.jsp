@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/setting.jsp"%>
+<%@ include file="/setting/design_setting_upper.jsp" %>
 <script src="${js}recCng.js"></script>
 <h2>공고조회 페이지</h2>
 
@@ -118,6 +119,6 @@
 </c:if>	
 	
 <br>
-
+<%@ include file="/setting/design_setting_footer.jsp" %>
 
 
