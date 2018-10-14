@@ -4,7 +4,7 @@
 <%@ include file="/setting/setting.jsp" %>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
+<%@ include file="/setting/design_setting_upper.jsp" %>
 
   
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -121,3 +121,5 @@ $( function() {
 </table>
 </form>
 </body>
+
+<%@ include file="/setting/design_setting_footer.jsp" %>
