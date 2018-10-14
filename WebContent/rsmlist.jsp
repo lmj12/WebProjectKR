@@ -55,10 +55,28 @@ function searchPostcode() {
 
 document.getElementById("inputform").onsubmit = function() {result()};
 
-function result(){
-	
-	
-}
+	function result(){
+		var gender = $("#gender:checked").val();
+		var position = $("#position:checked").val();
+		var place = $("#place").val();
+		$.ajax({
+	    	method : "POST",
+	    	url : "ajaxRsmSearch.do",
+	    	cache : false,
+			async : false,
+			data : {
+				gender : gender,
+				position : position,
+				place : place
+			},
+			datatype : "json",
+			success : function(data){
+				
+			}, error:function(request,status,error){
+				alert();
+			}
+		})
+	}
 
 </script>
 <h2>이력서 검색 페이지</h2>
@@ -66,17 +84,17 @@ function result(){
 <table border="1">
 	<tr>
 		<th>성별</th>
-		<td> <input type="radio" name="gender" value="1">남자<input type="radio" name="gender" value="2">여자</td>
+		<td> <input type="radio" id="gender" name="gender" value="1">남자<input type="radio" id="gender" name="gender" value="2">여자</td>
 	</tr>
 	<tr>	
 		<th>직무</th>
 		<td> 
-			<input type="checkbox" name="pos" value="1">팀장
-			<input type="checkbox" name="pos" value="2">스캔
-			<input type="checkbox" name="pos" value="3">예도
-			<input type="checkbox" name="pos" value="4">안내
-			<input type="checkbox" name="pos" value="5">경호
-			<input type="checkbox" name="pos" value="6">기타
+			<input type="checkbox" id="position" name="pos" value="1">팀장
+			<input type="checkbox" id="position" name="pos" value="2">스캔
+			<input type="checkbox" id="position" name="pos" value="3">예도
+			<input type="checkbox" id="position" name="pos" value="4">안내
+			<input type="checkbox" id="position" name="pos" value="5">경호
+			<input type="checkbox" id="position" name="pos" value="6">전체
 		</td>
 	</tr>
 
@@ -85,11 +103,10 @@ function result(){
 		<td><input type="text" name="place" id="place" placeholder="주소" readonly>					
 					<span id="guide" style="color:#999"></span>
 						<input type="button" value="주소찾기" onclick="searchPostcode()">
-						<input type="hidden" value="1" id="con">
 		</td>				
 	</tr>
 	<tr>
-		<th colspan='2'><input type="button" value="검색"></th>
+		<th colspan='2'><input type="button" value="검색" onclick='result()'></th>
 	</tr>
 </table>
 

@@ -47,6 +47,8 @@ public class RecCrrViewDetailHd implements RecruitCareerHandler {
 		request.setAttribute("iptSize", iptSize);	//	입력경력칸 만들까 말까 인지시켜주는 변수.
 		request.setAttribute("iptLists", iptLists);
 		
+		//TODO 수정중
+		
 		return new ModelAndView("recCrr/recDetailView");
 	}
 
