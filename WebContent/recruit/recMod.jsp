@@ -106,7 +106,8 @@ $( function() {
 		<th>주소</th>
 		<td colspan="7"> <input type="text" name="recSite" id="recSite" placeholder="${recDto.recSite}">					
 					<span id="guide" style="color:#999"></span>
-						<input type="button" value="주소찾기" onclick="searchPostcode()"></td>		
+						<input type="button" value="주소찾기" onclick="searchPostcode()">
+						<input type="hidden" value="0" id="ok"></td>		
 	</tr>
 	<tr>
     		<th colspan="8">
