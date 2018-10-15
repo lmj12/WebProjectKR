@@ -69,9 +69,10 @@
 	
 	function jbskGet() {	//검색용 펑션
 		var jbskId = $("#jbskId").val();
+		
 		$.ajax({
 		    method : "POST",
-		    url : "ajaxJbskGet.do",
+		    url : "ajaxJbskGet2.do",
 	    	cache : false,
 			async : false,
 			data : {
@@ -80,10 +81,11 @@
 			datatype : "json",
 			success : function(data){
 				var user = $.parseJSON(data);
-				if(data){
+				if(user != null){
 					var str = ''
 					str = "<table border='1'><tr><th>ID</th><th>이름</th><th>요청 보내기</th></tr>"
-					str += "<tr><td id='ji'>"+user.jbskId+"</td><td>"+user.jbskName+"</td><td><input type='button' value='요청보내기'onclick='teamReq()'></td></tr></table>"
+					str += "<tr><td id='ji'>"+user.jbskId+"</td><td>"+user.jbskName+"</td><td><input type='button' value='요청보내기'onclick='teamReq()'></td></tr>"
+					str += "</table>"
 					$("#rst").html(str);
 				} else {
 					$("#rst").text("검색 결과가 없습니다. 아이디를 다시 확인해 주세요.")

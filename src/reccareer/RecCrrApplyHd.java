@@ -36,7 +36,7 @@ public class RecCrrApplyHd implements RecruitCareerHandler {
 		
 		int cnt = recCrrDao.appCk(recCrrDto);//이미 지원한 사용자인지 확인하는 메소드.
 		if(cnt == 0) {
-			int rst = recCrrDao.recCrrApply(recCrrDto);	//	지원 미열람은 0, 열람은 1, 확정은 2, 탈락은3(?) <- 탈락은 필요없을지도.
+			int rst = recCrrDao.recCrrApply(recCrrDto);	//	지원 미열람은 0, 열람은 1, 확정은 2, 탈락은3
 			return rst;	// 성공시 1 리턴.
 		} else {
 			return 2;	//이미 지원한 공고일경우 2 리턴.

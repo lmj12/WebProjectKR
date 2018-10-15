@@ -53,7 +53,9 @@ public class JbskLgnHd implements JobSeekerHandler {
 				}
 			}
 		}
-	
+		long time = System.currentTimeMillis();
+		
+		request.setAttribute("time", time);
 		request.setAttribute("teamId", teamId);
 		request.setAttribute("teamReq", teamReq);
 		request.setAttribute( "result", result );

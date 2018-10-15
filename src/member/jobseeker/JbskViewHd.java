@@ -58,4 +58,23 @@ public class JbskViewHd implements JobSeekerHandler {
 		return sin;
 	}
 	
+	@RequestMapping(value = "ajaxJbskGet2") 
+	@ResponseBody
+	public String ajaxProcess3(HttpServletRequest request, HttpServletResponse response) throws SchJbException {
+		String jbskId = request.getParameter("jbskId");
+		JobSeekerDataBean rst = jbskDao.jbskGet(jbskId);
+		
+		ObjectMapper mapper = new ObjectMapper(); 
+		
+		String sin=""; 
+		try { 
+			sin = mapper.writeValueAsString(rst);
+			
+		} catch (IOException e) { 
+			e.printStackTrace(); 
+		}
+		
+		return sin;
+	}
+	
 }
