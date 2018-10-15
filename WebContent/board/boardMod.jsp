@@ -16,7 +16,7 @@
 	<c:redirect url="boardList.do?pageNum=${pageNum}"/>
 </c:if>	
 
-
+<div class="container">
 <h2> 글 수 정 </h2>
 
 
@@ -53,7 +53,7 @@
 				</tr>
 			</table>
 		</form>		
-
+</div>
 
 
 

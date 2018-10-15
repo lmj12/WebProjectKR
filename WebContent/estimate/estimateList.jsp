@@ -3,6 +3,7 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp"%>
 <!DOCTYPE html>
+<div class="container">
 <script type="text/javascript">
 	//<!--
 	function toEstForm(recCrrId, jbskName, jbskGender, posId, jbskId, jbskPic, recId, estId){	//자바스크립트 단독으로 post타입 넘기는 형태.
@@ -112,3 +113,4 @@
 		</tr>
 	</c:forEach>
 </table>
+</div>

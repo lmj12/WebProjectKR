@@ -3,6 +3,7 @@
 <%@ include file="/setting/setting.jsp"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <script src="${js}recCng.js"></script>
+<div class="container">
 <h2>공고조회 페이지</h2>
 <style type="text/css">
 table{
@@ -127,6 +128,8 @@ table{
 </c:if>	
 
 <br>
+
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>
 
 

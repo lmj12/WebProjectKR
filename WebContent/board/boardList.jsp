@@ -8,67 +8,69 @@
 <h2>글목록</h2>
 
 <br>
-<input type="button" value="마이페이지" onclick="location='mypage.do'">
-
-<table border="1">
-			
-	<tr>
-		<th style="width : 15%" colspan="3" align="left">
-		${sessionScope.memid}님의 게시판입니다. 
-		</th>
-	
-		<th style="width : 5%" colspan="1" align="right">
-			<a href="boardWrt.do">글쓰기</a>
-			&nbsp;&nbsp;&nbsp;
-		</th>
-	</tr>
-	
-	<tr>
-		<th style="width : 5%">	 번호</th>
-	
-		<th style="width : 10%"> 글쓴이 </th>
-		<th style="width : 15%"> 글쓴날짜 </th>
-		
-		<th style="width : 10%"> 게시글상태 </th>
-	</tr>
-<c:if test="${count eq 0}">	
+<div class="container">
+	<table border="1">
+				
 		<tr>
-			<td colspan="6" align="center">
-				${msg_list_x}
-			</td>
-		</tr>
-	</c:if>
-	<c:if test="${count ne 0}">
-		<c:forEach var="article" items="${articles}">	
+			<th style="width : 15%" colspan="3" align="left">
+			${sessionScope.memid}님의 신고게시판입니다. 
+			</th>
 		
-			<tr style="cursor:pointer;" onClick="location.href='boardView.do?boardId=${article.boardId}&boardParentId=${article.boardParentId}&pageNum=${pageNum}&number=${number+1}'">
-				<td align="center">
-					${article.boardParentId}
-					<c:set var="number" value="${number-1}"/>
-				</td>			
-				<td>							
-					${article.boarduserId}
-				<td align="center">
-					
-					${article.stime }
-				</td>								
-								
-					
+			<th style="width : 5%" colspan="1" align="right">
+				<a href="boardWrt.do">글쓰기</a>
+				&nbsp;&nbsp;&nbsp;
+			</th>
+		</tr>
+		<thead>
+			<tr>
+				<th style="width : 5%">	 번호</th>
+			
+				<th style="width : 10%"> 글쓴이 </th>
+				<th style="width : 15%"> 글쓴날짜 </th>
 				
-				<td align="center">
-				<c:if test="${article.boardStatus eq 0}">
-					검토중
-					</c:if>
-				<c:if test="${article.boardStatus eq 1}">
-					검토완료
-				</c:if>
-				</td>				
-				
+				<th style="width : 10%"> 게시글상태 </th>
 			</tr>
-		</c:forEach>	
-	</c:if>
-</table>
-
+		</thead>
+	<c:if test="${count eq 0}">	
+		<tfoot>
+			<tr>
+				<td colspan="6" align="center">
+					${msg_list_x}
+				</td>
+			</tr>
+		</tfoot>
+		</c:if>
+		<c:if test="${count ne 0}">
+			<c:forEach var="article" items="${articles}">	
+			
+				<tr style="cursor:pointer;" onClick="location.href='boardView.do?boardId=${article.boardId}&boardParentId=${article.boardParentId}&pageNum=${pageNum}&number=${number+1}'">
+					<td align="center">
+						${article.boardParentId}
+						<c:set var="number" value="${number-1}"/>
+					</td>			
+					<td>							
+						${article.boarduserId}
+					<td align="center">
+						
+						${article.stime }
+					</td>								
+									
+						
+					
+					<td align="center">
+					<c:if test="${article.boardStatus eq 0}">
+						검토중
+						</c:if>
+					<c:if test="${article.boardStatus eq 1}">
+						검토완료
+					</c:if>
+					</td>				
+					
+				</tr>
+			</c:forEach>	
+		</c:if>
+	</table>
+</div>
 <br>
 
 <%@ include file="/setting/design_setting_footer.jsp" %>
