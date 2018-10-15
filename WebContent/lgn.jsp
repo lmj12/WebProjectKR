@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp"%>
 <%@ include file="/setting/setting.jsp"%>
+<script src="${js}lgn.js">
+</script>
 
 <div class="container py-5">
 	<div class="row">
@@ -25,8 +27,8 @@
 										<input id="radioStacked1" name="radio-stacked" value="jbp" type="radio" class="custom-control-input" required> 
 											<span class="custom-control-indicator"></span> 
 											<span class="custom-control-description">구인자</span>
-										</label> <label class="custom-control custom-radio"> 
-									      <input id="radioStacked3" name="radio-stacked" value="adm" type="radio" class="custom-control-input" required>
+										</label> <label class="custom-control custom-radio adm-radio-label"> 
+									      <input id="radioStacked3" name="radio-stacked" value="adm" type="radio" class="custom-control-input" disabled required>
 											<span class="custom-control-indicator"></span> 
 											<span class="custom-control-description">관리자</span>
 										</label>
