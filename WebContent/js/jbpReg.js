@@ -11,7 +11,7 @@ $(document).ready(
 				}
 			);
 		
-		$('.idresult').val("아이디0");
+		$('.idresult').val(" ");
 		
 		$('input[name=jobpId]').on(
 			'keyup',
