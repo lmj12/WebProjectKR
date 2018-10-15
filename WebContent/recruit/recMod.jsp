@@ -51,7 +51,7 @@ $( function() {
 	<tr>
 		<tr>
 		<th>공고 직무 </th>
-		<td> 지난 공고의 직무는 다음과 같습니다 : 
+		<td id="addposx" colspan="3"> 지난 공고의 직무는 다음과 같습니다 : 
 	'
 		<c:forEach var="recruitDto" items="${recruitDto}">
 			<c:choose>
@@ -77,15 +77,11 @@ $( function() {
 			 </c:forEach>
 			 <br><br>
 			  직무를 설정해 주셔야 합니다
+			  <input type="button" value="추가" name="click" onclick="return adda()"> 
+			  <input type="hidden" id="conval" name="conval" value="0">	
+			<input type="hidden" id="id" name='id'>
 			 </td>
-			</tr>
-			<tr id="addposx">
-			<th>공고직무</th>
-		<td> 		
-		<input type="button" value="추가" name="click" onclick="return adda()"> 
-		<input type="hidden" id="conval" name="conval" value="0">	
-		<input type="hidden" id="id" name='id'>	</td>
-	</tr>
+			</tr>			
 	
 	<tr>
 		<th colspan="8">공고내용</th>	

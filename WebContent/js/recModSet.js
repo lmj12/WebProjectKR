@@ -162,8 +162,8 @@ function recheck(){
 function adda(){
 	++cnt;
 	var addposx = document.getElementById("addposx");
-	var tr = document.createElement("tr");
-
+	var tr = document.createElement("td");
+	
 	tr.innerHTML = "<select name='xosXos'>"
 		+ 	"<option value='1' selected>팀장</option>"	
 		+	"<option value='2'>스캔</option>"	
@@ -175,9 +175,10 @@ function adda(){
 		+ 	"&nbsp;"
 		+"<input type='button' value='삭제' onclick='delitem("+cnt+")'> ";
 		+"<input type='button' value='삭제' onclick='delitem("+cnt+")'> ";
-	tr.setAttribute("di", "di/"+cnt);
+	tr.setAttribute("colspan", "4");	
+	tr.setAttribute("id", "id/"+cnt);
 	//addposx.appendChild(td);
-	tr.colSpan =3;
+
 	addposx.appendChild(tr);
 	
 	document.recMod.conval.value =1;
@@ -186,7 +187,7 @@ function adda(){
 //직무제거
 
 function delitem(){
-	var addposx=document.getElementById("addposx");
-	var deldiv = document.getElementById("di/"+cnt);
+	var addposx = document.getElementById("addposx");
+	var deldiv = document.getElementById("id/"+cnt); 
 	addposx.removeChild(deldiv);
 }
