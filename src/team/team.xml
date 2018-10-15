@@ -38,4 +38,7 @@
    <select id="ckReq" parameterType="String" resultType="team.TeamDataBean">
    		select t.TEAMID, t.JOBPID, j.JOBPCN from KRTeam t, KRTEAMMEMBER	m ,KRjobprov j where m.JBSKID = #{JBSKID} AND m.TEAMID = t.TEAMID AND t.JOBPID = j.JOBPID 
    </select>
+   <delete id="leftver" parameterType="team.TeamDataBean">
+   		delete from KRTEAMMEMBER where JBSKID = #{jbskId} AND TMSTATUS = 0
+   </delete>
   </mapper>

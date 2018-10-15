@@ -74,4 +74,10 @@ private SqlSession session = SqlMapClient.getSession();
 		return session.selectList("Team.list", teamId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
+	public void teamRemoveLeftver(TeamDataBean teamDto) {
+		session.flushStatements();
+		session.clearCache();
+		session.delete("Team.leftver",teamDto); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	}
+	
 }

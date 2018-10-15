@@ -37,4 +37,12 @@
    <update id="cng" parameterType="java.util.Map">
    		update KRRECCAREER set RECCRRSTA = #{recCrrSta} where RECCRRID=#{recCrrId}
    </update>
+   <select id="getCrr" parameterType="String" resultType="reccareer.CareerDataBean">
+   		select c.JBSKID,sum(reader) reader,sum(scan) scan,sum(sword) sword,sum(guide) guide,sum(guard) guard, j.JBSKNAME jbskname, j.JBSKTEL jbsktel, j.JBSKGENDER jbskgender,j.JBSKEMAIL jbskEmail ,j.jbskBd jbskbd,j.JBSKADD1 jbskadd1, j.JBSKADD2 jbskadd2, j.JBSKADD3 jbskadd3, j.jbskIT jbskIt from (select JBSKID,count(DECODE(POSID,1,1)) reader, count(DECODE(POSID,2,1)) scan, count(DECODE(POSID,3,1)) sword, count(DECODE(POSID,4,1)) guide, count(DECODE(POSID,5,1)) guard from KRSCHJOB j, KRSCHEDULE s where j.schId = s.schId AND JBSKID IS NOT NULL AND s.SCHSTARTTIME &lt; SYSDATE GROUP BY JBSKID 
+			UNION ALL
+		select JBSKID,count(DECODE(POSID,1,1)) reader, count(DECODE(POSID,2,1)) scan, count(DECODE(POSID,3,1)) sword, count(DECODE(POSID,4,1)) guide, count(DECODE(POSID,5,1)) guard from KRRECCAREER c, KRRECRUIT r where c.RECID = r.RECID AND JBSKID IS NOT NULL  GROUP BY JBSKID) c, KRJOBSEEKER j where c.JBSKID = j.JBSKID AND c.JBSKId = #{jbskId} GROUP BY c.JBSKID,JBSKNAME,jbsktel,jbskgender,jbskbd,jbskAdd2,jbskAdd3,jbskEmail,jbskADD1,JBSKIT
+   </select>
+   <select id="search" parameterType="reccareer.CareerDataBean" resultType="reccareer.CareerDataBean">
+   		${query}
+   </select>
   </mapper>

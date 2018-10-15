@@ -9,6 +9,15 @@
 	
 <script type="text/javascript">
 	//<!--
+	var memType = ${sessionScope.memType}
+	$(document).ready(
+		function(){
+			if(memType==1){
+				var Time = ${sessionScope.memType};
+			}
+		
+	})
+	
 	function memCheck(){
 		var teamId = ${sessionScope.teamId}
 		if(teamId == 0 ){
