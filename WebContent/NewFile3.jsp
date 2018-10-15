@@ -1,0 +1,66 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<h2>공고 insert문</h2>                                                         T
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+insert into KRrecruit values(1, TO_DATE('2018/10/17', 'YYYY/MM/DD HH:MI:SS'), TO_DATE('2018/10/18', 'YYYY/MM/DD HH:MI:SS'),'CONTENT', 'RECSITE', 'SEARCHSITE', 2, 1, 'test2', 0); 
+                         
