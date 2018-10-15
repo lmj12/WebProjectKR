@@ -63,7 +63,8 @@
 <style>
 	header {
 	    height: 110px;
-	    background: #ccc;
+	    background: #333;
+	    color: white;
 	}
 	
 	#main {
