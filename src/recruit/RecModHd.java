@@ -98,7 +98,7 @@ public class RecModHd implements RecruitHandler {
 				int recId = Integer.parseInt(request.getParameter("recId"));
 				recDao.recDelPos(recId);
 				
-				int rst = recDto.getPosId();
+				
 				
 				String post = request.getParameter("id");
 				

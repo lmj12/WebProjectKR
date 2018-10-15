@@ -85,7 +85,7 @@ public class RecListHd implements RecruitHandler {
 			Map <String, Integer> map = new HashMap<String, Integer>();
 			map.put("start", start);
 			map.put("end", end);
-			List <RecruitDataBean> articles = recDao.recList( map );
+			List <RecruitDataBean> articles = recDao.recList(  );
 			
 			List <RecListDataBean> articleList = new ArrayList<RecListDataBean>();
 			for(int i=0; i<articles.size(); i++) {

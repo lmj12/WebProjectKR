@@ -9,7 +9,7 @@ insert into KRjobseeker values('human1', '1212abc', sysdate, 'choi', 1, TO_DATE(
 insert into KRjobseeker values('human2', '1212abc', sysdate, 'choi', 1, TO_DATE('1998/04/01 11:30:14', 'YYYY/MM/DD HH:MI:SS'), '--', '부산', '해운대구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
 insert into KRjobseeker values('human3', '1212abc', sysdate, 'choi', 1, TO_DATE('1997/11/09 05:40:14', 'YYYY/MM/DD HH:MI:SS'), '경기', '파주시', '금촌동', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
 insert into KRjobseeker values('human4', '1212abc', sysdate, 'choi', 1, TO_DATE('1996/05/06 04:51:14', 'YYYY/MM/DD HH:MI:SS'), '경기', '성남시', '분당구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human5', '1212abc', sysdate, 'choi', 1, TO_DATE('1995/06/21 09:42:14', 'YYYY/MM/DD HH:MI:SS'), '--, '대구', '남구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
+insert into KRjobseeker values('human5', '1212abc', sysdate, 'choi', 1, TO_DATE('1995/06/21 09:42:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '송파구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
 insert into KRjobseeker values('human6', '1212abc', sysdate, 'choi', 1, TO_DATE('1994/08/10 03:33:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '도봉구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
 insert into KRjobseeker values('human7', '1212abc', sysdate, 'choi', 1, TO_DATE('1993/06/02 02:22:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '서초구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
 

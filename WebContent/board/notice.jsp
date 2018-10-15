@@ -8,8 +8,7 @@
 
 <c:if test="${sessionScope.memType eq 3}">
 	<tr>
-		<th>공지작성</th>
-		<td><input type="button" value="공지작성" onclick="location='notWrt.do'"></td>
+		<td colspan="3"><input type="button" value="공지작성" onclick="location='notWrt.do'"></td>
 	</tr>
 </c:if>
 	<tr>

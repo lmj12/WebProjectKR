@@ -23,6 +23,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
 	integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
 	crossorigin="anonymous"></script>
+
 <script type="text/javascript">
 //<!--
 	$(document).ready(
@@ -61,7 +62,7 @@
 </script>
 <style>
 	header {
-	    height: 220px;
+	    height: 110px;
 	    background: #ccc;
 	}
 	
@@ -91,6 +92,17 @@
 	    color: #fff;
 	}
 </style>
+<style media="screen">
+ body { background-color:#fafafa; font-family:'Roboto';}
+ h1 { margin-bottom:50px;}
+   .text-center{
+     text-align: center;
+     font-weight: bold;
+   }
+   #message{
+     display: none;
+   }
+ </style>
 </head>
 
 <%@ include file="navbar.jsp" %>

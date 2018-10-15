@@ -4,7 +4,11 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <script src="${js}recCng.js"></script>
 <h2>공고조회 페이지</h2>
-
+<style type="text/css">
+table{
+	margin : 10px 10px 10px 10px;
+	}
+</style>
 <c:if test="${sessionScope.memType eq 2}">	
 공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
 </c:if>
@@ -14,10 +18,14 @@
 		<td>공고가 없습니다 </td>
 		</tr>
 </c:if>
+
 <c:if test="${count ne 0}">
+<div>
 <c:forEach var="article" items="${articleList}">
+
 <input type="hidden" name="recId" value="${article.recDto.recId}">
-<table border="1" style="cursor:hand;" onclick="location.href='recView.do?recId=${article.recDto.recId}&pageNum=${pageNum}&recReadCnt=${recReadCnt}'">	
+
+<table border="1"  style="cursor:hand;float:left;width:30%;" onclick="location.href='recView.do?recId=${article.recDto.recId}'">	
 
 	<tr>
 		<th>공고번호 </th>
@@ -27,7 +35,7 @@
 	</tr>
 	<tr>
 		<th>공고상태</th>
-		<td id="con">
+		<td id="con" align="center">
 					<c:if test="${article.recDto.recStatus eq 0}">
 				    		모집중
 				    </c:if>
@@ -111,13 +119,13 @@
 	</tr>
 	</c:if>
 	</c:if>
-	
-</table>
-<br><br>
-</c:forEach>
 		
-</c:if>	
+</table>
 	
+</c:forEach>
+</div>	
+</c:if>	
+
 <br>
 <%@ include file="/setting/design_setting_footer.jsp" %>
 

@@ -61,7 +61,7 @@
 		</tr>
 	<c:if test="${count eq 0}">	
 			<tr>
-				<td colspan="6" align="center">
+				<td colspan="7" align="center">
 					공고가 없습니다
 				</td>
 			</tr>

@@ -42,8 +42,11 @@
 						str = "<table border='1'><tr><th>아이디</th><th>패스워드</th><th>등록일</th><th>이름</th><th>성별</th><th>생년월일</th><th>주소1</th><th>주소2</th><th>주소3</th><th>이메일</th><th>전화</th><th>정보수신유형</th><th>회원삭제</th></tr>"
 						for (var i=0; i<user.length; i++){	
 							
+							var reg1 = new Date(user[i].jbskregdate);
+							var reg2 = reg1.toLocaleDateString(); 
+							
 							var sysdate = new Date(user[i].jbskBd);
-							var sysdate2 = sysdate.toLocaleDateString(); 
+							var sysdate2 = sysdate.toLocaleDateString();
 							
 							if(user[i].jbskGender == 1){	// int 유형으로 받는 성별과 정보수신유형을 알맞은 값으로 변환
 								user[i].jbskGender = "남성";
@@ -61,7 +64,7 @@
 								user[i].jbskinfotype = "메일, SMS";
 							}
 							
-							str += "<tr><input type='hidden' id='js"+i+"' value='"+user[i].jbskId+"'><td>"+user[i].jbskId+"</td><td>"+user[i].jbskPasswd+"</td><td>"+user[i].jbskregdate+"</td><td>"+user[i].jbskName+"</td><td>"+user[i].jbskGender+"</td><td>"+sysdate2+"</td><td>"+user[i].jbskAdd1+"</td><td>"+user[i].jbskAdd2+"</td><td>"+user[i].jbskAdd3+"</td><td>"+user[i].jbskEmail+"</td><td>"+user[i].jbskTel+"</td><td>"+user[i].jbskinfotype+"</td><td><input type='button' value='회원삭제' onclick='jbskDELinADM("+i+")'></td><tr>"
+							str += "<tr><input type='hidden' id='js"+i+"' value='"+user[i].jbskId+"'><td>"+user[i].jbskId+"</td><td>"+user[i].jbskPasswd+"</td><td>"+reg2+"</td><td>"+user[i].jbskName+"</td><td>"+user[i].jbskGender+"</td><td>"+sysdate2+"</td><td>"+user[i].jbskAdd1+"</td><td>"+user[i].jbskAdd2+"</td><td>"+user[i].jbskAdd3+"</td><td>"+user[i].jbskEmail+"</td><td>"+user[i].jbskTel+"</td><td>"+user[i].jbskinfotype+"</td><td><input type='button' value='회원삭제' onclick='jbskDELinADM("+i+")'></td><tr>"
 						}
 						str += "</table>"
 						$("#rst").html(str);
@@ -87,8 +90,14 @@
 					if(data){
 						var str = ''
 						str = "<table border='1'><tr><th>아이디</th><th>패스워드</th><th>등록일</th><th>업체명</th><th>사업자번호</th><th>전화번호</th><th>회원삭제</th></tr>"
+						
 						for (var i=0; i<user.length; i++){	
-							str += "<tr><input type='hidden' id='jp"+i+"' value='"+user[i].jobpId+"'><td>"+user[i].jobpId+"</td><td>"+user[i].jobpPasswd+"</td><td>"+user[i].jobpRegdate+"</td><td>"+user[i].jobpCn+"</td><td>"+user[i].jobpBno+"</td><td>"+user[i].jobpTel+"</td><td><input type='button' value='회원삭제' onclick='jobpDELinADM("+i+")'></td><tr>"
+
+							var reg1 = new Date(user[i].jobpRegdate);
+							var reg2 = reg1.toLocaleDateString(); 
+							
+							
+							str += "<tr><input type='hidden' id='jp"+i+"' value='"+user[i].jobpId+"'><td>"+user[i].jobpId+"</td><td>"+user[i].jobpPasswd+"</td><td>"+reg2+"</td><td>"+user[i].jobpCn+"</td><td>"+user[i].jobpBno+"</td><td>"+user[i].jobpTel+"</td><td><input type='button' value='회원삭제' onclick='jobpDELinADM("+i+")'></td><tr>"
 						}
 						str += "</table>"
 						$("#rst").html(str);
@@ -158,7 +167,7 @@
 	}
 		
 	function toRecruit(recId){
-		location.replace("recView.do?recId="+recId+"&pageNum=1")
+		location.href = "recView.do?recId="+recId+"&pageNum=1";
 	}
 	
 	function gongoDELinADM(i){
@@ -270,15 +279,15 @@
 		
 	function toArticle(boardId,boardId2){
 		var bdId = boardId + "_" + boardId2
-		location.replace("boardView.do?boardId="+bdId+"&pageNum=1&number=1")
+		location.href ="boardView.do?boardId="+bdId+"&pageNum=1&number=1";
 	}
 	
 	function notice(){
-		location.replace("notice.do");
+		location.href = "notice.do";
 	}
 	
 	function noticeWrt(){
-		location.replace("notWrt.do");//TODO: 공지쓰는 페이지로 이동
+		location.href = "notWrt.do";//TODO: 공지쓰는 페이지로 이동
 	}
 	
 </script>
