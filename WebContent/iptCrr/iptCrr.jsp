@@ -27,7 +27,7 @@
 	<div class="table-responsive">
 		<table class="table table-bordered">
 			<tr>
-				<td rowspan="5">사진</td>
+				<td rowspan="5"><img src="${jbskDto.getJbskPic()}" width="140" height="180" /></td> 
 				<th colspan="4"> 이 력 서 </th>
 			</tr>
 			<tr>
