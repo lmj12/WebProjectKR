@@ -167,7 +167,7 @@
 	}
 		
 	function toRecruit(recId){
-		location.replace("recView.do?recId="+recId+"&pageNum=1")
+		location.href = "recView.do?recId="+recId+"&pageNum=1";
 	}
 	
 	function gongoDELinADM(i){
@@ -279,15 +279,15 @@
 		
 	function toArticle(boardId,boardId2){
 		var bdId = boardId + "_" + boardId2
-		location.replace("boardView.do?boardId="+bdId+"&pageNum=1&number=1")
+		location.href ="boardView.do?boardId="+bdId+"&pageNum=1&number=1";
 	}
 	
 	function notice(){
-		location.replace("notice.do");
+		location.href = "notice.do";
 	}
 	
 	function noticeWrt(){
-		location.replace("notWrt.do");//TODO: 공지쓰는 페이지로 이동
+		location.href = "notWrt.do";//TODO: 공지쓰는 페이지로 이동
 	}
 	
 </script>
