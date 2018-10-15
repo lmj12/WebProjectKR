@@ -40,6 +40,7 @@
             cursor: pointer;
         }
 </style>
+<div class="container">
 <h2>스케줄 뷰 페이지</h2><br>
 <script type="text/javascript">
 	var jobpId = sessionStorage.getItem("jobpId");
@@ -578,5 +579,5 @@ ${sessionScope.memName} 님의 스케줄<br>
 </div>
 <br>
 <div id="rst"></div>
-
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

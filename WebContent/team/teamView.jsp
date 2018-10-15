@@ -3,26 +3,26 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
 <!DOCTYPE html>
-
-<h4>나의 팀</h4>
-<div id="listd">
-
-</div>
-
-<c:if test="${sessionScope.memType ne 1}">
-<br><br>
-<h4>승인 대기중인 구직자</h4>
-<div id="reql">
-</div>
-
-
-	<br><br>
-	<h4>팀 가입 요청을 보낼 아이디를 입력하세요.</h4>
-	<input type="text" id="jbskId" > <input type="button" value="검색" onclick="jbskGet()">
-	<div id="rst">
+<div class="container">
+	<h4>나의 팀</h4>
+	<div id="listd">
+	
 	</div>
-</c:if>
-
+	
+	<c:if test="${sessionScope.memType ne 1}">
+	<br><br>
+	<h4>승인 대기중인 구직자</h4>
+	<div id="reql">
+	</div>
+	
+	
+		<br><br>
+		<h4>팀 가입 요청을 보낼 아이디를 입력하세요.</h4>
+		<input type="text" id="jbskId" > <input type="button" value="검색" onclick="jbskGet()">
+		<div id="rst">
+		</div>
+	</c:if>
+</div>
 <script type="text/javascript">
 	//<!--
 	var teamId = ${sessionScope.teamId};

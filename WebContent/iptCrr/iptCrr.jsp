@@ -173,13 +173,15 @@
 							</c:forEach>
 						</c:if>
 					</tbody>
-					<tr>
-						<td colspan="8">
-							<input type="button" name="btn_add_tbody" value="추가">
-							<input type="button" name="btn_submit_tbody" value="저장">
-							<input type="button" name="btn_reset_tbody" value="main" onclick="location='main.do'">
-						</td>
-					</tr>
+					<tfoot>
+						<tr>
+							<td colspan="8">
+								<input type="button" name="btn_add_tbody" value="추가">
+								<input type="button" name="btn_submit_tbody" value="저장">
+								<input type="button" name="btn_reset_tbody" value="main" onclick="location='main.do'">
+							</td>
+						</tr>
+					</tfoot>
 				</table>
 			</form>
 		</div>

@@ -246,7 +246,7 @@
 	//-->
 </script>
 <h2>공고내용 페이지</h2>
-
+<div class="container">
 <table border="1">
 	
 <c:if test="${sessionScope.memType eq 2}">
@@ -383,4 +383,5 @@
 </table>
 </c:if>
 </c:if>
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>
