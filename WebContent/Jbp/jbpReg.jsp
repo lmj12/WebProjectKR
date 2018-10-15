@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <script src="./js/jbpReg.js"></script>
 <script src="./js/jbpSMS.js"></script>
-
 <body>
 <!-- 	구버전 (부트스트랩 미적용)
 <h2>구인자 회원가입 페이지</h2>
@@ -60,8 +59,8 @@
 					onclick="jbpAuthCheck()" size="5"></td>
 			</tr>
 			<tr>
-				<th colspan="2"><input type="submit" value="가입"> <input
-					type="reset" value="취소" onclick="location='main.do'"></th>
+				<th colspan="2"><input type="submit" value="가입"> 
+				<input type="reset" value="취소" onclick="location='main.do'"></th>
 			</tr>
 		</table>
 	</form>
@@ -78,7 +77,8 @@
 </div>
 
       <!-- form -->
-      <form name="inputform" action="jbpReg.do" method="post">
+      <form name="inputform" action="jbpReg.do" method="post" onsubmit="return inputcheck()">
+      
         <div class="form-group row">
           <label for="jobpId" class="col-sm-2 col-form-label">아이디</label>
           <div class="col-sm-10">
@@ -102,9 +102,9 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="rePassword" class="col-sm-2 col-form-label">비밀번호확인</label>
+          <label for="rejobpPasswd" class="col-sm-2 col-form-label">비밀번호확인</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="rePassword" placeholder="Password" maxlength="15">
+            <input type="password" class="form-control" id="rejobpPasswd" placeholder="Password" maxlength="15">
             <small class="text-muted"></small>
           </div>
         </div>
@@ -136,8 +136,8 @@
           <label for="authNumCk" class="col-sm-2 col-form-label">인증번호입력</label>
           <div class="col-sm-10">
             <input type="number" class="form-control" id="authNumCk" name="authNumCk" placeholder="인증번호를 확인해주세요" maxlength="10">
-            <input type="hidden" id="authNum" value="0"> <input type="button" value="인증번호확인"
-					onclick="jbpAuthCheck()" size="5">
+            <input type="hidden" id="authNum" value="0"> 
+            <input type="button" value="인증번호확인" onclick="jbpAuthCheck()" size="5">
             <small class="text-muted"></small>
           </div>
         </div>
@@ -145,7 +145,7 @@
 
         <div class="form-group row">
           <div class="offset-sm-2 col-sm-10 text-center">
-            <button type="submit" id="submit" class="btn btn-primary" onclick="inputcheck()">가입</button>
+            <button type="submit" id="submit" class="btn btn-primary">가입</button>
             <button type="reset" onclick="location='main.do'">취소</button>
           </div>
         </div>
@@ -182,7 +182,7 @@
 			ErrorTextPassword: '비밀번호 길이를 6-15자 이내로 입력하세요 ',
 			MinCharsPass: '6',
 			
-			rePasswordID: '#rePassword',
+			rePasswordID: '#rejobpPasswd',
 			ErrorTextrePassword: '비밀번호가 일치하지 않습니다',
 			 
 			jobpOption : '#jobpBno',
