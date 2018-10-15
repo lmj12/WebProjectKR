@@ -44,22 +44,24 @@
 		<thead>
 			 
 			<tr>
-				<th style="width : 3%">	 공고번호</th>
-				<th style="width : 4%">	 공고상태</th>
-				<th style="width : 8%"> 직무 </th>
+				<th style="width : 3%">공고번호</th>
+				<th style="width : 4%">공고상태</th>
+				<th style="width : 8%">직무</th>
 				
-				<th style="width : 8%"> 시작일 </th>
-				<th style="width : 8%"> 종료일 </th>
-				<th style="width : 3%">	 조회수</th>
-				<th style="width : 3%">	 공고상태 변경</th>
+				<th style="width : 8%">시작일</th>
+				<th style="width : 8%">종료일</th>
+				<th style="width : 3%">조회수</th>
+				<th style="width : 3%">상태변경</th>
 			</tr>
 		</thead>
 	<c:if test="${count eq 0}">	
+		<tfoot>
 			<tr>
 				<td colspan="7" align="center">
 					공고가 없습니다
 				</td>
 			</tr>
+		</tfoot>
 		</c:if>
 		<c:forEach var="article" items="${articleList}">
 		<c:if test="${count ne 0}">
@@ -151,11 +153,13 @@
 			</tr>
 		</thead>
 	<c:if test="${count eq 0}">	
+		<tfoot>
 			<tr>
 				<td colspan="6" align="center">
 					공고가 없습니다
 				</td>
 			</tr>
+		</tfoot>
 		</c:if>
 		<c:forEach var="article" items="${twoList}">
 		<c:if test="${count ne 0}">

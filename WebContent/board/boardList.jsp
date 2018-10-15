@@ -32,11 +32,13 @@
 			</tr>
 		</thead>
 	<c:if test="${count eq 0}">	
+		<tfoot>
 			<tr>
 				<td colspan="6" align="center">
 					${msg_list_x}
 				</td>
 			</tr>
+		</tfoot>
 		</c:if>
 		<c:if test="${count ne 0}">
 			<c:forEach var="article" items="${articles}">	

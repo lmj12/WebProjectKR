@@ -50,7 +50,7 @@
 			toggleAffix(ele, $(window), wrapper);
 		});
 		
-		$(document).find('table').prop('class', 'table table-bordered');
+		$(document).find('table').prop('class', 'table table-bordered table-secondary');
 		$(document).find('thead').prop('class', 'thead-inverse text-center');
 		$(document).find('th').prop('class', 'text-center');
 	});
