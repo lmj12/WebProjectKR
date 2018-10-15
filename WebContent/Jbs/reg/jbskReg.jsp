@@ -358,12 +358,24 @@
 			rePasswordID: '#jbskRePasswd',
 			ErrorTextrePassword: '비밀번호가 일치하지 않습니다',
 			
-			emailID: '#inputEmail',
+			// 추가
+			nameID : '#jbskName',
+			// 추가
+			birthDateID : '#jbskBd',
+			// 추가
+			genderID : '#jbskGender',
+			
+			emailID : '#inputEmail',
 			ErrorTextEmail: 'Enter valid email',
+			
+			// 추가
+			addressID : '#zipcode',
 			 
-			Tel : '#jbskTel',
-			ErrorTextTel : '올바르지 않은 형식의 전화번호입니다',
-			ErrorTextTelAuth : '핸드폰 인증을 진행해주세요'			
+			telID : '#jbskTel',
+			telAuthID : '#authNum',
+			
+			// 추가 
+			picID : '#jbskPic',
             }
   </script>
 </body>
