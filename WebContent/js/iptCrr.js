@@ -117,13 +117,13 @@ $(function(){
 			var cntNum = eval( $(document).find('input[name=cntNum]').last().val() )+ 1;
 			var rowItem = '<tr>';
 			rowItem +=		'<input type="hidden" name="iptId" value="'+iptNum+'">';
-			rowItem += 		'<td><input type="text" name="cntNum" value="' + cntNum + '" placeholder="번호" /></td>';
+			rowItem += 		'<td><input type="text" size="1" name="cntNum" value="' + cntNum + '" placeholder="번호" readonly /></td>';
 			rowItem += 		'<td><input type="text" name="iptCompany" value="" placeholder="업체명"  /></td>';
 			rowItem += 		'<td><input type="text" name="iptWh" value="" placeholder="근무지" /></td>';
-			rowItem += 		'<td><input type="text" class="from" name="iptStart" value=""></td>';
-			rowItem += 		'<td><input type="text" class="to" name="iptEnd" value=""></td>';
+			rowItem += 		'<td><input type="text" size="10" maxlength="10" class="from" name="iptStart" value=""></td>';
+			rowItem += 		'<td><input type="text" size="10" maxlength="10" class="to" name="iptEnd" value=""></td>';
 			
-			rowItem += 		'<td><select class="posId form-control" name="posId">';
+			rowItem += 		'<td><select class="posId" name="posId" style="width:65px;">';
 			rowItem +=			'<option value="1">팀장</option>';
 			rowItem +=			'<option value="2">스캔</option>';
 			rowItem +=			'<option value="3">예도</option>';
@@ -193,6 +193,14 @@ $(function(){
 				itemObj.iptEnd = cellItem.eq(5).val();	// 종료일
 				itemObj.posId = cellItem.eq(6).val();	// 근무직무
 				
+				//				FIXME : 디버깅용
+//				alert(itemObj.iptId);
+//				alert(itemObj.iptCompany);
+//				alert(itemObj.iptWh);
+//				alert(itemObj.iptStart);
+//				alert(itemObj.iptEnd);
+//				alert(itemObj.posId);
+
 				if( itemObj.iptId != undefined ){
 					var realPeriod = btDay.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|" "]/g,"");
 					var queryStr = {
@@ -210,9 +218,8 @@ $(function(){
 						url : 'iptCrrWrt.do',
 						data : queryStr,
 						success : function(){
-							alert( '삽입성공' );
+							alert( cellItem.eq(1).val() + '번이 삽입/수정 되었습니다' );
 							location.reload();
-							alert('page가 새로고침 되었습니다.');
 						},
 						error : function(request,status,error){
 						    alert( "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

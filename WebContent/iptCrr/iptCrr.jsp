@@ -31,21 +31,21 @@
 				<th colspan="4"> 이 력 서 </th>
 			</tr>
 			<tr>
-				<td rowspan="2">성명</td>			<!-- jbskName -->
+				<th rowspan="2">성명</th>			<!-- jbskName -->
 				<td rowspan="2"><input type="text" name="jbskName" value="${jbskDto.jbskName}" readonly></td>	
-				<td colspan="2">생년월일</td>		<!-- jbskBd -->
+				<th colspan="2">생년월일</th>		<!-- jbskBd -->
 			</tr>
 			<tr>
 				<td colspan="2"><fmt:formatDate value="${jbskDto.jbskBd}" pattern="yyyy년 MM월 dd일"/></td>
 			</tr>
 			<tr>
-				<td>성별</td>			<!-- jbskGender -->
+				<th>성별</th>			<!-- jbskGender -->
 				<td><input type="text" name="jbskGender" id="jbskGender" value="${jbskDto.jbskGender}" readonly></td>
-				<td>연락처</td>		<!-- jbskTel -->
+				<th>연락처</th>		<!-- jbskTel -->
 				<td><input type="text" name="jbskTel" value="${jbskDto.jbskTel}" readonly></td>
 			</tr>
 			<tr>
-				<td>주소</td>			<!-- jbskAdd1+2+3 -->
+				<th>주소</th>			<!-- jbskAdd1+2+3 -->
 				<td colspan="3"><input type="text" name="jbskAddress" value="${jbskAddress}" readonly></td>
 			</tr>
 		</table>
@@ -72,13 +72,13 @@
 						<c:if test="${iptListCnt eq 0}">
 							<tr>
 								<input type="hidden" name="iptId" value="${iptDto.iptId}">
-								<th scope="row">${cntNum}</th>
+								<td><input type="text" size="1" name="cntNum" value="${cntNum}" placeholder="번호" readonly /></td>
 								<td><input type="text" name="iptCompany" value="${iptDto.iptCompany}" placeholder="업체명"  /></td>
 								<td><input type="text" name="iptWh" value="${iptDto.iptWh}" placeholder="근무지" /></td>
 								<td><input type="text" size="10" maxlength="10" name="iptStart" class="from" value="<fmt:formatDate value="${iptDto.iptStart}" pattern="MM/dd/yyyy"/>"></td>
 								<td><input type="text" size="10" maxlength="10" name="iptEnd" class="to" value="<fmt:formatDate value="${iptDto.iptEnd}" pattern="MM/dd/yyyy"/>"></td>
 								<td>
-									<select class="posId form-control" name="posId">
+									<select class="posId" name="posId" style="width:65px;">
 										<option value="1">팀장</option>
 										<option value="2">스캔</option>
 									    <option value="3">예도</option>
@@ -97,14 +97,13 @@
 							<c:forEach var="iptDto" items="${iptDtoList}">
 								<tr>
 									<input type="hidden" name="iptId" value="${iptDto.iptId}">
-									<td><input type="text" name="cntNum" value="${cntNum}" placeholder="번호" /></td>
+									<td><input type="text" size="1" name="cntNum" value="${cntNum}" placeholder="번호" readonly /></td>
 									<td><input type="text" name="iptCompany" value="${iptDto.iptCompany}" placeholder="업체명"  /></td>
 									<td><input type="text" name="iptWh" value="${iptDto.iptWh}" placeholder="근무지" /></td>
-									<td><input type="text" name="iptStart" class="from" value="<fmt:formatDate value="${iptDto.iptStart}" pattern="MM/dd/yyyy"/>"></td>
-									<td><input type="text" name="iptEnd" class="to" value="<fmt:formatDate value="${iptDto.iptEnd}" pattern="MM/dd/yyyy"/>"></td>
+									<td><input type="text" size="10" maxlength="10" name="iptStart" class="from" value="<fmt:formatDate value="${iptDto.iptStart}" pattern="MM/dd/yyyy"/>"></td>
+									<td><input type="text" size="10" maxlength="10" name="iptEnd" class="to" value="<fmt:formatDate value="${iptDto.iptEnd}" pattern="MM/dd/yyyy"/>"></td>
 									<td>
-										<select class="posId form-control" name="posId">
-									  		<!-- TODO : 스크립트 내에서 jstl, EL 태그를 써서 이런 반복 작업을 안 할 수도 있을텐데, 잘 안된다 -->
+										<select class="posId" name="posId" style="width:65px;">
 										    <c:choose>
 												<c:when test="${iptDto.posId eq 1}">
 													<option value="1" selected="selected">팀장</option>
