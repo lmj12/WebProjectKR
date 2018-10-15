@@ -16,4 +16,3 @@
 		<c:redirect url ="Lgn.do"/>
 </c:if>
 
-

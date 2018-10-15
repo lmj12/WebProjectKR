@@ -17,7 +17,7 @@
 	</c:if>
 	<c:if test="${row[0] eq 0}">
 	<result>
-		<message>${param.jobpId}는 사용할 수 있습니다.</message>
+		<message>${param.jobpId}는 사용 가능합니다 !!!</message>
 	</result>
 	</c:if>
 </c:forEach>
