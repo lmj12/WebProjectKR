@@ -85,7 +85,7 @@ public class RecWrtHd implements RecruitHandler {
 			recruitDto.setRecReadCnt(0);
 			recruitDto.setReccontent(request.getParameter("reccontent"));
 			
-			
+		
 	        recruitDto.setRecStart( new Timestamp( System.currentTimeMillis() ));
 	       
 	       
