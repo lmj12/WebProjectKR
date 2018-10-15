@@ -46,7 +46,7 @@
 			</tr>
 			<tr>
 				<td>주소</td>			<!-- jbskAdd1+2+3 -->
-				<td colspan="3"><input type="text" name="jbskAddress" value="${jbskAddress}" readonly></td>
+				<td colspan="3"><input type="text" name="jbskAddress" id="jbskAddress" value="${jbskAddress}" readonly></td>
 			</tr>
 		</table>
 	</div>
@@ -204,5 +204,14 @@
 	//-->
 	</script>
 </c:if>
+
+	<script type="text/javascript">
+	//<!--
+		var a = document.getElementById("jbskAddress").value;
+		var b = a.replace("--","");
+		document.getElementById("jbskAddress").value = b;
+	//-->
+	</script>
+
 
 <%@ include file="/setting/design_setting_footer.jsp" %>
