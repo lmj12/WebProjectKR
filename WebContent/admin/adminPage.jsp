@@ -260,7 +260,7 @@
 						var boardId = singolist[i].boardId.split("_");
 						str += "<tr onclick='toArticle("+boardId[0]+", "+boardId[1]+" )'><td>"+singolist[i].boarduserId+"</td><td>"+singolist[i].boardregTime+"</td></tr>"
 					}
-					str += "<tr><th colspan='2'><input type='button' value='미정'></th></tr></table>"
+				<!--	str += "<tr><th colspan='2'><input type='button' value='미정'></th></tr></table>"		-->
 					$("#rst").html(str);
 				} else {
 					$("#rst").text("검색 결과가 없습니다.")
