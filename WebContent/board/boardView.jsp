@@ -3,15 +3,15 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="setting.jsp" %>
 <script src="${js}board.js"></script>
-    <h2>${page_content}</h2>
+
 <%
  
     request.setCharacterEncoding("UTF-8");
  
 %>
 
-
-
+<div class="container">
+    <h2>${page_content}</h2>
 <table border="1">
 	<input type="hidden" name="boardParentId" value="${boardDto.boardParentId}">
 	<input type="hidden" name="boardId" value="${boardDto.boardId}">
@@ -24,12 +24,14 @@
 <c:if test="${sessionScope.memType eq 3}">
 		<tr>
 			<th>신고자 </th>
-			<td align="center"> ${boardDto.boardParentId} </td>
-		</tr>
-		<tr>
-			<th>답변자</th>
 			<td align="center"> ${boardDto.userId}</td>
 		</tr>
+	<!--<tr>		
+			<th>답변자</th>
+			<td align="center"> </td> 	신고글인데 답변자가 있을 필요가 없어서 지웠습니다. 
+	  	
+		</tr>
+	-->
 </c:if>
 	
 	
@@ -56,9 +58,10 @@
 				onclick="location='boardWrt.do?boardId=${boardDto.boardId}&boardParentId=${boardDto.boardParentId}&pageNum=${pageNum}'">
 		</c:if>
 			<input class="inputbutton" type="button" value="${btn_list}"
-				onclick="location='boardList.do?pageNum=${pageNum}'">
+				onclick="location='adminPage.do'">
+		<!--  	onclick="location='boardList.do?pageNum=${pageNum}'">  -->		
 		</th>
 	</tr>		
 </table>
-
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

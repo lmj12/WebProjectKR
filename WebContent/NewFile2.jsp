@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <h2>스케줄, 스케줄직무</h2>                                                                                                        
+
 insert into KRschedule values(KRschedule_seq.nextval, TO_DATE('2018/10/13 10:30:14', 'YYYY/MM/DD HH24:MI:SS'), TO_DATE('2018/10/13 16:30:14', 'YYYY/MM/DD HH24:MI:SS'), '팀장외 3명 지원하세요', 'test1');
 insert into KRschedule values(KRschedule_seq.nextval, TO_DATE('2018/10/14 09:15:14', 'YYYY/MM/DD HH24:MI:SS'), TO_DATE('2018/10/14 16:30:14', 'YYYY/MM/DD HH24:MI:SS'), '스캔, 예도, 안내, 경호 지원요망', 'test1');
 insert into KRschedule values(KRschedule_seq.nextval, TO_DATE('2018/10/18 08:17:14', 'YYYY/MM/DD HH24:MI:SS'), TO_DATE('2018/10/18 13:30:14', 'YYYY/MM/DD HH24:MI:SS'), '급구 3명', 'test1');
@@ -46,6 +47,7 @@ insert into KRschjob values(KRschjob_seq.nextval,  8, 1, 1, '');
 insert into KRschjob values(KRschjob_seq.nextval,  8, 4, 1, '');
 insert into KRschjob values(KRschjob_seq.nextval, 12, 4, 1, '');
 insert into KRschjob values(KRschjob_seq.nextval, 12, 6, 1, '');
+
 
 
 

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
+<div class="container">
 <!DOCTYPE html>
 <script type="text/javascript">
 	//<!--
@@ -108,3 +109,5 @@
 		//-->
 	</script>
 </c:if>
+
+</div>

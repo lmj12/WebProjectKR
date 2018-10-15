@@ -75,4 +75,16 @@ public class RecCrrDBBean {
 		session.clearCache();
 		return session.selectList("RecCrr.applyList", recId); 
 	}
+	
+	public CareerDataBean getCrr(String jbskId) {
+		session.flushStatements();
+		session.clearCache();
+		return session.selectOne("RecCrr.getCrr", jbskId);
+	}
+	
+	public List<CareerDataBean> search(CareerDataBean crrDto){
+		session.flushStatements();
+		session.clearCache();
+		return session.selectList("RecCrr.search", crrDto);
+	}
 }
