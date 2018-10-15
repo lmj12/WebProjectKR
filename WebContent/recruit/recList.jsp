@@ -26,7 +26,7 @@ table{
 
 <input type="hidden" name="recId" value="${article.recDto.recId}">
 
-<table border="1"  style="cursor:hand;float:left;width:30%;" onclick="location.href='recView.do?recId=${article.recDto.recId}&pageNum=${pageNum}&recReadCnt=${recReadCnt}'">	
+<table border="1"  style="cursor:hand;float:left;width:30%;" onclick="location.href='recView.do?recId=${article.recDto.recId}'">	
 
 	<tr>
 		<th>공고번호 </th>
@@ -36,7 +36,7 @@ table{
 	</tr>
 	<tr>
 		<th>공고상태</th>
-		<td id="con">
+		<td id="con" align="center">
 					<c:if test="${article.recDto.recStatus eq 0}">
 				    		모집중
 				    </c:if>
