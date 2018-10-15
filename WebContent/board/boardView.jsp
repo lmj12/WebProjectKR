@@ -3,15 +3,15 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="setting.jsp" %>
 <script src="${js}board.js"></script>
-    <h2>${page_content}</h2>
+
 <%
  
     request.setCharacterEncoding("UTF-8");
  
 %>
 
-
-
+<div class="container">
+    <h2>${page_content}</h2>
 <table border="1">
 	<input type="hidden" name="boardParentId" value="${boardDto.boardParentId}">
 	<input type="hidden" name="boardId" value="${boardDto.boardId}">
@@ -60,5 +60,5 @@
 		</th>
 	</tr>		
 </table>
-
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

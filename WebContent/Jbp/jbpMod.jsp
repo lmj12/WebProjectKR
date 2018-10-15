@@ -3,19 +3,14 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
-<h2>구인자 정보수정페이지</h2>
+<script src="${js}jbpReg.js"></script>
 <!DOCTYPE html>
-	<script src="${js}jbpReg.js"></script>
-
-
-
-
-
-<%
-		JobProvDataBean jbpDto = ( JobProvDataBean) request.getAttribute( "jbpDto" );
-		%>
 <div class="container">
-	<div class="">
+<h2>구인자 정보수정페이지</h2>
+	
+<%
+	JobProvDataBean jbpDto = ( JobProvDataBean) request.getAttribute( "jbpDto" );
+%>
 	<form name="inputform" method="post" action="jbpMod.do">
 		<table border="1">
 			<tr>
@@ -61,6 +56,5 @@
 			
 		</table>
 	</form>
-	</div>
 </div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

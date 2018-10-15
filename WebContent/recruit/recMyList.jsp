@@ -39,26 +39,21 @@
 <div class="container">
 	<form method="post" action="recMyView.do">
 	<input type="hidden" name="recId" value="${article.recDto.recId}">
+	<h4>${sessionScope.memid}님의 현재 모집중인 공고 목록입니다</h4>
 	<table border="1">
-					
-		<tr>
-			<th style="width : 15%" colspan="7" align="left">
-			${sessionScope.memid}님의 진행중인 공고 목록입니다. 
-			</th>
-		
-			
-		</tr>
-		
-		<tr>
-			<th style="width : 3%">	 공고번호</th>
-			<th style="width : 4%">	 공고상태</th>
-			<th style="width : 8%"> 직무 </th>
-			
-			<th style="width : 8%"> 시작일 </th>
-			<th style="width : 8%"> 종료일 </th>
-			<th style="width : 3%">	 조회수</th>
-			<th style="width : 3%">	 공고상태 변경</th>
-		</tr>
+		<thead>
+			 
+			<tr>
+				<th style="width : 3%">	 공고번호</th>
+				<th style="width : 4%">	 공고상태</th>
+				<th style="width : 8%"> 직무 </th>
+				
+				<th style="width : 8%"> 시작일 </th>
+				<th style="width : 8%"> 종료일 </th>
+				<th style="width : 3%">	 조회수</th>
+				<th style="width : 3%">	 공고상태 변경</th>
+			</tr>
+		</thead>
 	<c:if test="${count eq 0}">	
 			<tr>
 				<td colspan="7" align="center">
@@ -140,28 +135,21 @@
 </div>
 <br><br>
 <div class="container">
+	<h4>${sessionScope.memid}님의 완료된 공고 목록입니다</h4>
 	<form method="post" action="recMyView.do">
 	<input type="hidden" name="recId" value="${article.recDto.recId}">
 	<table border="1">
-					
-		<tr>
-			<th style="width : 15%" colspan="7" align="left">
-			${sessionScope.memid}님의 완료된 공고 목록입니다. 
-			</th>
-		
-			
-		</tr>
-		
-		<tr>
-			<th style="width : 3%">	 공고번호</th>
-			<th style="width : 4%">	 공고상태</th>
-			<th style="width : 8%"> 직무 </th>
-			
-			<th style="width : 8%"> 시작일 </th>
-			<th style="width : 8%"> 종료일 </th>
-			<th style="width : 3%">	 조회수</th>
-			
-		</tr>
+		<thead>
+			<tr>
+				<th style="width : 3%">	 공고번호</th>
+				<th style="width : 4%">	 공고상태</th>
+				<th style="width : 8%"> 직무 </th>
+				
+				<th style="width : 8%"> 시작일 </th>
+				<th style="width : 8%"> 종료일 </th>
+				<th style="width : 3%">	 조회수</th>
+			</tr>
+		</thead>
 	<c:if test="${count eq 0}">	
 			<tr>
 				<td colspan="6" align="center">

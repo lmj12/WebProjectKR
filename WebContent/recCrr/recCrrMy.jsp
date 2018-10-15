@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/setting.jsp"%>
 <!DOCTYPE html>
+<div class="container">
 <!-- 구직자 페이지 -->
 <script type="text/javascript">
 	//<!--
@@ -86,11 +87,13 @@
 	//-->
 </script>
 
-<h4>현재 지원중인 공고</h4>
+<h4>${sessionScope.memid}님의 현재 지원중인 공고 목록입니다</h4>
 <table border='1'>
-	<tr>
-		<th>업체ID</th><th>공고상태</th><th>직무</th><th>공고마감일</th><th>지원상태</th><th>공고보기</th><th>지원취소</th>
-	</tr>
+	<thead>
+		<tr>
+			<th>업체ID</th><th>공고상태</th><th>직무</th><th>공고마감일</th><th>지원상태</th><th>공고보기</th><th>지원취소</th>
+		</tr>
+	</thead>
 	<c:forEach var="recCrrDto" items="${recCrrlists}">
 		<tr>
 			<td>${recCrrDto.jobpId}</td>
@@ -161,11 +164,13 @@
 	</c:forEach>
 </table>
 <br><br>
-<h4>완료된 공고</h4>
+<h4>${sessionScope.memid}님의 완료된 공고 목록입니다</h4>
 <table border='1'>
-	<tr>
-		<th>업체ID</th><th>직무</th><th>공고마감일</th><th>지원상태</th><th>공고보기</th>
-	</tr>
+	<thead>
+		<tr>
+			<th>업체ID</th><th>직무</th><th>공고마감일</th><th>지원상태</th><th>공고보기</th>
+		</tr>
+	</thead>
 	<c:forEach var="recCrrDto" items="${recCrrPrevlists}">
 		<tr>
 			<td>${recCrrDto.jobpId}</td>
@@ -225,3 +230,4 @@
 		</tr>
 	</c:forEach>
 </table>
+</div>
