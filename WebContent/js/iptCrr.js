@@ -114,7 +114,7 @@ $(function(){
 		'click',
 		function(event){
 			var iptNum = 0;	// iptcareer.xml 에 iptId를 겹치지 않게 하기 위함
-			var cntNum = eval( $(document).find('input[name=cntNum]').last().val() )+ 1;
+			var cntNum = eval( $(document).find('input[name=cntNum]').last().val() )+ 1; 
 			var rowItem = '<tr>';
 			rowItem +=		'<input type="hidden" name="iptId" value="'+iptNum+'">';
 			rowItem += 		'<td><input type="text" size="1" name="cntNum" value="' + cntNum + '" placeholder="번호" readonly /></td>';
