@@ -2,7 +2,7 @@ $(document).ready(
 	function() {
 		// FIXME : 개발용 사업자번호 자동입력
 		$('input:text[name=jobpBno]').val('107-86-14075');
-		$('.idresult').val("아이디0");
+		$('.idresult').val(" ");
 		
 		$('input[name=jobpId]').on(
 			'keyup',
