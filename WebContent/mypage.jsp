@@ -20,7 +20,7 @@
 	</script>
 </c:if>
 <h2><span>${sessionScope.memid}</span>님의 마이페이지입니다</h2>
-		
+
 
 <c:if test="${sessionScope.memType eq 2}">
 	<jsp:include page="recMyView.do" flush="false"/>		
