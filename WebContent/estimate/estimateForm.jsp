@@ -3,6 +3,7 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
 <!DOCTYPE html>
+<div class="container">
 <c:if test="${sessionScope.memType ne 1}">	<!--  구직자회원이 아니면  -->
 <br>
 	<form>
@@ -26,4 +27,5 @@
 	</script>
 </c:if>
 
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

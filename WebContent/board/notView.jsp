@@ -3,6 +3,8 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
 <%@ include file="/board/setting.jsp" %>
+
+<div class="container">
 <h2>공지사항 내용페이지</h2>
 
 <%@ include file="/board/setting.jsp" %>
@@ -34,5 +36,5 @@
 				onclick="location='noticeDel.do?boardId=${boardDto.boardId}'">
 		</c:if>
 </table>
-
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>
