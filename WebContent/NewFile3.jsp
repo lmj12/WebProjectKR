@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <h2>공고 insert문</h2>                                                         
-insert into KRrecruit values(KRrecruit_seq.nextval, TO_DATE('2018/10/13 10:33:15', 'YYYY/MM/DD HH24:MI:SS'), TO_DATE('2018/10/15 10:02:45', 'YYYY/MM/DD HH24:MI:SS'),'팀장구해요', '서울 관악구 신림동 808-152', '서울 관악구', 20, 2, 'test1', 0); 
+insert into KRrecruit values(KRrecruit_seq.nextval, TO_DATE('2018/10/13 10:33:15', 'YYYY/MM/DD HH24:MI:SS'), TO_DATE('2018/10/15 18:02:45', 'YYYY/MM/DD HH24:MI:SS'),'팀장구해요', '서울 관악구 신림동 808-152', '서울 관악구', 20, 2, 'test1', 0); 
 insert into KRrecruit values(KRrecruit_seq.nextval, TO_DATE('2018/10/13 10:34:15', 'YYYY/MM/DD HH24:MI:SS'), TO_DATE('2018/10/16 18:20:42', 'YYYY/MM/DD HH24:MI:SS'),'공고올립니다, 팀장외 2명구해요', '서울 광진구 화양동 503', '서울 광진구', 32, 2, 'test2', 0); 
 insert into KRrecruit values(KRrecruit_seq.nextval, TO_DATE('2018/10/13 10:35:15', 'YYYY/MM/DD HH24:MI:SS'), TO_DATE('2018/10/17 15:55:42', 'YYYY/MM/DD HH24:MI:SS'),'급구 예도구해요', '서울 강남구 삼성동 37-19', '서울 강남구', 17, 2, 'test3', 0); 
 insert into KRrecruit values(KRrecruit_seq.nextval, TO_DATE('2018/10/13 11:33:15', 'YYYY/MM/DD HH24:MI:SS'), TO_DATE('2018/10/14 18:44:42', 'YYYY/MM/DD HH24:MI:SS'),'예도, 안내 여자2명구해요', '경기 파주시 금촌동 121-21', '파주시 금촌동', 12, 2, 'test4', 0); 

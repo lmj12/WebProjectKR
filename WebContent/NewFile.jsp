@@ -110,15 +110,15 @@
     insert into KRjobprov values('test106', '1212abc', sysdate, '1078614075', '세종호텔', '01012345678');
 
     
-    insert into KRteam values(KRteam_seq.nextval,test1');
-    insert into KRteam values(KRteam_seq.nextval,test2');
-    insert into KRteam values(KRteam_seq.nextval,test3');
-    insert into KRteam values(KRteam_seq.nextval,test4');
-    insert into KRteam values(KRteam_seq.nextval,test5');
-    insert into KRteam values(KRteam_seq.nextval,test6');
-    insert into KRteam values(KRteam_seq.nextval,test7');
-    insert into KRteam values(KRteam_seq.nextval,test8');
-    insert into KRteam values(KRteam_seq.nextval,test9');
+    insert into KRteam values(KRteam_seq.nextval,'test1');
+    insert into KRteam values(KRteam_seq.nextval,'test2');
+    insert into KRteam values(KRteam_seq.nextval,'test3');
+    insert into KRteam values(KRteam_seq.nextval,'test4');
+    insert into KRteam values(KRteam_seq.nextval,'test5');
+    insert into KRteam values(KRteam_seq.nextval,'test6');
+    insert into KRteam values(KRteam_seq.nextval,'test7');
+    insert into KRteam values(KRteam_seq.nextval,'test8');
+    insert into KRteam values(KRteam_seq.nextval,'test9');
     insert into KRteam values(KRteam_seq.nextval,'test10');
     insert into KRteam values(KRteam_seq.nextval,'test11');
     insert into KRteam values(KRteam_seq.nextval,'test12');
