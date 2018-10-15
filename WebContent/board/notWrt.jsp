@@ -19,9 +19,9 @@
     	<input type="hidden" name="userId" value="${sessionScope.memid}" readonly>
     	<table border="1">
     		<tr>
-    			<th colspan="2" align="right">
-    				<td><input type="button" value="공지목록" onclick="location='notice.do'"></td>
-    			</th>    			
+    			<td colspan="2" align="right">
+    				<input type="button" value="공지목록" onclick="location='notice.do'">
+    			</td>    			
     		</tr>
    
 

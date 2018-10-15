@@ -4,7 +4,7 @@
 <%@ include file="/setting/setting.jsp" %>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
+<%@ include file="/setting/design_setting_upper.jsp" %>
 
   
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -106,7 +106,8 @@ $( function() {
 		<th>주소</th>
 		<td colspan="7"> <input type="text" name="recSite" id="recSite" placeholder="${recDto.recSite}">					
 					<span id="guide" style="color:#999"></span>
-						<input type="button" value="주소찾기" onclick="searchPostcode()"></td>		
+						<input type="button" value="주소찾기" onclick="searchPostcode()">
+						<input type="hidden" value="0" id="ok"></td>		
 	</tr>
 	<tr>
     		<th colspan="8">
@@ -120,3 +121,5 @@ $( function() {
 </table>
 </form>
 </body>
+
+<%@ include file="/setting/design_setting_footer.jsp" %>
