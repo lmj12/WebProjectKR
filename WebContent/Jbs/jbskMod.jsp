@@ -10,8 +10,8 @@
 
 	<script src="//code.jquery.com/jquery.min.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script src="/js/jbskMod.js"></script>
-	<script src="/js/jbskReg.js"></script>
+	<script src="./js/jbskMod.js"></script>
+	<script src="./js/jbskReg.js"></script>
 
 <h2> 구직자 정보 수정 </h2>
 
@@ -52,7 +52,7 @@
 			</tr>
 			<tr>
 				<th> 이름 </th>
-				<td>
+				<td colspan="2">
 					<input class="input" type="text" name="jbskName" maxlength="10" value="${jbskDto.getJbskName()}" readonly>
 				</td>
 				<td>
@@ -62,57 +62,47 @@
 			
 			<tr>
 				<th> 성별 </th>
-				<td>
-					<input type="radio" name="jbskGender" value="1" >남
-					<input type="radio" name="jbskGender" value="2" >여
+				<td colspan="2">
+					<input type="radio" name="jbskGender" value="1" <c:if test="${jbskDto.getJbskGender() eq '1'}">checked="checked" </c:if> />남
+					<input type="radio" name="jbskGender" value="2" <c:if test="${jbskDto.getJbskGender() eq '2'}">checked="checked" </c:if> />여
 				</td>
-				<td>
-					
-				</td>
+				
 			</tr>
 			
 			<tr>
 				<th rowspan="5">주소</th>
 			<tr>
-				<td>
-					<input type="button" value="주소찾기" onclick="searchPostcode()">
+				<td colspan="2">
+					<input type="button" value="주소찾기" onclick="searchPostcode();">
 				</td>
-				<td>
-					
-				</td>
+				
 			</tr>
 			<tr>
-				<td>
+				<td colspan="2">
 					<input type="text" name="jbAddress" id="jbAddress" placeholder="도" readonly value="${jbskDto.getJbskAdd1()}">
 					<!-- 정확한 용도를 모르겠으나 주소검색 시 검색창 꺼지게 만들어 줌 -->
 					<!-- 혹시 추후 주소 파싱해오는데 지장 생기면 body 태그 닫히는 곳 까지 내려버려도 무관함 -->
 					<span id="guide" style="color:#999"></span>
 				</td>
-				<td>
-					
-				</td>
+				
 			</tr>
 			<tr>
-				<td>
+				<td colspan="2">
 					<input type="text" id="rdAddress" name="rdAddress" placeholder="시" readonly value="${jbskDto.getJbskAdd2()}">
 				</td>
-				<td>
-					
-				</td>
+				
 			</tr>
 			<tr>
-				<td>
+				<td colspan="2">
 					<input type="text" id="zipcode" name="zipcode" placeholder="구" readonly value="${jbskDto.getJbskAdd3()}">
 				</td>
-				<td>
-					
-				</td>
+				
 			</tr>
 			
 			<tr>
 				<th> 이메일 </th>
-				<td>
-					 <input type="text" name="jbskEmail1" maxlength="50" value="${jbskDto.getJbskEmail()}">@
+				<td colspan="2">
+					 <input type="text" name="jbskEmail1" id="jbskEmail1" maxlength="50" value="${jbskDto.getJbskEmail()}">@
                        	 <select name="jbskEmail2" id="jbskEmail2">
                         	    <option>naver.com</option>	
                         	    <option>daum.net</option>
@@ -121,9 +111,7 @@
                          	   <option>직접입력</option>                        
                         </select>
                 </td>
-                <td>
-					<input class="input" type="text" name="jbskEmail3" maxlength="15" readonly>
-				</td>
+               
             </tr>
 			<tr>
 				<th> 전화번호 </th>
@@ -138,22 +126,20 @@
 			</tr>
 			<tr>
 				<th> 사진 </th>
-				<td>
-					<input class="input" type="file" name="jbskPic" id="file">
-					${jbskDto.getJbskPic()}
-				</td>
-				<td>
-					<input class="input" type="text" name="jbskPic2" maxlength="15" readonly>
-				</td>
 				
+				<td colspan="2">
+					<input class="input" type="file" name="jbskPic" id="file" onchange="previewImage(this, 'View_area')">
+					<div id='View_area' style='position:relative; width: 140px; height: 180px; color: black; border: 0px solid black; dispaly: inline; '></div>
+				</td>
+	
 			</tr>
 			<tr>
 				<th> 정보수신동의 </th>
-				<td>
-					<input type="radio" name="jbskinfotype" value="1" >수신안함
-					<input type="radio" name="jbskinfotype" value="2" >메일
-					<input type="radio" name="jbskinfotype" value="3" >SMS
-					<input type="radio" name="jbskinfotype" value="4" >메일, SMS
+				<td colspan="2">
+					<input type="radio" name="jbskinfotype" value="1" <c:if test="${jbskDto.getJbskinfotype() eq '1'}">checked="checked" </c:if> />수신안함
+					<input type="radio" name="jbskinfotype" value="2" <c:if test="${jbskDto.getJbskinfotype() eq '2'}">checked="checked" </c:if> />메일
+					<input type="radio" name="jbskinfotype" value="3" <c:if test="${jbskDto.getJbskinfotype() eq '3'}">checked="checked" </c:if> />SMS
+					<input type="radio" name="jbskinfotype" value="4" <c:if test="${jbskDto.getJbskinfotype() eq '4'}">checked="checked" </c:if> />메일, SMS
 				</td>
 				<td>
 					
@@ -167,5 +153,41 @@
 			</tr>
 		</table>	
 	 </form>
+	
+	<script type="text/javascript">
+	//<!--
+		var a = document.getElementById("jbskEmail1").value;
+		var b = a.replace("@naver.com","");
+		document.getElementById("jbskEmail1").value = b;
+	//-->
+	</script>
+	
+	<script type="text/javascript">
+	//<!--
+		var a = document.getElementById("jbskEmail1").value;
+		var b = a.replace("@daum.net","");
+		document.getElementById("jbskEmail1").value = b;
+	//-->
+	</script>
+	
+	<script type="text/javascript">
+	//<!--
+		var a = document.getElementById("jbskEmail1").value;
+		var b = a.replace("@gmail.com","");
+		document.getElementById("jbskEmail1").value = b;
+	//-->
+	</script>
+	
+	<script type="text/javascript">
+	//<!--
+		var a = document.getElementById("jbskEmail1").value;
+		var b = a.replace("@nate.com","");
+		document.getElementById("jbskEmail1").value = b;
+	//-->
+	</script>
+	
+	 
+	 
+	 
 
 <%@ include file="/setting/design_setting_footer.jsp" %>

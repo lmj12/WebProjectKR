@@ -27,7 +27,7 @@
 	<div class="table-responsive">
 		<table class="table table-bordered">
 			<tr>
-				<td rowspan="5">사진</td>
+				<td rowspan="5"><img src="${jbskDto.getJbskPic()}" width="140" height="180" /></td> 
 				<th colspan="4"> 이 력 서 </th>
 			</tr>
 			<tr>
@@ -46,7 +46,7 @@
 			</tr>
 			<tr>
 				<td>주소</td>			<!-- jbskAdd1+2+3 -->
-				<td colspan="3"><input type="text" name="jbskAddress" value="${jbskAddress}" readonly></td>
+				<td colspan="3"><input type="text" name="jbskAddress" id="jbskAddress" value="${jbskAddress}" readonly></td>
 			</tr>
 		</table>
 	</div>
@@ -204,5 +204,14 @@
 	//-->
 	</script>
 </c:if>
+
+	<script type="text/javascript">
+	//<!--
+		var a = document.getElementById("jbskAddress").value;
+		var b = a.replace("--","");
+		document.getElementById("jbskAddress").value = b;
+	//-->
+	</script>
+
 
 <%@ include file="/setting/design_setting_footer.jsp" %>
