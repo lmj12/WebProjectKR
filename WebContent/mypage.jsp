@@ -23,8 +23,12 @@
 <table border="1">	
 	<tr>
 		<th> <input type="text" name="jbksearch"> </th>
+		
+		
 		<td> <input type="button" value="검색"> </td>
+		<c:if test="${(sessionScope.memType eq 1) or (sessionScope.memType eq 2)}">
 		<td> <input type="button" name="change" value="정보수정" onclick="toModify()"> </td>
+		</c:if>
 		<c:if test="${sessionScope.memType eq 2}">
 			<td> <input type="button" name="out" value="회원탈퇴" onclick="location='jbpDel.do'"></td>		
 		</c:if>
