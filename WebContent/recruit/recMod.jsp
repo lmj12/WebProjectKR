@@ -113,7 +113,7 @@ $( function() {
     		<th colspan="8">
     			<input class="inputbutton" name="write" type="submit" value="공고수정">
     			<input class="inputbutton" type="reset" value="공고수정 취소">
-    			<input class="inputbutton" type="button" value="목록으로" onclick ="location='recList.do?pageNum=${pageNum}'">
+    			<input class="inputbutton" type="button" value="목록으로" onclick ="location='recList.do'">
     		</th>
     </tr>	
 

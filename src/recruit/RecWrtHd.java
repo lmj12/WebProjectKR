@@ -101,7 +101,7 @@ public class RecWrtHd implements RecruitHandler {
 				
 				timeD = endtm.parse(time);				
 				Timestamp endDate = new Timestamp(timeD.getTime());
-				System.out.println(endDate);
+				
 				recruitDto.setRecEnd(endDate);
 			} catch (ParseException e) {
 				e.printStackTrace();
