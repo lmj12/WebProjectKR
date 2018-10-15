@@ -3,10 +3,7 @@
 <%@ include file="/setting/setting.jsp"%>
 
 <script src="${js}recCng.js"></script>
-<h2>나의 공고 확인 페이지</h2>
-<c:if test="${sessionScope.memType eq 2}">	
-공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
-</c:if>
+
 		
 <script type="text/javascript">
 	//<!--
@@ -37,12 +34,14 @@
 
 
 <div class="container">
+	<c:if test="${sessionScope.memType eq 2}">	
+		공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
+	</c:if>
 	<form method="post" action="recMyView.do">
 	<input type="hidden" name="recId" value="${article.recDto.recId}">
 	<h4>${sessionScope.memid}님의 현재 모집중인 공고 목록입니다</h4>
 	<table border="1">
 		<thead>
-			 
 			<tr>
 				<th style="width : 3%">공고번호</th>
 				<th style="width : 4%">공고상태</th>
@@ -71,7 +70,7 @@
 					<td align="center">
 						${article.recDto.recId}							
 					</td>			
-					<td id="con">						
+					<td class="statusOpt">						
 						<c:if test="${article.recDto.recStatus eq 0}">
 					    		모집중
 					    </c:if>

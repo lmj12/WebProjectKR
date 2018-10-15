@@ -1,3 +1,20 @@
+$(function(){
+	$('.statusOpt').each(
+		function(){
+			if( $(this).val('모집중') ){
+				alert('모집중')
+			} else if( $(this).val('모집완료') ){
+				alert('모집완료')
+			} else if( $(this).val('완료') ){
+				alert('완료')
+			}
+			
+		}	
+	);
+	
+	
+});
+
 
 function recCng(recId){
 		var sta = $("#sta option:selected").val();
