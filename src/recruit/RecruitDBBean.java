@@ -45,8 +45,8 @@ public class RecruitDBBean {
 	public RecruitDataBean recGet(int recId) { // 임시매개변수. 필요시 변경할것.
 		return session.selectOne("Rec.recGet", recId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
-	public List<RecruitDataBean> recList(Map<String, Integer> map) { // 임시매개변수. 필요시 변경할것.		
-		return session.selectList("Rec.recList", map); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+	public List<RecruitDataBean> recList() { // 임시매개변수. 필요시 변경할것.		
+		return session.selectList("Rec.recList"); // 에러막기위한 임시 리턴. 필요없으면 지울것.
 	}
 	
 	public List<RecruitDataBean> getAdm(){	

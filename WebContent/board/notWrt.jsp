@@ -3,6 +3,7 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
 <%@ include file="/board/setting.jsp" %>
+<script src="${js}notice.js"></script>
 <h2>공고글 쓰기 페이지</h2>
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
@@ -14,7 +15,8 @@
 <c:if test="${result eq 1}">
 	<c:redirect url="notice.do"/>		
 </c:if>
-<form method="post" action="notWrt.do" name="noticeform">    		 
+
+<form method="post" action="notWrt.do" name="noticeform" onsubmit="return noticecheck()">    		 
     	<input type="hidden" name="boardregdate" value="java.sql.Timestamp">
     	<input type="hidden" name="userId" value="${sessionScope.memid}" readonly>
     	<table border="1">
