@@ -12,7 +12,7 @@
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script src="./js/jbskMod.js"></script>
 	<script src="./js/jbskReg.js"></script>
-
+<div class="container">
 <h2> 구직자 정보 수정 </h2>
 
 	
@@ -189,5 +189,5 @@
 	 
 	 
 	 
-
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

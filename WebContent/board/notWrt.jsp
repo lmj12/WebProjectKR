@@ -4,6 +4,8 @@
 <%@ include file="/setting/setting.jsp" %>
 <%@ include file="/board/setting.jsp" %>
 <script src="${js}notice.js"></script>
+
+<div class="container">
 <h2>공고글 쓰기 페이지</h2>
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
@@ -52,5 +54,5 @@
     	</form>
 
     	
- 
+ </div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

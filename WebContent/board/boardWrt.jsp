@@ -7,6 +7,8 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="setting.jsp" %>
 <script src="${js}board.js"></script>
+
+<div class="container">
 <h2> 글쓰기 </h2>
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
@@ -76,7 +78,7 @@
     		</tr>
     	</table>
     	</form>
-
+</div>
     	
  
 <%@ include file="/setting/design_setting_footer.jsp" %>
