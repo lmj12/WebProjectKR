@@ -66,37 +66,30 @@
 			</tr>
 			<tr>
 				<th> 이름 </th>
-				<td>
+				<td colspan="2">
 					<input class="input" type="text" name="jbskName" maxlength="10">
 				</td>
-				<td>
-					
-				</td>
+			
 			</tr>
 			<tr>
 				<th> 생년월일 </th>
-				<td>
+				<td colspan="2">
 					<input class="input" type="date" name="jbskBd">
-				</td>
-				<td>
-					
 				</td>
 			</tr>
 			<tr>
 				<th> 성별 </th>
-				<td>
+				<td colspan="2">
 					<input type="radio" name="jbskGender" value="1">남
 					<input type="radio" name="jbskGender" value="2">여
 				</td>
-				<td>
-					
-				</td>
+				
 			</tr>
 			
 			<tr>
 				<th rowspan="5">주소</th>
 			<tr>
-				<td>
+				<td colspan="2">
 					<input type="button" value="주소찾기" onclick="searchPostcode()">
 				</td>
 				<td>
@@ -104,37 +97,31 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td colspan="2">
 					<input type="text" name="jbAddress" id="jbAddress" placeholder="도" readonly>
 					<!-- 정확한 용도를 모르겠으나 주소검색 시 검색창 꺼지게 만들어 줌 -->
 					<!-- 혹시 추후 주소 파싱해오는데 지장 생기면 body 태그 닫히는 곳 까지 내려버려도 무관함 -->
 					<span id="guide" style="color:#999"></span>
 				</td>
-				<td>
-					
-				</td>
+				
 			</tr>
 			<tr>
-				<td>
+				<td colspan="2">
 					<input type="text" id="rdAddress" name="rdAddress" placeholder="시" readonly>
 				</td>
-				<td>
-					
-				</td>
+				
 			</tr>
 			<tr>
-				<td>
+				<td colspan="2">
 					<input type="text" id="zipcode" name="zipcode" placeholder="구" readonly>
 				</td>
-				<td>
-					
-				</td>
+				
 			</tr>
 			
 			<tr>
 				<th> 이메일 </th>
-				<td>
-					 <input type="text" name="jbskEmail1" maxlength="50">@
+				<td colspan="2">
+					 <input type="text" name="jbskEmail1" maxlength="50"> @ 
                        	 <select name="jbskEmail2" id="jbskEmail2">
                         		<option>naver.com</option>	
                         	    <option>daum.net</option>
@@ -149,9 +136,7 @@
                          	   <option value="5">직접입력</option>     -->                    
                         </select>
                 </td>
-                <td>
-					<input class="input" type="text" name="jbskEmail3" maxlength="15" readonly>
-				</td>
+                
             </tr>
 			<tr>
 				<th> 휴대전화 </th>
@@ -165,33 +150,31 @@
 			</tr>
 			<tr>
 				<th>인증번호 입력</th>
-				<td>
+				<td colspan="2">
 					<input type="number" id="authNumCk" maxlength="10" placeholder="인증번호를 입력해주세요.">
 					<input type="hidden" id="authCk" value="0">
 					<input type="button" value="인증번호확인" onclick="authCheck()">
 				</td>
-			</tr>
-			<tr>
-				<th> 사진 </th>
-				<td>
-					<input class="input" type="file" name="jbskPic" id="file">
-				</td>
-				<td>
-					<input class="input" type="text" name="jbskPic2" maxlength="15" readonly>
-				</td>
 				
 			</tr>
 			<tr>
+				<th> 사진 </th>
+				
+				<td colspan="2">
+					<input class="input" type="file" name="jbskPic" id="file" onchange="previewImage(this, 'View_area')">
+					<div id='View_area' style='position:relative; width: 140px; height: 180px; color: black; border: 0px solid black; dispaly: inline; '></div>
+				</td>
+	
+			</tr>
+			<tr>
 				<th> 정보수신동의 </th>
-				<td>
+				<td colspan="2">
 					<input type="radio" name="jbskinfotype" value="1">수신안함
 					<input type="radio" name="jbskinfotype" value="2">메일
 					<input type="radio" name="jbskinfotype" value="3">SMS
 					<input type="radio" name="jbskinfotype" value="4">메일, SMS
 				</td>
-				<td>
-					
-				</td>
+				
 			</tr>
 			<tr>	
 				<th colspan="3">

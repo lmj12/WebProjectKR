@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
@@ -46,7 +46,7 @@
 			</tr>
 			<tr>
 				<th>주소</th>			<!-- jbskAdd1+2+3 -->
-				<td colspan="3"><input type="text" name="jbskAddress" value="${jbskAddress}" readonly></td>
+				<td colspan="3"><input type="text" name="jbskAddress" id="jbskAddress" value="${jbskAddress}" readonly></td>
 			</tr>
 		</table>
 	</div>
@@ -203,5 +203,14 @@
 	//-->
 	</script>
 </c:if>
+
+	<script type="text/javascript">
+	//<!--
+		var a = document.getElementById("jbskAddress").value;
+		var b = a.replace("--","");
+		document.getElementById("jbskAddress").value = b;
+	//-->
+	</script>
+
 
 <%@ include file="/setting/design_setting_footer.jsp" %>
