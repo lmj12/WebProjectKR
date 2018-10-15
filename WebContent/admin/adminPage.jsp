@@ -42,6 +42,9 @@
 						str = "<table border='1'><tr><th>아이디</th><th>패스워드</th><th>등록일</th><th>이름</th><th>성별</th><th>생년월일</th><th>주소1</th><th>주소2</th><th>주소3</th><th>이메일</th><th>전화</th><th>정보수신유형</th><th>회원삭제</th></tr>"
 						for (var i=0; i<user.length; i++){	
 							
+							var sysdate = new Date(user[i].jbskBd);
+							var sysdate2 = sysdate.toLocaleDateString(); 
+							
 							if(user[i].jbskGender == 1){	// int 유형으로 받는 성별과 정보수신유형을 알맞은 값으로 변환
 								user[i].jbskGender = "남성";
 							}else{
@@ -58,7 +61,7 @@
 								user[i].jbskinfotype = "메일, SMS";
 							}
 							
-							str += "<tr><input type='hidden' id='js"+i+"' value='"+user[i].jbskId+"'><td>"+user[i].jbskId+"</td><td>"+user[i].jbskPasswd+"</td><td>"+user[i].jbskregdate+"</td><td>"+user[i].jbskName+"</td><td>"+user[i].jbskGender+"</td><td>"+user[i].jbskBd+"</td><td>"+user[i].jbskAdd1+"</td><td>"+user[i].jbskAdd2+"</td><td>"+user[i].jbskAdd3+"</td><td>"+user[i].jbskEmail+"</td><td>"+user[i].jbskTel+"</td><td>"+user[i].jbskinfotype+"</td><td><input type='button' value='회원삭제' onclick='jbskDELinADM("+i+")'></td><tr>"
+							str += "<tr><input type='hidden' id='js"+i+"' value='"+user[i].jbskId+"'><td>"+user[i].jbskId+"</td><td>"+user[i].jbskPasswd+"</td><td>"+user[i].jbskregdate+"</td><td>"+user[i].jbskName+"</td><td>"+user[i].jbskGender+"</td><td>"+sysdate2+"</td><td>"+user[i].jbskAdd1+"</td><td>"+user[i].jbskAdd2+"</td><td>"+user[i].jbskAdd3+"</td><td>"+user[i].jbskEmail+"</td><td>"+user[i].jbskTel+"</td><td>"+user[i].jbskinfotype+"</td><td><input type='button' value='회원삭제' onclick='jbskDELinADM("+i+")'></td><tr>"
 						}
 						str += "</table>"
 						$("#rst").html(str);
@@ -133,16 +136,17 @@
 				var recs = $.parseJSON(data);
 				if(data){
 					var str = ''
-					str = "<table border='1'><tr><th>업체명</th><th>작성자</th><th>시작일</th><th>종료일</th><th>상태</th></tr>"
+					str = "<table border='1'><tr><th>업체명</th><th>작성자</th><th>시작일</th><th>종료일</th><th>상태</th><th>공고삭제</th></tr>"
 					for (var i=0; i<recs.length; i++){	
-						str += "<tr onclick='toRecruit("+recs[i].recId+")'><td>"+recs[i].jobpCn+"</td><td>"+recs[i].jobpId+"</td><td>"+recs[i].stime+"</td><td>"+recs[i].etime+"</td>"
+						str += "<tr onclick='toRecruit("+recs[i].recId+")'><input type='hidden' id='gonggo"+i+"' value='"+recs[i].recId+"'><td>"+recs[i].jobpCn+"</td><td>"+recs[i].jobpId+"</td><td>"+recs[i].stime+"</td><td>"+recs[i].etime+"</td>"
 						if(recs[i].recStatus==0){
-							str += "<td>모집중</td></tr>"
+							str += "<td>모집중</td>"
 						} else if(recs[i].recStatus==1){
-							str += "<td>모집완료</td></tr>"
+							str += "<td>모집완료</td>"
 						} else if(recs[i].recStatus==2){
-							str += "<td>완료</td></tr></table>"
+							str += "<td>완료</td>"
 						}
+						str += "<td><input type='button' value='공고삭제' onclick='gongoDELinADM("+i+")'></td></tr>"
 					}
 					$("#rst").html(str);
 				} else {
@@ -154,6 +158,30 @@
 		
 	function toRecruit(recId){
 		location.replace("recView.do?recId="+recId+"&pageNum=1")
+	}
+	
+	function gongoDELinADM(i){
+		var recId = $("#gonggo"+i).val()
+		$.ajax({
+		    method : "POST",
+		    url : "ajaxgongoDELinADM.do",
+	    	cache : false,
+			async : false,
+			data : {
+				recId : recId
+			},
+			datatype : "text",
+			success : function(data){
+				if(data==1){
+					alert("삭제완료")
+					gonggo();
+				} else {
+					alert("삭제에 실패했습니다. 잠시 후 다시 시도해주세요.")
+				}
+			}, error:function(request,status,error){
+    		    alert("서버와 연결이 좋지 않습니다. 잠시 후 다시 시도해주세요.")
+    		}
+		})
 	}
 	
 	function jbskDELinADM(i){
