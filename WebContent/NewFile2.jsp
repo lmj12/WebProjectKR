@@ -44,8 +44,8 @@ insert into KRschjob values(KRschjob_seq.nextval,  11, 5, 1, '');
 insert into KRschjob values(KRschjob_seq.nextval,  4, 5, 1, '');
 insert into KRschjob values(KRschjob_seq.nextval,  8, 1, 1, '');
 insert into KRschjob values(KRschjob_seq.nextval,  8, 4, 1, '');
-insert into KRschjob values(KRschjob_seq.nextval,  12, 4, 1, '');
-insert into KRschjob values(KRschjob_seq.nextval,  12, 6, 1, '');
+insert into KRschjob values(KRschjob_seq.nextval, 12, 4, 1, '');
+insert into KRschjob values(KRschjob_seq.nextval, 12, 6, 1, '');
 
 
 
