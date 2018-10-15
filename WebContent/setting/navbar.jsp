@@ -45,7 +45,7 @@
 				
 				<c:if test="${sessionScope.memid ne null }">
 					<li class="nav-item"><a class="nav-link" href="mypage.do">마이페이지</a></li>
-					<c:if test="${(sessionScope.teamId eq 1) or (sessionScope.teamId eq 2) }">
+					<c:if test="${sessionScope.memType eq 2}">
 						<li class="nav-item"> <a class="nav-link" href="teamList.do">팀</a></li>
 					</c:if>
 					<!--////////////// 구직자의 경우  //////////////-->

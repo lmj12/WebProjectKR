@@ -61,7 +61,7 @@
 		function(){
 			makeTable();
 			schJb();
-			setInterval("schJb()",30000);
+			setInterval("schJb()",3000);
 
 		}
 	)

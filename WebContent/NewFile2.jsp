@@ -17,7 +17,7 @@ insert into KRschedule values(12, TO_DATE('2018/10/20 10:00:14', 'YYYY/MM/DD HH:
 
 
 
-insert into KRschjob values(1, 1, 1, 1, '');
+insert into KRschjob values(KRKRschjob_seq, 1, 1, 1, '');
 insert into KRschjob values(2, 1, 2, 1, '');
 insert into KRschjob values(3, 1, 3, 1, '');
 insert into KRschjob values(4, 1, 5, 1, '');
