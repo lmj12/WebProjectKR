@@ -11,6 +11,11 @@
 	
 <script type="text/javascript">
 	//<!--
+	$(document).ready(
+		function(){
+		
+	})
+	
 	function memCheck(){
 		var teamId = ${sessionScope.teamId}
 		if(teamId == 0 ){
