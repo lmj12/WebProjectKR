@@ -50,8 +50,11 @@
 				onclick="location='boardMod.do?boardId=${boardDto.boardId}&pageNum=${pageNum}'">
 			<input class="inputbutton" type="button" value="${btn_delete}"
 				onclick="location='boardDel.do?boardId=${boardDto.boardId}&pageNum=${pageNum}'">
+	
+		<c:if test="${sessionScope.memType eq 3}">
 			<input class="inputbutton" type="button" value="${btn_reply}"
 				onclick="location='boardWrt.do?boardId=${boardDto.boardId}&boardParentId=${boardDto.boardParentId}&pageNum=${pageNum}'">
+		</c:if>
 			<input class="inputbutton" type="button" value="${btn_list}"
 				onclick="location='boardList.do?pageNum=${pageNum}'">
 		</th>

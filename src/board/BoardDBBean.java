@@ -14,6 +14,40 @@ import mybatis.SqlMapClient;
 public class BoardDBBean {
 	private SqlSession session = SqlMapClient.getSession();
 	
+	public int notWrt(BoardDataBean boardDto) {
+	
+		String boardId = boardDto.getBoardId();
+		
+		int st3 =0;
+		boardId = boardDto.getBoardId();
+		//System.out.println(boardId + "-");
+				
+		List<String>rst1 = session.selectList("Board.selId");
+		
+		if(rst1.size()==1){
+			String rst11 = session.selectOne("Board.selectId");
+			st3 = Integer.parseInt(rst11.toString().split("_")[1]);
+		}else {					
+			for(int i=0; i< rst1.size() ; i++) {								
+				 if(Integer.parseInt(rst1.get(i).toString().split("_")[0])==0){
+					st3 = Integer.parseInt(rst1.get(i).toString().split("_")[1]);
+				}else {
+					rst1.remove(rst1.get(i));
+				}
+				
+			}//int i			
+
+		}
+		st3=st3+1;
+		boardId = 0 + "_" + st3;
+		boardDto.setBoardId(boardId);
+		//boardDto.setBoardParentId(boardParentId);
+		rst1.removeAll(rst1);
+		boardDto.setBoardParentId(0);		
+	
+		return session.insert("Board.notWrt", boardDto);	
+	}
+	
 	public int boardWrt(BoardDataBean boardDto) { // 임시매개변수. 필요시 변경할것.
 	   // List<String> rst = new ArrayList<String>();
 	   // String rst[]= null;
@@ -148,5 +182,21 @@ public class BoardDBBean {
 	
 	public List<BoardDataBean> getAdm2() { //신고 리스트 가져오기
 		return session.selectList("Board.getAdm2"); 
+	}
+
+	public List<BoardDataBean> boardGetFin(Map<String, Object> map) {
+		return session.selectList("Board.boardGetFin", map);
+	}
+
+	public List<BoardDataBean> notGet() {
+		return session.selectList("Board.notGet");
+	}
+
+	public int Mod(BoardDataBean boardD) {
+		return session.update("Board.Mod", boardD);
+	}
+
+	public BoardDataBean boardNotGet(String boardId) {
+		return session.selectOne("Board.boardNotGet", boardId);
 	}
 }

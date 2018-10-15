@@ -23,11 +23,19 @@ public class BoardDelHd implements BoardHandler {
 		
 		int result = boardDao.boardDel(boardId);
 		
-		request.setAttribute("result", result);
-		
-		
+		request.setAttribute("result", result);		
 		
 		return new ModelAndView("/board/boardDel");
 	}
-
+	
+	@Resource
+	public BoardDBBean boardD;
+	@RequestMapping("/noticeDel")
+	public ModelAndView process1(HttpServletRequest request, HttpServletResponse response) throws BoardException {
+		String boardId = (request.getParameter("boardId"));	
+		System.out.println(boardId);
+		int result = boardD.boardDel(boardId);		
+		request.setAttribute("result", result);				
+		return new ModelAndView("/board/noticeDel");
+	}
 }
