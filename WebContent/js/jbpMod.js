@@ -69,12 +69,7 @@ $(document).ready(
 					}else{
 						$('.passwdresult').val("사용할 수 있는 비밀번호입니다.");
 					}
-					var repasswd=$('input[name=rejobpPasswd').val();
-					if($('input[name=jobpPasswd]').val()== $('input[name=rejobpPasswd]').val()){
-						$('.repasswdresult').val('사용할 수 있는 비밀번호입니다.');
-					}else{
-						$('.repasswdresult').val('사용할 수 없는 비밀번호입니다');	
-					}
+					
 					
 				}
 			);

@@ -63,7 +63,6 @@
     		<tr>
     			<th colspan="2">
     			<input class="inputbutton" name="write" type="submit" value="글작성">
-  		<!--   		<input class="inputbutton" type="reset" value="글작성 취소">	-->
     			<input class="inputbutton" type="button" value="목록으로" onclick ="location='boardList.do'">
     		</th>
     		</tr>

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
-<%@ include file="setting.jsp" %>
-<script src="${js}board.js"></script>
+
+<script src="${js}notice.js"></script>
 
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
@@ -18,8 +18,6 @@
 
 <div class="container">
 <h2> 글 수 정 </h2>
-
-
 		<form method="post" action="boardMod.do" name="modifyform" onsubmit="return modifycheck()">
 			<input type="hidden" name="boardId" value="${boardDto.boardId}">
 			<input type="hidden" name="pageNum" value="${pageNum}"/>		
@@ -39,7 +37,7 @@
 				<tr>
 					<th>글내용 </th>
 					<td>
-						<textarea name="boardContent" rows="10" cols="40">${boardDto.boardContent}</textarea>
+						<textarea name="boardContent" onkeyup="vlen()" rows="10" cols="40" style="overflow:hidden">${boardDto.boardContent}</textarea>
 					</td>
 				</tr>
 				
