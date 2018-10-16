@@ -46,7 +46,7 @@
    		select * from KRrecposition where recId=#{recId}
    </select>
 	<select id="recList" resultType="recruit.RecruitDataBean">
-			select * from KRrecruit where recStatus=1 or recStatus=0 order by recstatus asc, recStart desc
+			select * from KRrecruit where recStatus=1 or recStatus=0 order by recStart desc
 	</select>
 	<select id="getAdm" resultType="recruit.RecruitDataBean">
 			select r.RECID, p.JOBPCN,r.JOBPID,r.RECSTATUS,r.RECSTART,r.RECEND  from KRrecruit r, KRJOBPROV p where R.JOBPID = p.JOBPID
