@@ -16,12 +16,22 @@
 <script src="${js}recModSet.js"></script>
 <h2>공고수정페이지</h2>
 <script type="text/javascript">
-var num = 0;
-var cnt = 0;
-$( function() {
-    $( "#datepicker" ).datepicker({minDate: 0});
-    $("#timepicker").timepicker({'timeFormat': 'HH:mm'});
-  } );
+
+
+	var num = 0;
+	var cnt = 0;
+	var posList = []
+	$(document).ready(function(){
+		for (var i=0; i<posList.length; i++){
+			var posId = posList[i]
+			adda()
+			$("#s"+cnt).val(posId).prop("seleted", true)
+		}
+	})
+	$( function() {
+	    $( "#datepicker" ).datepicker({minDate: 0});
+	    $("#timepicker").timepicker({'timeFormat': 'HH:mm'});
+	  } );
 </script>
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
@@ -51,36 +61,21 @@ $( function() {
 	<tr>
 		<tr>
 		<th>공고 직무 </th>
-		<td id="addposx" colspan="3"> 지난 공고의 직무는 다음과 같습니다 : 
-	'
+		<th id="posx" colspan="3"> 
+	
 		<c:forEach var="recruitDto" items="${recruitDto}">
-			<c:choose>
-			  <c:when test="${recruitDto.posId eq 1}">
-			  	팀장
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 2}">
-			   	스캔
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 3}">
-			   	예도
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 4}">
-			   	안내
-			  </c:when>
-			  <c:when test="${recruitDto.posId eq 5}">
-			   	경호
-			  </c:when>
-			  <c:otherwise>
-			   	기타
-			  </c:otherwise> 
-			 </c:choose>
-			 </c:forEach>
-			 <br><br>
-			  직무를 설정해 주셔야 합니다
-			  <input type="button" value="추가" name="click" onclick="return adda()"> 
-			  <input type="hidden" id="conval" name="conval" value="0">	
-			<input type="hidden" id="id" name='id'>
-			 </td>
+			<script type="text/javascript">
+				//<!--
+				posList.push(${recruitDto.posId})
+				//-->
+			</script>
+		</c:forEach>
+			 <br><br> 
+			  <input type="button" value="추가" name="click" style="float:right;" onclick="return adda()"> 
+			  <input type="hidden" id="conval" name="conval" value="0">
+			  <input type="hidden" id='id' name="id">	
+		
+			 </th>
 			</tr>			
 	
 	<tr>

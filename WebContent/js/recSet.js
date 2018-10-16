@@ -191,7 +191,7 @@ function add(){
 		+"<input type='button' value='삭제' onclick='delitem("+cnt+")'> ";
 	tr.setAttribute("id", "id_"+cnt);
 	//addposx.appendChild(td);
-	tr.colSpan =3;
+
 	addposx.appendChild(tr);
 	
 	document.recwrite.confirm.value =1;
@@ -199,8 +199,8 @@ function add(){
 }
 //직무제거
 
-function delitem(){
-	var addposx=document.getElementById("addposx");
-	var deldiv = document.getElementById("id_"+cnt);
+function delitem(cnt){
+	var addposx = document.getElementById("addposx");	
+	var deldiv = document.getElementById("id_"+cnt); 
 	addposx.removeChild(deldiv);
 }
