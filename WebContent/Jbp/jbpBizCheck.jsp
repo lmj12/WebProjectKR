@@ -3,20 +3,24 @@
 <%@ include file="/setting/setting.jsp" %>
 
 <!DOCTYPE html>
-<form>
-	<table border="1">
+<table border="1">
+	<thead>
 		<tr>
 			<td> 사업자번호를 입력해주세요 </td>
 		</tr>
-		
+	</thead>
+	<tbody>
 		<tr>
 			<td>
 				<input type="text" name="jbpNumber" />
 				<input type="button" name="checkBizId" value="확인" />
 			</td>
 		</tr>
-	</table>
-</form>
+	</tbody>
+</table>
+<div id="bizList" class="container">
+
+</div>
 
 <script type="text/javascript">
 //<!--
@@ -28,7 +32,7 @@
 			$('input:button[name=checkBizID]').on(
 				'click',
 				function checkBizID() {
-					
+					alert()
 					if( !$('input:text[name=jbpNumber]').val() ){
 						alert("사업자번호를 입력해주세요");
 						return false;
@@ -56,13 +60,11 @@
 					    	var bizName = $('input:text[name=jobpCn]').val();
 					    	var parseBizID = bizID.substring(0, 6);
 					    	
-					    	bizListCheck();
-					    	
-					    	function bizListCheck() {
+					    	bizListCall = function() {
 					    		var serviceKey = 'zHRNYJ97QejMrVzKWNS6Hmc8j9Gd8oJ7p4LKd3MfUsTbmSI%2F2v3inaBqZm%2FTDmxvJPYg7gQ1QOEfbnPWE%2FRQvg%3D%3D';
 								var jbpName = $('input:text[name=jobpCn]').val();
 								var jbpNumber = parseBizID;
-								var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch?serviceKey";
+								var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch";
 								
 								$.ajax(
 										{
@@ -75,13 +77,12 @@
 											},
 											dataType : 'json',
 											success : function(data){
-												alert('성공');
-												var xmlDoc = data.responseXML;
-												document.open();
-												document.write(xmlDoc);
+												$('.bizList').last()
+												.html( $(data).find('body').text() );
+												
 											},
 											error : function(e){
-												alert('error : ' + e);
+												$('.bizList').val(e.message);
 											}
 										}	
 								);
