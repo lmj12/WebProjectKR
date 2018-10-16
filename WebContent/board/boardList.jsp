@@ -3,8 +3,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/board/setting.jsp" %>
-<!DOCTYPE html>
-	<script src="${js}board.js"></script>
 <h2>글목록</h2>
 
 <br>

@@ -48,38 +48,20 @@ insert into KRjobseeker values('human14', '1212abc', sysdate, 'choi', 2, TO_DATE
  
  
  
- insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human1', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human1', 1);
  insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human2', 0);
- insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human3', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human3', 1);
  insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human4', 1);
  insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human5', 1);
- insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human6', 1);
- insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human7', 1);
- insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human8', 1);
- insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human9', 1);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human6', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human7', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human8', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human9', 0);
  insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human10', 0);
  insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human11', 0);
  insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human12', 0);
  insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human13', 0);
  insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human14', 0);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human1', 0);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human2', 0);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human3', 0);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human4', 0);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human5', 0);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human6', 0);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human7', 0);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human8', 0);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human9', 0);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human10', 1);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human11', 1);
- insert into KRteammember(teamId, jbskId, tmstatus) values(2, 'human12', 1);
- insert into KRteammember(teamId, jbskId, tmstatus) values(3, 'human13', 1);
- insert into KRteammember(teamId, jbskId, tmstatus) values(3, 'human14', 1);
- insert into KRteammember(teamId, jbskId, tmstatus) values(3, 'human1', 1);
- insert into KRteammember(teamId, jbskId, tmstatus) values(3, 'human2', 1);
-                       
- 
  
  
  
