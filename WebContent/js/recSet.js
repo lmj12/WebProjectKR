@@ -168,16 +168,6 @@ function writecheck(){
 }
 
 
-//모집상태 변경
-function change(){
-	var target = document.getElementById("sta");
-	var t = target.options[target.selectedIndex].value;
-		
-	var val = document.getElementById("val");
-	val.setAttribute("value", t);
-
-}
-
 //직무추가
 function add(){
 	++cnt;

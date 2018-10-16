@@ -5,8 +5,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
-<%@ include file="setting.jsp" %>
-<script src="${js}board.js"></script>
+<%@ include file="../setting/setting.jsp" %>
+<script src="${js}notice.js"></script>
 
 <div class="container">
 <h2> 글쓰기 </h2>
@@ -64,7 +64,7 @@
     		<tr>
     			<th> 내용 </th>  
     			<td>
-    				<textarea name="boardContent" rows="10" cols="40"></textarea>
+    				<textarea name="boardContent" onkeyup="len2()" rows="10" cols="40" style="overflow:hidden"></textarea>
     			</td>
     			
     		</tr>
