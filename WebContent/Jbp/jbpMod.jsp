@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
-<script src="${js}jbpReg.js"></script>
+<script src="./js/jbpMod.js"></script>
 <!DOCTYPE html>
 <div class="container">
 <h2>구인자 정보수정페이지</h2>
