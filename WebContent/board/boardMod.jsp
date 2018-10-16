@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 
-<script src="${js}notice.js"></script>
+<script src="./js/notice.js"></script>
 
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
