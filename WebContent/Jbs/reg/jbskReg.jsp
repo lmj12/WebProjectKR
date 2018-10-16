@@ -17,6 +17,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title> 구직자 회원가입 </title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="//code.jquery.com/jquery.min.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script src="./js/jbskReg2.js"></script>
