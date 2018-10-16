@@ -1,27 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
 
 <!DOCTYPE html>
-<table border="1">
-	<thead>
-		<tr>
-			<td> 사업자번호를 입력해주세요 </td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>
-				<input type="text" name="jbpNumber" />
-				<input type="button" name="checkBizId" value="확인" />
-			</td>
-		</tr>
-	</tbody>
-</table>
-<div id="bizList" class="container">
-
+<div class="container">
+	<table border="1">
+		<thead>
+			<tr>
+				<td> 사업자번호를 입력해주세요 </td>
+			</tr>
+		</thead>
+		<tbody id="t">
+			<tr>
+				<td>
+					<input type="text" name="jbpNumber" />
+					<input type="button" name="checkBizId" value="확인" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div id="bizList" class="container">
+	
+	</div>
 </div>
-
 <script type="text/javascript">
 //<!--
 	$(document).ready(
@@ -77,12 +79,13 @@
 											},
 											dataType : 'json',
 											success : function(data){
-												$('.bizList').last()
-												.html( $(data).find('body').text() );
-												
+												$('.bizList')
+													.last()
+													.html( $(data).find('body').text() );
 											},
 											error : function(e){
-												$('.bizList').val(e.message);
+												$('.bizList')
+													.val(e.message);
 											}
 										}	
 								);

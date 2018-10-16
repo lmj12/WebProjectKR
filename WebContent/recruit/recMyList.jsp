@@ -70,7 +70,7 @@
 					<td align="center">
 						${article.recDto.recId}							
 					</td>			
-					<td class="statusOpt">						
+					<td>						
 						<c:if test="${article.recDto.recStatus eq 0}">
 					    		모집중
 					    </c:if>

@@ -26,9 +26,13 @@
 										<!-- 기본 이력서 정보 -->
 	<div class="table-responsive">
 		<table class="table table-bordered" style="text-align: center";>
+			<thead>
+				<tr>
+					<th colspan="9"> 이 력 서 </th>
+				</tr>
+			</thead>
 			<tr>
 				<td rowspan="5"><img src="${jbskDto.getJbskPic()}" width="140" height="180" /></td> 
-				<th colspan="4"> 이 력 서 </th>
 			</tr>
 			<tr>
 				<th rowspan="2" >성명</th>			<!-- jbskName -->

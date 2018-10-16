@@ -18,8 +18,6 @@
 			}
 		
 	})
-	
-	
 	function popUp(){
 		$.ajax({
 	    	method : "POST",
@@ -43,9 +41,7 @@
 				alert();
 			}
 		})
-			
 	}
-	
 	function memCheck(){
 		var teamId = '${sessionScope.teamId}'
 		if(teamId == 0 ){
@@ -69,19 +65,29 @@
 	function makePopImg(num){
 			var str = '';
 			var rst = 0;
+			str += "<div class='container'>"
+			str += "	<div class='row'>"
 			if(num==1){
-				str += "<img src='./setting/image/pop/1.png' onclick='toPopRec()'>인근공고가 있습니다." 
+				str += "<img src='./setting/image/pop/1.png' onclick='toPopRec()'>" 
 				rst = 1;
 			} else if(num==2){
-				str += "<img src='./setting/image/pop/2.png' onclick='toPopRec()'><h1>인근지역공고가 등록되었습니다.</h1>" 
+				str += "<img src='./setting/image/pop/2.png' onclick='toPopRec()'>" 
 				rst = 1;
 			} else if(num==3){
-				str += "<img src='./setting/image/pop/3.png' onclick='toPopRec()'><h1>인근지역공고가 등록되었습니다.</h1>" 
+				str += "<img src='./setting/image/pop/3.png' onclick='toPopRec()'>" 
 				rst = 1;
 			} else {
-				str += "<img src='./setting/image/pop/etc.png' onclick='toPopRec()'><h1>인근지역공고가 등록되었습니다.</h1>" 
+				str += "<img src='./setting/image/pop/etc.png' onclick='toPopRec()'>" 
 				rst = 1;
-			}
+			}   
+			str += "	</div>"
+			str += "	<div class='col'>"
+			str += "		<small>인근지역공고가 등록되었습니다.</small>"
+			str += "	</div>"
+			str += "<div>"
+			str += "<button type='button' class='btn btn-Warning' onclick='toPopRec()'>"
+			str += "<strong>인근지역공고가 등록되었습니다</strong> <span class='badge badge-light'><img src='./setting/image/pop/etc.png'</span>"
+			str += "</button>"
 		
 		$("#popUp").append(str);
 		return rst;
@@ -90,16 +96,17 @@
 </script>
 	<nav class="navbar navbar-expand-sm navbar-light sticky-top" data-toggle="affix">
 	     <a class="navbar-brand" href="main.do">KR_WebProject[기린반]</a>
-	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-	        ☰
-	    </button>
 	    &nbsp;
 	    <div id="popUp" >
-
+	    	<input type="text" name="">
+	    	<a class="popUp-btn" href="#"></a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="collapsingNavbar">
 	
 	        <ul class="nav navbar-nav ml-auto">
+	        	<li class="nav-item">
+	        		
+	        	</li>
 	        	<li class="nav-item">
 		                <a class="nav-link" href="notice.do">공지사항</a>
 		        </li>

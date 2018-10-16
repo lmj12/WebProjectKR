@@ -87,8 +87,12 @@
 	}
 	.affix.navbar .nav-item>a, 
 	.affix.navbar .navbar-brand {
-	    color: #fff;
+	    color: #d2dae2;
 	}
+	div .container table{
+	  background-color: #808e9b;
+	}
+	
 </style>
 <style media="screen">
  body { background-color:#fafafa; font-family:'Roboto';}
