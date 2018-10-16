@@ -75,4 +75,16 @@ public class RecruitDBBean {
 	public List<RecruitDataBean> recMyListFin(String jobpId) {
 		return session.selectList("Rec.recMyListFin", jobpId);
 	}
+	
+	public int getPopCk(RecruitDataBean recDto){
+		session.flushStatements();
+		session.clearCache();
+		return session.selectOne("Rec.popCk", recDto);
+	}
+	
+	public List<RecruitDataBean> getPoprec(RecruitDataBean recDto){
+		session.flushStatements();
+		session.clearCache();
+		return session.selectList("Rec.pop", recDto);
+	}
 }

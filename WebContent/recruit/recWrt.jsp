@@ -26,17 +26,7 @@ $( function() {
     $("#timepicker").timepicker({'timeFormat': 'HH:mm'});
   } );
 </script>
-<c:if test="${rst eq 0}">
-	<script type="text/javascript">
-	
-		<!--
-		erroralert('inserterror');
-		//-->
-	</script>
-</c:if>
-<c:if test="${rst eq 1}">
-	<c:redirect url="mypage.do"/>		
-</c:if>
+
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
 	
@@ -61,19 +51,20 @@ $( function() {
 	</tr>
 	
 	
-	<tr id="addposx">
+	<tr>
 		<th>공고 직무 </th>
-		<td> 		
-		<input type="button" value="추가" name="addpos" onclick="return add()"> 
+		<td id="addposx"> 		
+		<input type="button" value="추가" name="addpos" style="float:right;" onclick="return add()"> 
 		<input type="hidden" name="confirm" value="0">
-		<input type="hidden" id="id" name='id'>	</td>
+		<input type="hidden" id='id' name="id">
+			</td>
 	</tr>
 	<tr>
 		<th colspan="8">공고내용</th>	
 	
 	</tr>
 	<tr>
-		<td colspan="8"> <textarea name="reccontent" rows="10" cols="80"></textarea></td>
+		<td colspan="8"> <textarea name="reccontent" onkeyup="len()" rows="10" cols="80" style="overflow:hidden"></textarea></td>
 	</tr>
 	<tr> 
 		<th> 사업장 이름 </th>

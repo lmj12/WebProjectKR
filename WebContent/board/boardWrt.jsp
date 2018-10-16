@@ -5,8 +5,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
-<%@ include file="setting.jsp" %>
-<script src="${js}board.js"></script>
+<%@ include file="../setting/setting.jsp" %>
+<script src="${js}notice.js"></script>
 
 <div class="container">
 <h2> 글쓰기 </h2>
@@ -50,7 +50,7 @@
     <c:if test="${sessionScope.memType eq 3}">
     		<tr>
     			<th>작성자 </th>
-    			<td> ${boardDto.getboardParentId()} </td>
+    			<td> ${boardDto.userId} </td>
     		</tr>
     <!-- 	
     		<tr>
@@ -64,7 +64,7 @@
     		<tr>
     			<th> 내용 </th>  
     			<td>
-    				<textarea name="boardContent" rows="10" cols="40"></textarea>
+    				<textarea name="boardContent" onkeyup="len2()" rows="10" cols="40" style="overflow:hidden"></textarea>
     			</td>
     			
     		</tr>
@@ -72,7 +72,7 @@
     		<tr>
     			<th colspan="2">
     			<input class="inputbutton" name="write" type="submit" value="글작성">
-    			<input class="inputbutton" type="reset" value="글작성 취소">
+  		<!--   		<input class="inputbutton" type="reset" value="글작성 취소">	-->
     			<input class="inputbutton" type="button" value="목록으로" onclick ="location='boardList.do'">
     		</th>
     		</tr>

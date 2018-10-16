@@ -4,12 +4,11 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <script src="${js}recCng.js"></script>
 <div class="container">
-<h2>공고조회 페이지</h2>
+<h2>인근 지역 공고</h2>
 <style type="text/css">
 table{
 	margin : 10px 10px 10px 10px;
 	}
-	
 </style>
 <c:if test="${sessionScope.memType eq 2}">	
 공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
@@ -28,29 +27,27 @@ table{
 <input type="hidden" name="recId" value="${article.recDto.recId}">
 
 <table border="1"  style="cursor:hand;float:left;width:30%;" onclick="location.href='recView.do?recId=${article.recDto.recId}'">	
-	<thead>
-		<tr>
-			<th>공고상태</th>
-			<td class="statusOpt" align="center">
-				<c:if test="${article.recDto.recStatus eq 0}">
-			    		모집중
-			    </c:if>
-			    <c:if test="${article.recDto.recStatus eq 1}">
-			    		모집완료
-			    </c:if>
-			    <c:if test="${article.recDto.recStatus eq 2}">
-			    		완료
-			    </c:if>	
-			</td>		
-		</tr>
-	</thead>
+
 	<tr>
 		<th>공고번호 </th>
 		<td align="center">
 				${article.recDto.recId}				
 		</td>	
 	</tr>
-	
+	<tr>
+		<th>공고상태</th>
+		<td id="con" align="center">
+					<c:if test="${article.recDto.recStatus eq 0}">
+				    		모집중
+				    </c:if>
+				    <c:if test="${article.recDto.recStatus eq 1}">
+				    		모집완료
+				    </c:if>
+				    <c:if test="${article.recDto.recStatus eq 2}">
+				    		완료
+				    </c:if>	
+				</td>		
+	</tr>
 	<tr>
 		<th>사업자 이름</th>
 		<td align="center">						
@@ -86,13 +83,13 @@ table{
 		</td>				
 	</tr>
 	<tr>
-		<th>등록일</th>
+		<th>시작일</th>
 		<td align="center">
 					${article.recDto.stime}		
 				</td>				
 	</tr>
 	<tr>
-		<th>만료일</th>
+		<th>종료일</th>
 		<td align="center">
 					${article.recDto.etime}
 				</td>	

@@ -38,7 +38,7 @@
 		공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
 	</c:if>
 	<form method="post" action="recMyView.do">
-	<input type="hidden" name="recId" value="${article.recDto.recId}">
+
 	<h4>${sessionScope.memid}님의 현재 모집중인 공고 목록입니다</h4>
 	<table border="1">
 		<thead>
@@ -117,7 +117,7 @@
 					</td>	
 					<td onclick="event.cancelBubble = true;">
 					
-					<select name="sta" id="sta">
+					<select name="sta" id="${article.recDto.recId}">
 						<option value="0" selected>모집중 </option>
 						<option value="1">모집완료</option>
 						<option value="2">완료</option>

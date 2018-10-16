@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="setting.jsp" %>
+<%@ include file="../setting/setting.jsp" %>
 <script src="${js}board.js"></script>
 
 <%
@@ -48,17 +49,18 @@
 	</tr>	
 	<tr>
 		<th colspan="4">
+		<c:if test="${sessionScope.memid eq boardDto.userId}">
 			<input class="inputbutton" type="button" value="${btn_modify}"
 				onclick="location='boardMod.do?boardId=${boardDto.boardId}&pageNum=${pageNum}'">
 			<input class="inputbutton" type="button" value="${btn_delete}"
 				onclick="location='boardDel.do?boardId=${boardDto.boardId}&pageNum=${pageNum}'">
-	
+		</c:if>
 		<c:if test="${sessionScope.memType eq 3}">
 			<input class="inputbutton" type="button" value="${btn_reply}"
 				onclick="location='boardWrt.do?boardId=${boardDto.boardId}&boardParentId=${boardDto.boardParentId}&pageNum=${pageNum}'">
 		</c:if>
 			<input class="inputbutton" type="button" value="${btn_list}"
-				onclick="location='adminPage.do'">
+				onclick="hBack()">
 		<!--  	onclick="location='boardList.do?pageNum=${pageNum}'">  -->		
 		</th>
 	</tr>		

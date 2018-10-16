@@ -41,10 +41,7 @@
 	</select>
 	<select id="recGet"  parameterType="int" resultType="recruit.RecruitDataBean">
 		select * from KRrecruit where recId=#{recId}
-	</select>
-	<select id="getId"  parameterType="recruit.RecruitDataBean" resultType="int">
-		select RECID from (select * from KRrecruit where JOBPID=#{jobpId} order by RECSTART desc) where rownum=1
-	</select>   
+	</select> 
    <select id="Rec.recPosGet" parameterType="int" resultType="recruit.RecruitDataBean">
    		select * from KRrecposition where recId=#{recId}
    </select>
@@ -58,10 +55,20 @@
 			update KRrecruit set recStatus=#{recStatus} where recEnd&gt;=sysdate	
 	</update>
 	<insert id="recWrt" parameterType="recruit.RecruitDataBean">
+		<selectKey resultType="int" keyProperty="recId" order="AFTER">
+			select KRrecruit_seq.currval from dual
+		</selectKey>
 		insert into KRrecruit values( KRrecruit_seq.nextval, #{recStart}, #{recEnd}, #{reccontent}, #{recSite}, #{searchSite},
 		 #{recReadCnt}, #{recStatus}, #{jobpId}, #{schId})
 	</insert>
 	<insert id="Rec.recPos" parameterType="java.util.Map">
    		insert into KRrecposition values(#{recId}, #{posId}) 
    </insert>
+   <select id="popCk" parameterType="recruit.RecruitDataBean" resultType="int">
+   		select count(*) from KRRECRUIT where RECSTATUS = 0	AND SEARCHSITE	= #{searchSite} AND RECSTART &gt; #{recStart} 
+   </select>
+   <select id="pop" parameterType="recruit.RecruitDataBean" resultType="recruit.RecruitDataBean">
+   		select * from KRRECRUIT where RECSTATUS = 0	AND SEARCHSITE	= #{searchSite} AND RECSTART &gt; #{recStart} 
+   </select>
+   
   </mapper>

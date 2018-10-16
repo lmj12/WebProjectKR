@@ -9,10 +9,6 @@
 	
 	function toRecruit(recId){
 		location.href="recView.do?recId="+recId+"&pageNum=1"
-
-
-
-
 	}
 	function recCncl(recId) {
 		var jbskId = '${sessionScope.memid}';

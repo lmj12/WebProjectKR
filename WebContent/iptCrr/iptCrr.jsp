@@ -25,13 +25,13 @@
 <h2> 이력서제작 및 경력입력 </h2>
 										<!-- 기본 이력서 정보 -->
 	<div class="table-responsive">
-		<table class="table table-bordered">
+		<table class="table table-bordered" style="text-align: center";>
 			<tr>
 				<td rowspan="5"><img src="${jbskDto.getJbskPic()}" width="140" height="180" /></td> 
 				<th colspan="4"> 이 력 서 </th>
 			</tr>
 			<tr>
-				<th rowspan="2">성명</th>			<!-- jbskName -->
+				<th rowspan="2" >성명</th>			<!-- jbskName -->
 				<td rowspan="2"><input type="text" name="jbskName" value="${jbskDto.jbskName}" readonly></td>	
 				<th colspan="2">생년월일</th>		<!-- jbskBd -->
 			</tr>
@@ -40,7 +40,7 @@
 			</tr>
 			<tr>
 				<th>성별</th>			<!-- jbskGender -->
-				<td><input type="text" name="jbskGender" id="jbskGender" value="${jbskDto.jbskGender}" readonly></td>
+				<td><input name="jbskGender" id="jbskGender" value="${jbskDto.jbskGender}" readonly></td>
 				<th>연락처</th>		<!-- jbskTel -->
 				<td><input type="text" name="jbskTel" value="${jbskDto.jbskTel}" readonly></td>
 			</tr>

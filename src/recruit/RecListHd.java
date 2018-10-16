@@ -82,9 +82,6 @@ public class RecListHd implements RecruitHandler {
 		request.setAttribute( "pageBlock", pageBlock );
 		//request.setAttribute("recId", recId);
 		if( count > 0 ) {
-			Map <String, Integer> map = new HashMap<String, Integer>();
-			map.put("start", start);
-			map.put("end", end);
 			List <RecruitDataBean> articles = recDao.recList(  );
 			
 			List <RecListDataBean> articleList = new ArrayList<RecListDataBean>();
@@ -107,7 +104,6 @@ public class RecListHd implements RecruitHandler {
 			}
 			
 			request.setAttribute("articleList", articleList);
-			request.setAttribute("cnt", articles.size());
 			
 		
 		

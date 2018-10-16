@@ -111,8 +111,9 @@ public class RecWrtHd implements RecruitHandler {
 				
 				String pos = request.getParameter("id");
 				String array[] = (pos.split(","));		
-				
-				int recId = recDao.recGetId(recruitDto);
+			
+				int recId = recruitDto.getRecId();
+			
 				for(int i=0; i<array.length; i++) {				
 				
 					int posId = Integer.parseInt(array[i]);

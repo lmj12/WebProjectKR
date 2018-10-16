@@ -8,11 +8,7 @@
 
 <table border="1">
 
-<c:if test="${sessionScope.memType eq 3}">
-	<tr>
-		<td colspan="3"><input type="button" value="공지작성" onclick="location='notWrt.do'"></td>
-	</tr>
-</c:if>
+
 	<thead>
 		<tr>
 			<th>글번호</th>
@@ -30,5 +26,9 @@
 	</c:forEach>
 	 
 </table>
+<c:if test="${sessionScope.memType eq 3}">
+	<input type="button" value="공지작성" onclick="location='notWrt.do'">
+</c:if>
+
 </div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

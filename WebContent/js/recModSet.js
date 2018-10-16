@@ -120,6 +120,16 @@ function refocus(){
 	x=true;
 }
 
+function lne(){
+	var cont =recMod.reccontent;
+	if(cont.value.length>1000){
+		erroralert("글자수를 제한해주세요");
+		cont.value = cont.value.substring(0, 1000);
+		cont.focus();
+		return false;
+	}
+}
+
 function recheck(){
 	if(recMod.conval.value == 0){
 		erroralert("직무를 선택해주세요");
@@ -130,9 +140,6 @@ function recheck(){
 		return false;
 	}else if(!recMod.reccontent.value){
 		alert("내용을 입력해주세요");
-		return false;
-	}else if(!recMod.recSite.value){
-		erroralert("사이트를 입력해주세요.");
 		return false;
 	}else if(!recMod.End.value){
 		alert("날짜를 입력해주세요");
@@ -161,33 +168,25 @@ function recheck(){
 //직무추가
 function adda(){
 	++cnt;
-	var addposx = document.getElementById("addposx");
-	var tr = document.createElement("td");
-	
-	tr.innerHTML = "<select name='xosXos'>"
-		+ 	"<option value='1' selected>팀장</option>"	
-		+	"<option value='2'>스캔</option>"	
-		+	"<option value='3'>예도</option>"	
-		+	"<option value='4'>안내</option>"
-		+	"<option value='5'>경호</option>"		
-		+	"<option value='6'>기타</option>"
-		+	"</select>"
-		+ 	"&nbsp;"
-		+"<input type='button' value='삭제' onclick='delitem("+cnt+")'> ";
-		+"<input type='button' value='삭제' onclick='delitem("+cnt+")'> ";
-	tr.setAttribute("colspan", "4");	
-	tr.setAttribute("id", "id/"+cnt);
+	var str = "<select id='s"+cnt+"' name='xosXos'>"
+	+ 	"<option value='1' selected>팀장</option>"	
+	+	"<option value='2'>스캔</option>"	
+	+	"<option value='3'>예도</option>"	
+	+	"<option value='4'>안내</option>"
+	+	"<option value='5'>경호</option>"		
+	+	"<option value='6'>기타</option>"
+	+	"</select>"
+	+ 	"&nbsp;"
+	+"<input type='button' id='d"+cnt+"' value='삭제' onclick='delitem("+cnt+")'> ";
 	//addposx.appendChild(td);
-
-	addposx.appendChild(tr);
 	
-	document.recMod.conval.value =1;
+	$("#posx").append(str);
+	document.getElementById("conval").value =1;
 	
 }
 //직무제거
 
-function delitem(){
-	var addposx = document.getElementById("addposx");
-	var deldiv = document.getElementById("id/"+cnt); 
-	addposx.removeChild(deldiv);
+function delitem(cnt){
+	document.getElementById("s"+cnt).remove();
+	document.getElementById("d"+cnt).remove();
 }
