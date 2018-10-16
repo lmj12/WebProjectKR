@@ -120,6 +120,16 @@ function refocus(){
 	x=true;
 }
 
+function lne(){
+	var cont =recMod.reccontent;
+	if(cont.value.length>1000){
+		erroralert("글자수를 제한해주세요");
+		cont.value = cont.value.substring(0, 1000);
+		cont.focus();
+		return false;
+	}
+}
+
 function recheck(){
 	if(recMod.conval.value == 0){
 		erroralert("직무를 선택해주세요");

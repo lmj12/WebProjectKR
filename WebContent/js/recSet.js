@@ -123,17 +123,22 @@ function writefocus(){
 	x=true;
 }
 
-
-function writecheck(){
+function len(){
+	var content =recwrite.reccontent;
+	 if(content.value.length>1000){
+			erroralert("글자수를 제한해주세요");
+			content.value = content.value.substring(0, 1000);
+			content.focus();
+			return false;
+		}
+}
+function writecheck(){	
 	if(!recwrite.recEnd.value){
 		alert("날짜를 입력해주세요");
 		return false;
 	}else if(!recwrite.reccontent.value){
 		alert("내용을 입력해주세요");
 		return false;
-//	}else if(!recwrite.recSite.value){
-//		erroralert("사이트를 입력해주세요.");
-//		return false;
 	}else if( recwrite.confirm.value == 0 ) {
 		erroralert( "직무를 선택해주세요");
 		recwrite.confirm.focus();

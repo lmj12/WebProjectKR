@@ -83,7 +83,7 @@
 	
 	</tr>
 	<tr>
-		<td colspan="8"> <textarea name="reccontent" placeholder="${recDto.reccontent}" rows="10" cols="80"></textarea></td>
+		<td colspan="8"> <textarea name="reccontent" onkeyup="lne()" value="${recDto.reccontent}" rows="10" cols="80"></textarea></td>
 	</tr>
 	<tr> 
 		<th> 사업장 이름 </th>
