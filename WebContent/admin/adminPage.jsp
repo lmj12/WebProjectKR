@@ -255,10 +255,17 @@
 				var singolist = $.parseJSON(data);
 				if(data){
 					var str = ''
-					str = "<table border='1'><tr><th>작성자</th><th>작성날자</th></tr>"
+					str = "<table border='1'><tr><th>작성자</th><th>작성날자</th><th>상태</th></tr>"
 					for (var i=0; i<singolist.length; i++){
 						var boardId = singolist[i].boardId.split("_");
-						str += "<tr onclick='toArticle("+boardId[0]+", "+boardId[1]+" )'><td>"+singolist[i].boarduserId+"</td><td>"+singolist[i].boardregTime+"</td></tr>"
+						var boardStatus = singolist[i].boardStatus;
+						if(boardStatus==0){
+							singolist[i].boardStatus ="검토중";
+						}else if(boardStatus==1){
+							singolist[i].boardStatus ="검토완료";
+						}
+						str += "<tr onclick='toArticle("+boardId[0]+", "+boardId[1]+" )'><td>"+singolist[i].boarduserId+"</td><td>"+singolist[i].boardregTime+"<td>"+singolist[i].boardStatus+"</td></tr>"
+						
 					}
 				<!--	str += "<tr><th colspan='2'><input type='button' value='미정'></th></tr></table>"		-->
 					$("#rst").html(str);
@@ -274,7 +281,13 @@
 	//-->
 	
 	
-
+	function toStatus(boardStatus){
+			if(boardStatus ==0){
+				return "검토중";
+			}else{
+				return "검토완료";
+			}
+		}
 	
 		
 	function toArticle(boardId,boardId2){
