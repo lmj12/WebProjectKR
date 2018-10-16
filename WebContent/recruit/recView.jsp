@@ -290,11 +290,11 @@
 				</td>
 		<tr>
 			<th>시작일</th>
-			<td>${recDto.stime}</td>
+			<td align="center">${recDto.stime}</td>
 		</tr>
 		<tr>
 			<th>종료일</th>
-			<td>${recDto.etime}</td>
+			<td align="center">${recDto.etime}</td>
 		</tr>
 		<tr>
 			<th>공고상태</th>

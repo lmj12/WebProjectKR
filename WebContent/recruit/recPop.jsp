@@ -4,12 +4,11 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <script src="${js}recCng.js"></script>
 <div class="container">
-<h2>공고조회 페이지</h2>
+<h2>인근 지역 공고</h2>
 <style type="text/css">
 table{
 	margin : 10px 10px 10px 10px;
 	}
-	
 </style>
 <c:if test="${sessionScope.memType eq 2}">	
 공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 

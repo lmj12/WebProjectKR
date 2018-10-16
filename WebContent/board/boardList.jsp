@@ -45,7 +45,13 @@
 			
 				<tr style="cursor:pointer;" onClick="location.href='boardView.do?boardId=${article.boardId}&boardParentId=${article.boardParentId}&pageNum=${pageNum}&number=${number+1}'">
 					<td align="center">
-						${article.boardParentId}
+						<c:if test="${article.boardParentId ==0}">
+							공지
+						</c:if>
+						<c:if test="${article.boardParentId != 0}">
+							${article.boardParentId}
+						</c:if>
+						
 						<c:set var="number" value="${number-1}"/>
 					</td>			
 					<td>							

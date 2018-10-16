@@ -24,6 +24,9 @@ public class LogoutHd implements MoveHandler {
 			} else if(memType==1) {
 				request.getSession().removeAttribute("teamId");
 				request.getSession().removeAttribute("teamReq");
+				request.getSession().removeAttribute("time");
+				request.getSession().removeAttribute("popCk");
+				request.getSession().removeAttribute("popNum");
 			} else if(memType==3) {
 				
 			}
