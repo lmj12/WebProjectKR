@@ -50,7 +50,7 @@
     <c:if test="${sessionScope.memType eq 3}">
     		<tr>
     			<th>작성자 </th>
-    			<td> ${boardDto.getboardParentId()} </td>
+    			<td> ${boardDto.userId} </td>
     		</tr>
     <!-- 	
     		<tr>
