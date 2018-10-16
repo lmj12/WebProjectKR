@@ -33,12 +33,12 @@
     		<tr>
     			<th>제목</th>
     			<td>
-    				<input type="text" name="boardtitle" placeholder="${boardDto.boardTitle}">
+    				<input type="text" name="boardtitle" value="${boardDto.boardTitle}">
     			</td>
     		<tr>
     			<th> 내용 </th>  
     			<td>
-    				<textarea name="boardContent" rows="10" cols="40" placeholder="${boardDto.boardContent}"></textarea>
+    				<textarea name="boardContent" rows="10" cols="40" value="${boardDto.boardContent}"></textarea>
     			</td>
     			
     		</tr>

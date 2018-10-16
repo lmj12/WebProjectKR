@@ -1,7 +1,6 @@
 
 function recCng(recId){
-		var sta = $("#sta option:selected").val();
-		
+		var sta = $("#"+recId+" option:selected").val();
 				$.ajax(
 				{
 					url : 'ajaxRecStaCng.do',
