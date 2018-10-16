@@ -69,6 +69,8 @@ $(document).ready(
 					}else{
 						$('.passwdresult').val("사용할 수 있는 비밀번호입니다.");
 					}
+					
+					
 				}
 			);
 		

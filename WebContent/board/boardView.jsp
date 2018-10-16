@@ -3,7 +3,7 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="setting.jsp" %>
 <%@ include file="../setting/setting.jsp" %>
-<script src="${js}board.js"></script>
+
 
 <%
  
@@ -17,16 +17,20 @@
 	<input type="hidden" name="boardParentId" value="${boardDto.boardParentId}">
 	<input type="hidden" name="boardId" value="${boardDto.boardId}">
 <c:if test="${sessionScope.memType ne 3}">
+		<thead>
 		<tr>
 			<th>신고자 </th>
-			<td align="center">${boardDto.userId} </td>
+			<th align="center">${boardDto.userId} </th>
 		</tr>
+		</thead>
 </c:if>
 <c:if test="${sessionScope.memType eq 3}">
+		<thead>
 		<tr>
 			<th>신고자 </th>
-			<td align="center"> ${boardDto.userId}</td>
+			<th align="center"> ${boardDto.userId}</th>
 		</tr>
+		</thead>
 	<!--<tr>		
 			<th>답변자</th>
 			<td align="center"> </td> 	신고글인데 답변자가 있을 필요가 없어서 지웠습니다. 
