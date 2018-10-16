@@ -32,7 +32,7 @@
 				</tr>
 			</thead>
 			<tr>
-				<td rowspan="5"><img src="${jbskDto.getJbskPic()}" width="140" height="180" /></td> 
+				<td rowspan="5"><img src="./setting/image/upload/${jbskDto.jbskPic}" width="140" height="180" /></td> 
 			</tr>
 			<tr>
 				<th rowspan="2" >성명</th>			<!-- jbskName -->
@@ -190,6 +190,26 @@
 			</form>
 		</div>
 	</div>
+	<div id="crr">
+	<table border='1'>
+		<thead>
+			<tr>
+				<th>팀장</th><th>스캔</th><th>예도</th><th>안내</th><th>경호</th>
+			</tr>
+		</thead>
+		<c:if test="${crrDto.jbskId ne null && crrDto.jbskId ne ''}">
+			<tr>
+				<th>${crrDto.reader}회</th><th>${crrDto.scan}회</th><th>${crrDto.sword}회</th><th>${crrDto.guide}회</th><th>${crrDto.guard}회</th>
+			</tr>
+			
+		</c:if>
+		<c:if test="${crrDto.jbskId eq null || crrDto.jbskId eq ''}">
+			<tr>
+				<th>0회</th><th>0회</th><th>0회</th><th>0회</th><th>0회</th>
+			</tr>
+		</c:if>
+	</table>
+</div>
 </div>
 
 <c:if test="${jbskDto.jbskGender eq 1}"> 

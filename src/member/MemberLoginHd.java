@@ -83,7 +83,7 @@ public class MemberLoginHd implements MemberHandler {
 				}
 			}
 			long time = System.currentTimeMillis();
-			String search = jbskdto.getJbskAdd2() + " " + jbskdto.getJbskAdd3();
+			String search = jbskdto.getJbskAdd2() + " " + jbskdto.getJbskAdd3(); 
 			request.setAttribute("search", search);
 			request.setAttribute("time", time);
 			request.setAttribute("teamId", teamId);

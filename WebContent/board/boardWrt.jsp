@@ -1,7 +1,6 @@
 <%@page import="java.sql.Timestamp"%>
 <%@page import="board.BoardDBBean"%>
 <%@page import="board.BoardDataBean"%>
-<%@page import="java.io.UnsupportedEncodingException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
@@ -20,14 +19,6 @@
 <c:if test="${result eq 1}">
 	<c:redirect url="boardList.do"/>		
 </c:if>
-<%
- 
-    request.setCharacterEncoding("UTF-8");
-//
- 
-%>
-
-
 
 <form method="post" action="boardWrt.do" name="writeform" onsubmit="return writecheck()">
     		
@@ -72,7 +63,6 @@
     		<tr>
     			<th colspan="2">
     			<input class="inputbutton" name="write" type="submit" value="글작성">
-  		<!--   		<input class="inputbutton" type="reset" value="글작성 취소">	-->
     			<input class="inputbutton" type="button" value="목록으로" onclick ="location='boardList.do'">
     		</th>
     		</tr>
