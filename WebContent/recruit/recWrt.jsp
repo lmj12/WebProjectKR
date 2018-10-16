@@ -63,7 +63,7 @@ $( function() {
 	
 	</tr>
 	<tr>
-		<td colspan="8"> <textarea name="reccontent" rows="10" cols="80"></textarea></td>
+		<td colspan="8"> <textarea name="reccontent" onkeyup="len()" rows="10" cols="80" style="overflow:hidden"></textarea></td>
 	</tr>
 	<tr> 
 		<th> 사업장 이름 </th>

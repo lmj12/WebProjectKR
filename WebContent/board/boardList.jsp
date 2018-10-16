@@ -43,7 +43,7 @@
 		<c:if test="${count ne 0}">
 			<c:forEach var="article" items="${articles}">	
 			
-				<tr style="cursor:pointer;" onClick="location.href='boardView.do?boardId=${article.boardId}&boardParentId=${article.boardParentId}&pageNum=${pageNum}&number=${number+1}'">
+				<tr style="cursor:pointer;" onClick="location.href='boardView.do?boardId=${article.boardId}&boardParentId=${article.boardParentId}'">
 					<td align="center">
 						<c:if test="${article.boardParentId ==0}">
 							공지

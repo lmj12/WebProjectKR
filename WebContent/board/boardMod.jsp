@@ -45,10 +45,12 @@
 				
 				<tr>
 					<th colspan="2">
+		
 						<input class="inputbutton" name="modify" type="submit" value="수정">
 						<input class="inputbutton" type="reset" value="취소">
 						<input class="inputbutton" type="button" value="수정취소"
-							onclick="location='boardList.do?pageNum=${pageNum}'">
+							onclick="location='boardList.do'">
+		
 					</th>
 				</tr>
 			</table>
