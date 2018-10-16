@@ -3,8 +3,6 @@ $(document).ready(
 		 jQuery.ajaxSettings.traditional = true; 
 		 $.ajaxSettings.traditional = true;
 
-		// FIXME : 개발용 사업자번호 자동입력
-		
 		$('.idresult').val(" ");
 		
 		$('input[name=jbskId]').on(
