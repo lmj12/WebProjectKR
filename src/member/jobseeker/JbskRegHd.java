@@ -45,9 +45,8 @@ public class JbskRegHd implements JobSeekerHandler {
 		   
        // String test = request.getParameter("test"); // jsp text name mapping
         MultipartFile mf = mre.getFile("jbskPic"); // jsp file name mapping
-        String uploadPath = "";
-         
-        String path = "C:\\"+"image\\"; // 파일 업로드 경로
+        String uploadPath = "\\WebContent\\setting\\image\\upload\\";
+        String path = System.getProperty("user.dir");
              
         String original = mf.getOriginalFilename(); // 업로드하는 파일 name
              
@@ -55,6 +54,7 @@ public class JbskRegHd implements JobSeekerHandler {
         //System.out.println("!!!!!!!!!!"+mf.getSize());// file size
              
         uploadPath = path+original; // 파일 업로드 경로 + 파일 이름
+        System.out.println(uploadPath);
          
          
         try {
