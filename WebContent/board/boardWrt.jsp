@@ -1,7 +1,6 @@
 <%@page import="java.sql.Timestamp"%>
 <%@page import="board.BoardDBBean"%>
 <%@page import="board.BoardDataBean"%>
-<%@page import="java.io.UnsupportedEncodingException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
@@ -20,14 +19,6 @@
 <c:if test="${result eq 1}">
 	<c:redirect url="boardList.do"/>		
 </c:if>
-<%
- 
-    request.setCharacterEncoding("UTF-8");
-//
- 
-%>
-
-
 
 <form method="post" action="boardWrt.do" name="writeform" onsubmit="return writecheck()">
     		
