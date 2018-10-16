@@ -64,4 +64,11 @@
 	<insert id="Rec.recPos" parameterType="java.util.Map">
    		insert into KRrecposition values(#{recId}, #{posId}) 
    </insert>
+   <select id="popCk" parameterType="recruit.RecruitDataBean" resultType="int">
+   		select count(*) from KRRECRUIT where RECSTATUS = 0	AND SEARCHSITE	= #{searchSite} AND RECSTART &gt; #{recStart} 
+   </select>
+   <select id="pop" parameterType="recruit.RecruitDataBean" resultType="recruit.RecruitDataBean">
+   		select * from KRRECRUIT where RECSTATUS = 0	AND SEARCHSITE	= #{searchSite} AND RECSTART &gt; #{recStart} 
+   </select>
+   
   </mapper>
