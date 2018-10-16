@@ -113,7 +113,7 @@ public class RecWrtHd implements RecruitHandler {
 				String array[] = (pos.split(","));		
 			
 				int recId = recruitDto.getRecId();
-				System.out.println(recId);
+			
 				for(int i=0; i<array.length; i++) {				
 				
 					int posId = Integer.parseInt(array[i]);
