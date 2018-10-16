@@ -73,7 +73,7 @@
 				str += "<img src='./setting/image/pop/1.png' onclick='toPopRec()'>인근공고가 있습니다." 
 				rst = 1;
 			} else if(num==2){
-				str += "<img src='./setting/image/pop/2.png' onclick='toPopRec()'><h1>인근지역공고가 등록되었습니다.</h1>" 
+				str += "<img src='./setting/image/pop/2.png' onclick='toPopRec()'><p>인근지역공고가 등록되었습니다.</p>" 
 				rst = 1;
 			} else if(num==3){
 				str += "<img src='./setting/image/pop/3.png' onclick='toPopRec()'><h1>인근지역공고가 등록되었습니다.</h1>" 
