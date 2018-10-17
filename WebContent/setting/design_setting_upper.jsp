@@ -90,6 +90,15 @@
 	.affix.navbar .navbar-brand {
 	    color: #d2dae2;
 	}
+	table {
+		table-layout: fixed;
+		margin: 10px 10px 10px 10px;
+	}
+	th, td {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
 	.container table,
 	thead {
 		border-radius: 0px 0px 30px 0px;
