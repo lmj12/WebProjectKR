@@ -23,7 +23,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
 	integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
 	crossorigin="anonymous"></script>
-
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
 //<!--
@@ -90,10 +91,10 @@
 	.affix.navbar .navbar-brand {
 	    color: #d2dae2;
 	}
-	table {
+/* 	table {
 		table-layout: fixed;
 		margin: 10px 10px 10px 10px;
-	}
+	} */
 	th, td {
 		text-overflow: ellipsis;
 		overflow: hidden;
@@ -123,15 +124,18 @@
 	li a .nav-style {
 		color: white;
 	}
-	.navbar-light .navbar-nav .nav-link {
-    color: #dcdde1;
+		.navbar-light .navbar-nav .nav-link {
+    	color: #dcdde1;
 	}
 	.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-    color: #f5f6fa;
+  		color: #f5f6fa;
 	}
 	.navbar-light .navbar-brand {
-    color: #f5f6fa;
-}
+  		color: #f5f6fa;
+	}
+	.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+ 		color: #333;
+	}
 </style>
 <style media="screen">
  body { background-color:#4b4b4b; font-family:'Roboto'; color:white;}
