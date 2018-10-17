@@ -46,16 +46,18 @@ public class JbskModHd implements JobSeekerHandler {
 		
 		// String test = request.getParameter("test"); // jsp text name mapping
         MultipartFile mf = mre.getFile("jbskPic"); // jsp file name mapping
+        String proPath = "C:\\Users\\Playdata\\Desktop\\WEBP\\eclipse\\WebProjectKR\\WebContent\\setting\\image\\upload\\";
         String uploadPath = "";
-         
-        String path = "C:\\"+"image\\"; // 파일 업로드 경로
+        String original = System.currentTimeMillis()+mf.getOriginalFilename(); 
+        
+        //String path = "C:\\"+"image\\"; // 파일 업로드 경로
              
-        String original = mf.getOriginalFilename(); // 업로드하는 파일 name
+        //String original = mf.getOriginalFilename(); // 업로드하는 파일 name
              
         System.out.println("!!!!!!!!!!"+original);  // file original name
         System.out.println("!!!!!!!!!!"+mf.getSize());// file size
              
-        uploadPath = path+original; // 파일 업로드 경로 + 파일 이름
+        uploadPath = proPath+original; // 파일 업로드 경로 + 파일 이름
          
          
         try {
@@ -83,7 +85,7 @@ public class JbskModHd implements JobSeekerHandler {
 		jbskDto.setJbskPasswd(mre.getParameter("jbskPasswd"));
 		jbskDto.setJbskGender(Integer.parseInt(mre.getParameter("jbskGender")));
 		jbskDto.setJbskEmail(compemail);
-		jbskDto.setJbskPic(uploadPath);
+		jbskDto.setJbskPic(original);
 		jbskDto.setJbskAdd1(mre.getParameter("jbAddress"));
 		jbskDto.setJbskAdd2(mre.getParameter("rdAddress"));
 		jbskDto.setJbskAdd3(mre.getParameter("zipcode"));
