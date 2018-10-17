@@ -168,9 +168,12 @@ $(document).ready(
 			alert( "전화번호를 확인하세요" );
 			return false;	
 		}else if(! inputform.jbskPic.value) {
-			alert( "사진을 업로드하세요" );
-			console.log(thumbext);
-			return false;
+			if(inputform.confirmPic.value){
+				inputform.jbskPic.value = inputform.confirmPic.value;
+			}else if(! inputform.confirmPic.value){
+				alert( "사진을 업로드하세요" );
+				return false; 
+			}
 		} else if(thumbext != "jpg" && thumbext != "png"){ //확장자를 확인합니다.
 			alert('이미지 파일은 jpg, png만 등록 가능합니다.');
 			return false;
@@ -292,4 +295,6 @@ function previewImage(targetObj, View_area) {
 				}
 			}
 		}
+		
+		$("#conCnt").val("1");
 	}

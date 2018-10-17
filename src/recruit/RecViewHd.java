@@ -47,7 +47,7 @@ public class RecViewHd implements RecruitHandler {
 		request.setAttribute( "pageNum", pageNum );
 		request.setAttribute( "recDto", recDto );
 		request.setAttribute("recruitDto", recruitDto);
-	
+		//조회수 늘리는 거
 		recDao.addCount(recId);
 		
 		

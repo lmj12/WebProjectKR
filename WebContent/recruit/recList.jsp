@@ -106,25 +106,7 @@ table{
 				</td>	
 				
 	</tr>
-	<c:if test="${sessionScope.memid eq article.jobpDto.jobpId}">
-	<c:if test="${sessionScope.memType eq 2}">
-	<tr>
-		<th>공고상태변경</th>
-				<td onclick="event.cancelBubble = true;">
-				
-				<select name="sta" id="${article.recDto.recId}">
-					<option value="0" selected>모집중 </option>
-					<option value="1">모집완료</option>
-					<option value="2">완료</option>
-				</select>	
-				
-				<input type="button" name="cng" value="변경" onclick="recCng(${article.recDto.recId})">
-				<input type="hidden" id="val" name="val">
-			
-				</td>						
-	</tr>
-	</c:if>
-	</c:if>
+	
 		
 </table>
 	

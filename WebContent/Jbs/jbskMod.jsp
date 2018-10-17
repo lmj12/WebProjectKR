@@ -129,9 +129,12 @@
 				
 				<td colspan="2">
 					<input class="input" type="file" name="jbskPic" id="file" onchange="previewImage(this, 'View_area')">
+					
 					<div id='View_area' style='position:relative; width: 140px; height: 180px; color: black; border: 0px solid black; dispaly: inline; '></div>
+					<img src="./setting/image/upload/${jbskDto.jbskPic}" width="140" height="180" />
+						<input type="hidden" name='confirmPic' id='confirmPic' value="${jbskDto.jbskPic}">
+						<input type="hidden" name='conCnt' id='conCnt' value="0">
 				</td>
-	
 			</tr>
 			<tr>
 				<th> 정보수신동의 </th>
