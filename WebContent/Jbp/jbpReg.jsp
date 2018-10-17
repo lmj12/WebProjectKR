@@ -5,6 +5,22 @@
 <!DOCTYPE html>
 <script src="./js/jbpReg.js"></script>
 <script src="./js/jbpSMS.js"></script>
+<style>
+<!-- 회원가입 스타일 -->
+	.card {
+		background-color: #f5f6fa;
+		color: #353b48;
+	}
+	.card-header {
+		background-color: #f5f6fa;
+		color: #353b48;
+	}
+	.card-body {
+		background-color: white;
+		color: #353b48;
+	}
+	
+</style>
 <body>
 <!-- 	구버전 (부트스트랩 미적용)
 <h2>구인자 회원가입 페이지</h2>
@@ -67,96 +83,100 @@
 	 -->
 
 <div class="container" style="margin-top:150px;">
-      <h1 class="text-center">구인자 회원가입</h1>
-
-<!-- message -->
-<div id="message">
-  <div class="alert alert-success" role="alert">
-  <strong>회원가입에 성공하셨습니다<br>3초 뒤 로그인 페이지로 이동합니다</strong>
-  </div>
-</div>
-
-      <!-- form -->
-      <form name="inputform" action="jbpReg.do" method="post">
-      <form class="container">
-	    <div class="form-group">
-	        <label class="form-control-label" for="inputSuccess1">Input with success</label>
-	        <input type="text" class="form-control is-invalid" id="inputSuccess1">
-	        <div class="valid-feedback">Success! You've done it.</div>
-	    </div>
-        <div class="form-group row">
-          <label for="jobpId" class="col-sm-2 col-form-label">아이디</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="jobpId" name="jobpId" placeholder="ID" maxlength="15">
-            <small class="text-muted"></small>
-          </div>
-        </div>
-<!--	이메일 폼        
-         <div class="form-group row">
-          <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-            <small class="text-muted"></small>
-          </div>
-        </div> -->
-        <div class="form-group row">
-          <label for="jobpPasswd" class="col-sm-2 col-form-label">비밀번호</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="jobpPasswd" name="jobpPasswd" placeholder="Password" maxlength="15">
-            <small class="text-muted"></small>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="rejobpPasswd" class="col-sm-2 col-form-label">비밀번호확인</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="rejobpPasswd" placeholder="Password" maxlength="15">
-            <small class="text-muted"></small>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="jobpBno" class="col-sm-2 col-form-label">사업자번호</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="jobpBno" name="jobpBno" value="1078614075" placeholder="사업자번호" readonly>
-            <input type="button" name="checkBizID" value="검색">
-            <small class="text-muted"></small>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="jobpCn" class="col-sm-2 col-form-label">업체명</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="jobpCn" name="jobpCn" placeholder="업체명">
-            <small class="text-muted"></small>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="jobpTel" class="col-sm-2 col-form-label">연락처</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="jobpTel" name="jobpTel" 
-            	placeholder="지역번호 포함해서 '-'없이 전체전화번호를 입력하세요">
-            <input type="button" value="문자발송" onclick="jbpTelAuth()">
-            <small class="text-muted"></small>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="authNumCk" class="col-sm-2 col-form-label">인증번호입력</label>
-          <div class="col-sm-10">
-            <input type="number" class="form-control" id="authNumCk" name="authNumCk" placeholder="인증번호를 확인해주세요" maxlength="10">
-            <input type="hidden" id="authNum" value="0"> 
+	<!-- message -->
+	<div id="message">
+	  <div class="alert alert-success" role="alert">
+	  <strong>회원가입에 성공하셨습니다<br>3초 뒤 로그인 페이지로 이동합니다</strong>
+	  </div>
+	</div>
+	<div class="card">
+		<div class="card-header">
+			<h1 class="text-center">구인자 회원가입</h1>
+		</div>
+		<div class="card-body">
+			      <!-- form -->
+	      <form name="inputform" action="jbpReg.do" method="post">
+	        <div class="form-group row">
+	          <label for="jobpId" class="col-sm-2 col-form-label">아이디</label>
+	          <div class="col-sm-10">
+	            <input type="text" class="form-control" id="jobpId" name="jobpId" placeholder="아이디를 4-15 내로 입력하세요. 영어, 숫자만 가능합니다" maxlength="15">
+	            <small class="text-muted"></small>
+	          </div>
+	        </div>
+	<!--	이메일 폼        
+	         <div class="form-group row">
+	          <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+	          <div class="col-sm-10">
+	            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+	            <small class="text-muted"></small>
+	          </div>
+	        </div> -->
+	        <div class="form-group row">
+	          <label for="jobpPasswd" class="col-sm-2 col-form-label">비밀번호</label>
+	          <div class="col-sm-10">
+	            <input type="password" class="form-control" id="jobpPasswd" name="jobpPasswd" placeholder="비밀번호 길이를 6-15자 이내로 입력하세요." maxlength="15">
+	            <small class="text-muted"></small>
+	          </div>
+	        </div>
+	        <div class="form-group row">
+	          <label for="rejobpPasswd" class="col-sm-2 col-form-label">비밀번호확인</label>
+	          <div class="col-sm-10">
+	            <input type="password" class="form-control" id="rejobpPasswd" name="jobpPasswd" placeholder="Password" maxlength="15">
+	            <small class="text-muted"></small>
+	          </div>
+	        </div>
+	        <div class="form-group row">
+	          <label for="jobpBno" class="col-sm-2 col-form-label">사업자번호</label>
+	          <div class="col-sm-10">
+	            <input type="text" class="form-control" id="jobpBno" name="jobpBno" value="1078614075" placeholder="사업자번호" readonly>
+	            <input type="button" name="checkBizID" value="검색">
+	            <small class="text-muted"></small>
+	          </div>
+	        </div>
+	        <div class="form-group row">
+	          <label for="jobpCn" class="col-sm-2 col-form-label">업체명</label>
+	          <div class="col-sm-10">
+	            <input type="text" class="form-control" id="jobpCn" name="jobpCn" placeholder="업체명">
+	            <small class="text-muted"></small>
+	          </div>
+	        </div>
+	        <div class="form-group row">
+	          <label for="jobpTel" class="col-sm-2 col-form-label">연락처</label>
+	          <div class="col-sm-10">
+	            <input type="text" class="form-control" id="jobpTel" name="jobpTel" 
+	            	placeholder="지역번호 포함해서 '-'없이 전체전화번호를 입력하세요">
+	            <input type="button" value="문자발송" onclick="jbpTelAuth()">
+	            <small class="text-muted"></small>
+	          </div>
+	        </div>
+	        <div class="form-group row">
+	          <label for="authNumCk" class="col-sm-2 col-form-label">인증번호입력</label>
+	          <div class="col-sm-10">
+	            <input type="number" class="form-control" id="authNumCk" name="authNumCk" placeholder="인증번호를 확인해주세요" maxlength="10">
+	            <input type="hidden" id="authNum" value="0"> 
              <input type="number" id="telConfirm" value="0"> <!-- TODO : 유효성 검사용 휴대폰 인증 검사 -->
-            <input type="button" value="인증번호확인" onclick="jbpAuthCheck()" size="5">
-            <small class="text-muted"></small>
-          </div>
-        </div>
-        
+	            <input type="button" value="인증번호확인" onclick="jbpAuthCheck()" size="5">
+	            <small class="text-muted"></small>
+	          </div>
+	        </div>
+	        
+	
+	        <div class="form-group row">
+	          <div class="offset-sm-2 col-sm-10 text-center">
+	            <button type="submit" id="submit" class="btn btn-success">가입</button>
+	            <button type="reset" class="btn btn-danger" onclick="location='main.do'">취소</button>
+	          </div>
+	        </div>
+	      </form>
+	    </div>
+		</div>
+	</div>
+      
 
-        <div class="form-group row">
-          <div class="offset-sm-2 col-sm-10 text-center">
-            <button type="submit" id="submit" class="btn btn-primary">가입</button>
-            <button type="reset" onclick="location='main.do'">취소</button>
-          </div>
-        </div>
-      </form>
-    </div>
+
+
+
+
     
 <!--    체크박스 폼
 		<div class="form-group row">
@@ -185,8 +205,10 @@
 			MinCharsID: '4',
 			
 			passwordID: '#jobpPasswd',
-			ErrorTextPassword: '비밀번호 길이를 6-15자 이내로 입력하세요 ',
+			ErrorTextPassword: '비밀번호 길이를 6-15자 이내로 입력하세요',
+			ErrorTextComplexPassword: '숫자, 영문, 특수문자를 두 가지 이상 혼합하여야 합니다.',
 			MinCharsPass: '6',
+			ComplexMinCharsPass: '3',
 			
 			rePasswordID: '#rejobpPasswd',
 			ErrorTextrePassword: '비밀번호가 일치하지 않습니다',
@@ -196,7 +218,7 @@
 			
 			Tel : '#jobpTel',
 			ErrorTextTel : '올바르지 않은 형식의 전화번호입니다',
-			ErrorTextTelAuth : '핸드폰 인증을 진행해주세요'			
+			ErrorTextTelAuth : '핸드폰 인증을 진행해주세요'
             }
   </script>
 </body>
