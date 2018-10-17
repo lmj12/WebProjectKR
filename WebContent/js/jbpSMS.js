@@ -3,7 +3,6 @@ var authNum = 0;
 function jbpTelAuth(){
 	authNum = Math.floor(Math.random()*1000000);
 	var tel = $("#jobpTel").val();
-	alert(123);
 	$.ajax({
     	method : "POST",
     	url : "ajaxSendSMS.do",
@@ -34,7 +33,7 @@ function jbpAuthCheck(){
 		var authNumCk = $("#authNumCk").val();
 		if(authNumCk == authNum){
 			alert("인증에 성공헀습니다.")
-			$("#authCk").val("1");
+			$("#telConfirm").val("1");
 		} else {
 			alert("인증에 실패했습니다. 인증번호를 다시 확인해주세요.")
 		}

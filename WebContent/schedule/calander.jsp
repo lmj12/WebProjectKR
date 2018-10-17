@@ -19,8 +19,9 @@
 	$(document).ready(
 		function(){
 			calendar();
+			$(".today").css("background","#cc0033").css("color","#ffffff").css("fontWeight","bold")
 			getSchedule();
-			setInterval("getSchedule()",3000);
+			setInterval("getSchedule()",1000);
 		}		
 	)
 	//-->

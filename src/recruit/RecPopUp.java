@@ -26,7 +26,7 @@ public class RecPopUp implements RecruitHandler {
 	@Override
 	@RequestMapping("popRec")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws RecruitException {
-		long time = (Long) request.getSession().getAttribute("time");
+		long time = (Long) request.getSession().getAttribute("ptime");
 		String searchSite = (String) request.getSession().getAttribute("search");
 		Timestamp recStart = new Timestamp(time);
 		
@@ -81,6 +81,7 @@ public class RecPopUp implements RecruitHandler {
 			request.getSession().setAttribute("popNum", rst);
 		}
 		
+		request.getSession().setAttribute("ptime",time);
 		request.getSession().setAttribute("time", System.currentTimeMillis());
 		
 		

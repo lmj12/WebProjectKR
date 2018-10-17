@@ -18,6 +18,7 @@ public class CareerDataBean {
 	String jbskAdd2;
 	String jbskAdd3;
 	String jbskIt;
+	String jbskPic;
 	String query;
 	
 	public String getQuery() {
@@ -115,6 +116,12 @@ public class CareerDataBean {
 	}
 	public void setJbskIt(String jbskIt) {
 		this.jbskIt = jbskIt;
+	}
+	public String getJbskPic() {
+		return jbskPic;
+	}
+	public void setJbskPic(String jbskPic) {
+		this.jbskPic = jbskPic;
 	}
 	
 }
