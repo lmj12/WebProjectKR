@@ -139,11 +139,11 @@
 					</c:if>
 				</c:if>
 				<li class="nav-item"><a class="nav-link" href="main.do">
-					<span class="glyphicon glyphicon-home nav-style"></span> Main</a></li>
+					<i class="fas fa-home"></i> Main</a></li>
 				<c:if test="${sessionScope.memid ne null}">
 					<li class="nav-item">
 						<a class="nav-link" href="logout.do">
-							<span class="glyphicon glyphicon-log-out nav-style"></span>Logout</a>
+							<i class="fas fa-sign-out-alt"></i>Logout</a>
 					</li>
 				</c:if>
 			</ul>
