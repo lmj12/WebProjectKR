@@ -87,4 +87,7 @@ public class RecCrrDBBean {
 		session.clearCache();
 		return session.selectList("RecCrr.search", crrDto);
 	}
+	public int countApp(int recId) {
+		return session.selectOne("RecCrr.countApp", recId);
+	}
 }
