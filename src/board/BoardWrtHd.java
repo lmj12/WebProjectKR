@@ -32,13 +32,12 @@ public class BoardWrtHd implements BoardHandler {
 			String boardContent = null;
 			
 			
-			if( request.getParameter("boardId") !=  null) {
-				
+			if( request.getParameter("boardId") !=  null) {				
 				//답변글인 경우
 				boardId = request.getParameter("boardId");
 				boardParentId = Integer.parseInt(request.getParameter("boardParentId"));
-				//System.out.println(boardParentId);
 				boardContent = (request.getParameter("boardContent"));
+			    
 			}
 			
 			request.setAttribute("boardId", boardId);
@@ -68,7 +67,7 @@ public class BoardWrtHd implements BoardHandler {
 			String userId = (String) request.getSession().getAttribute("memid");
 		
 			boardDto.setUserId(request.getParameter("userId"));
-			System.out.println(request.getParameter("userId"));
+		
 			boardDto.setBoardregdate( new Timestamp( System.currentTimeMillis() ));
 			
 			

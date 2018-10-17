@@ -108,7 +108,7 @@ table{
 		<th>공고상태변경</th>
 				<td onclick="event.cancelBubble = true;">
 				
-				<select name="sta" id="sta">
+				<select name="sta" id="${article.recDto.recId}">
 					<option value="0" selected>모집중 </option>
 					<option value="1">모집완료</option>
 					<option value="2">완료</option>
