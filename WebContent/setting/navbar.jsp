@@ -104,6 +104,7 @@
 	            <!--////////////// 로그인 후 //////////////-->
 				
 				<c:if test="${sessionScope.memid ne null }">
+					<c:if test="${sessionScope.memType eq 1 || sessionScope.memType eq 2}">
 					<li class="nav-item dropdown">
 					  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 						마이페이지
@@ -119,6 +120,7 @@
 						</c:if>
 				      </div>
 					</li>
+					</c:if>
 					<!--////////////// 구직자의 경우  //////////////-->
 					<c:if test="${sessionScope.memType eq 1}">
 						<li class="nav-item"><a class="nav-link nav-style" onclick="memCheck()">팀 스케쥴</a></li>
