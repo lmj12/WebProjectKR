@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 	<script src="${js}jbpReg.js"></script>
 	
-<h2>로그인pro</h2>
 <%	// 로그인실패 	%> 
 	<c:if test="${result eq 0}">
 		<script type="text/javascript">

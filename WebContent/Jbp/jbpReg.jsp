@@ -144,7 +144,7 @@
 	          <label for="jobpTel" class="col-sm-2 col-form-label">연락처</label>
 	          <div class="col-sm-10">
 	            <input type="text" class="form-control" id="jobpTel" name="jobpTel" 
-	            	placeholder="지역번호 포함해서 '-'없이 전체전화번호를 입력해주세요">
+	            	placeholder="지역번호 포함해서 '-'없이 전체전화번호를 입력해주세요" maxlength="11">
 	            <small class="text-muted"></small>
 	            <input type="button" value="문자발송" onclick="jbpTelAuth()">
 	          </div>
@@ -154,7 +154,7 @@
 	          <div class="col-sm-10">
 	            <input type="number" class="form-control" id="authNumCk" name="authNumCk" placeholder="인증번호를 확인해주세요" maxlength="10">
 	            <input type="hidden" id="authNum" value="0"> 
-             <input type="hidden" id="telConfirm" value="0"> <!-- TODO : 유효성 검사용 휴대폰 인증 검사 -->
+             	<input type="hidden" id="telConfirm" value="0"> <!-- TODO : 유효성 검사용 휴대폰 인증 검사 -->
 	            <input type="button" value="인증번호확인" onclick="jbpAuthCheck()" size="5">
 	            <small class="text-muted"></small>
 	          </div>
@@ -217,6 +217,7 @@
 			ErrorTextOption : '사업자번호와 업체명을 입력해주세요',
 			
 			telID : '#jobpTel',
+			telConfirm : '#telConfirm',
 			ErrorTextTel : '전화번호 형식이 올바르지 않습니다',
 			ErrorTextTelAuth : '핸드폰 인증을 진행해주세요'
             }

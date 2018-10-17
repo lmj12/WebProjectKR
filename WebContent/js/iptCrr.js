@@ -150,7 +150,7 @@ $(function(){
 		'.delCrr',
 		function(event){
 			var iptId = $(this).parent().siblings().eq(0).val()
-			if(iptId){
+			if(iptId != 0){
 				$.ajax({
 					type : 'POST',
 					url : 'iptCrrDel.do',
@@ -161,14 +161,13 @@ $(function(){
 						alert( '삭제성공' );
 						$(this).closest('tr').remove();
 						location.reload();
-						alert('page가 새로고침 되었습니다.');
 					},
 					error : function(request,status,error){
 					    alert( "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					}
 				});
 			} else {
-				alert("추가하지 않은 스케줄은 삭제할 수 없습니다!")
+				$(this).closest('tr').remove();
 			}
 		}
 	);
@@ -205,7 +204,7 @@ $(function(){
 //				alert(itemObj.iptStart);
 //				alert(itemObj.iptEnd);
 //				alert(itemObj.posId);
-				if(itemObj.iptId && itemObj.iptCompany && itemObj.iptWh && itemObj.iptStart && itemObj.iptEnd && itemObj.posId){
+				if(itemObj.iptCompany && itemObj.iptWh && itemObj.iptStart && itemObj.iptEnd && itemObj.posId){
 					var realPeriod = btDay.replace(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|" "]/g,"");
 					var queryStr = {
 						iptId : itemObj.iptId,
@@ -230,7 +229,7 @@ $(function(){
 						}
 					});
 				} else {
-					alert("빈칸이 존재합니다. 빈칸을 채워주세요!")
+
 				}
 			})
 		}     

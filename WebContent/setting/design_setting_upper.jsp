@@ -110,6 +110,7 @@
 	}
 	table th {
 		color: #3d3d3d;
+		text-align: center;
 	}
 	.card {
 		background-color: #333;
@@ -133,8 +134,19 @@
 	.navbar-light .navbar-brand {
   		color: #f5f6fa;
 	}
-	.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
- 		color: #333;
+	.dropdown-menu.show {
+		background-color: #333;
+		color: white;
+	}
+	.dropdown-menu.show li:hover {
+		color: #333
+	}
+	.navbar-expand-sm .navbar-nav .dropdown-menu {
+		color: white;
+	}
+	.dropdown-menu {
+		background-color: #333;
+		
 	}
 </style>
 <style media="screen">
@@ -143,6 +155,9 @@
    .text-center{
      text-align: center;
      font-weight: bold;
+   }
+   .navbar-expand-sm .navbar-nav .dropdown-menu {
+   	color: white;
    }
    #message{
      display: none;
