@@ -62,7 +62,8 @@
 		function(){
 			makeTable();
 			schJb();
-			setInterval("schJb()",3000);
+			$(".sch").css("background","#95afc0")
+			setInterval("schJb()",10000);
 
 		}
 	)
@@ -78,8 +79,8 @@
 			schstr += 	"<tr><th>"+(shour-1)+":00</th><td></td></tr>"
 			schstr += 	"<tr><th>"+(shour-1)+":30</th><td></td></tr>"
 		for (var i=shour; i<=ehour; i++ ){
-			schstr +=	"<tr><th>"+i+":00</th><td class='sch' onclick='viewModal()' class='schedule'>스케줄있음</td></tr>"
-			schstr +=	"<tr><th>"+i+":30</th><td class='sch' onclick='viewModal()' class='schedule'>스케줄있음</td></tr>"
+			schstr +=	"<tr><th>"+i+":00</th><td class='sch' onclick='viewModal()' ></td></tr>"
+			schstr +=	"<tr><th>"+i+":30</th><td class='sch' onclick='viewModal()' ></td></tr>"
 		}
 		schstr += 	"<tr><th>"+(ehour+1)+":00</th><td></td></tr>"
 		schstr += 	"<tr><th>"+(ehour+1)+":30</th><td></td></tr>"
@@ -620,6 +621,7 @@
 					st = new Date(Number(sch.schstartTime));
 					et = new Date(Number(sch.schendTime));
 					makeTable();
+					schJb();
 				} else {
 					alert("이전 스케줄이 없습니다.")
 				}
@@ -649,6 +651,7 @@
 					st = new Date(Number(sch.schstartTime));
 					et = new Date(Number(sch.schendTime));
 					makeTable();
+					schJb();
 				} else {
 					alert("다음 스케줄이 없습니다.")
 				}

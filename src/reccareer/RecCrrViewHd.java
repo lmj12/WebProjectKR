@@ -19,9 +19,11 @@ public class RecCrrViewHd implements RecruitCareerHandler {
 		int recId = Integer.parseInt(request.getParameter("recId"));
 		
 		List<RecCrrDataBean> lists = recCrrDao.recCrrApplyList(recId);
+		int size = lists.size();
 		
 		request.setAttribute("recId", recId);
 		request.setAttribute("lists", lists);
+		request.setAttribute("size", size);
 		
 		return new ModelAndView("/recCrr/recCrr");
 	}

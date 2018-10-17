@@ -54,10 +54,10 @@ $( function() {
 	<tr>
 		<th>공고 직무 </th>
 		<td id="addposx"> 		
-		<input type="button" value="추가" name="addpos" style="float:right;" onclick="return add()"> 
-		<input type="hidden" name="confirm" value="0">
-		<input type="hidden" id='id' name="id">
-			</td>
+			<input type="button" value="추가" name="addpos" style="float:right;" onclick="return add()"> 
+			<input type="hidden" name="confirm" value="0">
+			<input type="hidden" id='id' name="id">
+		</td>
 	</tr>
 	<tr>
 		<th colspan="8">공고내용</th>	

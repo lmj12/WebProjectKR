@@ -90,7 +90,7 @@ function searchPostcode() {
 			success : function(data){
 				var user = $.parseJSON(data);
 				if(user!=''){
-					var str ='<table border="1"><tr><th>이름 </th><th>ID</th><th>성별</th><th>나이</th><th>전화번호 </th><th>주소</th><th>팀장경력</th><th>스캔경력</th><th>예도경력</th><th>안내경력</th><th>경호경력</th></tr>';
+					var str ='<table border="1"><thead><tr><th>이름 </th><th>ID</th><th>성별</th><th>나이</th><th>전화번호 </th><th>주소</th><th>팀장경력</th><th>스캔경력</th><th>예도경력</th><th>안내경력</th><th>경호경력</th></tr></thead>';
 					for (var i =0; i<user.length; i++){
 						var birth = (new Date().getFullYear() - new Date(user[i].jbskBd).getFullYear()) + 1;
 						str += "<tr onclick='toResume("+i+")'><td>"+user[i].jbskName+"</td>"
@@ -106,7 +106,6 @@ function searchPostcode() {
 					}
 					str += "</table>"
 					$("#temp").html(str);
-					
 				} else {
 					$("#temp").text("검색결과가 없습니다!")
 				}
