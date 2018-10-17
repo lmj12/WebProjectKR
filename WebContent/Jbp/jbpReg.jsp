@@ -154,7 +154,7 @@
 	          <div class="col-sm-10">
 	            <input type="number" class="form-control" id="authNumCk" name="authNumCk" placeholder="인증번호를 확인해주세요" maxlength="10">
 	            <input type="hidden" id="authNum" value="0"> 
-             <input type="number" id="telConfirm" value="0"> <!-- TODO : 유효성 검사용 휴대폰 인증 검사 -->
+             <input type="hidden" id="telConfirm" value="0"> <!-- TODO : 유효성 검사용 휴대폰 인증 검사 -->
 	            <input type="button" value="인증번호확인" onclick="jbpAuthCheck()" size="5">
 	            <small class="text-muted"></small>
 	          </div>

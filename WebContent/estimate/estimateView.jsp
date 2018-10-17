@@ -18,12 +18,14 @@
 	})
 	
 	function view(){
-		var per = ${performance};
-		var ont = ${ontime};
-		var att = ${attitude};
-		$("#p"+per).attr('checked', 'checked');
-		$("#t"+ont).attr('checked', 'checked');
-		$("#a"+att).attr('checked', 'checked');
+		var per = '${performance}';
+		var ont = '${ontime}';
+		var att = '${attitude}';
+		if(per != ''){
+			$("#p"+per).attr('checked', 'checked');
+			$("#t"+ont).attr('checked', 'checked');
+			$("#a"+att).attr('checked', 'checked');
+		}
 	}
 	
 	function toList(){
@@ -31,8 +33,22 @@
 	}
 	
 	function estCheck(){
+		var performance =  $('input[name="performance"]:checked').val();
+		var ontime =  $('input[name="ontime"]:checked').val();
+		var attitude =  $('input[name="attitude"]:checked').val();
+		if(!performance){
+			alert("업무이해능력을 평가해주세요!")
+			return false;
+		} else if(!ontime){
+			alert("시간준수를 평가해주세요!")
+			return false;
+		} else if(!attitude){
+			alert("자세 및 태도를 평가해주세요!")
+			return false;
+		}
 		
 	}
+
 	//-->
 </script>
 <c:if test="${sessionScope.memType ne 1}">	<!--  구직자회원이 아니면  -->
