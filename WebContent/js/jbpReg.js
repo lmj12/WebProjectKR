@@ -7,7 +7,7 @@ $(document).ready(
 		$('input:button[name=checkBizID]').on(
 				'click',
 				function(){
-					window.open("jbpBizCheckMove.do","","width=250, heigt=200");
+					window.open("jbpBizCheckMove.do","","width=250px, heigt=200px");
 				}
 			);
 		$('input[name=jobpId]').on(

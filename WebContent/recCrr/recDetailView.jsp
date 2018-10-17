@@ -28,7 +28,6 @@
 <h2>상세 이력서 보기 - ${recCrrDto.jbskId}</h2>
 <br>
 <br>
-
 	<div class="card">
 		<div class="card-header d-flex justify-content-center">
 			<label for="jbskIt"><strong>이 력 서 </strong></label>
@@ -60,31 +59,6 @@
 				</table>
 			</div>
 		</div>
-	</div>
-		
-
-<div id="resume" style="margin: 7px">
-	<div class="table">
-		<table border='1' style="float: left; margin-right: 7px;" >
-			<tr>
-			<th height="150" width="180"><img src="./setting/image/upload/${recCrrDto.jbskPic}" width="140" height="180" /></th>
-			</tr>
-		</table>
-		<br>
-		<table border='1' id="jbsk">
-			<tr>
-				<th>성 명</th><td colspan="3" width="250">(한 글)&emsp;&emsp;${recCrrDto.jbskName}</td>
-			</tr>
-			<tr>
-				<th>나이</th><td width="70" id="age" style="text-align: center"></td><th>생년월일</th><td id="bd"></td>
-			</tr>
-			<tr>
-				<th>email</th><td>${recCrrDto.jbskEmail}</td><th>전화번호</th><td>${recCrrDto.jbskTel}</td>
-			</tr>
-			<tr>
-				<th>주소</th><td colspan='3' style="text-align: center">${recCrrDto.jbskAdd1} &nbsp; ${recCrrDto.jbskAdd2} &nbsp; ${recCrrDto.jbskAdd3}&nbsp;</td>
-			</tr>
-		</table>
 	</div>
 	<div class="conatainer">
 		<div class="card">

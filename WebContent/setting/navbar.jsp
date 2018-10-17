@@ -130,6 +130,7 @@
 					<c:if test="${sessionScope.memType eq 2}">
 						<li class="nav-item"> <a class="nav-link" href="teamList.do">팀</a></li>
 						<li class="nav-item"><a class="nav-link" href="tocal.do">스케쥴편집</a></li>
+						<li class="nav-item"><a class="nav-link" href="rsmSearch.do">이력서검색</a></li>
 					</c:if>
 					
 					<!--////////////// 관리자의 경우  //////////////-->
