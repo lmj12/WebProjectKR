@@ -299,7 +299,6 @@ $(document).ready(
 							.find('.text-muted')
 							.text().indexOf('없')!=-1){
 						erroralert("ID 중복여부를 확인해주세요");
-						
 						$(settings.ID).focus();
 						return false;
 					} else {
