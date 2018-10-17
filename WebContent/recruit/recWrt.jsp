@@ -45,7 +45,7 @@ $( function() {
 
 	<tr>
 			
-		<th> 종료일</th>
+		<th> 예식일시</th>
 		<td><p>날짜: <input type="text" name="recEnd" id="datepicker"><br><br>
 			시간 : <input type="text" name="recEndTime" id="timepicker"></p></td>           
 	</tr>

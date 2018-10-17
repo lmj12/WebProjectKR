@@ -47,8 +47,8 @@
 				<th style="width : 4%">공고상태</th>
 				<th style="width : 8%">직무</th>
 				
-				<th style="width : 8%">시작일</th>
-				<th style="width : 8%">종료일</th>
+				<th style="width : 8%">등록일</th>
+				<th style="width : 8%">예식일시</th>
 				<th style="width : 3%">조회수</th>
 				<th style="width : 3%">상태변경</th>
 			</tr>
@@ -146,8 +146,8 @@
 				<th style="width : 4%">	 공고상태</th>
 				<th style="width : 8%"> 직무 </th>
 				
-				<th style="width : 8%"> 시작일 </th>
-				<th style="width : 8%"> 종료일 </th>
+				<th style="width : 8%"> 등록일 </th>
+				<th style="width : 8%"> 예식일시 </th>
 				<th style="width : 3%">	 조회수</th>
 			</tr>
 		</thead>

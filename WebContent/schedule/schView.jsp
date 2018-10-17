@@ -21,10 +21,15 @@
         /* Modal Content/Box */
         .modal-content {
             background-color: #fefefe;
+            color: #333;
             margin: 15% auto; /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
-            width: 30%; /* Could be more or less, depending on screen size */                          
+            width: 50%; /* Could be more or less, depending on screen size */                          
+        }
+        .modal-content table th {
+        	background-color: #333;
+        	color: white;
         }
         /* The Close Button */
         .close {
@@ -74,7 +79,7 @@
 		var now = new Date();
 		var shour = st.getHours();
 		var ehour = et.getHours();
-		var schstr = "<table border='1'><tr><th>시간</th><th>스케줄</th></tr>"
+		var schstr = "<table><tr><th>시간</th><th>스케줄</th></tr>"
 			schstr += 	"<tr><th>"+(shour-1)+":00</th><td></td></tr>"
 			schstr += 	"<tr><th>"+(shour-1)+":30</th><td></td></tr>"
 		for (var i=shour; i<=ehour; i++ ){
@@ -342,7 +347,7 @@
 			success : function(data){
 				var list = $.parseJSON(data);
 				var max = 0;
-				var schjbstr='<div class="modal-content">';
+				var schjbstr='<div class="modal-content ">';
 				var now = new Date();
 				for(var i=0; i<list.length; i++){	//홀개수 찾기위한 반복문
 					if(list[i].hallNum > max){
@@ -667,13 +672,21 @@
 <input type="button" value="이전스케줄" onclick="schPrev()">
 <input type="button" value="다음스케줄" onclick="schNext()">
 </th></tr></table><br>
-${sessionScope.memName} 님의 스케줄<br>
 
-<div id="t"></div>
-<br>
-<div id="schJb" class="modal">
-</div>
-<br>
-<div id="rst"></div>
+<div class="container">
+${sessionScope.memName} 님의 스케줄<br>
+	<div id="t" class="table">
+	</div>
+	
+	
+	<br>
+	<div id="schJb" class="modal">
+	</div>
+	
+	
+	<br>
+	
+	<div id="rst"></div>
+	</div>
 </div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

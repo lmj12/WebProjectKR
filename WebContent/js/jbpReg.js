@@ -178,7 +178,7 @@ $(document).ready(
 					}
 				}
 			);
-		
+			
 			// submit 시 액션
 			$('#submit').on('click', function() {
 				var id = $.trim($(settings.ID).val());
@@ -191,39 +191,30 @@ $(document).ready(
 					$('.form-group').addClass('is-invalid');
 					$('.form-control').addClass('is-invalid');
 					return false;
-				} else {
-					if($(settings.ID)
+				} else if( $(settings.telConfirm).val() == 0 ){
+					alert('휴대폰 인증을 하셔야 회원가입을 하실 수 있습니다');
+					return false;
+				} else if($(settings.ID)
 							.parents('.form-group')
 							.find('.text-muted')
 							.text().indexOf('없')!=-1){
-						
 						erroralert("ID 중복여부를 확인해주세요");
 						$(settings.ID).focus();
 						return false;
-						
-					} else if($(settings.telID)
-							.parents('.form-group')
-							.find('.text-muted')
-							.text().indexOf('올')!=-1){
-						erroralert("전화번호 입력이 올바르지 않습니다");
-						$(settings.telID).focus();
-						return false;
-						
+				} else {
+					var form = $(this);
+					$.ajax({
+						type : form.attr('method'),
+						url : form.attr('action'),
+						data : form.serialize()
+					}).done(function(data) {
+						$("#message").css('display', 'block');
+						setTimeout(location.replace('Lgn.do'), 2000);
+				      }).fail(function(data) {
+				        // Optionally alert the user of an error here...
+				      });
 					}
-					else {
-						var form = $(this);
-						$.ajax({
-							type : form.attr('method'),
-							url : form.attr('action'),
-							data : form.serialize()
-						}).done(function(data) {
-							$("#message").css('display', 'block');
-							setTimeout(location.replace('Lgn.do'), 2000);
-					      }).fail(function(data) {
-					        // Optionally alert the user of an error here...
-					      });
-					}
-				}
+				
 			});				
 		});
 
@@ -235,7 +226,7 @@ $(document).ready(
 
 
 
-$(document).submit(		
+/*$(document).submit(		
 
 function inputcheck(){
 	var inputerror="입력형식에 맞지 않습니다.";
@@ -333,3 +324,4 @@ function inputcheck(){
 }
 );
 
+*/
