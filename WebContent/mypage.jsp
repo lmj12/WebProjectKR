@@ -8,17 +8,11 @@
 	function alertTeam(){
 		if(confirm("팀 가입 요청이 있습니다. 확인하시겠습니까?")){
 			location.href="teamReqCk.do"
-		} 
+			
+		} 	
 	}
 	//-->
 </script>
-<c:if test="${sessionScope.teamReq eq '1' }">
-	<script type="text/javascript">
-		//<!--
-		alertTeam();
-		//-->
-	</script>
-</c:if>
 <h2><span>${sessionScope.memid}</span>님의 마이페이지입니다</h2>
 
 
@@ -34,6 +28,7 @@
 			alertTeam();
 			//-->
 		</script>
+		${sessionScope.teamReq=0}
 	</c:if>
 </c:if>
 
