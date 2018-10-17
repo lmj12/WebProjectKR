@@ -327,22 +327,6 @@ $(document).ready(
 						erroralert("ID 중복여부를 확인해주세요");
 						$(settings.ID).focus();
 						return false;
-					}else if($(settings.passwdID)
-							.parents('.form-group')
-							.find('.text-muted')
-							.text().indexOf('')!=-1){
-						erroralert("비밀번호를 입력해주세요");
-						$(settings.passwdID).focus();
-						return false;			
-						
-					}else if($(settings.rePasswdID)
-							.parents('.form-group')
-							.find('.text-muted')
-							.text().indexOf('')!=-1){
-						erroralert("비밀번호 확인을 입력해주세요");
-						$(settings.rePasswdID).focus();
-						return false;			
-						
 					}else {
 						var form = $(this);
 					$.ajax({
