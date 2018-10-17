@@ -365,14 +365,6 @@
 					<input type="button" value="지원현황"
 						onclick="location='recCrrView.do?recId=${recDto.recId}'">
 				</c:if>
-			<c:if test="${recDto.recStatus ne 2}">
-				<input class="inputbutton" type="button" value="공고수정"
-					onclick="location='recMod.do?recId=${recDto.recId}'">
-				<input class="inputbutton" type="button" value="공고삭제"
-					onclick="location='recDel.do?recId=${recDto.recId}'">
-			</c:if>
-				<input type="button" value="지원현황"
-					onclick="location='recCrrView.do?recId=${recDto.recId}'">
 			</c:if>
 		</c:if>
 			<input class="inputbutton" type="button" value="목록으로"

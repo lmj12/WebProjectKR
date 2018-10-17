@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp"%>
@@ -67,7 +67,7 @@
 	<div class="table">
 		<table border='1' style="float: left; margin-right: 7px;" >
 			<tr>
-				<th height="150" width="150">사진구역</th>
+			<th height="150" width="180"><img src="./setting/image/upload/${recCrrDto.jbskPic}" width="140" height="180" /></th>
 			</tr>
 		</table>
 		<br>

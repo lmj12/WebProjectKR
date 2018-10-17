@@ -4,6 +4,8 @@
 <%@ include file="/setting/setting.jsp" %>
 <div class="container">
 <!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 	//<!--
 	var estId = ${estId};
@@ -38,7 +40,7 @@
 	<div id="resume" style="margin: 7px">
 		<table border='1' style="float: left; margin-right: 7px;" >
 			<tr>
-				<th height="150" width="150">사진구역</th>
+				<th height="150" width="180"><img src="./setting/image/upload/${jbskPic}" width="140" height="180" /></th>
 			</tr>
 		</table>
 		<br>

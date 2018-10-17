@@ -28,6 +28,14 @@ public class BoardViewHd implements BoardHandler {
 		request.setAttribute( "pageNum", pageNum );
 		request.setAttribute( "boardDto", boardDto );
 						
+		int memType= (int)request.getSession().getAttribute("memType");
+		if(memType==1) {
+		String boarduserId = boardDto.getBoarduserId();
+		BoardDataBean bDto = new BoardDataBean();
+		bDto.setBoardId(boardId);
+		bDto.setBoarduserId(boarduserId);
+		boardDao.number(bDto);
+		}
 		return new ModelAndView("/board/boardView");
 	}
 	@Resource

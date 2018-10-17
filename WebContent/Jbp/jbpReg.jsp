@@ -77,7 +77,7 @@
 </div>
 
       <!-- form -->
-      <form name="inputform" action="jbpReg.do" method="post" onsubmit="return inputcheck()">
+      <form name="inputform" action="jbpReg.do" method="post">
       <form class="container">
 	    <div class="form-group">
 	        <label class="form-control-label" for="inputSuccess1">Input with success</label>
@@ -175,7 +175,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
  -->
-  <script>
+<script>
   var settings = {
 //			emailID: '#inputEmail',
 //			ErrorTextEmail: 'Enter valid email',

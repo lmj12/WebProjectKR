@@ -16,6 +16,9 @@
    <select id="appCk" parameterType="reccareer.RecCrrDataBean" resultType="int">
    		select count(*)	from KRRECCAREER where RECID = #{recId} AND JBSKID = #{jbskId}
    </select>
+   <select id="countApp" parameterType="int" resultType="int">
+   		select count(*)	from KRRECCAREER where RECID = #{recId}
+   </select>
    <select id="get" parameterType="int" resultType="reccareer.RecCrrDataBean">
    		select c.RECCRRID, c.RECID, c.POSID, c.RECCRRSTA, c.RSMID, r.JBSKID from KRRECCAREER c, KRRESUME r where c.RSMID = r.RSMID AND RECCRRID=#{recCrrId}
    </select>

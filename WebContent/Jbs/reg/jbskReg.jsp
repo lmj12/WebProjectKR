@@ -22,6 +22,7 @@
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script src="./js/jbskReg2.js"></script>
 	<script src="./js/jbskReg.js"></script>
+	<script src="./js/jbskSMS.js"></script>
 	
 	
 </head>
