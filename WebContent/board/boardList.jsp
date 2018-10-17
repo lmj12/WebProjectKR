@@ -7,16 +7,17 @@
 
 <br>
 <div class="container">
-	<table border="1">
-				
+	<table border="1">		
 		<tr>
 			<th style="width : 15%" colspan="3" align="left">
 			${sessionScope.memid}님의 신고게시판입니다. 
 			</th>
-		
+			
 			<th style="width : 5%" colspan="1" align="right">
+			<c:if test="${sessionScope.memType ne 3}">		
 				<a href="boardWrt.do">글쓰기</a>
 				&nbsp;&nbsp;&nbsp;
+				</c:if>
 			</th>
 		</tr>
 		<thead>

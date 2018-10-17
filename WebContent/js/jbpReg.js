@@ -193,6 +193,31 @@ $(document).ready(
 					$(this).parents('.form-group').find(
 							'.text-muted').css('display',
 							'block');
+				
+					var rePassword = $.trim($(settings.rePasswordID).val());
+					var password = $(settings.passwordID).val();
+					if(rePassword == password){
+						$(this).parents('.form-group').addClass(
+								'has-success');
+						$(this).addClass('form-control-success');
+						$(this).parents('.form-group').removeClass(
+								'has-danger');
+						$(this).removeClass('form-control-danger');
+						var passwordS = $.trim($(settings.rePasswordID).val());
+						$(this).parents('.form-group').find(
+								'.text-muted').css('display',
+								'none');
+					} else if (rePassword != password){
+						$(this).parents('.form-group').addClass(
+								'has-danger');
+						$(this).addClass('form-control-danger');
+						$(this).parents('.form-group').find(
+								'.text-muted').text(
+								settings.ErrorTextrePassword);
+						$(this).parents('.form-group').find(
+								'.text-muted').css('display',
+								'block');
+					}
 				}
 			});
 		$(settings.rePasswordID).keyup(
@@ -290,7 +315,8 @@ $(document).ready(
 			$('#submit').on('click', function() {
 				var id = $.trim($(settings.ID).val());
 				var passwd = $.trim($(settings.passwordID).val());
-				if (id == '' || passwd == '') {
+				var repasswd = $.trim($(settings.rePasswordID).val());
+				if (id == '' || passwd == '' || repasswd =='') {
 					$('.form-group').addClass('has-danger');
 					$('.form-control').addClass('form-control-danger');
 				} else {
@@ -302,7 +328,23 @@ $(document).ready(
 						
 						$(settings.ID).focus();
 						return false;
-					} else {
+					}else if($(settings.passwdID)
+							.parents('.form-group')
+							.find('.text-muted')
+							.text().indexOf('')!=-1){
+						erroralert("비밀번호를 입력해주세요");
+						$(settings.passwdID).focus();
+						return false;			
+						
+					}else if($(settings.rePasswdID)
+							.parents('.form-group')
+							.find('.text-muted')
+							.text().indexOf('')!=-1){
+						erroralert("비밀번호 확인을 입력해주세요");
+						$(settings.rePasswdID).focus();
+						return false;			
+						
+					}else {
 						var form = $(this);
 					$.ajax({
 						type : form.attr('method'),
@@ -317,9 +359,9 @@ $(document).ready(
 				      });
 					}
 				}
-			});
+			});				
 		});
-	
+
 //function isValidEmailAddress(emailAddress) {
 //	var pattern = new RegExp(
 //			/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
@@ -328,21 +370,53 @@ $(document).ready(
 
 
 
-var inputerror="입력형식에 맞지 않습니다.";
+$(document).submit(		
+
 function inputcheck(){
+	var inputerror="입력형식에 맞지 않습니다.";
 	if( !inputform.jobpId.value){
 		alert("아이디를 입력하세요");
 		inputform.jobpId.focus();
 		return false;
-	}else if(inputform.jobpId.value){
-		if( inputform.jobpId.value.length <4 || inputform.jobpId.value.length >15) {
-		alert( "아이디길이를 확인하세요" );
-		inputform.jobpId.focus();
+	}else if( !inputform.jobpPasswd.value ) {
+		alert( "비밀번호를 입력하세요");
+		inputform.jobpPasswd.focus();
+		return false;
+	}else if(inputform.jobpPasswd.value){
+		if( inputform.jobpPasswd.value.length <6 || inputform.jobpPasswd.value.length >15) {
+		alert( "비밀번호길이를 확인하세요" );
+		inputform.jobpPasswd.focus();
 		return false;
 		}
+	}else if(!inputform.rejobpPasswd.value) {
+		alert( "비밀번호확인란을 입력하세요" );
+		inputform.rejobpPasswd.focus();
+		return false;
+	} else if(inputform.jobpPasswd.value != inputform.rejobpPasswd.value ) {
+		alert( "비밀번호가 일치하지 않습니다." );
+		inputform.rejobpPasswd.focus();
+		return false;
+	}else if(!inputform.jobpTel.value) {
+		erroralert( "전화번호를 입력하세요" );
+		inputform.jobpTel.focus();
+		return false;
+	} else if(inputform.jobpTel.value){
+			if( inputform.jobpTel.value.length <9 || inputform.jobpPasswd.value.length >11) {
+					erroralert( "전화번호길이를 확인하세요" );
+					inputform.jobpTel.focus();		
+					return false;
+			} else if( inputform.jobpTel.value.indexOf( "-" ) != -1 ) {
+					erroralert("전화번호에서 '-'를 빼주세요");
+					inputform.jobpTel.focus();		
+					return false;
+			}
 	}
+
 	
-	 for (i=0; i<inputform.jobpId.value.length; i++)
+
+	
+	
+	 for (var i=0; i<inputform.jobpId.value.length; i++)
      {
             var ch = inputform.jobpId.value.charAt(i);//문자를 반환(정수형), 범위 검사 가능
 
@@ -358,37 +432,6 @@ function inputcheck(){
 
 	
 	
-	if( ! inputform.jobpPasswd.value ) {
-		alert( "비밀번호를 입력하세요");
-		inputform.jobpPasswd.focus();
-		return false;
-	}else if( inputform.jobpPasswd.value.length <6 || inputform.jobpPasswd.value.length >15) {
-		alert( "비밀번호길이를 확인하세요" );
-		inputform.jobpPasswd.focus();
-		return false;
-	}else if(! inputform.rejobpPasswd.value) {
-		alert( "비밀번호확인란을 입력하세요" );
-		inputform.rejobpPasswd.focus();
-		return false;
-	} else if(inputform.jobpPasswd.value != inputform.rejobpPasswd.value ) {
-		alert( "비밀번호가 일치하지 않습니다." );
-		inputform.rejobpPasswd.focus();
-		return false;
-	}else if(! inputform.jobpTel.value) {
-		erroralert( "전화번호를 입력하세요" );
-		inputform.jobpTel.focus();
-		return false;
-	} else if(inputform.jobpTel.value){
-			if( inputform.jobpTel.value.length <9 || inputform.jobpPasswd.value.length >11) {
-					erroralert( "전화번호길이를 확인하세요" );
-					inputform.jobpTel.focus();		
-					return false;
-			} else if( inputform.jobpTel.value.indexOf( "-" ) != -1 ) {
-					erroralert("전화번호에서 '-'를 빼주세요");
-					inputform.jobpTel.focus();		
-					return false;
-			}
-	}
 	
 	
 	//영문, 숫자, 특수문자 2종 이상 혼용해 비밀번호
@@ -431,7 +474,6 @@ function inputcheck(){
 		alert("동일문자를 연속으로 3번이상 사용할 수 없습니다.");
 		return false;
 	}
-	
 }
-
+);
 
