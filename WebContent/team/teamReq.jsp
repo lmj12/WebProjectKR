@@ -33,10 +33,11 @@
 	
 	//-->
 </script>
-<h4>팀 가입 요청을 보낼 아이디를 입력하세요.</h4>
-<input type="text" id="jbskId" > <input type="button" value="검색" onclick="jbskGet()">
-<br>
-<div id="rst" >
+<div class="container">
+	<h4>팀 가입 요청을 보낼 아이디를 입력하세요.</h4>
+	<input type="text" id="jbskId" > <input type="button" value="검색" onclick="jbskGet()">
+	<br>
+	<div id="rst" >
+	</div>
 </div>
-
 <%@ include file="/setting/design_setting_footer.jsp" %>

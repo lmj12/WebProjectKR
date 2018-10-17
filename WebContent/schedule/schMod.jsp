@@ -22,7 +22,7 @@
 	});
 //-->
 </script>
-
+<div class="container">
 <h2>${year}년 ${month}월 ${date}일</h2>
 <h3>${day}요일</h3><br><br>
 <h2>스케줄 수정하기</h2>
@@ -55,5 +55,5 @@
 		</tr>
 	</table>
 </form>
-
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -18,8 +18,6 @@
 			}
 		
 	})
-	
-	
 	function popUp(){
 		$.ajax({
 	    	method : "POST",
@@ -40,12 +38,10 @@
 					
 				}
 			}, error:function(request,status,error){
-				alert();
+//				alert('popup alert');
 			}
 		})
-			
 	}
-	
 	function memCheck(){
 		var teamId = '${sessionScope.teamId}'
 		if(teamId == 0 ){
@@ -69,19 +65,13 @@
 	function makePopImg(num){
 			var str = '';
 			var rst = 0;
-			if(num==1){
-				str += "<img src='./setting/image/pop/1.png' onclick='toPopRec()'>인근공고가 있습니다." 
-				rst = 1;
-			} else if(num==2){
-				str += "<img src='./setting/image/pop/2.png' onclick='toPopRec()'><p>인근지역공고가 등록되었습니다.</p>" 
-				rst = 1;
-			} else if(num==3){
-				str += "<img src='./setting/image/pop/3.png' onclick='toPopRec()'><h1>인근지역공고가 등록되었습니다.</h1>" 
-				rst = 1;
-			} else {
-				str += "<img src='./setting/image/pop/etc.png' onclick='toPopRec()'><h1>인근지역공고가 등록되었습니다.</h1>" 
-				rst = 1;
-			}
+			str += "<div class='container'>"
+			str += "<button type='button' class='btn btn-Warning' onclick='toPopRec()'>"
+			str += "<img src='./setting/image/pop/etc.png' style='width:35px; height:25px;'>"
+			str += "<strong>인근지역공고가 등록되었습니다</strong> <span class='badge badge-light'>"+num+"</span>"
+			str += "</button>"
+			str += "<div>"
+			rst = 1;
 		
 		$("#popUp").append(str);
 		return rst;
@@ -90,16 +80,15 @@
 </script>
 	<nav class="navbar navbar-expand-sm navbar-light sticky-top" data-toggle="affix">
 	     <a class="navbar-brand" href="main.do">KR_WebProject[기린반]</a>
-	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-	        ☰
-	    </button>
 	    &nbsp;
 	    <div id="popUp" >
-
 	    </div>
 	    <div class="collapse navbar-collapse" id="collapsingNavbar">
 	
 	        <ul class="nav navbar-nav ml-auto">
+	        	<li class="nav-item">
+	        		
+	        	</li>	
 	        	<li class="nav-item">
 		                <a class="nav-link" href="notice.do">공지사항</a>
 		        </li>

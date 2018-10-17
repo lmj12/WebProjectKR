@@ -335,7 +335,6 @@ $(document).ready(
 						data : form.serialize()
 					}).done(function(data) {
 						$("#message").css('display', 'block');
-						alert('회원가입에 성공하셨습니다 \n 3초 뒤 로그인 페이지로 이동합니다');
 						setTimeout(location.replace('Lgn.do'), 2000);
 				      }).fail(function(data) {
 				        // Optionally alert the user of an error here...

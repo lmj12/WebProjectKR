@@ -50,6 +50,7 @@
 <c:if test="${result eq 1}">
 	<c:redirect url="mypage.do"/>		
 </c:if>
+<div class="container">
 <form name="recwrite" method="post" action="recWrt.do" autocomplete="off" onsubmit="return writecheck()">
 <table border="1">
 <input type="hidden" name="jobpId" value="${jbpDto.jobpId}">
@@ -101,5 +102,5 @@
 
 </table>
 </form>
-
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

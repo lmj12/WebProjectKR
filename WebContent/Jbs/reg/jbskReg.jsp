@@ -201,7 +201,7 @@
 <!-- message -->
 <div id="message">
   <div class="alert alert-success" role="alert">
-  <strong>회원가입에 성공했습니다!</strong>
+  <strong>회원가입에 성공하셨습니다<br>3초 뒤 로그인 페이지로 이동합니다</strong>
   </div>
 </div>
 

@@ -112,7 +112,6 @@ public class RecListHd implements RecruitHandler {
 	
 		
 		
-		// TODO Auto-generated method stub
 		return new ModelAndView("/recruit/recList");
 	}
 	

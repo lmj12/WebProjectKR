@@ -75,8 +75,9 @@
 	}
 	//-->
 </script>
-<h4>팀 초대 확인 페이지</h4>
-<div id="rst">
+<div class="container">
+	<h4>팀 초대 확인 페이지</h4>
+	<div id="rst">
+	</div>
 </div>
-
 <%@ include file="/setting/design_setting_footer.jsp" %>

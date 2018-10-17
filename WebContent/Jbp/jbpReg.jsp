@@ -72,13 +72,18 @@
 <!-- message -->
 <div id="message">
   <div class="alert alert-success" role="alert">
-  <strong>회원가입에 성공했습니다!</strong>
+  <strong>회원가입에 성공하셨습니다<br>3초 뒤 로그인 페이지로 이동합니다</strong>
   </div>
 </div>
 
       <!-- form -->
       <form name="inputform" action="jbpReg.do" method="post">
-      
+      <form class="container">
+	    <div class="form-group">
+	        <label class="form-control-label" for="inputSuccess1">Input with success</label>
+	        <input type="text" class="form-control is-invalid" id="inputSuccess1">
+	        <div class="valid-feedback">Success! You've done it.</div>
+	    </div>
         <div class="form-group row">
           <label for="jobpId" class="col-sm-2 col-form-label">아이디</label>
           <div class="col-sm-10">
