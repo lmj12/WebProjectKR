@@ -62,7 +62,7 @@
 
 //-->
 </script>
-
+<div class="container">
 <h2>${param.year}년 ${param.month+1}월 ${param.date}일</h2>
 <h3>${param.day}요일</h3><br><br>
 <h2>새 스케줄 만들기</h2>
@@ -96,5 +96,5 @@
 </form>
 
 
-
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

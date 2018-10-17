@@ -26,9 +26,13 @@
 										<!-- 기본 이력서 정보 -->
 	<div class="table-responsive">
 		<table class="table table-bordered" style="text-align: center";>
+			<thead>
+				<tr>
+					<th colspan="9"> 이 력 서 </th>
+				</tr>
+			</thead>
 			<tr>
 				<td rowspan="5"><img src="./setting/image/upload/${jbskDto.jbskPic}" width="140" height="180" /></td> 
-				<th colspan="4"> 이 력 서 </th>
 			</tr>
 			<tr>
 				<th rowspan="2" >성명</th>			<!-- jbskName -->
@@ -173,13 +177,15 @@
 							</c:forEach>
 						</c:if>
 					</tbody>
-					<tr>
-						<td colspan="8">
-							<input type="button" name="btn_add_tbody" value="추가">
-							<input type="button" name="btn_submit_tbody" value="저장">
-							<input type="button" name="btn_reset_tbody" value="main" onclick="location='main.do'">
-						</td>
-					</tr>
+					<tfoot>
+						<tr>
+							<td colspan="8">
+								<input type="button" name="btn_add_tbody" value="추가">
+								<input type="button" name="btn_submit_tbody" value="저장">
+								<input type="button" name="btn_reset_tbody" value="main" onclick="location='main.do'">
+							</td>
+						</tr>
+					</tfoot>
 				</table>
 			</form>
 		</div>

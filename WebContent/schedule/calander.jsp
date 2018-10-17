@@ -30,15 +30,17 @@
 	<div id="cal" class="table-responsive">
 		<div id="date"></div>
 		<table id="calcal" border="1" class="table table-bordered">
-			<tr>
-				<th>일</th>
-				<th>월</th>
-				<th>화</th>
-				<th>수</th>
-				<th>목</th>
-				<th>금</th>
-				<th>토</th>
-			</tr>
+			<thead>
+				<tr>
+					<th>일</th>
+					<th>월</th>
+					<th>화</th>
+					<th>수</th>
+					<th>목</th>
+					<th>금</th>
+					<th>토</th>
+				</tr>
+			</thead>
 		</table>
 	</div>
 	

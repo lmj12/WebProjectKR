@@ -129,6 +129,7 @@ function searchPostcode() {
 	}
 
 </script>
+<div class="container">
 <h2>이력서 검색 페이지</h2>
 
 <table border="1">
@@ -167,5 +168,4 @@ function searchPostcode() {
 	<div id="temp">
 		
 	</div>
-	
-		
+</div>

@@ -21,6 +21,7 @@
 
 	//-->
 </script>
+<div class="container">
 <h2>상세 이력서 보기 - ${crrDto.jbskId}</h2>
 <br>
 <br>
@@ -111,5 +112,5 @@
 		</tr>
 	</table>
 </div>
-
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

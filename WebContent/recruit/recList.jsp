@@ -28,27 +28,31 @@ table{
 <input type="hidden" name="recId" value="${article.recDto.recId}">
 
 <table border="1"  style="cursor:hand;float:left;width:30%;" onclick="location.href='recView.do?recId=${article.recDto.recId}'">	
-
+	<thead>
+		<tr>
+			<th>공고상태</th>
+				<c:if test="${article.recDto.recStatus eq 0}">
+			    	<th class="statusOpt" align="center" style="background: green">	
+			    		모집중
+			    </c:if>
+			    <c:if test="${article.recDto.recStatus eq 1}">
+				    <th class="statusOpt" align="center" style="">
+			    		모집완료
+			    </c:if>
+			    <c:if test="${article.recDto.recStatus eq 2}">
+				    <th class="statusOpt" align="center">
+			    		완료
+			    </c:if>	
+			</th>		
+		</tr>
+	</thead>
 	<tr>
 		<th>공고번호 </th>
 		<td align="center">
 				${article.recDto.recId}				
 		</td>	
 	</tr>
-	<tr>
-		<th>공고상태</th>
-		<td id="con" align="center">
-					<c:if test="${article.recDto.recStatus eq 0}">
-				    		모집중
-				    </c:if>
-				    <c:if test="${article.recDto.recStatus eq 1}">
-				    		모집완료
-				    </c:if>
-				    <c:if test="${article.recDto.recStatus eq 2}">
-				    		완료
-				    </c:if>	
-				</td>		
-	</tr>
+	
 	<tr>
 		<th>사업자 이름</th>
 		<td align="center">						
@@ -84,13 +88,13 @@ table{
 		</td>				
 	</tr>
 	<tr>
-		<th>시작일</th>
+		<th>등록일</th>
 		<td align="center">
 					${article.recDto.stime}		
 				</td>				
 	</tr>
 	<tr>
-		<th>종료일</th>
+		<th>만료일</th>
 		<td align="center">
 					${article.recDto.etime}
 				</td>	
