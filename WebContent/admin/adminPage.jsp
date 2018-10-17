@@ -123,9 +123,9 @@
 					var str = ''
 					str = "<table border='1'><tr><th>제목</th><th>작성자</th><th>작성날자</th></tr>"
 					for (var i=0; i<articles.length; i++){
-						str += "<tr onclick='toArticle("+articles[i].boardId+")'><td>"+articles[i].boardTitle+"</td><td>"+articles[i].boarduserId+"</td><td>"+articles[i].boardregTime+"</td></tr>"
+						str += "<tr onclick='toNotice("+i+")'><td><input type='hidden' id='ntc"+i+"' value='"+articles[i].boardId+"'>"+articles[i].boardTitle+"</td><td>"+articles[i].boarduserId+"</td><td>"+articles[i].boardregTime+"</td></tr>"
 					}
-					str += "<tr><th colspan='3'><input type='button' value='글 작성' onclick='noticeWrt()'><input type='button' value='글 목록' onclick='notice()'></th></tr></table>"
+					str += "<tr><th colspan='3'><input type='button' value='글 작성' onclick='noticeWrt()'></th></tr></table>"
 					$("#rst").html(str);
 				} else {
 					$("#rst").text("검색 결과가 없습니다. 아이디를 다시 확인해 주세요.")
@@ -164,6 +164,10 @@
 				}
 			}
 		})
+	}
+	function toNotice(i){
+		var bdid = $("#ntc"+i).val();
+		location.href = "notView.do?boardId="+bdid;
 	}
 		
 	function toRecruit(recId){
@@ -295,9 +299,7 @@
 		location.href ="boardView.do?boardId="+bdId+"&pageNum=1&number=1";
 	}
 	
-	function notice(){
-		location.href = "notice.do";
-	}
+
 	
 	function noticeWrt(){
 		location.href = "notWrt.do";//TODO: 공지쓰는 페이지로 이동
