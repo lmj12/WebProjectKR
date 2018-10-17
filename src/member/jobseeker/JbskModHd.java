@@ -46,30 +46,32 @@ public class JbskModHd implements JobSeekerHandler {
 		
 		// String test = request.getParameter("test"); // jsp text name mapping
         MultipartFile mf = mre.getFile("jbskPic"); // jsp file name mapping
-        String proPath = "C:\\Users\\Playdata\\Desktop\\WEBP\\eclipse\\WebProjectKR\\WebContent\\setting\\image\\upload\\";
-        String uploadPath = "";
-        String original = System.currentTimeMillis()+mf.getOriginalFilename(); 
-        
-        //String path = "C:\\"+"image\\"; // 파일 업로드 경로
-             
-        //String original = mf.getOriginalFilename(); // 업로드하는 파일 name
-             
-        System.out.println("!!!!!!!!!!"+original);  // file original name
-        System.out.println("!!!!!!!!!!"+mf.getSize());// file size
-             
-        uploadPath = proPath+original; // 파일 업로드 경로 + 파일 이름
-         
-         
-        try {
-            mf.transferTo(new File(uploadPath)); // 파일을 위에 지정 경로로 업로드
-        } catch (IllegalStateException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        String original;
+        if(request.getParameter("conCnt").equals("1") ) {
+	        String proPath = "C:\\Users\\Playdata\\Desktop\\WEBP\\eclipse\\WebProjectKR\\WebContent\\setting\\image\\upload\\";
+	        String uploadPath = "";
+	        original = System.currentTimeMillis()+mf.getOriginalFilename(); 
+	        
+	        //String path = "C:\\"+"image\\"; // 파일 업로드 경로
+	             
+	        //String original = mf.getOriginalFilename(); // 업로드하는 파일 name
+	             
+	        uploadPath = proPath+original; // 파일 업로드 경로 + 파일 이름
+	         
+	         
+	        try {
+	            mf.transferTo(new File(uploadPath)); // 파일을 위에 지정 경로로 업로드
+	        } catch (IllegalStateException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+        } else {
+        	original = mf.getOriginalFilename();
         }
-		
+			
 		String compemail="";
 		String ema1 = mre.getParameter("jbskEmail1");
 		String ema2 = mre.getParameter("jbskEmail2");
