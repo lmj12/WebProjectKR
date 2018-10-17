@@ -105,22 +105,22 @@ $(document).ready(
 						if (isValidEmailAddress(email)) {
 							$(this)
 									.parents('.form-group')
-									.addClass('has-success');
+									.addClass('is-valid');
 							$(this).addClass(
-									'form-control-success');
+									'is-valid');
 							$(this).parents('.form-group')
 									.removeClass(
-											'has-danger');
+											'is-invalid');
 							$(this).removeClass(
-									'form-control-danger');
+									'is-invalid');
 							$(this).parents('.form-group')
 									.find('.text-muted')
 									.css('display', 'none');
 						} else {
 							$(this).parents('.form-group')
-									.addClass('has-danger');
+									.addClass('is-invalid');
 							$(this).addClass(
-									'form-control-danger');
+									'is-invalid');
 							$(this)
 									.parents('.form-group')
 									.find('.text-muted')
@@ -132,9 +132,9 @@ $(document).ready(
 						}
 					} else {
 						$(this).parents('.form-group')
-								.addClass('has-danger');
+								.addClass('is-invalid');
 						$(this).addClass(
-								'form-control-danger');
+								'is-invalid');
 						$(this)
 								.parents('.form-group')
 								.find('.text-muted')
@@ -149,19 +149,19 @@ $(document).ready(
 					var password = $.trim($(settings.passwordID).val()).length * 1;
 					if (password > Math.round(settings.MinCharsPass - 1)) {
 						$(this).parents('.form-group').addClass(
-								'has-success');
-						$(this).addClass('form-control-success');
+								'is-valid');
+						$(this).addClass('is-valid');
 						$(this).parents('.form-group').removeClass(
-								'has-danger');
-						$(this).removeClass('form-control-danger');
+								'is-invalid');
+						$(this).removeClass('is-invalid');
 						var passwordS = $.trim($(settings.passwordID).val());
 						$(this).parents('.form-group').find(
 								'.text-muted').css('display',
 								'none');
 					} else if (password < settings.MinCharsPass) {
 						$(this).parents('.form-group').addClass(
-								'has-danger');
-						$(this).addClass('form-control-danger');
+								'is-invalid');
+						$(this).addClass('is-invalid');
 						$(this).parents('.form-group').find(
 								'.text-muted').text(
 								settings.ErrorTextPassword);
@@ -176,19 +176,19 @@ $(document).ready(
 					var password = $(settings.passwordID).val();
 					if(rePassword == password){
 						$(this).parents('.form-group').addClass(
-								'has-success');
-						$(this).addClass('form-control-success');
+								'is-valid');
+						$(this).addClass('is-valid');
 						$(this).parents('.form-group').removeClass(
-								'has-danger');
-						$(this).removeClass('form-control-danger');
+								'is-invalid');
+						$(this).removeClass('is-invalid');
 						var passwordS = $.trim($(settings.rePasswordID).val());
 						$(this).parents('.form-group').find(
 								'.text-muted').css('display',
 								'none');
 					} else if (rePassword != password){
 						$(this).parents('.form-group').addClass(
-								'has-danger');
-						$(this).addClass('form-control-danger');
+								'is-invalid');
+						$(this).addClass('is-invalid');
 						$(this).parents('.form-group').find(
 								'.text-muted').text(
 								settings.ErrorTextrePassword);
@@ -204,13 +204,13 @@ $(document).ready(
 					if (id > Math
 							.round(settings.MinCharsID - 1)) {
 						$(this).parents('.form-group')
-								.addClass('has-success');
+								.addClass('is-valid');
 						$(this).addClass(
-								'form-control-success');
+								'is-valid');
 						$(this).parents('.form-group')
-								.removeClass('has-danger');
+								.removeClass('is-invalid');
 						$(this).removeClass(
-								'form-control-danger');
+								'is-invalid');
 						var idS = $.trim($(
 								settings.ID).val());
 						$(this).parents('.form-group')
@@ -236,9 +236,9 @@ $(document).ready(
 						
 					} else if (id < settings.MinCharsID) {
 						$(this).parents('.form-group')
-								.addClass('has-danger');
+								.addClass('is-invalid');
 						$(this).addClass(
-								'form-control-danger');
+								'is-invalid');
 						$(this)
 								.parents('.form-group')
 								.find('.text-muted')
@@ -253,11 +253,11 @@ $(document).ready(
 //				체크 폼 양식
 //				$(".form-check").change(function() {
 //					if ($("input:checkbox:checked").prop("checked")) {
-//						$(this).addClass('has-success');
-//						$(this).removeClass('has-danger');
+//						$(this).addClass('is-valid');
+//						$(this).removeClass('is-invalid');
 //					} else {
-//						$(this).addClass('has-danger');
-//						$(this).removeClass('has-success');
+//						$(this).addClass('is-invalid');
+//						$(this).removeClass('is-valid');
 //					}
 //				});
 			
@@ -266,8 +266,8 @@ $(document).ready(
 					var id = $.trim($(settings.ID).val());
 					var passwd = $.trim($(settings.passwordID).val());
 					if (id == '' || passwd == '') {
-						$('.form-group').addClass('has-danger');
-						$('.form-control').addClass('form-control-danger');
+						$('.form-group').addClass('is-invalid');
+						$('.form-control').addClass('is-invalid');
 					} else {
 						if($(settings.ID)
 								.parents('.form-group')

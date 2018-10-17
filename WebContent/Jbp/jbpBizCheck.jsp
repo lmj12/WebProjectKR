@@ -1,45 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
 
 <!DOCTYPE html>
-<div class="container">
-	<table border="1">
-		<thead>
-			<tr>
-				<td> 사업자번호를 입력해주세요 </td>
-			</tr>
-		</thead>
-		<tbody id="t">
-			<tr>
-				<td>
-					<input type="text" name="jbpNumber" />
-					<input type="button" name="checkBizId" value="확인" />
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<div id="bizList" class="container">
-	
-	</div>
-</div>
 <script type="text/javascript">
 //<!--
-	$(document).ready(
-		function(){
+	$(function(){
 			// FIXME : 개발용 사업자번호 자동입력
-			$('input:text[name=jbpNumber]').val('1078614075');
+			$('input[name=wkpl_nm]').val('lg');
+			$('input[name=bzowr_rgst_no]').val('1078614075');
 		
-			$('input:button[name=checkBizID]').on(
+			$('#btn-checkBizId').on(
 				'click',
 				function checkBizID() {
-					alert()
-					if( !$('input:text[name=jbpNumber]').val() ){
+					if( !$('input[name=bzowr_rgst_no]').val() ){
 						alert("사업자번호를 입력해주세요");
 						return false;
 					} else {
-						var bizID = $('input:text[name=jbpNumber]').val();
+						var bizID = $('input[name=bzowr_rgst_no]').val();
 					    var checkID = new Array(1, 3, 7, 1, 3, 7, 1, 3, 5, 1);
 					    var tmpBizID, i, chkSum=0, c2, remander;
 					    var result;
@@ -59,37 +37,30 @@
 					    	alert('사업자등록번호 형식에 맞는 번호입니다');
 					    	// TODO : 맞는 사업자 등록번호일 시, bizID 앞 6자리 파싱해서 공공데이터 포털날리고
 					    	// 폼 만들어서 선택하게끔
-					    	var bizName = $('input:text[name=jobpCn]').val();
+					    	var bizName = $('wkpl_nm').val();
 					    	var parseBizID = bizID.substring(0, 6);
 					    	
-					    	bizListCall = function() {
-					    		var serviceKey = 'zHRNYJ97QejMrVzKWNS6Hmc8j9Gd8oJ7p4LKd3MfUsTbmSI%2F2v3inaBqZm%2FTDmxvJPYg7gQ1QOEfbnPWE%2FRQvg%3D%3D';
-								var jbpName = $('input:text[name=jobpCn]').val();
-								var jbpNumber = parseBizID;
-								var url = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch";
-								
-								$.ajax(
-										{
-											type : 'GET',
-											url : url,
-											data : {
-												serviceKey : serviceKey,
-											//	wkpl_nm : jbpName,
-												bzowr_rgst_no : jbpNumber,
-											},
-											dataType : 'json',
-											success : function(data){
-												$('.bizList')
-													.last()
-													.html( $(data).find('body').text() );
-											},
-											error : function(e){
-												$('.bizList')
-													.val(e.message);
-											}
-										}	
-								);
-					    	}
+					    	$.ajax(
+									{
+										type : 'GET',
+										url : 'jbpPublicCheck.do',
+										data : {
+											wkpl_nm : bizName,
+											bzowr_rgst_no : parseBizID,
+										},
+										dataType : 'xml',
+										success: function(msg){
+							            	alert('성공')
+							            },
+										error : function(request,status,error){
+										    $('#bizList')
+									    		.last()
+									    		.html("code : "+request.status+"<br>"
+								    				+"message : "+request.responseText+"<br>"
+								    				+"error : "+$(error).find('errMsg').html());
+										}
+									}
+							);
 					    	
 					    	result = true ; // OK!
 					    } else {
@@ -104,4 +75,39 @@
 	);
 //-->
 </script>
+
+<div class="container">
+	<form>
+	<table border="1">
+		<thead>
+			<tr>
+				<th colspan="2"> 사업자번호를 입력해주세요 </td>
+			</tr>
+		</thead>
+		<tbody id="t">
+			<tr>
+				<td>
+					업체명
+				</td>
+				<td>
+					<input type="text" id="wkpl_nm" name="wkpl_nm">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					사업자번호
+				</td>
+				<td>
+					<input type="text" id="bzowr_rgst_no" name="bzowr_rgst_no" maxlength="10">
+					<button id="btn-checkBizId" name="checkBizId">확인</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+	<div id="bizList" class="container">
+	
+	</div>
+</div>
+
 
