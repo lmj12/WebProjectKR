@@ -25,7 +25,6 @@
 	$(document).ready(function(){
 		makeRec();
 	})
-	
 	function makeRec(){
 		var sday = new Date(st).format("dd/MM/yyyy");
 		var stime = new Date(st).format("hh:mma/p")
@@ -43,6 +42,7 @@
 	<script type="text/javascript">
 	
 		<!--
+
 		erroralert('inserterror');
 		//-->
 	</script>
