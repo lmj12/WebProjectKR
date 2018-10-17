@@ -46,28 +46,32 @@ public class JbskModHd implements JobSeekerHandler {
 		
 		// String test = request.getParameter("test"); // jsp text name mapping
         MultipartFile mf = mre.getFile("jbskPic"); // jsp file name mapping
-        String uploadPath = "";
-         
-        String path = "C:\\"+"image\\"; // 파일 업로드 경로
-             
-        String original = mf.getOriginalFilename(); // 업로드하는 파일 name
-             
-        System.out.println("!!!!!!!!!!"+original);  // file original name
-        System.out.println("!!!!!!!!!!"+mf.getSize());// file size
-             
-        uploadPath = path+original; // 파일 업로드 경로 + 파일 이름
-         
-         
-        try {
-            mf.transferTo(new File(uploadPath)); // 파일을 위에 지정 경로로 업로드
-        } catch (IllegalStateException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        String original;
+        if(request.getParameter("conCnt").equals("1") ) {
+	        String proPath = "C:\\ExpertJava\\Project\\WebProject\\발표\\KR_WebProject\\WebContent\\setting\\image\\upload\\";
+	        String uploadPath = "";
+	        original = System.currentTimeMillis()+mf.getOriginalFilename(); 
+	        
+	        //String path = "C:\\"+"image\\"; // 파일 업로드 경로
+	             
+	        //String original = mf.getOriginalFilename(); // 업로드하는 파일 name
+	             
+	        uploadPath = proPath+original; // 파일 업로드 경로 + 파일 이름
+	         
+	         
+	        try {
+	            mf.transferTo(new File(uploadPath)); // 파일을 위에 지정 경로로 업로드
+	        } catch (IllegalStateException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+        } else {
+        	original = mf.getOriginalFilename();
         }
-		
+			
 		String compemail="";
 		String ema1 = mre.getParameter("jbskEmail1");
 		String ema2 = mre.getParameter("jbskEmail2");
@@ -83,7 +87,7 @@ public class JbskModHd implements JobSeekerHandler {
 		jbskDto.setJbskPasswd(mre.getParameter("jbskPasswd"));
 		jbskDto.setJbskGender(Integer.parseInt(mre.getParameter("jbskGender")));
 		jbskDto.setJbskEmail(compemail);
-		jbskDto.setJbskPic(uploadPath);
+		jbskDto.setJbskPic(original);
 		jbskDto.setJbskAdd1(mre.getParameter("jbAddress"));
 		jbskDto.setJbskAdd2(mre.getParameter("rdAddress"));
 		jbskDto.setJbskAdd3(mre.getParameter("zipcode"));

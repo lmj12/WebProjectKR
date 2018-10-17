@@ -246,7 +246,7 @@
 	//-->
 </script>
 <h2>공고내용 페이지</h2>
-
+<div class="container">
 <table border="1">
 	
 <c:if test="${sessionScope.memType eq 2}">
@@ -290,11 +290,11 @@
 				</td>
 		<tr>
 			<th>시작일</th>
-			<td>${recDto.stime}</td>
+			<td align="center">${recDto.stime}</td>
 		</tr>
 		<tr>
 			<th>종료일</th>
-			<td>${recDto.etime}</td>
+			<td align="center">${recDto.etime}</td>
 		</tr>
 		<tr>
 			<th>공고상태</th>
@@ -338,7 +338,7 @@
 		<tr>
 		<th>공고상태변경</th>
 				<td>				
-				<select name="sta" id="sta">
+				<select name="sta" id="${recDto.recId}">
 					<option value="0" selected>모집중 </option>
 					<option value="1">모집완료</option>
 					<option value="2">완료</option>
@@ -353,12 +353,18 @@
 		<th colspan="4">
 		<c:if test="${sessionScope.memType eq 2}">
 			<c:if test="${sessionScope.memid eq jbpDto.jobpId}">
-				<input class="inputbutton" type="button" value="공고수정"
-					onclick="location='recMod.do?recId=${recDto.recId}&pageNum=${pageNum}'">
-				<input class="inputbutton" type="button" value="공고삭제"
-					onclick="location='recDel.do?recId=${recDto.recId}&pageNum=${pageNum}'">
-				<input type="button" value="지원현황"
-					onclick="location='recCrrView.do?recId=${recDto.recId}'">
+				<c:if test="${recDto.recStatus eq 2}">
+					<input class="inputbutton" type="button" value="사후평가하기"
+						onclick="location='estList.do?recId=${recDto.recId}'">
+				</c:if>
+				<c:if test="${recDto.recStatus ne 2}">
+					<input class="inputbutton" type="button" value="공고수정"
+						onclick="location='recMod.do?recId=${recDto.recId}'">
+					<input class="inputbutton" type="button" value="공고삭제"
+						onclick="location='recDel.do?recId=${recDto.recId}'">
+					<input type="button" value="지원현황"
+						onclick="location='recCrrView.do?recId=${recDto.recId}'">
+				</c:if>
 			</c:if>
 		</c:if>
 			<input class="inputbutton" type="button" value="목록으로"
@@ -383,4 +389,5 @@
 </table>
 </c:if>
 </c:if>
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

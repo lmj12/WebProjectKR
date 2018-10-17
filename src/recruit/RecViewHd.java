@@ -1,8 +1,6 @@
 package recruit;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -16,12 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.jobprov.JobProvDBBean;
 import member.jobprov.JobProvDataBean;
+import reccareer.RecCrrDBBean;
 
 
 @Controller
 public class RecViewHd implements RecruitHandler {
 	@Resource
 	public RecruitDBBean recDao;
+	@Resource
+	public RecCrrDBBean recCrrDao;
 	@Resource
 	public JobProvDBBean jbpDao;
 	@RequestMapping("/recView")
@@ -38,14 +39,15 @@ public class RecViewHd implements RecruitHandler {
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		recDto.setStime(sf.format(recDto.getRecStart()));
 		recDto.setEtime(sf.format(recDto.getRecEnd()));
-		
-		
+		//지원자수 체크
+		int crrCnt= recCrrDao.countApp(recId);
+		recDto.setCrrCnt(crrCnt);
 		
 		
 		request.setAttribute( "pageNum", pageNum );
 		request.setAttribute( "recDto", recDto );
 		request.setAttribute("recruitDto", recruitDto);
-	
+		//조회수 늘리는 거
 		recDao.addCount(recId);
 		
 		

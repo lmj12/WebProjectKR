@@ -123,17 +123,22 @@ function writefocus(){
 	x=true;
 }
 
-
-function writecheck(){
+function len(){
+	var content =recwrite.reccontent;
+	 if(content.value.length>1000){
+			erroralert("글자수를 제한해주세요");
+			content.value = content.value.substring(0, 1000);
+			content.focus();
+			return false;
+		}
+}
+function writecheck(){	
 	if(!recwrite.recEnd.value){
 		alert("날짜를 입력해주세요");
 		return false;
 	}else if(!recwrite.reccontent.value){
 		alert("내용을 입력해주세요");
 		return false;
-//	}else if(!recwrite.recSite.value){
-//		erroralert("사이트를 입력해주세요.");
-//		return false;
 	}else if( recwrite.confirm.value == 0 ) {
 		erroralert( "직무를 선택해주세요");
 		recwrite.confirm.focus();
@@ -163,16 +168,6 @@ function writecheck(){
 }
 
 
-//모집상태 변경
-function change(){
-	var target = document.getElementById("sta");
-	var t = target.options[target.selectedIndex].value;
-		
-	var val = document.getElementById("val");
-	val.setAttribute("value", t);
-
-}
-
 //직무추가
 function add(){
 	++cnt;
@@ -191,7 +186,7 @@ function add(){
 		+"<input type='button' value='삭제' onclick='delitem("+cnt+")'> ";
 	tr.setAttribute("id", "id_"+cnt);
 	//addposx.appendChild(td);
-	tr.colSpan =3;
+
 	addposx.appendChild(tr);
 	
 	document.recwrite.confirm.value =1;
@@ -199,8 +194,8 @@ function add(){
 }
 //직무제거
 
-function delitem(){
-	var addposx=document.getElementById("addposx");
-	var deldiv = document.getElementById("id_"+cnt);
+function delitem(cnt){
+	var addposx = document.getElementById("addposx");	
+	var deldiv = document.getElementById("id_"+cnt); 
 	addposx.removeChild(deldiv);
 }

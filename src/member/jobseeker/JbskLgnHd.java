@@ -53,7 +53,6 @@ public class JbskLgnHd implements JobSeekerHandler {
 				}
 			}
 		}
-	
 		request.setAttribute("teamId", teamId);
 		request.setAttribute("teamReq", teamReq);
 		request.setAttribute( "result", result );

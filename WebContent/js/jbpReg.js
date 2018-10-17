@@ -1,4 +1,4 @@
-
+﻿
 
 
 
@@ -7,16 +7,12 @@ $(document).ready(
 		$('input:button[name=checkBizID]').on(
 				'click',
 				function(){
-					window.open("jbpBizCheckMove.do","","width=250, heigt=200");
+					window.open("jbpBizCheckMove.do","","width=250px, heigt=200px");
 				}
 			);
-		
-		$('.idresult').val("아이디0");
-		
 		$('input[name=jobpId]').on(
 			'keyup',
 			function(event){
-				
 				var keyVal = $(this).val();		
 				if (!(event.keyCode >=37 && event.keyCode<=40)) {
                     var inputVal = $(this).val();
@@ -25,55 +21,52 @@ $(document).ready(
 					if(jobpId.length<4|| jobpId.length>15) {
 						$('.idresult').val("아이디를 4~15자까지 입력해주세요.");
 						
-					}else{						
-						if( jobpId ){
-							$.ajax(
-								{
-									type : "POST",
-									data : 
-										{
-											jobpId :  $('input[name=jobpId]').val()
-										},
-									url : 'Jbp/idcheck.jsp',
-									dataType : 'xml',
-									success : function(data){							
-										$('.idresult').val($(data).find('message').text());										
-									},
-									error : function(e){
-										$('.idresult').val(e.message);
-										
-										
-									}
-								}
-							);
-							
-						}
+//					}else{					
+//						if( jobpId ){
+//							$.ajax(
+//								{
+//									type : "POST",
+//									data : 
+//										{
+//											jobpId :  $('input[name=jobpId]').val()
+//										},
+//									url : 'Jbp/idcheck.jsp',
+//									dataType : 'xml',
+//									success : function(data){							
+//										$('.idresult').val($(data).find('message').text());										
+//									},
+//									error : function(e){
+//										$('.idresult').val(e.message);
+//										
+//										
+//									}
+//								}
+//							);
+//						}
 					} 
 				}
-				
-				
 				$('input[name=jobpId]').val()
 			}			
 		);
-		$(document).submit(				
-				function(event){
-					if($('.idresult').val().indexOf('없')!=-1){
-						erroralert("중복확인해주세요");
-						return false;
-					}else{
-						var form = $(this);
-					$.ajax({
-						type : form.attr('method'),
-						url : form.attr('action'),
-						data : form.serialize()
-					}).done(function(data) {
-				    	  
-				      }).fail(function(data) {
-				        // Optionally alert the user of an error here...
-				      });
-					}
-				}
-				);
+//		$(document).submit(				
+//			function(event){
+//				if($('.idresult').val().indexOf('없')!=-1){
+//					erroralert("중복확인해주세요");
+//					return false;
+//				}else{
+//					var form = $(this);
+//				$.ajax({
+//					type : form.attr('method'),
+//					url : form.attr('action'),
+//					data : form.serialize()
+//				}).done(function(data) {
+//			    	  
+//			      }).fail(function(data) {
+//			        // Optionally alert the user of an error here...
+//			      });
+//				}
+//			}
+//			);
 					
 						
 		
@@ -128,31 +121,259 @@ $(document).ready(
 			$('input[name=rejobpPasswd]').val()
 			}
 		);
-	}
-);
 	
+///////////////////////////////////////////////////////////////////////////////////////////
+	$(settings.emailID).keyup(
+			function() {
+				var email = $.trim($(settings.emailID).val());
+				if (email !== 0) {
+					if (isValidEmailAddress(email)) {
+						$(this)
+								.parents('.form-group')
+								.addClass('is-valid');
+						$(this).addClass(
+								'form-control-success');
+						$(this).parents('.form-group')
+								.removeClass(
+										'is-invalid');
+						$(this).removeClass(
+								'is-invalid');
+						$(this).parents('.form-group')
+								.find('.text-muted')
+								.css('display', 'none');
+					} else {
+						$(this).parents('.form-group')
+								.addClass('is-invalid');
+						$(this).addClass(
+								'is-invalid');
+						$(this)
+								.parents('.form-group')
+								.find('.text-muted')
+								.text(settings.ErrorTextEmail);
+						$(this)
+								.parents('.form-group')
+								.find('.text-muted')
+								.css('display', 'block');
+					}
+				} else {
+					$(this).parents('.form-group')
+							.addClass('is-invalid');
+					$(this).addClass(
+							'is-invalid');
+					$(this)
+							.parents('.form-group')
+							.find('.text-muted')
+							.text(settings.ErrorTextEmail);
+					$(this).parents('.form-group')
+							.find('.text-muted').css(
+									'display', 'block');
+				}
+			});
+		$(settings.passwordID).keyup(
+			function() {
+				var password = $.trim($(settings.passwordID).val()).length * 1;
+				if (password > Math.round(settings.MinCharsPass - 1)) {
+					$(this).parents('.form-group').addClass(
+							'is-valid');
+					$(this).addClass('form-control-success');
+					$(this).parents('.form-group').removeClass(
+							'is-invalid');
+					$(this).removeClass('is-invalid');
+					var passwordS = $.trim($(settings.passwordID).val());
+					$(this).parents('.form-group').find(
+							'.text-muted').css('display',
+							'none');
+				} else if (password < settings.MinCharsPass) {
+					$(this).parents('.form-group').addClass(
+							'is-invalid');
+					$(this).addClass('is-invalid');
+					$(this).parents('.form-group').find(
+							'.text-muted').text(
+							settings.ErrorTextPassword);
+					$(this).parents('.form-group').find(
+							'.text-muted').css('display',
+							'block');
+				}
+			});
+		$(settings.rePasswordID).keyup(
+			function(){
+				var rePassword = $.trim($(settings.rePasswordID).val());
+				var password = $(settings.passwordID).val();
+				if(rePassword == password){
+					$(this).parents('.form-group').addClass(
+							'is-valid');
+					$(this).addClass('form-control-success');
+					$(this).parents('.form-group').removeClass(
+							'is-invalid');
+					$(this).removeClass('is-invalid');
+					var passwordS = $.trim($(settings.rePasswordID).val());
+					$(this).parents('.form-group').find(
+							'.text-muted').css('display',
+							'none');
+				} else if (rePassword != password){
+					$(this).parents('.form-group').addClass(
+							'is-invalid');
+					$(this).addClass('is-invalid');
+					$(this).parents('.form-group').find(
+							'.text-muted').text(
+							settings.ErrorTextrePassword);
+					$(this).parents('.form-group').find(
+							'.text-muted').css('display',
+							'block');
+				}
+			});
+		
+		$(settings.ID).keyup(
+			function() {
+				var id = $.trim($(settings.ID).val()).length * 1;
+				if (id > Math
+						.round(settings.MinCharsID - 1)) {
+					$(this).parents('.form-group')
+							.addClass('is-valid');
+					$(this).addClass(
+							'form-control-success');
+					$(this).parents('.form-group')
+							.removeClass('is-invalid');
+					$(this).removeClass(
+							'is-invalid');
+					var idS = $.trim($(
+							settings.ID).val());
+					$(this).parents('.form-group')
+							.find('.text-muted').css(
+									'display', 'block');
+					$.ajax({
+							type : "POST",
+							data : {
+									jobpId :  $('input[name=jobpId]').val()
+									},
+							url : 'Jbp/idcheck.jsp',
+							dataType : 'xml',
+							success : function(data){
+								$(settings.ID)
+								.parents('.form-group')
+								.find('.text-muted')
+								.text( $(data).find('message').text() );
+							},
+							error : function(e){
+								$('.idresult').val(e.message);
+							}
+					});
+					
+				} else if (id < settings.MinCharsID) {
+					$(this).parents('.form-group')
+							.addClass('is-invalid');
+					$(this).addClass(
+							'is-invalid');
+					$(this)
+							.parents('.form-group')
+							.find('.text-muted')
+							.text(
+									settings.ErrorTextId);
+					$(this).parents('.form-group')
+							.find('.text-muted').css(
+									'display', 'block');
+				}
+			});
+		
+//			체크 폼 양식
+//			$(".form-check").change(function() {
+//				if ($("input:checkbox:checked").prop("checked")) {
+//					$(this).addClass('is-valid');
+//					$(this).removeClass('is-invalid');
+//				} else {
+//					$(this).addClass('is-invalid');
+//					$(this).removeClass('is-valid');
+//				}
+//			});
+		
+			// submit 시 액션
+			$('#submit').on('click', function() {
+				var id = $.trim($(settings.ID).val());
+				var passwd = $.trim($(settings.passwordID).val());
+				var repasswd = $.trim($(settings.rePasswordID).val());
+				if (id == '' || passwd == '' || repasswd =='') {
+					$('.form-group').addClass('is-invalid');
+					$('.form-control').addClass('is-invalid');
+				} else {
+					if($(settings.ID)
+							.parents('.form-group')
+							.find('.text-muted')
+							.text().indexOf('없')!=-1){
+						erroralert("ID 중복여부를 확인해주세요");
+						$(settings.ID).focus();
+						return false;
+					}else {
+						var form = $(this);
+					$.ajax({
+						type : form.attr('method'),
+						url : form.attr('action'),
+						data : form.serialize()
+					}).done(function(data) {
+						$("#message").css('display', 'block');
+						setTimeout(location.replace('Lgn.do'), 2000);
+				      }).fail(function(data) {
+				        // Optionally alert the user of an error here...
+				      });
+					}
+				}
+			});				
+		});
+
+//function isValidEmailAddress(emailAddress) {
+//	var pattern = new RegExp(
+//			/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+//	return pattern.test(emailAddress);
+//}
 
 
 
+$(document).submit(		
 
-var inputerror="입력형식에 맞지 않습니다.";
-function inputfocus() {
-	inputform.jobpId.focus();
-}
 function inputcheck(){
+	var inputerror="입력형식에 맞지 않습니다.";
 	if( !inputform.jobpId.value){
 		alert("아이디를 입력하세요");
 		inputform.jobpId.focus();
 		return false;
-	}else if(inputform.jobpId.value){
-		if( inputform.jobpId.value.length <4 || inputform.jobpId.value.length >15) {
-		alert( "아이디길이를 확인하세요" );
-		inputform.jobpId.focus();
+	}else if( !inputform.jobpPasswd.value ) {
+		alert( "비밀번호를 입력하세요");
+		inputform.jobpPasswd.focus();
+		return false;
+	}else if(inputform.jobpPasswd.value){
+		if( inputform.jobpPasswd.value.length <6 || inputform.jobpPasswd.value.length >15) {
+		alert( "비밀번호길이를 확인하세요" );
+		inputform.jobpPasswd.focus();
 		return false;
 		}
+	}else if(!inputform.rejobpPasswd.value) {
+		alert( "비밀번호확인란을 입력하세요" );
+		inputform.rejobpPasswd.focus();
+		return false;
+	} else if(inputform.jobpPasswd.value != inputform.rejobpPasswd.value ) {
+		alert( "비밀번호가 일치하지 않습니다." );
+		inputform.rejobpPasswd.focus();
+		return false;
+	}else if(!inputform.jobpTel.value) {
+		erroralert( "전화번호를 입력하세요" );
+		inputform.jobpTel.focus();
+		return false;
+	} else if(inputform.jobpTel.value){
+			if( inputform.jobpTel.value.length <9 || inputform.jobpPasswd.value.length >11) {
+					erroralert( "전화번호길이를 확인하세요" );
+					inputform.jobpTel.focus();		
+					return false;
+			} else if( inputform.jobpTel.value.indexOf( "-" ) != -1 ) {
+					erroralert("전화번호에서 '-'를 빼주세요");
+					inputform.jobpTel.focus();		
+					return false;
+			}
 	}
+
 	
-	 for (i=0; i<inputform.jobpId.value.length; i++)
+
+	
+	
+	 for (var i=0; i<inputform.jobpId.value.length; i++)
      {
             var ch = inputform.jobpId.value.charAt(i);//문자를 반환(정수형), 범위 검사 가능
 
@@ -168,37 +389,6 @@ function inputcheck(){
 
 	
 	
-	if( ! inputform.jobpPasswd.value ) {
-		alert( "비밀번호를 입력하세요");
-		inputform.jobpPasswd.focus();
-		return false;
-	}else if( inputform.jobpPasswd.value.length <6 || inputform.jobpPasswd.value.length >15) {
-		alert( "비밀번호길이를 확인하세요" );
-		inputform.jobpPasswd.focus();
-		return false;
-	}else if(! inputform.rejobpPasswd.value) {
-		alert( "비밀번호확인란을 입력하세요" );
-		inputform.rejobpPasswd.focus();
-		return false;
-	} else if(inputform.jobpPasswd.value != inputform.rejobpPasswd.value ) {
-		alert( "비밀번호가 일치하지 않습니다." );
-		inputform.rejobpPasswd.focus();
-		return false;
-	}else if(! inputform.jobpTel.value) {
-		erroralert( "전화번호를 입력하세요" );
-		inputform.jobpTel.focus();
-		return false;
-	} else if(inputform.jobpTel.value){
-			if( inputform.jobpTel.value.length <9 || inputform.jobpPasswd.value.length >11) {
-					erroralert( "전화번호길이를 확인하세요" );
-					inputform.jobpTel.focus();		
-					return false;
-			} else if( inputform.jobpTel.value.indexOf( "-" ) != -1 ) {
-					erroralert("전화번호에서 '-'를 빼주세요");
-					inputform.jobpTel.focus();		
-					return false;
-			}
-	}
 	
 	
 	//영문, 숫자, 특수문자 2종 이상 혼용해 비밀번호
@@ -241,7 +431,6 @@ function inputcheck(){
 		alert("동일문자를 연속으로 3번이상 사용할 수 없습니다.");
 		return false;
 	}
-	
 }
-
+);
 

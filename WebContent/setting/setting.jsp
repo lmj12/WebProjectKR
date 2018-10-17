@@ -21,7 +21,7 @@
 	
 
 	function hBack(){
-		history.back()
+		history.go(-1);
 	}
 	
 	Date.prototype.format = function(f) {

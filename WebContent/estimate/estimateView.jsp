@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
+<div class="container">
 <!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 	//<!--
 	var estId = ${estId};
@@ -15,12 +18,14 @@
 	})
 	
 	function view(){
-		var per = ${performance};
-		var ont = ${ontime};
-		var att = ${attitude};
-		$("#p"+per).attr('checked', 'checked');
-		$("#t"+ont).attr('checked', 'checked');
-		$("#a"+att).attr('checked', 'checked');
+		var per = '${performance}';
+		var ont = '${ontime}';
+		var att = '${attitude}';
+		if(per != ''){
+			$("#p"+per).attr('checked', 'checked');
+			$("#t"+ont).attr('checked', 'checked');
+			$("#a"+att).attr('checked', 'checked');
+		}
 	}
 	
 	function toList(){
@@ -28,8 +33,22 @@
 	}
 	
 	function estCheck(){
+		var performance =  $('input[name="performance"]:checked').val();
+		var ontime =  $('input[name="ontime"]:checked').val();
+		var attitude =  $('input[name="attitude"]:checked').val();
+		if(!performance){
+			alert("업무이해능력을 평가해주세요!")
+			return false;
+		} else if(!ontime){
+			alert("시간준수를 평가해주세요!")
+			return false;
+		} else if(!attitude){
+			alert("자세 및 태도를 평가해주세요!")
+			return false;
+		}
 		
 	}
+
 	//-->
 </script>
 <c:if test="${sessionScope.memType ne 1}">	<!--  구직자회원이 아니면  -->
@@ -37,7 +56,7 @@
 	<div id="resume" style="margin: 7px">
 		<table border='1' style="float: left; margin-right: 7px;" >
 			<tr>
-				<th height="150" width="150">사진구역</th>
+				<th height="150" width="180"><img src="./setting/image/upload/${jbskPic}" width="140" height="180" /></th>
 			</tr>
 		</table>
 		<br>
@@ -108,3 +127,5 @@
 		//-->
 	</script>
 </c:if>
+
+</div>

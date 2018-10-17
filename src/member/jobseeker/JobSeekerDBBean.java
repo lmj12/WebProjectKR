@@ -31,8 +31,8 @@ public class JobSeekerDBBean {
    }
    
    
-   public JobSeekerDataBean jbskGet(String jbskId) { // 임시매개변수. 필요시 변경할것.
-      return session.selectOne("Jbs.jbskGet", jbskId); // 에러막기위한 임시 리턴. 필요없으면 지울것.
+   public JobSeekerDataBean jbskGet(String jbskId) { 
+      return session.selectOne("Jbs.jbskGet", jbskId); 
    }
    
    public int jbskMod(JobSeekerDataBean jbskDto) { // 임시매개변수. 필요시 변경할것.
@@ -46,4 +46,5 @@ public class JobSeekerDBBean {
    public List<JobSeekerDataBean> jbskGet2() { // 구직자  리스트 가져오기
 		return session.selectList("Jbs.jbskGet2"); 
 	}
+   
 }

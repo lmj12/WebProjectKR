@@ -25,7 +25,6 @@
 	$(document).ready(function(){
 		makeRec();
 	})
-	
 	function makeRec(){
 		var sday = new Date(st).format("dd/MM/yyyy");
 		var stime = new Date(st).format("hh:mma/p")
@@ -43,6 +42,7 @@
 	<script type="text/javascript">
 	
 		<!--
+
 		erroralert('inserterror');
 		//-->
 	</script>
@@ -50,6 +50,7 @@
 <c:if test="${result eq 1}">
 	<c:redirect url="mypage.do"/>		
 </c:if>
+<div class="container">
 <form name="recwrite" method="post" action="recWrt.do" autocomplete="off" onsubmit="return writecheck()">
 <table border="1">
 <input type="hidden" name="jobpId" value="${jbpDto.jobpId}">
@@ -60,12 +61,13 @@
 	</tr>
 	
 	
-	<tr id="addposx">
+	<tr>
 		<th>공고 직무 </th>
-		<td> 		
-		<input type="button" value="추가" name="addpos" onclick="return add()"> 
-		<input type="hidden" name="confirm" value="0">
-		<input type="hidden" id="id" name='id'>	</td>
+		<td id="addposx"> 		
+			<input type="button" value="추가" name="addpos" style="float:right;" onclick="return add()"> 
+			<input type="hidden" name="confirm" value="0">
+			<input type="hidden" id='id' name="id">
+		</td>
 	</tr>
 	<tr>
 		<th colspan="8">공고내용</th>	
@@ -86,7 +88,8 @@
 		<th>주소</th>
 		<td colspan="7"> <input type="text" name="recSite" id="recSite" placeholder="주소" readonly>					
 					<span id="guide" style="color:#999"></span>
-						<input type="button" value="주소찾기" onclick="searchPostcode()"></td>			
+						<input type="button" value="주소찾기" onclick="searchPostcode()">
+						<input type="hidden" id="ok" value="0"></td>			
 	</tr>
 	<tr>
     		<th colspan="8">
@@ -99,5 +102,5 @@
 
 </table>
 </form>
-
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

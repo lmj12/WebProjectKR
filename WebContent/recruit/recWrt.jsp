@@ -26,17 +26,7 @@ $( function() {
     $("#timepicker").timepicker({'timeFormat': 'HH:mm'});
   } );
 </script>
-<c:if test="${rst eq 0}">
-	<script type="text/javascript">
-	
-		<!--
-		erroralert('inserterror');
-		//-->
-	</script>
-</c:if>
-<c:if test="${rst eq 1}">
-	<c:redirect url="mypage.do"/>		
-</c:if>
+
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
 	
@@ -48,6 +38,7 @@ $( function() {
 <c:if test="${result eq 1}">
 	<c:redirect url="mypage.do"/>		
 </c:if>
+<div class="container">
 <form name="recwrite" method="post" action="recWrt.do" autocomplete="off" onsubmit="return writecheck()">
 <table border="1">
 <input type="hidden" name="jobpId" value="${jbpDto.jobpId}">
@@ -60,19 +51,20 @@ $( function() {
 	</tr>
 	
 	
-	<tr id="addposx">
+	<tr>
 		<th>공고 직무 </th>
-		<td> 		
-		<input type="button" value="추가" name="addpos" onclick="return add()"> 
-		<input type="hidden" name="confirm" value="0">
-		<input type="hidden" id="id" name='id'>	</td>
+		<td id="addposx"> 		
+			<input type="button" value="추가" name="addpos" style="float:right;" onclick="return add()"> 
+			<input type="hidden" name="confirm" value="0">
+			<input type="hidden" id='id' name="id">
+		</td>
 	</tr>
 	<tr>
 		<th colspan="8">공고내용</th>	
 	
 	</tr>
 	<tr>
-		<td colspan="8"> <textarea name="reccontent" rows="10" cols="80"></textarea></td>
+		<td colspan="8"> <textarea name="reccontent" onkeyup="len()" rows="10" cols="80" style="overflow:hidden"></textarea></td>
 	</tr>
 	<tr> 
 		<th> 사업장 이름 </th>
@@ -100,5 +92,5 @@ $( function() {
 
 </table>
 </form>
-
+</div>
 <%@ include file="/setting/design_setting_footer.jsp" %>

@@ -3,26 +3,26 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp" %>
 <!DOCTYPE html>
-
-<h4>나의 팀</h4>
-<div id="listd">
-
-</div>
-
-<c:if test="${sessionScope.memType ne 1}">
-<br><br>
-<h4>승인 대기중인 구직자</h4>
-<div id="reql">
-</div>
-
-
-	<br><br>
-	<h4>팀 가입 요청을 보낼 아이디를 입력하세요.</h4>
-	<input type="text" id="jbskId" > <input type="button" value="검색" onclick="jbskGet()">
-	<div id="rst">
+<div class="container">
+	<h4>나의 팀</h4>
+	<div id="listd">
+	
 	</div>
-</c:if>
-
+	
+	<c:if test="${sessionScope.memType ne 1}">
+	<br><br>
+	<h4>승인 대기중인 구직자</h4>
+	<div id="reql">
+	</div>
+	
+	
+		<br><br>
+		<h4>팀 가입 요청을 보낼 아이디를 입력하세요.</h4>
+		<input type="text" id="jbskId" > <input type="button" value="검색" onclick="jbskGet()">
+		<div id="rst">
+		</div>
+	</c:if>
+</div>
 <script type="text/javascript">
 	//<!--
 	var teamId = ${sessionScope.teamId};
@@ -62,16 +62,18 @@
 			if(${sessionScope.memType} != 1){
 				tabstr += "<td><input type='button' value='추방' onclick='teamExit(this)'></td></tr>"
 			}
-			tabstr += "</table>"
+			
 		}
+		tabstr += "</table>"
 		$("#listd").html(tabstr);
 	}
 	
 	function jbskGet() {	//검색용 펑션
 		var jbskId = $("#jbskId").val();
+		
 		$.ajax({
 		    method : "POST",
-		    url : "ajaxJbskGet.do",
+		    url : "ajaxJbskGet2.do",
 	    	cache : false,
 			async : false,
 			data : {
@@ -80,10 +82,11 @@
 			datatype : "json",
 			success : function(data){
 				var user = $.parseJSON(data);
-				if(data){
+				if(user != null){
 					var str = ''
 					str = "<table border='1'><tr><th>ID</th><th>이름</th><th>요청 보내기</th></tr>"
-					str += "<tr><td id='ji'>"+user.jbskId+"</td><td>"+user.jbskName+"</td><td><input type='button' value='요청보내기'onclick='teamReq()'></td></tr></table>"
+					str += "<tr><td id='ji'>"+user.jbskId+"</td><td>"+user.jbskName+"</td><td><input type='button' value='요청보내기'onclick='teamReq()'></td></tr>"
+					str += "</table>"
 					$("#rst").html(str);
 				} else {
 					$("#rst").text("검색 결과가 없습니다. 아이디를 다시 확인해 주세요.")

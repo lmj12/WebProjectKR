@@ -3,9 +3,7 @@ $(document).ready(
 		 jQuery.ajaxSettings.traditional = true; 
 		 $.ajaxSettings.traditional = true;
 
-		// FIXME : 개발용 사업자번호 자동입력
-		
-		$('.idresult').val("아이디0");
+		$('.idresult').val(" ");
 		
 		$('input[name=jbskId]').on(
 			'keyup',
@@ -99,10 +97,204 @@ $(document).ready(
 			}
 		);
 		
-		
+///////////////////////////////////////////////////////////////////////////////////////////
+		$(settings.emailID).keyup(
+				function() {
+					var email = $.trim($(settings.emailID).val());
+					if (email !== 0) {
+						if (isValidEmailAddress(email)) {
+							$(this)
+									.parents('.form-group')
+									.addClass('is-valid');
+							$(this).addClass(
+									'is-valid');
+							$(this).parents('.form-group')
+									.removeClass(
+											'is-invalid');
+							$(this).removeClass(
+									'is-invalid');
+							$(this).parents('.form-group')
+									.find('.text-muted')
+									.css('display', 'none');
+						} else {
+							$(this).parents('.form-group')
+									.addClass('is-invalid');
+							$(this).addClass(
+									'is-invalid');
+							$(this)
+									.parents('.form-group')
+									.find('.text-muted')
+									.text(settings.ErrorTextEmail);
+							$(this)
+									.parents('.form-group')
+									.find('.text-muted')
+									.css('display', 'block');
+						}
+					} else {
+						$(this).parents('.form-group')
+								.addClass('is-invalid');
+						$(this).addClass(
+								'is-invalid');
+						$(this)
+								.parents('.form-group')
+								.find('.text-muted')
+								.text(settings.ErrorTextEmail);
+						$(this).parents('.form-group')
+								.find('.text-muted').css(
+										'display', 'block');
+					}
+				});
+			$(settings.passwordID).keyup(
+				function() {
+					var password = $.trim($(settings.passwordID).val()).length * 1;
+					if (password > Math.round(settings.MinCharsPass - 1)) {
+						$(this).parents('.form-group').addClass(
+								'is-valid');
+						$(this).addClass('is-valid');
+						$(this).parents('.form-group').removeClass(
+								'is-invalid');
+						$(this).removeClass('is-invalid');
+						var passwordS = $.trim($(settings.passwordID).val());
+						$(this).parents('.form-group').find(
+								'.text-muted').css('display',
+								'none');
+					} else if (password < settings.MinCharsPass) {
+						$(this).parents('.form-group').addClass(
+								'is-invalid');
+						$(this).addClass('is-invalid');
+						$(this).parents('.form-group').find(
+								'.text-muted').text(
+								settings.ErrorTextPassword);
+						$(this).parents('.form-group').find(
+								'.text-muted').css('display',
+								'block');
+					}
+				});
+			$(settings.rePasswordID).keyup(
+				function(){
+					var rePassword = $.trim($(settings.rePasswordID).val());
+					var password = $(settings.passwordID).val();
+					if(rePassword == password){
+						$(this).parents('.form-group').addClass(
+								'is-valid');
+						$(this).addClass('is-valid');
+						$(this).parents('.form-group').removeClass(
+								'is-invalid');
+						$(this).removeClass('is-invalid');
+						var passwordS = $.trim($(settings.rePasswordID).val());
+						$(this).parents('.form-group').find(
+								'.text-muted').css('display',
+								'none');
+					} else if (rePassword != password){
+						$(this).parents('.form-group').addClass(
+								'is-invalid');
+						$(this).addClass('is-invalid');
+						$(this).parents('.form-group').find(
+								'.text-muted').text(
+								settings.ErrorTextrePassword);
+						$(this).parents('.form-group').find(
+								'.text-muted').css('display',
+								'block');
+					}
+				});
+			
+			$(settings.ID).keyup(
+				function() {
+					var id = $.trim($(settings.ID).val()).length * 1;
+					if (id > Math
+							.round(settings.MinCharsID - 1)) {
+						$(this).parents('.form-group')
+								.addClass('is-valid');
+						$(this).addClass(
+								'is-valid');
+						$(this).parents('.form-group')
+								.removeClass('is-invalid');
+						$(this).removeClass(
+								'is-invalid');
+						var idS = $.trim($(
+								settings.ID).val());
+						$(this).parents('.form-group')
+								.find('.text-muted').css(
+										'display', 'block');
+						$.ajax({
+								type : "POST",
+								data : {
+										jbskId :  $('input[name=jbskId]').val()
+										},
+								url : 'Jbs/idcheck.jsp',
+								dataType : 'xml',
+								success : function(data){
+									$(settings.ID)
+									.parents('.form-group')
+									.find('.text-muted')
+									.text( $(data).find('message').text() );
+								},
+								error : function(e){
+									$('.idresult').val(e.message);
+								}
+						});
+						
+					} else if (id < settings.MinCharsID) {
+						$(this).parents('.form-group')
+								.addClass('is-invalid');
+						$(this).addClass(
+								'is-invalid');
+						$(this)
+								.parents('.form-group')
+								.find('.text-muted')
+								.text(
+										settings.ErrorTextId);
+						$(this).parents('.form-group')
+								.find('.text-muted').css(
+										'display', 'block');
+					}
+				});
+			
+//				체크 폼 양식
+//				$(".form-check").change(function() {
+//					if ($("input:checkbox:checked").prop("checked")) {
+//						$(this).addClass('is-valid');
+//						$(this).removeClass('is-invalid');
+//					} else {
+//						$(this).addClass('is-invalid');
+//						$(this).removeClass('is-valid');
+//					}
+//				});
+			
+				// submit 시 액션
+				$('#submit').on('click', function() {
+					var id = $.trim($(settings.ID).val());
+					var passwd = $.trim($(settings.passwordID).val());
+					if (id == '' || passwd == '') {
+						$('.form-group').addClass('is-invalid');
+						$('.form-control').addClass('is-invalid');
+					} else {
+						if($(settings.ID)
+								.parents('.form-group')
+								.find('.text-muted')
+								.text().indexOf('없')!=-1){
+							erroralert("ID 중복여부를 확인해주세요");
+							
+							$(settings.ID).focus();
+							return false;
+						} else {
+							var form = $(this);
+						$.ajax({
+							type : form.attr('method'),
+							url : form.attr('action'),
+							data : form.serialize()
+						}).done(function(data) {
+							$("#message").css('display', 'block');
+							setTimeout(location.replace('Lgn.do'), 2000);
+					      }).fail(function(data) {
+					        // Optionally alert the user of an error here...
+					      });
+						}
+					}
+				});	
 	}
 );
-
+/////////////////////////////////////////////////////////////////////////////////////////////
 	var inputerror="입력형식에 맞지 않습니다.";
 	function inputfocus() {
 		inputform.jbskId.focus();
@@ -280,3 +472,71 @@ function authCheck(){
 	}
 }
 
+function previewImage(targetObj, View_area) {
+	var preview = document.getElementById(View_area); //div id
+	var ua = window.navigator.userAgent;
+
+  //ie일때(IE8 이하에서만 작동)
+	if (ua.indexOf("MSIE") > -1) {
+		targetObj.select();
+		try {
+			var src = document.selection.createRange().text; // get file full path(IE9, IE10에서 사용 불가)
+			var ie_preview_error = document.getElementById("ie_preview_error_" + View_area);
+
+
+			if (ie_preview_error) {
+				preview.removeChild(ie_preview_error); //error가 있으면 delete
+			}
+
+			var img = document.getElementById(View_area); //이미지가 뿌려질 곳
+
+			//이미지 로딩, sizingMethod는 div에 맞춰서 사이즈를 자동조절 하는 역할
+			img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='scale')";
+		} catch (e) {
+			if (!document.getElementById("ie_preview_error_" + View_area)) {
+				var info = document.createElement("<p>");
+				info.id = "ie_preview_error_" + View_area;
+				info.innerHTML = e.name;
+				preview.insertBefore(info, null);
+			}
+		}
+  //ie가 아닐때(크롬, 사파리, FF)
+	} else {
+		var files = targetObj.files;
+		for ( var i = 0; i < files.length; i++) {
+			var file = files[i];
+			var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
+			if (!file.type.match(imageType))
+				continue;
+			var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
+			if (prevImg) {
+				preview.removeChild(prevImg);
+			}
+			var img = document.createElement("img"); 
+			img.id = "prev_" + View_area;
+			img.classList.add("obj");
+			img.file = file;
+			img.style.width = '140px'; 
+			img.style.height = '180px';
+			preview.appendChild(img);
+			if (window.FileReader) { // FireFox, Chrome, Opera 확인.
+				var reader = new FileReader();
+				reader.onloadend = (function(aImg) {
+					return function(e) {
+						aImg.src = e.target.result;
+					};
+				})(img);
+				reader.readAsDataURL(file);
+			} else { // safari is not supported FileReader
+				//alert('not supported FileReader');
+				if (!document.getElementById("sfr_preview_error_"
+						+ View_area)) {
+					var info = document.createElement("p");
+					info.id = "sfr_preview_error_" + View_area;
+					info.innerHTML = "not supported FileReader";
+					preview.insertBefore(info, null);
+				}
+			}
+		}
+	}
+}

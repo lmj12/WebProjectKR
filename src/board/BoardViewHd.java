@@ -27,7 +27,18 @@ public class BoardViewHd implements BoardHandler {
 		request.setAttribute( "number", number );
 		request.setAttribute( "pageNum", pageNum );
 		request.setAttribute( "boardDto", boardDto );
-						
+		
+		String memid = (String) request.getSession().getAttribute("memid");				
+		int memType= (int)request.getSession().getAttribute("memType");
+		String boarduserId = boardDto.getBoarduserId();
+		int artType = Integer.parseInt(boardId.split("_")[1]);
+		if(artType==2){
+			BoardDataBean bDto = new BoardDataBean();
+			bDto.setBoardId(boardId);
+			bDto.setBoarduserId(boarduserId);
+			boardDao.number(bDto);
+			
+		}
 		return new ModelAndView("/board/boardView");
 	}
 	@Resource

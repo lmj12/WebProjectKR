@@ -11,7 +11,11 @@
 		${sessionScope.memType = memtype}
 		${sessionScope.teamId = teamId}
 		${sessionScope.teamReq = teamReq}
-		<c:redirect url="main.do"/>
+		${sessionScope.time = time}
+		${sessionScope.search = search}
+		${sessionScope.popCk = 0}
+		${sessionScope.popNum = 0}
+	<c:redirect url="main.do"/>
 	</c:if>
 <%	// 로그인실패 	%> 
 	<c:if test="${result eq 0}">

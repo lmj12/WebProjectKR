@@ -12,6 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.jobseeker.JobSeekerDBBean;
 import member.jobseeker.JobSeekerDataBean;
+import reccareer.CareerDataBean;
+import reccareer.RecCrrDBBean;
+import reccareer.RecruitCareerHandler;
 @Controller
 public class IptCrrHd implements InputCareerHandler {
 
@@ -19,7 +22,8 @@ public class IptCrrHd implements InputCareerHandler {
 	private IptCrrDBBean iptCrrDao;					// 입력경력사항 DBBean
 	@Resource
 	private JobSeekerDBBean jbskDao;
-	
+	@Resource
+	private RecCrrDBBean recCrrDao;
 	@Override
 	@RequestMapping("/iptCrr")
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws IptCrrException {
@@ -40,10 +44,8 @@ public class IptCrrHd implements InputCareerHandler {
 			String address = jbskDto.getJbskAdd1()+" "+jbskDto.getJbskAdd2()+" "+jbskDto.getJbskAdd3();
 			request.setAttribute("jbskAddress", address);					
 			
-			///////////////// 구직자 recCrr 관련 /////////////////
-			
-			///////////////// 구직자 iptCrr 관련 /////////////////
-			// TODO : 자바에서 Date 관련 TimeStamp 로 처리하기 
+			CareerDataBean crrDto = recCrrDao.getCrr(jbskId);
+			request.setAttribute("crrDto", crrDto);
 			List<IptCrrDataBean> iptDtoList = iptCrrDao.iptList(jbskId);
 			request.setAttribute("iptDtoList", iptDtoList);
 				

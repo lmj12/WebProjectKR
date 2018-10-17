@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/setting/design_setting_upper.jsp" %>
-<%@ include file="setting.jsp" %>
-<script src="${js}board.js"></script>
+
+<script src="./js/notice.js"></script>
 
 <c:if test="${result eq 0}">
 	<script type="text/javascript">
@@ -16,10 +16,8 @@
 	<c:redirect url="boardList.do?pageNum=${pageNum}"/>
 </c:if>	
 
-
+<div class="container">
 <h2> 글 수 정 </h2>
-
-
 		<form method="post" action="boardMod.do" name="modifyform" onsubmit="return modifycheck()">
 			<input type="hidden" name="boardId" value="${boardDto.boardId}">
 			<input type="hidden" name="pageNum" value="${pageNum}"/>		
@@ -39,21 +37,23 @@
 				<tr>
 					<th>글내용 </th>
 					<td>
-						<textarea name="boardContent" rows="10" cols="40">${boardDto.boardContent}</textarea>
+						<textarea name="boardContent" onkeyup="vlen()" rows="10" cols="40" style="overflow:hidden">${boardDto.boardContent}</textarea>
 					</td>
 				</tr>
 				
 				<tr>
 					<th colspan="2">
+		
 						<input class="inputbutton" name="modify" type="submit" value="수정">
-						<input class="inputbutton" type="reset" value="취소">
+					<!-- 	<input class="inputbutton" type="reset" value="취소"> -->
 						<input class="inputbutton" type="button" value="수정취소"
-							onclick="location='boardList.do?pageNum=${pageNum}'">
+							onclick="location='boardList.do'">
+		
 					</th>
 				</tr>
 			</table>
 		</form>		
-
+</div>
 
 
 

@@ -37,6 +37,9 @@ public class TeamAssignHd implements TeamHandler {
 			
 			int rst = teamDao.teamAssign(teamDto);
 			
+			teamDao.teamRemoveLeftver(teamDto);
+			request.getSession().setAttribute("teamId", teamId);
+			
 			return rst;
 		} else {
 			return -1;

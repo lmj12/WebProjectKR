@@ -3,10 +3,7 @@
 <%@ include file="/setting/setting.jsp"%>
 
 <script src="${js}recCng.js"></script>
-<h2>나의 공고 확인 페이지</h2>
-<c:if test="${sessionScope.memType eq 2}">	
-공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
-</c:if>
+
 		
 <script type="text/javascript">
 	//<!--
@@ -37,34 +34,33 @@
 
 
 <div class="container">
+	<c:if test="${sessionScope.memType eq 2}">	
+		공고작성 : <input type="button" value="추가" onclick="location='recWrt.do'"> 
+	</c:if>
 	<form method="post" action="recMyView.do">
-	<input type="hidden" name="recId" value="${article.recDto.recId}">
+
+	<h4>${sessionScope.memid}님의 현재 모집중인 공고 목록입니다</h4>
 	<table border="1">
-					
-		<tr>
-			<th style="width : 15%" colspan="7" align="left">
-			${sessionScope.memid}님의 진행중인 공고 목록입니다. 
-			</th>
-		
-			
-		</tr>
-		
-		<tr>
-			<th style="width : 3%">	 공고번호</th>
-			<th style="width : 4%">	 공고상태</th>
-			<th style="width : 8%"> 직무 </th>
-			
-			<th style="width : 8%"> 시작일 </th>
-			<th style="width : 8%"> 종료일 </th>
-			<th style="width : 3%">	 조회수</th>
-			<th style="width : 3%">	 공고상태 변경</th>
-		</tr>
-	<c:if test="${count eq 0}">	
+		<thead>
 			<tr>
-				<td colspan="6" align="center">
+				<th style="width : 3%">공고번호</th>
+				<th style="width : 4%">공고상태</th>
+				<th style="width : 8%">직무</th>
+				
+				<th style="width : 8%">시작일</th>
+				<th style="width : 8%">종료일</th>
+				<th style="width : 3%">조회수</th>
+				<th style="width : 3%">상태변경</th>
+			</tr>
+		</thead>
+	<c:if test="${count eq 0}">	
+		<tfoot>
+			<tr>
+				<td colspan="7" align="center">
 					공고가 없습니다
 				</td>
 			</tr>
+		</tfoot>
 		</c:if>
 		<c:forEach var="article" items="${articleList}">
 		<c:if test="${count ne 0}">
@@ -74,7 +70,7 @@
 					<td align="center">
 						${article.recDto.recId}							
 					</td>			
-					<td id="con">						
+					<td>						
 						<c:if test="${article.recDto.recStatus eq 0}">
 					    		모집중
 					    </c:if>
@@ -121,7 +117,7 @@
 					</td>	
 					<td onclick="event.cancelBubble = true;">
 					
-					<select name="sta" id="sta">
+					<select name="sta" id="${article.recDto.recId}">
 						<option value="0" selected>모집중 </option>
 						<option value="1">모집완료</option>
 						<option value="2">완료</option>
@@ -140,34 +136,29 @@
 </div>
 <br><br>
 <div class="container">
+	<h4>${sessionScope.memid}님의 완료된 공고 목록입니다</h4>
 	<form method="post" action="recMyView.do">
 	<input type="hidden" name="recId" value="${article.recDto.recId}">
 	<table border="1">
-					
-		<tr>
-			<th style="width : 15%" colspan="7" align="left">
-			${sessionScope.memid}님의 완료된 공고 목록입니다. 
-			</th>
-		
-			
-		</tr>
-		
-		<tr>
-			<th style="width : 3%">	 공고번호</th>
-			<th style="width : 4%">	 공고상태</th>
-			<th style="width : 8%"> 직무 </th>
-			
-			<th style="width : 8%"> 시작일 </th>
-			<th style="width : 8%"> 종료일 </th>
-			<th style="width : 3%">	 조회수</th>
-			
-		</tr>
+		<thead>
+			<tr>
+				<th style="width : 3%">	 공고번호</th>
+				<th style="width : 4%">	 공고상태</th>
+				<th style="width : 8%"> 직무 </th>
+				
+				<th style="width : 8%"> 시작일 </th>
+				<th style="width : 8%"> 종료일 </th>
+				<th style="width : 3%">	 조회수</th>
+			</tr>
+		</thead>
 	<c:if test="${count eq 0}">	
+		<tfoot>
 			<tr>
 				<td colspan="6" align="center">
 					공고가 없습니다
 				</td>
 			</tr>
+		</tfoot>
 		</c:if>
 		<c:forEach var="article" items="${twoList}">
 		<c:if test="${count ne 0}">

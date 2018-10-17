@@ -5,21 +5,21 @@
 
 
                                                                                                                          
-insert into KRjobseeker values('human1', '1212abc', sysdate, 'choi', 1, TO_DATE('1999/01/13 10:30:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '강남구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human2', '1212abc', sysdate, 'choi', 1, TO_DATE('1998/04/01 11:30:14', 'YYYY/MM/DD HH:MI:SS'), '--', '부산', '해운대구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human3', '1212abc', sysdate, 'choi', 1, TO_DATE('1997/11/09 05:40:14', 'YYYY/MM/DD HH:MI:SS'), '경기', '파주시', '금촌동', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human4', '1212abc', sysdate, 'choi', 1, TO_DATE('1996/05/06 04:51:14', 'YYYY/MM/DD HH:MI:SS'), '경기', '성남시', '분당구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human5', '1212abc', sysdate, 'choi', 1, TO_DATE('1995/06/21 09:42:14', 'YYYY/MM/DD HH:MI:SS'), '--, '대구', '남구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human6', '1212abc', sysdate, 'choi', 1, TO_DATE('1994/08/10 03:33:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '도봉구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human7', '1212abc', sysdate, 'choi', 1, TO_DATE('1993/06/02 02:22:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '서초구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
+insert into KRjobseeker values('human1', '1212abc', sysdate, 'choi', 1, TO_DATE('1999/01/13 10:30:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '강남구', 'gw@naver.com', '01012345678','pic1.png', 1, '자기소개서');
+insert into KRjobseeker values('human2', '1212abc', sysdate, 'choi', 1, TO_DATE('1998/04/01 11:30:14', 'YYYY/MM/DD HH:MI:SS'), '--', '부산', '해운대구', 'gw@naver.com', '01012345678','pic1.png' 1, '자기소개서');
+insert into KRjobseeker values('human3', '1212abc', sysdate, 'choi', 1, TO_DATE('1997/11/09 05:40:14', 'YYYY/MM/DD HH:MI:SS'), '경기', '파주시', '금촌동', 'gw@naver.com', '01012345678','pic1.png', 1, '자기소개서');
+insert into KRjobseeker values('human4', '1212abc', sysdate, 'choi', 1, TO_DATE('1996/05/06 04:51:14', 'YYYY/MM/DD HH:MI:SS'), '경기', '성남시', '분당구', 'gw@naver.com', '01012345678','pic1.png', 1, '자기소개서');
+insert into KRjobseeker values('human5', '1212abc', sysdate, 'choi', 1, TO_DATE('1995/06/21 09:42:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '송파구', 'gw@naver.com', '01012345678','pic1.png', 1, '자기소개서');
+insert into KRjobseeker values('human6', '1212abc', sysdate, 'choi', 1, TO_DATE('1994/08/10 03:33:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '도봉구', 'gw@naver.com', '01012345678','pic1.png', 1, '자기소개서');
+insert into KRjobseeker values('human7', '1212abc', sysdate, 'choi', 1, TO_DATE('1993/06/02 02:22:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '서초구', 'gw@naver.com', '01012345678','pic1.png', 1, '자기소개서');
 
-insert into KRjobseeker values('human8', '1212abc', sysdate, 'choi', 2, TO_DATE('1992/03/11 01:17:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '마포구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human9', '1212abc', sysdate, 'choi', 2, TO_DATE('1991/12/24 04:12:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '동작구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human10', '1212abc', sysdate, 'choi', 2, TO_DATE('1900/07/07 05:10:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '노원구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human11', '1212abc', sysdate, 'choi', 2, TO_DATE('1992/08/16 06:18:14', 'YYYY/MM/DD HH:MI:SS'), '경기', '남양주시', '가운동', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human12', '1212abc', sysdate, 'choi', 2, TO_DATE('1994/08/05 07:26:14', 'YYYY/MM/DD HH:MI:SS'), '--', '부산', '강서구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human13', '1212abc', sysdate, 'choi', 2, TO_DATE('1997/09/03 08:27:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '금천구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
-insert into KRjobseeker values('human14', '1212abc', sysdate, 'choi', 2, TO_DATE('1992/10/13 12:28:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '동대문구', 'gw@naver.com', '01012345678', 'C:\image\sun.jpg', 1, '자기소개서');
+insert into KRjobseeker values('human8', '1212abc', sysdate, 'choi', 2, TO_DATE('1992/03/11 01:17:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '마포구', 'gw@naver.com', '01012345678','pic1.png', 1, '자기소개서');
+insert into KRjobseeker values('human9', '1212abc', sysdate, 'choi', 2, TO_DATE('1991/12/24 04:12:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '동작구', 'gw@naver.com', '01012345678','pic1.png', 1, '자기소개서');
+insert into KRjobseeker values('human10', '1212abc', sysdate, 'choi', 2, TO_DATE('1900/07/07 05:10:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '노원구', 'gw@naver.com', '01012345678','pic1.png', 1, '자기소개서');
+insert into KRjobseeker values('human11', '1212abc', sysdate, 'choi', 2, TO_DATE('1992/08/16 06:18:14', 'YYYY/MM/DD HH:MI:SS'),'경기','남양주시','가운동','gw@naver.com','01012345678','pic1.png', 1, '자기소개서');
+insert into KRjobseeker values('human12', '1212abc', sysdate, 'choi', 2, TO_DATE('1994/08/05 07:26:14', 'YYYY/MM/DD HH:MI:SS'), '--', '부산', '강서구', 'gw@naver.com', '01012345678','pic1.png', 1, '자기소개서');
+insert into KRjobseeker values('human13', '1212abc', sysdate, 'choi', 2, TO_DATE('1997/09/03 08:27:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '금천구', 'gw@naver.com', '01012345678','pic1.png', 1, '자기소개서');
+insert into KRjobseeker values('human14', '1212abc', sysdate, 'choi', 2, TO_DATE('1992/10/13 12:28:14', 'YYYY/MM/DD HH:MI:SS'), '--', '서울', '동대문구', 'gw@naver.com', '01012345678', 'pic1.png',1, '자기소개서');
 
 
 
@@ -42,6 +42,40 @@ insert into KRjobseeker values('human14', '1212abc', sysdate, 'choi', 2, TO_DATE
  insert into KRboard values('0_3','신고게시판', '공지:이 게시판은 신고용도로만 사용해주세요', 1, 0, 'admin3', to_date('10/16/2018 12:41:15', 'MM/dd/yyyy hh24:mi:ss'));
  insert into KRboard values('0_4', '이용자수 많은 기간', '10/18일에 이용자수가 많아 서버가 느려질 수 있으니 참고하세요', 1, 0, 'admin1', to_date('10/16/2018 12:41:15', 'MM/dd/yyyy hh24:mi:ss'));
  insert into KRboard values('0_5', 'D-1', 'D-1 내일은 홈페이지 시현하는 날입니다.', 1, 0, 'admin2', to_date('10/17/2018 12:55:15', 'MM/dd/yyyy hh24:mi:ss'));
+ 
+ 
+ 
+ 
+ 
+ 
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human1', 1);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human2', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human3', 1);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human4', 1);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human5', 1);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human6', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human7', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human8', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human9', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human10', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human11', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human12', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human13', 0);
+ insert into KRteammember(teamId, jbskId, tmstatus) values(1, 'human14', 0);
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  

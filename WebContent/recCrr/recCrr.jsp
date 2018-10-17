@@ -11,14 +11,14 @@
 	//-->
 </script>
 <h2>지원 현황 창</h2>
-<c:if test="${lists == '' || lists eq null}">
+<c:if test="${size==0}">
 	<script type="text/javascript">
 		//<!--
 		errorback("지원자가 없습니다.")
 		//-->
 	</script>
 </c:if>
-<c:if test="${lists != '' || lists ne null}">
+<c:if test="${size>0}">
 	<table border='1'>
 		<tr>
 			<th>이름</th><th>아이디</th><th>성별</th><th>전화번호</th><th>지원포지션</th><th>상태</th><th>확정</th><th>탈락</th>

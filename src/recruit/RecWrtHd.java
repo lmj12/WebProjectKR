@@ -85,7 +85,7 @@ public class RecWrtHd implements RecruitHandler {
 			recruitDto.setRecReadCnt(0);
 			recruitDto.setReccontent(request.getParameter("reccontent"));
 			
-			
+		
 	        recruitDto.setRecStart( new Timestamp( System.currentTimeMillis() ));
 	       
 	       
@@ -101,7 +101,7 @@ public class RecWrtHd implements RecruitHandler {
 				
 				timeD = endtm.parse(time);				
 				Timestamp endDate = new Timestamp(timeD.getTime());
-				System.out.println(endDate);
+				
 				recruitDto.setRecEnd(endDate);
 			} catch (ParseException e) {
 				e.printStackTrace();
@@ -111,8 +111,9 @@ public class RecWrtHd implements RecruitHandler {
 				
 				String pos = request.getParameter("id");
 				String array[] = (pos.split(","));		
-				
-				int recId = recDao.recGetId(recruitDto);
+			
+				int recId = recruitDto.getRecId();
+			
 				for(int i=0; i<array.length; i++) {				
 				
 					int posId = Integer.parseInt(array[i]);

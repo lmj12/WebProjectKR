@@ -55,7 +55,7 @@
     	select boardId from ( select * from KRboard where boardId LIKE '0%')
     </select>
    	<select id="Board.userSelCnt" parameterType="String" resultType="int">
-   		select count(*) from KRboard where boarduserId=#{userId}
+   		select count(*) from KRboard where boarduserId=#{boarduserId}
    	</select>
    	<select id="Board.userSel" parameterType="java.util.Map" resultType="board.BoardDataBean">
    		select boardId, boardContent, boardStatus, boardParentId, boarduserid, boardregdate,r 
@@ -71,8 +71,14 @@
    		 select * from KRboard where boardId LIKE '0%' ORDER BY BOARDREGDATE DESC
    </select>
    <select id="getAdm2" resultType="board.BoardDataBean">
-   		 select * from KRboard where boardId LIKE '%1' ORDER BY BOARDREGDATE DESC
+   		 select * from KRboard where boardId LIKE '%1' AND boardID NOT LIKE '0%' ORDER BY BOARDREGDATE DESC
    </select>
+	<update id="number" parameterType="board.BoardDataBean">
+		update KRboard set boardStatus=1 where boardId=#{boardId} and boarduserId=#{boarduserId}
+	</update>
+	<update id="num" parameterType="String">
+		update KRboard set boardStatus=1 where boardId=#{boardId}
+	</update>
 </mapper>
 
 

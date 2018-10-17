@@ -84,7 +84,7 @@ public class BoardListHd implements BoardHandler {
 			List<BoardDataBean> articles = boardDao.boardGetFin(map);
 			for(int i=0; i<articles.size(); i++) {
 			BoardDataBean boardDto = articles.get(i);
-			SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+			SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 			boardDto.setStime(sf.format(boardDto.getBoardregdate()));
 			}
 			request.setAttribute( "articles", articles );
@@ -102,7 +102,7 @@ public class BoardListHd implements BoardHandler {
 		List<BoardDataBean> articles = boardDao.notGet();
 		for(int i=0; i<articles.size(); i++) {
 			BoardDataBean boardDto = articles.get(i);
-			SimpleDateFormat sd = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+			SimpleDateFormat sd = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 			boardDto.setStime(sd.format(boardDto.getBoardregdate()));
 			String id = boardDto.getBoardId();
 			String num = id.split("_")[1];			

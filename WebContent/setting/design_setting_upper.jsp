@@ -23,46 +23,46 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
 	integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
 	crossorigin="anonymous"></script>
+
+
 <script type="text/javascript">
 //<!--
-	$(document).ready(
-		function() {
+	$(function() {
+		var toggleAffix = function(affixElement, scrollElement,
+				wrapper) {
+			var height = affixElement.outerHeight(), top = wrapper
+					.offset().top;
+			if (scrollElement.scrollTop() >= top) {
+				wrapper.height(height);
+				affixElement.addClass("affix");
+			} else {
+				affixElement.removeClass("affix");
+				wrapper.height('auto');
+			}
+		};
 
-			var toggleAffix = function(affixElement, scrollElement,
-					wrapper) {
-
-				var height = affixElement.outerHeight(), top = wrapper
-						.offset().top;
-
-				if (scrollElement.scrollTop() >= top) {
-					wrapper.height(height);
-					affixElement.addClass("affix");
-				} else {
-					affixElement.removeClass("affix");
-					wrapper.height('auto');
-				}
-
-			};
-
-			$('[data-toggle="affix"]').each(function() {
-				var ele = $(this), wrapper = $('<div></div>');
-
-				ele.before(wrapper);
-				$(window).on('scroll resize', function() {
-					toggleAffix(ele, $(this), wrapper);
-				});
-
-				// init
-				toggleAffix(ele, $(window), wrapper);
+		$('[data-toggle="affix"]').each(function() {
+			var ele = $(this), wrapper = $('<div></div>');
+			ele.before(wrapper);
+			$(window).on('scroll resize', function() {
+				toggleAffix(ele, $(this), wrapper);
 			});
-
+			// init
+			toggleAffix(ele, $(window), wrapper);
+		});
+		
+		$(document).find('table').prop('class', 'table table-bordered table-secondary');
+		$(document).find('thead').prop('class', 'thead-inverse text-center');
+		$(document).find('th').prop('class', 'text-center');
+		$(document).find('img').prop('class', 'img-fluid rounded');
 	});
 //-->
 </script>
 <style>
 	header {
-	    height: 220px;
-	    background: #ccc;
+	    height: 110px;
+	    background: #333;
+	    color: white;
 	}
 	
 	#main {
@@ -88,9 +88,62 @@
 	}
 	.affix.navbar .nav-item>a, 
 	.affix.navbar .navbar-brand {
-	    color: #fff;
+	    color: #d2dae2;
 	}
+	table {
+		table-layout: fixed;
+		margin: 10px 10px 10px 10px;
+	}
+	th, td {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	.container table,
+	thead {
+		border-radius: 0px 0px 15px 0px;
+		background-color: #ffffff;
+	}
+	table td {
+		color: #3d3d3d;
+	}
+	table th {
+		color: #3d3d3d;
+	}
+	.card {
+		background-color: #333;
+	}
+	.card-header {
+		background-color: #333;
+		color: #d2dae2;
+	}
+	.card-body {
+		background-color: #333;
+	}
+	li a .nav-style {
+		color: white;
+	}
+	.navbar-light .navbar-nav .nav-link {
+    color: #dcdde1;
+	}
+	.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #f5f6fa;
+	}
+	.navbar-light .navbar-brand {
+    color: #f5f6fa;
+}
 </style>
+<style media="screen">
+ body { background-color:#4b4b4b; font-family:'Roboto'; color:white;}
+ h1 { margin-bottom:50px;}
+   .text-center{
+     text-align: center;
+     font-weight: bold;
+   }
+   #message{
+     display: none;
+   }
+ </style>
 </head>
 
 <%@ include file="navbar.jsp" %>

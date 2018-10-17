@@ -49,6 +49,7 @@ public class RecModHd implements RecruitHandler {
 			
 			List<RecruitDataBean> recruitDto = recDao.recPosGet(recId);
 			request.setAttribute("recruitDto", recruitDto);
+			request.setAttribute("recSize", recruitDto.size());
 			
 			JobProvDataBean jbpDto = jbpDao.jobpGet(recDto.getJobpId());
 			request.setAttribute("jbpDto", jbpDto);
@@ -98,7 +99,7 @@ public class RecModHd implements RecruitHandler {
 				int recId = Integer.parseInt(request.getParameter("recId"));
 				recDao.recDelPos(recId);
 				
-				int rst = recDto.getPosId();
+				
 				
 				String post = request.getParameter("id");
 				
