@@ -54,6 +54,7 @@
 		$(document).find('table').prop('class', 'table table-bordered table-secondary');
 		$(document).find('thead').prop('class', 'thead-inverse text-center');
 		$(document).find('th').prop('class', 'text-center');
+		$(document).find('img').prop('class', 'img-fluid rounded');
 	});
 //-->
 </script>
@@ -89,13 +90,28 @@
 	.affix.navbar .navbar-brand {
 	    color: #d2dae2;
 	}
-	div .container table{
-	  background-color: #808e9b;
+	.container table,
+	thead {
+		border-radius: 18px;
+		background-color: #ffffff;
+	}
+	table td {
+		color: #3d3d3d;
+	}
+	.card {
+		background-color: #333;
+	}
+	.card-header {
+		background-color: #333;
+		color: #d2dae2;
+	}
+	.card-body {
+		background-color: #333;
 	}
 	
 </style>
 <style media="screen">
- body { background-color:#fafafa; font-family:'Roboto';}
+ body { background-color:#4b4b4b; font-family:'Roboto'; color:#d2dae2;}
  h1 { margin-bottom:50px;}
    .text-center{
      text-align: center;

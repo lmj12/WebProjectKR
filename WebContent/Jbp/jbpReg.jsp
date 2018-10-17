@@ -78,7 +78,12 @@
 
       <!-- form -->
       <form name="inputform" action="jbpReg.do" method="post" onsubmit="return inputcheck()">
-      
+      <form class="container">
+	    <div class="form-group">
+	        <label class="form-control-label" for="inputSuccess1">Input with success</label>
+	        <input type="text" class="form-control is-invalid" id="inputSuccess1">
+	        <div class="valid-feedback">Success! You've done it.</div>
+	    </div>
         <div class="form-group row">
           <label for="jobpId" class="col-sm-2 col-form-label">아이디</label>
           <div class="col-sm-10">
