@@ -10,6 +10,9 @@ import java.net.URLEncoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,21 +44,26 @@ public class JbpPublicCheck {
 		URL url;
 		try {
 			url = new URL(urlstr);
-			System.out.println(url);
 			HttpURLConnection urlconnect = (HttpURLConnection) url.openConnection();
 			urlconnect.setRequestMethod("GET");
 			br = new BufferedReader(new InputStreamReader(urlconnect.getInputStream(), "UTF-8"));
-			rst = "";
-			String line;
-			while((line = br.readLine()) != null) {
-				rst = rst + line.trim();
-			}
+			String json = br.readLine();
 			
+			JSONParser parse = new JSONParser();
+			JSONObject obj = (JSONObject)parse.parse(json);
+			JSONObject res = (JSONObject)obj.get("response");
+			JSONObject body = (JSONObject)res.get("body");
+			Long cnt = (Long)body.get("totalCount");
 			
+			JSONObject items = (JSONObject)body.get("items");
+			JSONArray item = (JSONArray)items.get("item");
+			
+			JSONObject tmp = (JSONObject)item.get(0);
+			tmp.put("cnt", cnt);
+			rst = tmp.toJSONString();
 		} catch (Exception e) {
-			e.printStackTrace();
+
 		} 
-		System.out.println(rst);
 		return rst;
 	}
 

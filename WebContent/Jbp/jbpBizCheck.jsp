@@ -31,14 +31,14 @@
 			    	// 폼 만들어서 선택하게끔
 			    	var bizName = $('input[name=wkpl_nm]').val();
 			    	var parseBizID = bizID.substring(0, 6);
-			    	ajaxCk(bizName,parseBizID)
+			    	ajaxCk(bizName,parseBizID,bizID)
 			    } else {
 			    	alert('사업자등록번호 형식에 맞지 않습니다');
 			    }
 
 			}
 		}
-	function ajaxCk(bizName,parseBizID){
+	function ajaxCk(bizName,parseBizID,bizID){
 		$.ajax({
 				method : 'POST',
 				url : 'jbpPublicCheck.do',
@@ -48,10 +48,19 @@
 					wkpl_nm : bizName,
 					bzowr_rgst_no : parseBizID,
 				},
-				datatype : "json",
+				datatype : "text",
 				success: function(data){
-					var list = $.parseJSON(data);
-					alert(data)
+					if(data!=""){
+						var item = $.parseJSON(data);
+						var jobpCn = item.wkplNm
+						var jobpBno = bizID
+						opener.document.getElementById("jobpBno").value = jobpBno;
+						opener.document.getElementById("jobpCn").value = jobpCn;
+						window.close();
+					} else {
+						alert("등록된 정보가 없습니다!")
+					}
+					
 	            },
 				error : function(request,status,error){
 					alert("code : "+request.status+"<br>"
@@ -59,6 +68,7 @@
 		    				+"error : "+$(error).find('errMsg').html())
 				}
 			});
+		
 	}
 	$(document).ready(function(){
 		$('input[name=wkpl_nm]').val('참미디어테크');
