@@ -31,12 +31,12 @@ public class RecDelHd implements RecruitHandler {
 		
 		return new ModelAndView("/recruit/recDel");
 	}
-	
+
 	@RequestMapping(value = "ajaxgongoDELinADM") 
 	@ResponseBody
 	public int ajaxProcess(HttpServletRequest request, HttpServletResponse response) throws JobSeekerException {
 		String recId1 = request.getParameter("recId");
-		int recId = Integer.parseInt(request.getParameter("recId1"));
+		int recId = Integer.parseInt(recId1);
 		
 		return recDao.recDel( recId );
 	}

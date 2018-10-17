@@ -7,7 +7,7 @@
 //<!--
 	$(function(){
 			// FIXME : 개발용 사업자번호 자동입력
-			$('input[name=wkpl_nm]').val('lg');
+			$('input[name=wkpl_nm]').val('참미디어테크');
 			$('input[name=bzowr_rgst_no]').val('1078614075');
 		
 			$('#btn-checkBizId').on(
@@ -37,20 +37,21 @@
 					    	alert('사업자등록번호 형식에 맞는 번호입니다');
 					    	// TODO : 맞는 사업자 등록번호일 시, bizID 앞 6자리 파싱해서 공공데이터 포털날리고
 					    	// 폼 만들어서 선택하게끔
-					    	var bizName = $('wkpl_nm').val();
+					    	var bizName = $('input[name=wkpl_nm]').val();
 					    	var parseBizID = bizID.substring(0, 6);
-					    	
 					    	$.ajax(
 									{
-										type : 'GET',
+										type : 'POST',
 										url : 'jbpPublicCheck.do',
 										data : {
 											wkpl_nm : bizName,
 											bzowr_rgst_no : parseBizID,
 										},
 										dataType : 'xml',
-										success: function(msg){
-							            	alert('성공')
+										success: function(data){
+							            	$('#bizList')
+							            	.html(
+							            	$(data).text() );
 							            },
 										error : function(request,status,error){
 										    $('#bizList')

@@ -156,7 +156,7 @@
 						} else if(recs[i].recStatus==2){
 							str += "<td>완료</td>"
 						}
-						str += "<td><input type='button' value='공고삭제' onclick='gongoDELinADM("+i+")'></td></tr>"
+						str += "<td onclick='event.cancelBubble=true;'><input type='button' value='공고삭제' onclick='gongoDELinADM("+i+")'></td></tr>"
 					}
 					$("#rst").html(str);
 				} else {
