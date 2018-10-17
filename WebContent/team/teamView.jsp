@@ -62,8 +62,9 @@
 			if(${sessionScope.memType} != 1){
 				tabstr += "<td><input type='button' value='추방' onclick='teamExit(this)'></td></tr>"
 			}
-			tabstr += "</table>"
+			
 		}
+		tabstr += "</table>"
 		$("#listd").html(tabstr);
 	}
 	
