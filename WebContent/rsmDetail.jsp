@@ -28,7 +28,7 @@
 <div id="resume" style="margin: 7px">
 	<table border='1' style="float: left; margin-right: 7px;" >
 		<tr>
-			<th height="150" width="150">사진구역</th>
+			<th height="150" width="180"><img src="./setting/image/upload/${jbskPic}" width="140" height="180" /></th>
 		</tr>
 	</table>
 	<br>
