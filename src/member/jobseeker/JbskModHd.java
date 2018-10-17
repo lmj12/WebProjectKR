@@ -48,7 +48,7 @@ public class JbskModHd implements JobSeekerHandler {
         MultipartFile mf = mre.getFile("jbskPic"); // jsp file name mapping
         String original;
         if(request.getParameter("conCnt").equals("1") ) {
-	        String proPath = "C:\\Users\\Playdata\\Desktop\\WEBP\\eclipse\\WebProjectKR\\WebContent\\setting\\image\\upload\\";
+	        String proPath = "C:\\ExpertJava\\Project\\WebProject\\발표\\KR_WebProject\\WebContent\\setting\\image\\upload\\";
 	        String uploadPath = "";
 	        original = System.currentTimeMillis()+mf.getOriginalFilename(); 
 	        

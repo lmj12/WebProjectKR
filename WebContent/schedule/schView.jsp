@@ -62,7 +62,6 @@
 		function(){
 			makeTable();
 			schJb();
-			$(".sch").css("background","#95afc0")
 			setInterval("schJb()",10000);
 
 		}
@@ -90,6 +89,7 @@
 			}
 		}
 		document.getElementById("t").innerHTML = schstr;
+		$(".sch").css("background","#95afc0")
 	}
 	
 	function viewModal(){
