@@ -49,9 +49,8 @@
 										},
 										dataType : 'xml',
 										success: function(data){
-							            	$('#bizList')
-							            	.html(
-							            	$(data).text() );
+							            	
+							            	alert( $(data).text() );
 							            },
 										error : function(request,status,error){
 										    $('#bizList')
