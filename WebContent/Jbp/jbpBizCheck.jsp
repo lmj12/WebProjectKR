@@ -73,6 +73,10 @@
 	$(document).ready(function(){
 		$('input[name=wkpl_nm]').val('참미디어테크');
 		$('input[name=bzowr_rgst_no]').val('1078614075');
+	      document.body.style.overflow='hidden';  
+	      if (navigator.userAgent.indexOf('Chrome')>-1) {  
+				    window.resizeTo(550, 250);   
+	      }  
 
 	})
 
