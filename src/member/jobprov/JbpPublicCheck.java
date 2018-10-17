@@ -30,14 +30,14 @@ public class JbpPublicCheck implements JobProvHandler {
 		String serviceKey = "zHRNYJ97QejMrVzKWNS6Hmc8j9Gd8oJ7p4LKd3MfUsTbmSI%2F2v3inaBqZm%2FTDmxvJPYg7gQ1QOEfbnPWE%2FRQvg%3D%3D";	// 서비스 키
 		String urlstr = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch" + 
 				"?serviceKey=" + serviceKey +
-				"&wkpl_nm=" + wkpl_nm +
 				"&bzowr_rgst_no=" + bzowr_rgst_no;	// URL
-		System.out.println(urlstr);
+		
 		
 		
 		URL url;
 		try {
 			url = new URL(urlstr);
+			System.out.println(url);
 			HttpURLConnection urlconnect = (HttpURLConnection) url.openConnection();
 			urlconnect.setRequestMethod("GET");
 			br = new BufferedReader(new InputStreamReader(urlconnect.getInputStream(), "UTF-8"));
