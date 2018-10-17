@@ -61,36 +61,41 @@ $(document).ready(
 					}
 			);	
 		
-		$('input[name=jobpPasswd]').on(
-				'keyup',
-				function(event){
-					if($('input[name=jobpPasswd]').val().length<6|| $('input[name=jobpPasswd]').val().length>15){
-						$('.passwdresult').val("비밀번호를 6~15자까지 입력해주세요.");
-					}else{
-						$('.passwdresult').val("사용할 수 있는 비밀번호입니다.");
+			$('input[name=jobpPasswd]').on(
+					'keyup',
+					function(event){
+						if($('input[name=jobpPasswd]').val().length<6|| $('input[name=jobpPasswd]').val().length>15){
+							$('.passwdresult').val("비밀번호를 6~15자까지 입력해주세요.");
+						}else {
+							$('.passwdresult').val("사용할 수 있는 비밀번호입니다.");
+						}						
+					},
+					function(event){
+						if($('input[name=jobpPasswd]').val()== $('input[name=rejobpPasswd]').val()){					
+							$('.repasswdresult').val('사용할 수 있는 비밀번호입니다.');	
+						}else{
+							$('.repasswdresult').val('사용할 수 없는 비밀번호입니다');	
+						}	
 					}
-					
-					
-				}
+				
 			);
 		
+			
 		//비밀번호가 같으면 사용할 수 있다
 		//다르면 사용할 수 없다
-		$('input[name=rejobpPasswd]').on(
-			'keyup',
-			function(event){
-			var repasswd = $('input[name=rejobpPasswd]').val();
-			if(repasswd){
-				if($('input[name=jobpPasswd]').val()== $('input[name=rejobpPasswd]').val()){
-					
-					$('.repasswdresult').val('사용할 수 있는 비밀번호입니다.');	// FIXME : (임시)유효성검사 만든 후, 재작업 필요
-				}else{
-					$('.repasswdresult').val('사용할 수 없는 비밀번호입니다');	// FIXME : (임시)유효성검사 만든 후, 재작업 필요
-				}
-			}
-			$('input[name=rejobpPasswd]').val()
-			}
-		);
+			$('input[name=rejobpPasswd]').on(
+					'keyup',
+					function(event){		
+						if($('input[name=jobpPasswd]').val()== $('input[name=rejobpPasswd]').val()){					
+							$('.repasswdresult').val('사용할 수 있는 비밀번호입니다.');	// FIXME : (임시)유효성검사 만든 후, 재작업 필요
+						}else{
+							$('.repasswdresult').val('사용할 수 없는 비밀번호입니다');	// FIXME : (임시)유효성검사 만든 후, 재작업 필요
+						}	
+					$('input[name=rejobpPasswd]').val()
+					}
+					);
+	
+	
 		
 		$('input:button[name=checkBizID]').on(
 			'click',
@@ -165,21 +170,22 @@ $(document).ready(
 		);	// 사업자번호 유효성 검사
 	}
 );
+$(document).submit(		
 
-var inputerror="입력형식에 맞지 않습니다.";
 function inputerror(){
-	if( !inputform.jobpId.value){
-		alert(inputerror);
-		inputform.jobpId.focus();
-		return false;
-	}else if( ! inputform.jobpPasswd.value ) {
+	var inputerror="입력형식에 맞지 않습니다.";
+	if( !inputform.jobpPasswd.value ) {
 		alert( inputerror);
 		inputform.jobpPasswd.focus();
 		return false;
-	} else if(inputform.jobpPasswd.value != inputform.rejobpPasswd.value ) {
-		alert( inputerror );
-		inputform.rejobpPasswd.focus();
+	} else if(inputform.jobpPasswd.value != inputform.rejobpPasswd.value){
+		alert("비밀번호가 다릅니다");
 		return false;
-	} 
-	
+	}else if( inputform.jobpPasswd.value.length <6 || inputform.jobpPasswd.value.length >15) {
+		alert( "비밀번호길이를 확인하세요" );
+		inputform.jobpPasswd.focus();
+		return false;
+	}
 }
+
+);

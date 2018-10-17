@@ -1,5 +1,5 @@
 
-<%@ include file="/setting/setting.jsp" %>
+<%@ include file="/setting/setting.jsp" %> 
 <!-- container 내용 가변위치 -->
 <jsp:include page="recList.do" flush="false"/>
  
