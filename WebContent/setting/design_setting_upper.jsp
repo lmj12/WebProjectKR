@@ -90,9 +90,18 @@
 	.affix.navbar .navbar-brand {
 	    color: #d2dae2;
 	}
+	table {
+		table-layout: fixed;
+		margin: 10px 10px 10px 10px;
+	}
+	th, td {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
 	.container table,
 	thead {
-		border-radius: 0px 0px 30px 0px;
+		border-radius: 0px 0px 15px 0px;
 		background-color: #ffffff;
 	}
 	table td {
@@ -111,10 +120,21 @@
 	.card-body {
 		background-color: #333;
 	}
-	
+	li a .nav-style {
+		color: white;
+	}
+	.navbar-light .navbar-nav .nav-link {
+    color: #dcdde1;
+	}
+	.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #f5f6fa;
+	}
+	.navbar-light .navbar-brand {
+    color: #f5f6fa;
+}
 </style>
 <style media="screen">
- body { background-color:#4b4b4b; font-family:'Roboto'; color:#d2dae2;}
+ body { background-color:#4b4b4b; font-family:'Roboto'; color:white;}
  h1 { margin-bottom:50px;}
    .text-center{
      text-align: center;
