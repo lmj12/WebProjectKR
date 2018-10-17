@@ -26,7 +26,7 @@
     	select * from krschedule where schId=#{schId}
     </select>
     <select id="getJbpId" parameterType="String" resultType="String">
-    	select t.JOBPID from KRTeammember m, KRTeam t where m.TEAMID = t.TEAMID AND m.JBSKID = #{jbskId}
+    	select t.JOBPID from KRTeammember m, KRTeam t where m.TEAMID = t.TEAMID AND m.JBSKID = #{jbskId} AND m.TMSTATUS = 1
     </select>
     <update id="mod" parameterType="schedule.ScheduleDataBean">
     	update KrSchedule set SCHCONTENT=#{schContent},SCHSTARTTIME=#{schstartTime},SCHENDTIME=#{schendTime} where schId=#{schId}
