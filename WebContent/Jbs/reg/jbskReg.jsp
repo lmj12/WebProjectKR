@@ -260,8 +260,8 @@
                         		<option>naver.com</option>	
                         	    <option>daum.net</option>
                         	    <option>gmail.com</option>
-                         	   <option>nate.com</option>
-                         	   <option>직접입력</option>    
+                         	    <option>nate.com</option>
+                         	    <option>직접입력</option>    
                         	
                         	   <!--  <option value="1">naver.com</option>
                         	    <option value="2">daum.net</option>
