@@ -61,7 +61,7 @@
 		function(){
 			makeTable();
 			schJb();
-			setInterval("schJb()",3000);
+			setInterval("schJb()",10000);
 
 		}
 	)
@@ -619,6 +619,7 @@
 					st = new Date(Number(sch.schstartTime));
 					et = new Date(Number(sch.schendTime));
 					makeTable();
+					schJb();
 				} else {
 					alert("이전 스케줄이 없습니다.")
 				}
@@ -648,6 +649,7 @@
 					st = new Date(Number(sch.schstartTime));
 					et = new Date(Number(sch.schendTime));
 					makeTable();
+					schJb();
 				} else {
 					alert("다음 스케줄이 없습니다.")
 				}

@@ -3,7 +3,6 @@ var authNum = 0;
 function jbpTelAuth(){
 	authNum = Math.floor(Math.random()*1000000);
 	var tel = $("#jobpTel").val();
-	alert(123);
 	$.ajax({
     	method : "POST",
     	url : "ajaxSendSMS.do",
