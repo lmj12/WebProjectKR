@@ -94,6 +94,8 @@
     }  
     
     function getSchedule(){
+    	var date = new Date(year,month+1,0);
+    	var end = date.getDate()
        $.ajaxSetup({cache:false}); 
        $.ajax({
           method : "POST",
@@ -110,14 +112,14 @@
           success : function(data){   //TODO : 30으로 되어있는거 enddate로 바꿔야함.
              var list = $.parseJSON(data);
              sessionStorage.setItem("jobpId", list[0].jobpId);
-             for (var i=1; i<=30; i++){
+             for (var i=1; i<=end; i++){
                 $("#"+i).text(i);
              }
              
              for (var i=0; i<list.length; i++){
                 var date = new Date(list[i].schstartTime)
                 var day = date.getDate()
-                $("#"+day).text("스케줄있음");
+                $("#"+day).css("background","#ff7979").css("color","#000099").text("!!!");
              }
           }, error:function(request,status,error){
               $("#rst").text("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

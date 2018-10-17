@@ -62,6 +62,7 @@
 		function(){
 			makeTable();
 			schJb();
+			$(".sch").css("background","#95afc0")
 			setInterval("schJb()",10000);
 
 		}
@@ -78,8 +79,8 @@
 			schstr += 	"<tr><th>"+(shour-1)+":00</th><td></td></tr>"
 			schstr += 	"<tr><th>"+(shour-1)+":30</th><td></td></tr>"
 		for (var i=shour; i<=ehour; i++ ){
-			schstr +=	"<tr><th>"+i+":00</th><td class='sch' onclick='viewModal()' class='schedule'>스케줄있음</td></tr>"
-			schstr +=	"<tr><th>"+i+":30</th><td class='sch' onclick='viewModal()' class='schedule'>스케줄있음</td></tr>"
+			schstr +=	"<tr><th>"+i+":00</th><td class='sch' onclick='viewModal()' ></td></tr>"
+			schstr +=	"<tr><th>"+i+":30</th><td class='sch' onclick='viewModal()' ></td></tr>"
 		}
 		schstr += 	"<tr><th>"+(ehour+1)+":00</th><td></td></tr>"
 		schstr += 	"<tr><th>"+(ehour+1)+":30</th><td></td></tr>"
