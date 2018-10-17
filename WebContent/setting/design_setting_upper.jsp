@@ -92,10 +92,13 @@
 	}
 	.container table,
 	thead {
-		border-radius: 18px;
+		border-radius: 0px 0px 30px 0px;
 		background-color: #ffffff;
 	}
 	table td {
+		color: #3d3d3d;
+	}
+	table th {
 		color: #3d3d3d;
 	}
 	.card {

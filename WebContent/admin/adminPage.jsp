@@ -305,18 +305,19 @@
 	
 </script>
 <br>
-
-<select name="adminpage" id="adminpage">
-	<option value="1">공지관리</option>
-	<option value="2">공고관리</option>
-	<option value="3">신고관리</option>
-	<option value="4">구직자관리</option>
-	<option value="5">구인자관리</option>
-</select>
-
-<input type="button" value="조회" onclick="getAdminPage()">
-
-
-<div id="rst">
-
+<div class="container">
+	<select name="adminpage" id="adminpage">
+		<option value="1">공지관리</option>
+		<option value="2">공고관리</option>
+		<option value="3">신고관리</option>
+		<option value="4">구직자관리</option>
+		<option value="5">구인자관리</option>
+	</select>
+	
+	<input type="button" value="조회" onclick="getAdminPage()">
+	
+	
+	<div id="rst">
+	
+	</div>
 </div>
