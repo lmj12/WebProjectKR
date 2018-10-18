@@ -10,66 +10,8 @@ $(document).ready(
 					window.open("jbpBizCheckMove.do","","width=250px, heigt=200px");
 				}
 			);
-		$('input[name=jobpId]').on(
-			'keyup',
-			function(event){
-				var keyVal = $(this).val();		
-				if (!(event.keyCode >=37 && event.keyCode<=40)) {
-                    var inputVal = $(this).val();
-                    $(this).val(inputVal.replace(/[^a-z0-9]/gi,''));                         
-                    var jobpId = $('input[name=jobpId]').val();
-					if(jobpId.length<4|| jobpId.length>15) {
-						$('.idresult').val("아이디를 4~15자까지 입력해주세요.");
-						
-//					}else{					
-//						if( jobpId ){
-//							$.ajax(
-//								{
-//									type : "POST",
-//									data : 
-//										{
-//											jobpId :  $('input[name=jobpId]').val()
-//										},
-//									url : 'Jbp/idcheck.jsp',
-//									dataType : 'xml',
-//									success : function(data){							
-//										$('.idresult').val($(data).find('message').text());										
-//									},
-//									error : function(e){
-//										$('.idresult').val(e.message);
-//										
-//										
-//									}
-//								}
-//							);
-//						}
-					} 
-				}
-				$('input[name=jobpId]').val()
-			}			
-		);
-//		$(document).submit(				
-//			function(event){
-//				if($('.idresult').val().indexOf('없')!=-1){
-//					erroralert("중복확인해주세요");
-//					return false;
-//				}else{
-//					var form = $(this);
-//				$.ajax({
-//					type : form.attr('method'),
-//					url : form.attr('action'),
-//					data : form.serialize()
-//				}).done(function(data) {
-//			    	  
-//			      }).fail(function(data) {
-//			        // Optionally alert the user of an error here...
-//			      });
-//				}
-//			}
-//			);
-					
-						
-		
+
+
 		
 		//전화번호 - 없이 입력하도록
 			$('input[name=jobpTel]').on(
@@ -87,95 +29,16 @@ $(document).ready(
 					}
 			);	
 		
-		$('input[name=jobpPasswd]').on(
-				'keyup',
-				function(event){
-					var jobpPasswd = $('input[name=jobpPasswd').val();
-					
-					if($('input[name=jobpPasswd]').val().length<6|| $('input[name=jobpPasswd]').val().length>15){
-						$('.passwdresult').val("비밀번호를 6~15자까지 입력해주세요.");
-					}else{
-						if(isNaN(jobpPasswd)){
-							$('.passwdresult').val("사용할 수 있는 비밀번호입니다.");
-						}else{
-							$('.passwdresult').val("영문, 숫자, 특수문자를 혼합해주세요");	
-						}
-					}
-				}
-			);
-		
-		//비밀번호가 같으면 사용할 수 있다
-		//다르면 사용할 수 없다
-		$('input[name=rejobpPasswd]').on(
-			'keyup',
-			function(event){
-			var repasswd = $('input[name=rejobpPasswd]').val();
-			if(isNaN(repasswd)){
-				if($('input[name=jobpPasswd]').val()== $('input[name=rejobpPasswd]').val()){
-					
-					$('.repasswdresult').val('사용할 수 있는 비밀번호입니다.');	// FIXME : (임시)유효성검사 만든 후, 재작업 필요
-				}else{
-					$('.repasswdresult').val('사용할 수 없는 비밀번호입니다');	// FIXME : (임시)유효성검사 만든 후, 재작업 필요
-				}
-			}
-			$('input[name=rejobpPasswd]').val()
-			}
-		);
+
 	
 ///////////////////////////////////////////////////////////////////////////////////////////
-	$(settings.emailID).keyup(
-			function() {
-				var email = $.trim($(settings.emailID).val());
-				if (email !== 0) {
-					if (isValidEmailAddress(email)) {
-						$(this)
-								.parents('.form-group')
-								.addClass('is-valid');
-						$(this).addClass(
-								'form-control-success');
-						$(this).parents('.form-group')
-								.removeClass(
-										'is-invalid');
-						$(this).removeClass(
-								'is-invalid');
-						$(this).parents('.form-group')
-								.find('.text-muted')
-								.css('display', 'none');
-					} else {
-						$(this).parents('.form-group')
-								.addClass('is-invalid');
-						$(this).addClass(
-								'is-invalid');
-						$(this)
-								.parents('.form-group')
-								.find('.text-muted')
-								.text(settings.ErrorTextEmail);
-						$(this)
-								.parents('.form-group')
-								.find('.text-muted')
-								.css('display', 'block');
-					}
-				} else {
-					$(this).parents('.form-group')
-							.addClass('is-invalid');
-					$(this).addClass(
-							'is-invalid');
-					$(this)
-							.parents('.form-group')
-							.find('.text-muted')
-							.text(settings.ErrorTextEmail);
-					$(this).parents('.form-group')
-							.find('.text-muted').css(
-									'display', 'block');
-				}
-			});
 		$(settings.passwordID).keyup(
 			function() {
 				var password = $.trim($(settings.passwordID).val()).length * 1;
 				if (password > Math.round(settings.MinCharsPass - 1)) {
 					$(this).parents('.form-group').addClass(
 							'is-valid');
-					$(this).addClass('form-control-success');
+					$(this).addClass('is-valid');
 					$(this).parents('.form-group').removeClass(
 							'is-invalid');
 					$(this).removeClass('is-invalid');
@@ -193,6 +56,16 @@ $(document).ready(
 					$(this).parents('.form-group').find(
 							'.text-muted').css('display',
 							'block');
+				} else if (password > settings.ComplexMinCharsPass) {
+					$(this).parents('.form-group').addClass(
+							'is-invalid');
+					$(this).addClass('is-invalid');
+					$(this).parents('.form-group').find(
+							'.text-muted').text(
+							settings.ErrorTextComplexPassword);
+					$(this).parents('.form-group').find(
+							'.text-muted').css('display',
+							'block');
 				}
 			});
 		$(settings.rePasswordID).keyup(
@@ -202,7 +75,7 @@ $(document).ready(
 				if(rePassword == password){
 					$(this).parents('.form-group').addClass(
 							'is-valid');
-					$(this).addClass('form-control-success');
+					$(this).addClass('is-valid');
 					$(this).parents('.form-group').removeClass(
 							'is-invalid');
 					$(this).removeClass('is-invalid');
@@ -231,7 +104,7 @@ $(document).ready(
 					$(this).parents('.form-group')
 							.addClass('is-valid');
 					$(this).addClass(
-							'form-control-success');
+							'is-valid');
 					$(this).parents('.form-group')
 							.removeClass('is-invalid');
 					$(this).removeClass(
@@ -274,36 +147,62 @@ $(document).ready(
 									'display', 'block');
 				}
 			});
-		
-//			체크 폼 양식
-//			$(".form-check").change(function() {
-//				if ($("input:checkbox:checked").prop("checked")) {
-//					$(this).addClass('is-valid');
-//					$(this).removeClass('is-invalid');
-//				} else {
-//					$(this).addClass('is-invalid');
-//					$(this).removeClass('is-valid');
-//				}
-//			});
-		
+			$(settings.telID).keyup(
+				function(){
+					var tel = $.trim($(settings.telID).val());
+					if( tel.indexOf('-') != -1 || tel.length < 9 || tel.length > 11 ){
+						$(this).parents('.form-group')
+								.addClass('is-invalid');
+						$(this).addClass(
+								'is-invalid');
+						$(this)
+								.parents('.form-group')
+								.find('.text-muted')
+								.text(
+										settings.ErrorTextTel);
+						$(this).parents('.form-group')
+								.find('.text-muted').css(
+										'display', 'block');
+					} else {
+						$(this).parents('.form-group')
+								.addClass('is-valid');
+						$(this).addClass(
+								'is-valid');
+						$(this).parents('.form-group')
+								.removeClass('is-invalid');
+						$(this).removeClass(
+								'is-invalid');
+						$(this).parents('.form-group')
+								.find('.text-muted').css(
+										'display', 'none');
+					}
+				}
+			);
+			
 			// submit 시 액션
 			$('#submit').on('click', function() {
 				var id = $.trim($(settings.ID).val());
 				var passwd = $.trim($(settings.passwordID).val());
 				var repasswd = $.trim($(settings.rePasswordID).val());
-				if (id == '' || passwd == '' || repasswd =='') {
+				var jobpOption = $.trim($(settings.jobpOptionID).val());
+				var tel = $.trim($(settings.telID).val());
+				if (id == '' || passwd == '' || repasswd == '' || jobpOption == '' || tel == '') {
+					alert('입력 칸들을 확인하고 채워주세요');
 					$('.form-group').addClass('is-invalid');
 					$('.form-control').addClass('is-invalid');
-				} else {
-					if($(settings.ID)
+					return false;
+				} else if( $(settings.telConfirm).val() == 0 ){
+					alert('휴대폰 인증을 하셔야 회원가입을 하실 수 있습니다');
+					return false;
+				} else if($(settings.ID)
 							.parents('.form-group')
 							.find('.text-muted')
 							.text().indexOf('없')!=-1){
 						erroralert("ID 중복여부를 확인해주세요");
 						$(settings.ID).focus();
 						return false;
-					}else {
-						var form = $(this);
+				} else {
+					var form = $(this);
 					$.ajax({
 						type : form.attr('method'),
 						url : form.attr('action'),
@@ -315,7 +214,7 @@ $(document).ready(
 				        // Optionally alert the user of an error here...
 				      });
 					}
-				}
+				
 			});				
 		});
 
@@ -327,7 +226,7 @@ $(document).ready(
 
 
 
-$(document).submit(		
+/*$(document).submit(		
 
 function inputcheck(){
 	var inputerror="입력형식에 맞지 않습니다.";
@@ -368,19 +267,10 @@ function inputcheck(){
 					return false;
 			}
 	}
-
-	
-
-	
-	
-	 for (var i=0; i<inputform.jobpId.value.length; i++)
-     {
+	 for (var i=0; i<inputform.jobpId.value.length; i++){
             var ch = inputform.jobpId.value.charAt(i);//문자를 반환(정수형), 범위 검사 가능
-
             //입력된 문자를 검사
-
-            if ( ( ch < "a" || ch > "z") && (ch < "A" || ch > "Z") && (ch < "0" || ch > "9" ) )
-            {
+            if ( ( ch < "a" || ch > "z") && (ch < "A" || ch > "Z") && (ch < "0" || ch > "9" ) ){
              alert("아이디는 영문과 숫자로만 입력 가능 합니다!");
              inputform.jobpId.select();
              return false;
@@ -393,10 +283,10 @@ function inputcheck(){
 	
 	//영문, 숫자, 특수문자 2종 이상 혼용해 비밀번호
 	var chk =0;
-	if(inputform.jobpPasswd.value.search(/[0-9]/g) != -1) chk++;
-	if(inputform.jobpPasswd.value.search(/[a-z]/ig) != -1) chk ++;
-	if(inputform.jobpPasswd.value.search(/[!@#$%^&*()?_~]/g) != -1) chk++;
-	if(chk <2){
+	if(settings.passwordID.search(/[0-9]/g) != -1) chk++;
+	if(settings.passwordID.search(/[a-z]/ig) != -1) chk ++;
+	if(settings.passwordID.search(/[!@#$%^&*()?_~]/g) != -1) chk++;
+	if(chk < 2){
 		alert("비밀번호는 숫자, 영문, 특수문자를 두 가지 이상 혼합하여야 합니다.");
 		return false;
 	}
@@ -407,9 +297,9 @@ function inputcheck(){
 	var chr_pass_0;
 	var chr_pass_1;
 	
-	for(var i=0; i<inputform.jobpPasswd.value.length; i++){
-		chr_pass_0 = inputform.jobpPasswd.value.charAt(i);
-		chr_pass_1 = inputform.jobpPasswd.value.charAt(i+1);
+	for(var i=0; i<settings.passwordID.length; i++){
+		chr_pass_0 = settings.passwordID.charAt(i);
+		chr_pass_1 = settings.passwordID.charAt(i+1);
 		
 		if(!isNaN(chr_pass_0)){
 			//동일숫자 카운트
@@ -434,3 +324,4 @@ function inputcheck(){
 }
 );
 
+*/

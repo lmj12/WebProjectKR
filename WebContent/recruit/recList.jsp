@@ -94,7 +94,7 @@ table{
 				</td>				
 	</tr>
 	<tr>
-		<th>만료일</th>
+		<th>예식일시</th>
 		<td align="center">
 					${article.recDto.etime}
 				</td>	

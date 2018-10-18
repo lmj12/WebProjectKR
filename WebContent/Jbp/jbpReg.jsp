@@ -31,20 +31,20 @@
 			<tr>
 				<th>아이디</th>
 				<td width="300"><input type="text" name="jobpId"
-					placeholder="아이디를 4~15자까지 입력하세요, 영어, 숫자만 가능합니다" size="55" autofocus></td>
+					placeholder="아이디를 4~15자까지 입력해주세요, 영어, 숫자만 가능합니다" size="55" autofocus></td>
 				<td><input class="idresult" type="text" readonly></td>
 			</tr>
  
 			<tr>
 				<th>비밀번호</th>
 				<td><input type="password" name="jobpPasswd"
-					placeholder="비밀번호를 영어와 숫자를 사용해 6~15자로 입력하세요" size="55"></td>
+					placeholder="비밀번호를 영어와 숫자를 사용해 6~15자로 입력해주세요" size="55"></td>
 				<td><input class="passwdresult" type="text" readonly></td>
 			</tr>
 			<tr>
 				<th>비밀번호확인</th>
 				<td><input type="password" name="rejobpPasswd"
-					placeholder="같은 비밀번호를 입력하세요" size="55"></td>
+					placeholder="같은 비밀번호를 입력해주세요" size="55"></td>
 				<td><input class="repasswdresult" type="text" readonly>
 				</td>
 			</tr>
@@ -62,7 +62,7 @@
 			<tr>
 				<th>휴대전화</th>
 				<td><input type="text" name="jobpTel" id="jobpTel"
-					placeholder="지역번호 포함해서 '-'없이 전체전화번호를 입력하세요" size="43"> <input
+					placeholder="지역번호 포함해서 '-'없이 전체전화번호를 입력해주세요" size="43"> <input
 					type="button" value="문자발송" onclick="jbpTelAuth()" size="5">
 				</td>
 				<td><input class="telresult" type="text" value="전화번호를 입력해주세요"
@@ -95,11 +95,11 @@
 		</div>
 		<div class="card-body">
 			      <!-- form -->
-	      <form name="inputform" action="jbpReg.do" method="post">
+	      <form name="inputform" action="jbpReg.do" method="post" onsubmit="return inputcheck()">
 	        <div class="form-group row">
 	          <label for="jobpId" class="col-sm-2 col-form-label">아이디</label>
 	          <div class="col-sm-10">
-	            <input type="text" class="form-control" id="jobpId" name="jobpId" placeholder="아이디를 4-15 내로 입력하세요. 영어, 숫자만 가능합니다" maxlength="15">
+	            <input type="text" class="form-control" id="jobpId" name="jobpId" placeholder="아이디를 4-15 내로 입력해주세요. 영어, 숫자만 가능합니다" maxlength="15">
 	            <small class="text-muted"></small>
 	          </div>
 	        </div>
@@ -114,21 +114,21 @@
 	        <div class="form-group row">
 	          <label for="jobpPasswd" class="col-sm-2 col-form-label">비밀번호</label>
 	          <div class="col-sm-10">
-	            <input type="password" class="form-control" id="jobpPasswd" name="jobpPasswd" placeholder="비밀번호 길이를 6-15자 이내로 입력하세요." maxlength="15">
+	            <input type="password" class="form-control" id="jobpPasswd" name="jobpPasswd" placeholder="비밀번호 길이를 6-15자 이내로 입력해주세요." maxlength="15">
 	            <small class="text-muted"></small>
 	          </div>
 	        </div>
 	        <div class="form-group row">
 	          <label for="rejobpPasswd" class="col-sm-2 col-form-label">비밀번호확인</label>
 	          <div class="col-sm-10">
-	            <input type="password" class="form-control" id="rejobpPasswd" name="jobpPasswd" placeholder="Password" maxlength="15">
+	            <input type="password" class="form-control" id="rejobpPasswd" name="jobpPasswd" placeholder="비밀번호를 다시 한번 입력해 주세요." maxlength="15">
 	            <small class="text-muted"></small>
 	          </div>
 	        </div>
 	        <div class="form-group row">
 	          <label for="jobpBno" class="col-sm-2 col-form-label">사업자번호</label>
 	          <div class="col-sm-10">
-	            <input type="text" class="form-control" id="jobpBno" name="jobpBno" value="1078614075" placeholder="사업자번호" readonly>
+	            <input type="text" class="form-control" id="jobpBno" name="jobpBno" placeholder="사업자번호" readonly>
 	            <input type="button" name="checkBizID" value="검색">
 	            <small class="text-muted"></small>
 	          </div>
@@ -144,9 +144,9 @@
 	          <label for="jobpTel" class="col-sm-2 col-form-label">연락처</label>
 	          <div class="col-sm-10">
 	            <input type="text" class="form-control" id="jobpTel" name="jobpTel" 
-	            	placeholder="지역번호 포함해서 '-'없이 전체전화번호를 입력하세요">
-	            <input type="button" value="문자발송" onclick="jbpTelAuth()">
+	            	placeholder="지역번호 포함해서 '-'없이 전체전화번호를 입력해주세요" maxlength="11">
 	            <small class="text-muted"></small>
+	            <input type="button" value="문자발송" onclick="jbpTelAuth()">
 	          </div>
 	        </div>
 	        <div class="form-group row">
@@ -154,7 +154,7 @@
 	          <div class="col-sm-10">
 	            <input type="number" class="form-control" id="authNumCk" name="authNumCk" placeholder="인증번호를 확인해주세요" maxlength="10">
 	            <input type="hidden" id="authNum" value="0"> 
-             <input type="hidden" id="telConfirm" value="0"> <!-- TODO : 유효성 검사용 휴대폰 인증 검사 -->
+             	<input type="hidden" id="telConfirm" value="0"> <!-- TODO : 유효성 검사용 휴대폰 인증 검사 -->
 	            <input type="button" value="인증번호확인" onclick="jbpAuthCheck()" size="5">
 	            <small class="text-muted"></small>
 	          </div>
@@ -201,23 +201,24 @@
 //			emailID: '#inputEmail',
 //			ErrorTextEmail: 'Enter valid email',
 			ID: '#jobpId',
-			ErrorTextId: '아이디를 4-15 내로 입력하세요. 영어, 숫자만 가능합니다',
+			ErrorTextId: '아이디를 4-15 내로 입력해주세요. 영어, 숫자만 가능합니다',
 			MinCharsID: '4',
 			
 			passwordID: '#jobpPasswd',
-			ErrorTextPassword: '비밀번호 길이를 6-15자 이내로 입력하세요',
-			ErrorTextComplexPassword: '숫자, 영문, 특수문자를 두 가지 이상 혼합하여야 합니다.',
+			ErrorTextPassword: '비밀번호 길이를 6-15자 이내로 입력해주세요',
 			MinCharsPass: '6',
+			ErrorTextComplexPassword: '숫자, 영문, 특수문자를 두 가지 이상 혼합하여야 합니다',
 			ComplexMinCharsPass: '3',
 			
 			rePasswordID: '#rejobpPasswd',
 			ErrorTextrePassword: '비밀번호가 일치하지 않습니다',
 			 
-			jobpOption : '#jobpBno',
-			ErrorTextOption : '사업자번호와 업체명을 확인해주세요',
+			jobpOptionID : '#jobpBno',
+			ErrorTextOption : '사업자번호와 업체명을 입력해주세요',
 			
-			Tel : '#jobpTel',
-			ErrorTextTel : '올바르지 않은 형식의 전화번호입니다',
+			telID : '#jobpTel',
+			telConfirm : '#telConfirm',
+			ErrorTextTel : '전화번호 형식이 올바르지 않습니다',
 			ErrorTextTelAuth : '핸드폰 인증을 진행해주세요'
             }
   </script>

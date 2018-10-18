@@ -38,20 +38,13 @@
 									<label for="uname1">아이디</label> 
 									<input type="text" name="id" class="form-control form-control-lg rounded-0" name="uname1"
 										id="uname1" required="true">
-									<div class="invalid-feedback">아이디를 입력해주세요</div>
+									<small class="text-muted">아이디를 입력해주세요</small>
 								</div>
 								<div class="form-group">
 									<label>비밀번호</label> 
 									<input type="password" name="passwd" class="form-control form-control-lg rounded-0" id="pwd1"
 										required="true" autocomplete="new-password">
-									<div class="invalid-feedback">패스워드를 입력해주세요</div>
-								</div>
-								<div>
-									<label class="custom-control custom-checkbox"> 
-									<input type="checkbox" class="custom-control-input"> 
-										<span class="custom-control-indicator"></span> 
-										<span class="custom-control-description small text-dark">Remember me !!</span>
-									</label>
+									<small class="text-muted">패스워드를 입력해주세요</small>
 								</div>
 								<button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
 							</form>
@@ -74,6 +67,16 @@
 <!--/container-->
 
 <script type="text/javascript">
+	$(function(){
+		$('uname1').keyup(
+			function(){
+				$(this).removeClass('was-validated');
+				$(this).parents('.form-group')
+						.find('.text-muted')
+						.css('display', 'block');
+			}
+		);
+	})
 	$("#btnLogin").click(function(event) {
 
 		//Fetch form to apply custom Bootstrap validation

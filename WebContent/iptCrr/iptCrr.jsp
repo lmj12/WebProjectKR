@@ -56,6 +56,7 @@
 	</div>
 
 	<div class="col-lg-9 col-md-8">
+	<h2>직접입력경력사항</h2>
 		<div class="table-responsive">
 			<form method="POST" name="iptCrrForm">
 				<!-- listCnt=iptid IPTCOMPANY	IPTWH	IPTSTART	IPTEND	posId	IPTPERIOD -->
@@ -91,10 +92,7 @@
 									    <option value="6">기타</option>
 								    </select>
 								</td>
-								<td><input type="text" name="iptPeriod" class="fromTo" value="${iptDto.iptPeriod} 개월" placeholder="기간" /></td>
-								<td>
-									<button type="button" class="delCrr btn btn-danger"><i class="fa fa-minus"></i></button>
-								</td>
+								<td colspan="2"><input type="text" name="iptPeriod" class="fromTo" value="${iptDto.iptPeriod} 개월" placeholder="기간" /></td>
 							</tr>
 						</c:if>
 						<c:if test="${iptListCnt ne 0}">
@@ -191,6 +189,7 @@
 		</div>
 	</div>
 	<div id="crr">
+	<h2>시스템이용 경력사항</h2>
 	<table border='1'>
 		<thead>
 			<tr>

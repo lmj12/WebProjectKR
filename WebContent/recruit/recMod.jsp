@@ -54,7 +54,7 @@
 		<td> ${recDto.recId} </td>
 	
 		
-		<th> 종료일</th>
+		<th> 예식일시</th>
 		<td> <p>날짜: <input type="text" name="End" id="datepicker"><br><br>
 			시간 : <input type="text" name="EndTime" id="timepicker"></p></td>
 	</tr>
