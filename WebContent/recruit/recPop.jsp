@@ -83,13 +83,13 @@ table{
 		</td>				
 	</tr>
 	<tr>
-		<th>시작일</th>
+		<th>등록일</th>
 		<td align="center">
 					${article.recDto.stime}		
 				</td>				
 	</tr>
 	<tr>
-		<th>종료일</th>
+		<th>예식일시</th>
 		<td align="center">
 					${article.recDto.etime}
 				</td>	

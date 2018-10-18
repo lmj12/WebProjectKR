@@ -288,12 +288,13 @@
 			 </c:choose>
 			 </c:forEach>
 				</td>
+		</tr>
 		<tr>
-			<th>시작일</th>
+			<th>등록일</th>
 			<td align="center">${recDto.stime}</td>
 		</tr>
 		<tr>
-			<th>종료일</th>
+			<th>예식일시</th>
 			<td align="center">${recDto.etime}</td>
 		</tr>
 		<tr>
@@ -322,11 +323,6 @@
 				${jbpDto.jobpCn}
 			</td>
 		</tr>
-		<tr>
-			<th>사업자번호 </th>
-			<td align="center">
-				${jbpDto.jobpBno}
-			</td>
 		<tr>
 			<th>주소</th>
 			<td align="center">

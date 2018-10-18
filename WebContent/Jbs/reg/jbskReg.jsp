@@ -211,7 +211,7 @@
         <div class="form-group row">
           <label for="jbskId" class="col-sm-2 col-form-label">아이디</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="jbskId" name="jbskId" placeholder="ID" maxlength="15">
+            <input type="text" class="form-control" id="jbskId" name="jbskId" placeholder="아이디를 4-15 내로 입력해주세요. 영어, 숫자만 가능합니다" maxlength="15">
             <small class="text-muted"></small>
           </div>
         </div>
@@ -219,14 +219,14 @@
         <div class="form-group row">
           <label for="jbskPasswd" class="col-sm-2 col-form-label">비밀번호</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="jbskPasswd" name="jbskPasswd" placeholder="Password" maxlength="15">
+            <input type="password" class="form-control" id="jbskPasswd" name="jbskPasswd" placeholder="비밀번호 길이를 6-15자 이내로 입력해주세요." maxlength="15">
             <small class="text-muted"></small>
           </div>
         </div>
         <div class="form-group row">
           <label for="jbskRePasswd" class="col-sm-2 col-form-label">비밀번호확인</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="jbskRePasswd" placeholder="Password" maxlength="15">
+            <input type="password" class="form-control" id="jbskRePasswd" placeholder="비밀번호를 다시 한번 입력해 주세요." maxlength="15">
             <small class="text-muted"></small>
           </div>
         </div>
@@ -255,7 +255,7 @@
          <div class="form-group row">
           <label for="jbskEmail1" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="jbskEmail1" maxlength="50"> @ 
+            <input type="text" class="form-control" id="jbskEmail1" name="jbskEmail1" maxlength="50"> @ 
                        	 <select name="jbskEmail2" id="jbskEmail2">
                         		<option>naver.com</option>	
                         	    <option>daum.net</option>
@@ -355,8 +355,10 @@
 			MinCharsID: '4',
 			
 			passwordID: '#jbskPasswd',
-			ErrorTextPassword: '비밀번호 길이를 6-15자 이내로 입력하세요 ',
+			ErrorTextPassword: '비밀번호 길이를 6-15자 이내로 입력해주세요',
 			MinCharsPass: '6',
+			ErrorTextComplexPassword: '숫자, 영문, 특수문자를 두 가지 이상 혼합하여야 합니다',
+			ComplexMinCharsPass: '3',
 			
 			rePasswordID: '#jbskRePasswd',
 			ErrorTextrePassword: '비밀번호가 일치하지 않습니다',
@@ -368,14 +370,16 @@
 			// 추가
 			genderID : '#jbskGender',
 			
-			emailID : '#inputEmail',
+			emailID : '#jbskEmail1',
 			ErrorTextEmail: 'Enter valid email',
 			
 			// 추가
 			addressID : '#zipcode',
 			 
 			telID : '#jbskTel',
-			telAuthID : '#authNum',
+			telConfirm : '#telConfirm',
+			ErrorTextTel : '전화번호 형식이 올바르지 않습니다',
+			ErrorTextTelAuth : '핸드폰 인증을 진행해주세요',
 			
 			// 추가 
 			picID : '#jbskPic',

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<h2>로그인pro</h2>
  
 <%@ include file="../setting/setting.jsp" %>
 <%	// 아이디 있다 / 비밀번호다 같다 %>
