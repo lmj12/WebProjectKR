@@ -3,7 +3,7 @@
 <%@ include file="/setting/design_setting_upper.jsp" %>
 <%@ include file="/setting/setting.jsp"%>
 <!DOCTYPE html>
-<div class="container">
+
 <script type="text/javascript">
 	//<!--
 	function toEstForm(recCrrId, jbskName, jbskGender, posId, jbskId, jbskPic, recId, estId){	//자바스크립트 단독으로 post타입 넘기는 형태.
@@ -66,6 +66,8 @@
 	
 	//-->
 </script>
+<c:if test="${size > 0}">
+<div class="container">
 <h2>사후평가 창</h2>
 	<table border='1'>
 		<tr>
@@ -114,3 +116,11 @@
 	</c:forEach>
 </table>
 </div>
+</c:if>
+<c:if test="${size ==0}">
+	<script type="text/javascript">
+		//<!--
+			errorback("지원자가 없습니다.")
+		//-->
+	</script>
+</c:if>

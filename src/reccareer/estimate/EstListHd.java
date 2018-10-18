@@ -18,6 +18,8 @@ public class EstListHd implements EstimateHandler {
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response) throws EstException {
 		int recId = Integer.parseInt(request.getParameter("recId"));
 		List<EstimateDataBean> lists = estDao.estList(recId);
+		int size = lists.size();
+		request.setAttribute("size", size);
 		request.setAttribute("lists", lists);
 		return new ModelAndView("estimate/estimateList");
 	}
