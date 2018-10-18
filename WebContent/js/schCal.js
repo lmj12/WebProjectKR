@@ -94,8 +94,7 @@
     }  
     
     function getSchedule(){
-    	alert(month)
-    		var date = new Date(year,month+1,0);
+    	var date = new Date(year,month+1,0);
     	var end = date.getDate()
        $.ajaxSetup({cache:false}); 
        $.ajax({
